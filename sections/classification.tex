@@ -1,0 +1,121 @@
+\chapter{计量经济模型的类别}
+
+\section{模型的类别}
+一般的模型是广义回归模型，即假设
+$$ y=F(\boldsymbol{\beta}, \boldsymbol{X})+\boldsymbol{\varepsilon}, \quad \mathbb{E} [\boldsymbol{\varepsilon}]=\boldsymbol{0}, \quad \mathbb{E}\left[\boldsymbol{\varepsilon \varepsilon}^{\prime}\right]=\sigma^{2} \boldsymbol{\Omega} $$
+其中$ \boldsymbol{\Omega} $是一般的正定矩阵，$ \sigma^{2}\boldsymbol{\Omega} $是样本的协方差矩阵。
+	
+{\bf{假设}}$ \mathrm{Cov}\left(\varepsilon_{i}, \varepsilon_{j}\right)
+=\rho_{ij} $，样本的协方差矩阵 $  \boldsymbol{\Sigma } $ (the covariance matrix)是：
+\begin{equation*}
+	\boldsymbol{\Sigma} = \left(\begin{array}{cccc}
+		\sigma_{1}^{2} & \rho_{12} & \cdots & \rho_{1 n} \\
+		\rho_{21} & \sigma_{2}^{2} & & \vdots \\
+		\vdots & & \ddots & \rho_{n-1, n} \\
+		\rho_{n 1} & \cdots & \rho_{n, n-1} & \sigma_{n}^{2}
+	\end{array}\right)
+\end{equation*}
+
+$ \sigma^{2}\boldsymbol{\Omega} $中应该有$ 1+2+\dots+n=\frac{1}{2}n(n+1) $未知的参数，再加上未知参数$ \boldsymbol{\beta} $的个数，是一个只有$ n $个样本点难以完成任务的，即使完成，效率和准确性是不高的。即不简化模型我们将一事无成。
+	
+\noindent \textbf{模型1 Large-sample Model}
+$$ \boldsymbol{\Sigma} = \mathbb{E}\left(\boldsymbol{\varepsilon \varepsilon}^{\prime}\right)=\sigma^{2}\boldsymbol{I} $$
+	
+\noindent \textbf{模型2 异方差(Heteroscedasticity)}
+\begin{equation*}
+	\boldsymbol{\Sigma} = \left(\begin{array}{cccc}
+		\sigma_{1}^{2} & 0 & \cdots & 0 \\
+		0 & \sigma_{2}^{2} & & \vdots \\
+		\vdots & & \ddots & 0 \\
+		0 & \cdots & 0 & \sigma_{n}^{2}
+	\end{array}\right)
+\end{equation*}
+
+即使这样，也有超过$ n $个未知的参数要估计，所以，进一步假设组间异方差(group-wise)
+
+\begin{equation*}
+	\boldsymbol{\Sigma} = \left(\begin{array}{cccccccccc}
+		\sigma_{1}^{2} & & & & & & & & & \\
+		& \ddots & & & & & & & & \\
+		& & \sigma_{1}^{2} & & & & & & & \\
+		& & & \sigma_{2}^{2} & & & & & & \\
+		& & & & \ddots & & & & & \\
+		& & & & & \sigma_{2}^{2} & & & & \\
+		& & & & & & \ddots & & & \\
+		& & & & & & & \sigma_{g}^{2} & & \\
+		& & & & & & & & \ddots & \\
+		& & & & & & & & & \sigma_{g}^{2}
+	\end{array}\right)
+\end{equation*}
+
+\noindent \textbf{模型3 自相关(Autocorrelation)}
+\begin{equation*}
+	\boldsymbol{\Sigma} = \left(\begin{array}{ccccc}
+		\sigma^{2} & \rho & \rho^{2} & \cdots & \rho^{n-1} \\
+		\rho & \sigma^{2} & \rho & & \rho^{n-2} \\
+		\rho^{2} & \rho & \sigma^{2} & & \vdots \\
+		\vdots & & & \ddots & \rho \\
+		\rho^{n-1} & \cdots & & \rho & \sigma^{2}
+	\end{array}\right)
+\end{equation*}
+
+此时我们需要估计两个参数$ \left(\sigma^{2}, \rho\right) $。
+	
+\noindent \textbf{模型4 ARCH(条件异方差)或GARCH(广义条件异方差)}
+
+\begin{equation*}
+	\boldsymbol{\Sigma} = \left(\begin{array}{cccc}
+		\sigma_{1}^{2} & 0 & \cdots & 0 \\
+		0 & \sigma_{2}^{2} & & \vdots \\
+		\vdots & & \ddots & 0 \\
+		0 & \cdots & 0 & \sigma_{n}^{2}
+	\end{array}\right)
+\end{equation*}
+
+对于不同的观测值$ \sigma_{i}^{2} $是不同的，但是它们彼此间也存在一定关系，如：
+\begin{align*}
+	&\text{ARCH}: \sigma_{k}^{2}=a+b \sigma_{k-1}^{2}\text{在条件} \mathrm{Cov}\left(\varepsilon_{i}, \varepsilon_{j}\right)
+	=0\text{下} \\	
+	&\text{GARCH}: \sigma_{k}^{2}=a+b \sigma_{k-1}^{2}+c \sigma_{k-2}^{2}+\cdots 
+\end{align*}
+
+\section{事例：社会保障水平与国内生产总值}
+
+直现上看，社会保障水平的相关因素中，最主要的因素是人均国内生产总值。只有人均国内生产总值的增长，才会有资金支撑社会保障的各项支出，我们可以建立相应的线性回归模型：$ Y=a+bX+\varepsilon $
+	
+利用有关国家的数据，算出常数项$ a $和系数$ b $，如下：
+	
+社会保障水平与人均GDP增长之间的相关函数和回归方程：
+\begin{table}[htb!]
+	\centering
+	\setlength{\tabcolsep}{2em}
+	\begin{threeparttable}[b]
+		\caption{社会保障水平与人均GDP增长之间的相关函数和回归方程} 
+		\begin{tabular}{cclc}
+			\hline
+			国家 & 相关系数 & 回归方程$Y=a+bX$      & 样本年份             \\
+			\hline
+			英国 & 0.956 & $Y=14.1+0.0034X$   & \multirow{6}{*}{1960—1995} \\
+			瑞典 & 0.964 & $Y=10.68+0.0064X$  &                            \\
+			丹麦 & 0.940 & $Y=10.14+0.0056X$  &                            \\
+			美国 & 0.903 & $Y=10.46+0.00034X$ &                            \\
+			日本 & 0.988 & $Y=7.62+0.00078X$  &                            \\
+			德国 & 0.947 & $Y=16.37+0.00081X$ &                            \\
+			\hline
+		\end{tabular}
+		\begin{tablenotes} \tiny
+			\item[1] 世界银行，世界发展报告(1982—1998)北京：中国财政经济出版社
+			\item[2] 联合国，人类发展报告(1982—1999)伦敦：天津大学出版社
+		\end{tablenotes}
+	\end{threeparttable}
+\end{table}
+	
+	
+	
+从统计分析结果证明了2点：
+	
+1、社会保障水平与人均GDP队长之间存在着高度相关。（相关系数在0.94至0.98之间）
+	
+2、回归方程中的自变量系数$ b $值，福利型国家明显都高于自保公助型国家，上述关系表明，人均GDP每增长一亿本币，社会保障支出相应增长，福利型国家为$ 0.003\% \sim 0.006\% $，自保公助型国家为$ 0.0003\% \sim 0.0008\% $，二者相差一个小数点，从而说明，在相同人均国内生产总值增长速度下，福利型国家社会保障水平的上升速度快于自保公助型国家。
+		
+\textbf{问题：从样本到母体的的检验还没有完成！}

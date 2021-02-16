@@ -1,0 +1,858 @@
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ % @File    : c:\Users\Administrator\Desktop\Econometrics\sections\NGLS.tex
+ % @Date    : 2021-01-23 09:09:19
+ % @Author  : RankFan
+ % @Email   : 1917703489@qq.com
+ % -----
+ % Last Modified: 2021-02-12 22:00:45
+ % Modified By: Rank_fan
+ % -----
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\chapter{非球形扰动项与广义最小二乘（GLS）}
+
+\section{问题的提出}
+
+多元化回归模型扰动项违背古典假设的更一般的模型是广义回归模型，即假设
+\begin{equation}
+    \boldsymbol{ y=\beta^{\prime} X +\varepsilon }, \quad \mathbb{E}[\varepsilon]=0, \quad \mathbb{E}
+    \left[ \boldsymbol{\varepsilon \varepsilon^{\prime}}\right]=\sigma^{2} \boldsymbol{\Omega}
+    \label{eq 10.1.1}
+\end{equation}
+
+其中 $ \boldsymbol{\Omega} $是一般的正定矩阵，而不是在古典假设的情况下的单位矩阵。古典假设条件情况只是这种模型的一个特例。
+
+我们将考察的正定矩阵Ω两种特殊的情况是{\bf 异方差性}和{\bf 自相关}。
+
+\subsection{异方差性}
+
+    当扰动项有不同的方差时，它们就是异方差的，异方差性经常产生于横截面数据，其中因变量的尺度（scales）和模型解释能力在不同的观察值之间倾向于变动。我们仍然假设不
+    同观测值之间扰动无关。因此$ \sigma^{2} \boldsymbol{\Omega} $是:
+    $$ \sigma^{2} \boldsymbol{\Omega} = 
+    \left[\begin{array}{cccc}
+        \sigma_{1}^{2} & 0 & \cdots & 0 \\
+        0 & \sigma_{2}^{2} & \cdots & 0 \\
+        0 & 0 & \cdots & \sigma_{n}^{2}
+        \end{array}\right] $$
+
+\subsection{自相关}
+    自相关经常出现在时间序列数据中，经济现象中的时间序列经常表现出一种“记忆”，因为变化在不同时期之间不是独立的。
+    时间序列数据通常是同方差的，因此$ \sigma^{2} \boldsymbol{\Omega} $ 可能是
+    $$ \sigma^{2} \boldsymbol{\Omega} =\left[\begin{array}{cccc}
+        1 & \sigma_{1} & \cdots & \sigma_{n-1} \\
+        \sigma_{1} & 1 & \cdots & \sigma_{n-2} \\
+        \vdots& \vdots & \ddots & \vdots  \\
+        \sigma_{n-1} & \sigma_{n-2} & \cdots &  1
+        \end{array}\right] $$
+
+    非对角线上的值依赖于扰动项的模式。
+
+\subsection{普通最小二乘法的结果}
+    具有球形干扰项:
+    \begin{equation}
+        \mathbb{E}[\boldsymbol{\varepsilon}]=0 \qquad  
+        \mathbb{E}\left[\boldsymbol{\varepsilon \varepsilon^{\prime}}\right]=\sigma^{2} \boldsymbol{I}
+        \label{eq 10.1.2}
+    \end{equation}
+    \begin{equation}
+        \boldsymbol{b} = \left(\boldsymbol{X^{\prime} X}\right)^{-1} \boldsymbol{X^{\prime} y}
+        = \boldsymbol{\beta} + \left(\boldsymbol{X^{\prime} X}\right)^{-1} \boldsymbol{X^{\prime} \varepsilon}
+        \label{eq 10.1.3}
+    \end{equation}
+
+    是最佳线性无偏的、一致的和渐近正态分布的（ CAN=Consistent and asymptotically normally distributed），并且如果干扰项服从正态分布，在所有 CAN 估计量中它是渐近有效的。
+    现在我们考察哪些特性在 \ref{eq 10.1.1} 模型中仍然成立。
+
+    重申前面的内容，普通最小二乘估计量，
+
+\subsection{有限样本特性}
+
+    对 \ref{eq 10.1.3} 两边取期望，如果 $ \mathbb{E}[\boldsymbol{\varepsilon \mid X}]=0 $，则
+    \begin{equation}
+        \mathbb{E} [\boldsymbol{b}]=\mathbb{E}_{\boldsymbol{X}} \left [ \mathbb{E}[\boldsymbol{b \mid X}] \right] = \boldsymbol{\beta}
+    \end{equation}
+
+    如果回归量和扰动项是无关的，则最小二乘法的无偏性不受 \ref{eq 10.1.2} 假设变化的影响。
+
+    最小二乘法估计量的样本方差是:
+    \begin{equation}
+        \begin{aligned}
+            \operatorname{Var}[\boldsymbol{b-\beta}] & = \mathbb{E}\left[\boldsymbol{(b-\beta)(b-\beta)^{\prime}}\right] \\
+            & = \mathbb{E}\left[ \boldsymbol{\left(X^{\prime} X\right)^{-1}} \boldsymbol{X^{\prime} \varepsilon \varepsilon^{\prime} X}
+            \left(\boldsymbol{X^{\prime} X}\right)^{-1}\right] \\
+            & = \left(\boldsymbol{X^{\prime} X}\right)^{-1} \boldsymbol{X^{\prime}\left(\sigma^{2} \Omega\right) X\left(X^{\prime} X\right)^{-1}} \\
+            & = \frac{\sigma^{2}}{n} \left( \frac{\boldsymbol{X^{\prime} X}}{n}\right)^{-1} 
+            \frac{\boldsymbol{X \Omega X}}{n}\left(\frac{\boldsymbol{X^{\prime} X}}{n}\right)^{-1}
+        \end{aligned}
+        \label{eq 10.1.5}
+    \end{equation}
+
+    在 \eqref{eq 10.1.3} 中， $ \boldsymbol{b} $ 是 $ \boldsymbol{\varepsilon} $ 的线性函数。因此，如果$ \boldsymbol{\varepsilon} $  服从正态分布，则
+    $$ \boldsymbol{b} \sim N \left[\boldsymbol{\beta}, \sigma^{2}\left(\boldsymbol{X^{\prime} X}\right)^{-1}
+            (\boldsymbol{X \Omega X})\left(\boldsymbol{X^{\prime} X}\right)^{-1}\right] $$
+
+    由于最小二乘估计量的方差不再是 $ \sigma^{2}\left(\boldsymbol{X^{\prime} X}\right)^{-1} $ ，
+    任何基于 $ s^{2}\left(\boldsymbol{X^{\prime} X}\right)^{-1} $ 的推断都可能导致错误。
+    不仅使用的矩阵是错误的，而且 $ s^{2} $也可能是 $ \sigma^{2} $ 的有偏估计量。
+    通常无法知道$ \sigma^{2}\left(\boldsymbol{X^{\prime} X}\right)^{-1} $ 是比$ \boldsymbol{b} $的真正方差大还是小，
+    因此即使有 $ \sigma^{2} $的一个好的估计，$ Var[\boldsymbol{b}] $的传统估计量也不会有用。
+
+\subsection{最小二乘法的渐近特性}
+    如果$ Var[\boldsymbol{b}] $收敛于 0，则$ \boldsymbol{b} $是一致的。使用表现良好的回归量， 
+    $ \left(\boldsymbol{X^{\prime} X} / n\right)^{-1} $ 将收敛到
+    一个常数矩阵（可能是 0），并且最前面的乘子$ \sigma^{2} / n$ 将收敛于 0。
+    但 $ \boldsymbol{X^{\prime} \Omega X} / n $ 不一定收敛，
+    如果它收敛，则从 \eqref{eq 10.1.5} 式可推断普通最小二乘是一致的和无偏的。
+
+    \begin{theorem}
+        如果 $ p \lim \left( \boldsymbol{X^{\prime} X} / n\right) $和 
+        $ p \lim (\boldsymbol{X \Omega X} / n) $  都是有限正定矩阵，则 $ \boldsymbol{b} $ 是 $ \boldsymbol{\beta} $的一致估计量。
+    \end{theorem}
+
+    上述结论成立的条件依赖于$ \boldsymbol{X} $和$ \boldsymbol{\Omega} $。
+
+    另一种分离这两个组成部分的处理办法是：
+    
+    1. $ \boldsymbol{X^{\prime} X}$ 最小的特征根当 $ n \to \infty $ 时无限制地增加，这意味着 $p \lim \left(\boldsymbol{X^{\prime} X}\right)^{-1}=0 $
+
+    2. $ \boldsymbol{\Omega} $最大的特征根对于所有 n 都是有限的。对于异方差模型，方差就是特征根。
+    因此，要求它们是有限的。对于有自相关的模型，这要求Ω的元素有限并且非对角线元素与对角线元素相比不是特别大。
+    
+    {\bf 那么，普通最小二乘法在广义回归模型中是一致的。}
+
+    {\bf 说明普通最小二乘法是不一致的模型}
+
+    假定回归模型是 $\boldsymbol{y = \mu + \varepsilon} $ ，其中 $ \varepsilon $ 的均值为 0，方差为常数并且在不同观测值之间具有相同的相关系数 $ \rho $ 。于是
+    $$ \boldsymbol{\Omega} = \left[\begin{array}{ccccc}
+        1 & \rho & \rho & \cdots & \rho \\
+        \rho & 1 & \rho & \cdots & \rho \\
+        \rho & \rho & 1 & \cdots & \rho \\
+        & & & \vdots & \\
+        \rho & \rho & \rho & \cdots & 1
+        \end{array}\right] $$
+    
+    矩阵$ \boldsymbol{X} $是一列 1。$ \boldsymbol{\mu} $ 的普通最小二乘估计量是$ \boldsymbol{y} $。把 $ \boldsymbol{\Omega} $ 代入 \eqref{eq 10.1.5} ，得
+    \begin{equation}
+        \operatorname{Var}[\bar{y}]=\frac{\sigma^{2}}{n}(1-\rho+n \rho)
+    \end{equation}
+
+    这个表达式的极限是$ \rho \sigma^{2} $而不是 0。尽管 OLS 是无偏的，但它不是一致的。对于这个模型， $ \boldsymbol{X^{\prime} \Omega X} / n = 1+v(n-1)$不收敛。
+    由于$ \boldsymbol{X} $是一列 1，因此 $ \boldsymbol{XX^{\prime}} = n $是一个标量，满足条件 1；
+    但是，$ \boldsymbol{\Omega} $ 的特征根是 $ 1− \rho $（重数是 n-1）和($1− \rho + n\rho$) ，不满足条件 2；
+     这个例子中模型的困难是不同观测值间有太多的相关。在时间序列情况下，我们一般要求观
+    测值之间关于时间的相关系数随它们之间距离增加而减小。这里条件没有被满足。
+    关于在简介中曾讨论的自相关扰动项的协方差矩阵上需要附加什么种类的要求，这给出一些很有意义的信息。
+
+    如果
+    \begin{equation}
+        \sqrt{n}(\boldsymbol{b-\beta})=
+        \left(\frac{\boldsymbol{X^{\prime} X}}{n}\right)^{-1} \frac{1}{\sqrt{n}} \boldsymbol{X^{\prime} \varepsilon}
+    \end{equation}
+
+    的极限分布是正态的，则 OLS 估计量渐近地服从正态分布。如果 $ p \lim ( \boldsymbol{X^{\prime} X} / n) = \boldsymbol{Q} $，那么 右边项的极限分布与
+    \begin{equation}
+        v = \boldsymbol{Q^{-1}} \frac{1}{\sqrt{n}} \boldsymbol{X^{\prime} \varepsilon=Q^{-1}} \frac{1}{\sqrt{n}} \sum_{i} x_{i} \varepsilon_{i}
+        \label{eq 10.1.8}
+    \end{equation}
+
+    的分布相同，其中 $ \boldsymbol{x_i^{\prime}} $ 是 $ \boldsymbol{X} $ 的一行（当然假定极限分布确实存在）。
+    现在，问题是中心极限定理是否可以直接应用于$ v $。如果扰动项只是异方差的而且仍是无关的，答案通常是肯定的。
+    在这种情况下，很容易看到只要 $ \boldsymbol{X} $ 表现良好，而且$ \Omega $对角元素是有限的，最小二乘估计量是渐近正态分布的，方差矩阵由 \ref{eq 10.1.5} 给出。
+
+    但对于大多数一般的情况，答案是否定的，因为 \eqref{eq 10.1.8} 中的和不一定是相互独立或是甚至无关的随机变量的和。
+    不过，雨宫（1985）和安德森（1971）曾指出，自相关扰动项的模型中$ \boldsymbol{b} $的渐近正态性是足够普遍的，以致于包括了我们在实际中可能遇到的大多数情况。
+    我们可以得到结论，除了在特别不利的情况下，
+
+    $ \boldsymbol{b} $渐近地服从均值为$ \boldsymbol{\beta} $，方差矩阵由 \eqref{eq 10.1.5} 给出的正态分布。
+    
+    总之， OLS 在这个模型中只保留了它的一些可取性质， 它是无偏的、一致的和渐近正态分布的。不过，它不是有效。 我们需要寻求$ \boldsymbol{b} $的有效估计。
+
+\section{广义最小二乘（GLS）}
+
+在广义回归模型中，$ \boldsymbol{\beta} $的有效估计需要关于 $ \Omega $ 的知识。
+我们只考察$ \boldsymbol{\Omega} $是已知的、对称正定矩阵的情况，这种情况偶尔会发生，但在大多数的模型中$ \boldsymbol{\Omega} $ 包含必须估计的未知参数。
+
+由于$ \boldsymbol{\beta} $是正定对称矩阵，它可以分解为:
+\begin{equation}
+    \boldsymbol{\Omega=C \wedge C^{\prime}}
+\end{equation}
+
+其中$ \boldsymbol{C} $的各列是 $ \boldsymbol{\Omega} $  的特征向量经过正交化而得到，
+即 $ \boldsymbol{CC^{\prime} =I} $，而且$ \boldsymbol{\Omega} $的特征根被放在对角矩阵$ \boldsymbol{\Lambda} $中。
+令$ \boldsymbol{\Lambda^{\frac{1}{2}}} $是对角元素为 $ \sqrt{ \lambda_{i}} $ 的对角矩阵。
+
+如果令 $ \boldsymbol{P = C \Lambda^{\frac{1}{2}} } $ ，则
+$$  \boldsymbol{\Omega^{-1}=P P^{\prime}} $$
+
+用$ \boldsymbol{P^{\prime}} $ 前乘 \ref{eq 10.1.1} 中的模型可得
+\begin{equation}
+    \boldsymbol{P^{\prime} y=P^{\prime} X \beta+P^{\prime} \varepsilon} \quad or \quad \boldsymbol{y_{*}=X_{*} \beta+\varepsilon_{*}}
+    \label{eq 10.2.2}
+\end{equation}
+
+$ \boldsymbol{\varepsilon_{*}} $ 的方差是:
+$$ \mathbb{E}\left[\boldsymbol{\varepsilon_{*} \varepsilon_{*}^{\prime}}\right] 
+        = \boldsymbol{P^{\prime}} \sigma^{2} \boldsymbol{\Omega P}\sigma^{2} \boldsymbol{I} $$
+
+因此，这个变换后的模型就是一个我们熟悉的古典回归模型。由于$ \Omega $已知，所以， $ y_{*} $和$ X_{*} $是可观测数据。在古典回归模型中， OLS 是有效的。
+\begin{equation}
+   \therefore \ \  \boldsymbol{\beta}=\left( \boldsymbol{X_{*}^{\prime} X_{*}}\right)^{-1} 
+   \boldsymbol{X_{*}^{\prime} y_{*}=\left(X^{\prime} P P^{\prime} X\right)^{-1} X^{\prime} 
+    P P^{\prime} y=\left(X \Omega^{-1} X\right)^{-1} X \Omega^{-1} y}
+    \label{eq 10.2.3}
+\end{equation}
+
+{\bf 是 $ \boldsymbol{\beta} $ 的有效估计量}。 这是 $ \boldsymbol{\beta} $ 的广义最小二乘（ GLS）估计量。按照古典回归模型，我们有以下结论：
+
+如果 $ \mathbb{E}[ \boldsymbol{\varepsilon_{*}| X_{*}} ] = 0 $， 
+GLS 估计量 $ \boldsymbol{\beta} $ 是无偏的。这等价于 $ \mathbb{E}[ \boldsymbol{P \varepsilon | PX} ] = 0$ ，但由于$ \boldsymbol{P} $是已知常数的矩阵，
+即要求 $ \mathbb{E}[\boldsymbol{\varepsilon | X }] = 0$ ，也即要求回归量与扰动项是无关的，是我们模型的基本假设。
+
+\subsection{GLS 大样本的特性}
+
+如果
+\begin{equation}
+    p \lim \left(\frac{ \boldsymbol{X_{*}^{\prime} X_{*}} }{n}\right) = \boldsymbol{Q_{*}}
+\end{equation}
+
+GLS 估计量是一致的，其中 $ \boldsymbol{Q_{*}} $是有限正定矩阵。进行替换可得
+\begin{equation}
+    p \lim \left(\frac{ \boldsymbol{X \Omega^{-1} X} }{n}\right)^{-1} = \boldsymbol{Q_{*}^{-1}}
+    \label{eq 10.2.5}
+\end{equation}
+我们需要的是变换后的数据 $ \boldsymbol{X^{*}=P^{\prime} X} $而不是原始数据 $ \boldsymbol{X} $ 的数据。
+
+根据 \eqref{eq 10.2.5} 的假设， GLS 估计量是渐近正态分布的，均值为 $ \boldsymbol{\beta} $ ，样本方差为:
+\begin{equation}
+    \operatorname{Var}[\boldsymbol{\hat{\beta}}]
+            = \sigma^{2}\left(\boldsymbol{X_{*}^{\prime} X_{*}}\right)^{-1}=\sigma^{2}\left(\boldsymbol{X \Omega^{-1} X}\right)^{-1}
+\end{equation}
+
+通过对 \eqref{eq 10.2.2} 中的模型应用高斯—马尔科夫定理可得如下的艾特肯（1935）定理：GLS 估计量 $ \boldsymbol{ \hat{\beta}} $ 是广义回归模型中的最小方差线性无偏估计量。
+（估计量 $ \hat{\beta} $ 的无偏性很容易从式 \eqref{eq 10.2.3} 中得到）。
+
+$ \boldsymbol{\hat{\beta}} $ 有时被称为艾特肯估计量。这是一个一般性结果，当$ \boldsymbol{\Omega = I} $时高斯—马尔科夫定理是它的一个特例。
+
+对于假设检验，我们可以把所有结果应用到变换后的模型\eqref{eq 10.2.2}中。为了检验 J 个线性约束 $ \boldsymbol{R \beta  = q} $，相应的统计量是
+$$ \begin{aligned}
+    F[J, n-K] &=\frac{(\boldsymbol{R \hat{\beta}-q})^{\prime}\left[\boldsymbol{R} 
+    \left(\hat{\sigma}^{2}\left( \boldsymbol{X_{*}^{\prime} X_{*}} \right)^{-1} \boldsymbol{R^{\prime}} \right]^{-1}
+    ( \boldsymbol{R \hat{\beta}-q})\right.}{J} \\
+    & = \frac{\left(\hat{\boldsymbol{\varepsilon}}_{c}^{\prime} 
+    \boldsymbol{\hat{\varepsilon}_{c}-\hat{\varepsilon}^{\prime} \hat{\varepsilon}}\right) / J}{\hat{\sigma}^{2}}
+    \end{aligned} $$ 
+
+其中残差向量是: $ \boldsymbol{\hat{\varepsilon}=y_{*}-X_{*} \hat{\beta}} $
+
+
+而
+$$ \hat{\sigma}^{2} = \frac{ \boldsymbol{\hat{\varepsilon}^{\prime} \hat{\varepsilon}}}{n-K}
+        =\frac{\boldsymbol{(y-X \hat{\beta})^{\prime} \Omega^{-1}(y-X \hat{\beta})}}{n-K} $$ 
+
+有约束的 GLS 残差$ \hat{\varepsilon}_{c}=y_{*}-X_{*} \beta_{c} $，基于 
+\begin{equation}
+    \boldsymbol{\hat{\beta}_{c} = \hat{\beta}-\left[X \Omega^{-1} X\right]^{-1} R^{\prime}}
+     \left[ \boldsymbol{R\left(X \Omega^{-1} X\right)^{-1} R^{\prime}}\right]^{-1}( \boldsymbol{R \hat{\beta}-q}) 
+    \quad(\text {作业} 3)
+\end{equation}
+
+总之，对于古典模型的所有结果，包括通常的推断过程，都适用于 \eqref{eq 10.2.2} 中的模型。应该注意的是： 在广义回归模型中没有 R2的准确对等物。不同的统计量有不同的意义，
+但使用它们时一定要谨慎。 类似 $ R^{2} $ 的任何形式的度量纯粹是描述性的，不象古典回归模型中一样具有确切的意义。
+
+\section{最大似然估计和似然比统计量}
+\subsection{二元正态分布}
+
+直观上，二元正态分布是两个正态随机变量的联合分布。如果两个随机变量$ X_{1} $和$ X_{2}$ 的联合密度函数为：
+$$ f\left(x_{1}, x_{2}\right)=\frac{1}{2 \pi \sigma_{1} \sigma_{2} \sqrt{1-\rho^{2}}} 
+            \exp \left\{-\frac{ \boldsymbol{\Sigma}^{-1}}{2}\right\} $$
+$$ {\boldsymbol{\Sigma}}^{-1}=\frac{1}{1-\rho^{2}}\left[\left(\frac{x_{1}-\mu_{1}}{\sigma_{1}}\right)^{2}-2 \rho\left(\frac{x_{1}-\mu_{1}}{\sigma_{1}}\right)\left(\frac{x_{2}-\mu_{2}}{\sigma_{2}}\right)+\left(\frac{x_{2}-\mu_{2}}{\sigma_{2}}\right)^{2}\right]  $$
+
+这里$ -\infty<x_{1}, \quad x_{2}<\infty, \quad \sigma_{1}>0, \quad \sigma_{2}>0, \quad-1<\rho<1 $。
+
+我们称 $ X_{1} $ 和 $ X_{2} $ 服从二元正态分布。通过计算可得$ X_{1} $ 和 $ X_{2} $ 的边际分布分别为 $N (\mu_{1},\sigma_{1}^{2})$
+和 $N (\mu_{2},\sigma_{2}^{2})$。上式中的参数 $ \rho $ 是 $ X_{1} $ 和 $ X_{2} $  的相关系数。
+
+有时如果把联合概率密度函数写成矩阵的形式，则从形式上来看就简单多了。记 $ X^{\prime} = ( X_{1}, X_{2} ) $，那么二元正态概率密度函数可以写成如下的简单形式:
+$$ f(x)=(2 \pi)^{-1}|\boldsymbol{\Sigma}|^{-1 / 2} \exp \left\{-\frac{1}{2}(\boldsymbol{x-\mu})^{\prime} \boldsymbol{\Sigma}^{-1}(\boldsymbol{x-\mu})\right\} $$
+
+这里
+$$ \boldsymbol{x}=\left[\begin{array}{l}
+    x_{1} \\
+    x_{2}
+    \end{array}\right], \boldsymbol{\mu}=\left[\begin{array}{l}
+    \mu_{1} \\
+    \mu_{2}
+    \end{array}\right], \boldsymbol{\Sigma}=\left[\begin{array}{cc}
+    \sigma_{1}^{2} & \sigma_{1} \sigma_{2} \rho \\
+    \sigma_{1} \sigma_{2} \rho & \sigma_{2}^{2}
+    \end{array}\right] $$
+
+\subsection{多元正态分布}
+$ g(\boldsymbol{x})=(2 \pi)^{-\frac{n}{2}} \boldsymbol{\Sigma} ^{-\frac{1}{2}} \exp 
+\left\{-\frac{1}{2}\boldsymbol{(x-\mu)^{\prime} \Sigma^{-1}(x-\mu)}\right\}, \boldsymbol{x} \in \mathbb{R}^{n} $
+这就是均值为 $ \boldsymbol{\mu} $ 协方差矩阵为 $ \boldsymbol{\Sigma} $ 的多元正态分布，记为$ \boldsymbol{X} \sim N(\boldsymbol{\mu, \Sigma})$
+
+{\bf 多元正态分布的指数分布是卡方分布。}
+
+\subsection{最大似然估计}
+如果扰动项服从多元正态分布，则样本的对数似然函数是
+$$ \ln L=-\frac{n}{2} \ln (2 \pi)-\frac{1}{2} \ln \left|\sigma^{2} \boldsymbol{\Omega} \right|-\frac{1}{2} 
+\boldsymbol{\varepsilon^{\prime}} \left(\sigma^{2} \boldsymbol{\Omega} \right)^{-1} \boldsymbol{\varepsilon} $$
+
+进行变量变换$ \boldsymbol{y − X\beta  = \varepsilon} $可得
+\begin{equation}
+    \ln L = -\frac{n}{2} \ln (2 \pi)-\frac{n}{2} \ln \sigma^{2}-
+    \frac{1}{2 \sigma^{2}}(\boldsymbol{y-X \beta})^{\prime} \boldsymbol{\Omega}^{-1}(\boldsymbol{y-X \beta})-\frac{1}{2} \ln |\boldsymbol{\Omega}|
+\end{equation}
+
+由于 $ \boldsymbol{\Omega} $ 是已知常数的矩阵， $ \boldsymbol{\beta} $ 的最大似然估计量是使得广义平方和
+\begin{equation}
+     S_{*}(\boldsymbol{\beta})=( \boldsymbol{y-X \beta} )^{\prime} \boldsymbol{\Omega}^{-1}(\boldsymbol{y-X \beta}) 
+\end{equation}
+
+最小化的向量。（因此取名广义最小二乘） 使得 L 最大化的必要条件是:
+\begin{equation}
+    \frac{\partial \ln L}{\partial \boldsymbol{\beta} }=\frac{1}{\sigma^{2}} \boldsymbol{X \Omega} ^{-1}(\boldsymbol{y-X \beta} )
+    = \frac{1}{\sigma^{2}} \boldsymbol{X_{*}^{\prime}\left(y_{*}-X_{*} \beta\right) }=0
+\end{equation}
+
+和
+\begin{equation}
+    \begin{aligned}
+        \frac{\partial \ln L}{\partial \sigma^{2}} & = -\frac{n}{2 \sigma^{2}} + \frac{1}{2 \sigma^{4}} \boldsymbol{(y-X \beta)^{\prime} \Omega^{-1}(y-X \beta)} \\
+        & = - \frac{n}{2 \sigma^{2}}+\frac{1}{2 \sigma^{4}} \boldsymbol{ \left(y_{*}-X_{*} \beta\right)^{\prime}\left(y_{*}-X_{*} \beta\right)}=0
+    \end{aligned}
+\end{equation}
+
+利用变换后的数据，解就是 MLE 估计量：
+\begin{equation}
+    \boldsymbol{\hat{\beta}}_{M L E} = \left(\boldsymbol{X_{*}^{\prime} X_{*}}\right)^{-1} 
+    \boldsymbol{X_{*}^{\prime} y_{*}=\left(X \Omega^{-1} X\right)^{-1} X \Omega^{-1} y}
+\end{equation}
+\begin{equation}
+    \begin{aligned}
+        \hat{\sigma}_{M L E}^{2} &= \frac{\left(\boldsymbol{y_{*}-X_{*} \hat{\beta}}\right)^{\prime} 
+        \left(\boldsymbol{y_{*}-X_{*} \beta}\right)}{n} \\
+        &=\frac{\boldsymbol{ (y-X \hat{\beta})^{\prime} \Omega^{-1}(y-X \hat{\beta}) }}{n}
+    \end{aligned}
+\end{equation}
+
+这意味着在扰动项服从正态分布的情况下， GLS 也是 MLE。 正如在古典回归模型中， $ \sigma^{2} $的 MLE 估计量也是有偏的。
+
+一个无偏估计量是:
+$$ s^{2} = \frac{\boldsymbol{ (y-X \hat{\beta})^{\prime} \Omega^{-1}(y-X \hat{\beta})} }{n-K} $$
+
+为了得到 MLE 估计量的渐近分布，我们可以把以前的结果应用于变换后的模型中。因此，
+$ \left[ \boldsymbol{ \hat{\beta}_{M L E} }, \hat{\sigma}_{M L E}^{2}\right] $ 的渐近分布是 :
+$$ \left[\begin{array}{c}
+    \boldsymbol{ \hat{\beta}_{M L E} }\\
+    \hat{\sigma}_{M L E}^{2}
+    \end{array}\right] \stackrel{a}{\longrightarrow} N\left[\left[\begin{array}{l}
+    \boldsymbol{\beta} \\
+    \sigma^{2}
+    \end{array}\right],\left[\begin{array}{cc}
+    \sigma^{2}\left( \boldsymbol{X \Omega^{-1} X}\right)^{-1} & 0 \\
+    0^{\prime} & 2 \sigma^{4} / n
+    \end{array}\right]\right. $$
+
+\subsection{最大似然估计量的渐进特性}
+由于其大样本特性或渐近特性，最大似然估计量最具吸引力，若我们假定密度函数$ f(\boldsymbol{x, \theta}) $
+满足一定的条件，则最大似然估计量将有如下渐近特性（不加证明）：
+\begin{enumerate}
+    \item 它是一致的：
+    $$ p \lim \boldsymbol{\hat{\theta}_{M L E}=\theta} $$
+    \item 它是渐近正态的：
+    $$ \boldsymbol{\hat{\theta}} \stackrel{a}{\longrightarrow} N\left[ \boldsymbol{\theta} ,\{ \boldsymbol{I(\theta)}\}^{-1}\right] $$
+    \item 它是渐近有效的，且达到一致估计量的克拉美—劳下界：
+    $$ \begin{aligned}
+        \operatorname{Asy}.\operatorname{Var}\left[\boldsymbol{\hat{\theta}}_{M L E}\right] &
+        =\left\{-\mathbb{E}\left[\frac{\partial^{2} \ln L(\boldsymbol{\theta})}{\partial \boldsymbol{\theta} \partial \boldsymbol{\theta^{\prime}}}\right]\right\}^{-1} \\
+        &=\left\{\mathbb{E}\left[\left(\frac{\partial \ln L(\boldsymbol{\theta})}{\partial \boldsymbol{\theta}}\right)
+        \left(\frac{\partial \ln L(\boldsymbol{\theta})}{\partial \boldsymbol{\theta^{\prime}}}\right)\right]\right\}^{-1}
+        \end{aligned} $$
+\end{enumerate}
+
+这三个特性解释了经济计量学中最大似然技术盛行的原因；第二个是大大地促进了假设检验和区间估计的构造；第三个是一个特别强有力的结果， MLE 具有一个一致估计量所能达到的最少方差。
+
+不过，注意到它们都是渐近特性是很重要的， MLE在小样本情况下并不是最佳估计量。
+
+最后，最大似然估计量有一个非常有用的特征。
+
+\begin{theorem}[不变性]
+    若$ \boldsymbol{\theta}_{MLE} $是 $ \theta $的最大似然估计且$ g (\boldsymbol{\theta}) $是一个连续函数，
+    则 $ g (\boldsymbol{\theta}) $ 的最大似然估 计是 $g( \boldsymbol{\theta}_{MLE}  )$
+\end{theorem}
+
+不变性特征有两个有用的实际含义。 {\bf 首先}，若对一组参数已经得到了估计，且要求它们的一个函数的估计，则不需要重新估计模型。例如，为了估计一正态分布的 $ \sigma $ ，我们可以
+简单地利用$ \hat{\sigma}^{2} $ 的平方根； {\bf 第二}， 不变性原理暗示我们可以按我们喜欢的方式自由地重参数化（reparameterize）一个似然函数，这将简化估计。
+
+克拉美—劳（Cramer-Rao）下界。假定 $ x $ 的密度函数满足一定的条件，参数$ \theta $的一个无偏估计量的方差将大于等于：
+$$ \begin{aligned}
+        [\boldsymbol{I(\theta)}]^{-1} & = \left(-\mathbb{E}\left[\frac{\partial^{2} \ln L(\boldsymbol{\theta})}
+        {\partial \boldsymbol{\theta}^{2}}\right]\right)^{-1} \\
+        &=\left(-\mathbb{E}\left[\frac{\partial \ln L(\boldsymbol{\theta})}{\partial \boldsymbol{\theta}}\right]^{2}\right)^{-1}
+    \end{aligned} $$
+
+    量 $ I(\boldsymbol{\theta}) $是样本的信息数。
+
+    考虑一个多变量情形。若 $\boldsymbol{\theta}$是一个参数向量， $ I(\boldsymbol{\theta}) $ 是信息矩阵。克拉美—劳定理指出，任何无偏估计量的方差矩阵与信息矩阵的逆
+$$  \begin{aligned}
+        [I(\boldsymbol{\theta})]^{-1} & = \left\{-\mathbb{E}  \left[\frac{\partial^{2} \ln L(\boldsymbol{\theta})}
+        {\partial \boldsymbol{\theta} \partial \boldsymbol{\theta^{\prime}} }\right]\right\}^{-1}  \\
+        & = \left\{\mathbb{E}\left[\left(\frac{\partial \ln L(\boldsymbol{\theta})}{\partial \boldsymbol{\theta}}\right)
+         \left(\frac{\partial \ln L(\boldsymbol{\theta})}{\partial \boldsymbol{\theta}^{\prime}}\right)\right]\right\}^{-1}
+    \end{aligned}  $$
+
+    的差将是一个非负定矩阵。
+    
+    {\bf 最大似然估计量的最重要的性质是有效性和不变性。 }
+
+\subsection{似然比统计量}
+{\bf 广义似然比检验}
+
+ 设 $ \boldsymbol{X} = (X_{1},\ldots,X_{n}) $是从母体中抽取的子样，其可能分布族$ \{f(\boldsymbol{x ; \theta}), \boldsymbol{\theta \in \Theta}\} $，
+ 其中 $ \boldsymbol{\theta} $（可以是向量）是未知参数（当母体是连续型变量时$ f $表示分布密度，当母体是离散型变量时$ f $表 示概率分布）。
+ 要求检验假设$ H: \boldsymbol{\theta=\theta_{0}} $ 。这里应指出， $ \boldsymbol{\theta_{0}}$ 有时是表示一个集合，
+ 如在运用 t-检验法检验假设$ H_{0}: \boldsymbol{\mu=\mu_{0}}$ 时，那里
+ $$ \begin{aligned}
+    \boldsymbol{\theta}  & \triangleq \left(\boldsymbol{\mu}, \sigma^{2}\right) \\
+    \boldsymbol{\Theta} & = \left\{\left(\boldsymbol{\mu}, \sigma^{2}\right):-\infty<\boldsymbol{\mu }<\infty, \sigma^{2}>0\right\} \\
+    \boldsymbol{\theta_{0}}  &\triangleq \left\{\left(\boldsymbol{\mu_{0}}, \sigma^{2}\right): \sigma^{2}>0\right\}
+    \end{aligned} $$
+
+    它是一个未知参数的集合而不是一个单点。
+
+    现在我们引进一个统计量：
+    $$ \lambda(\boldsymbol{x}) \triangleq \frac{\sup _{\boldsymbol{\theta \in \theta_{0}}} \prod_{i=1}^{n} f\left(x_{i} ; \boldsymbol{\theta} \right)}
+                {\sup_{ \boldsymbol{\theta \in \Theta} } \prod_{i=1}^{n} f \left(x_{i} ; \boldsymbol{\theta}\right)} $$
+
+    习惯上称$ \lambda(\boldsymbol{x}) $为广义似然比，显然它是子样的函数，不依赖于未知参数$ \boldsymbol{\theta} $ 。
+    由于$ \boldsymbol{\theta_{0}} \subset \boldsymbol{\Theta} $ ，所以
+    $$ 0 \leqslant \lambda(\boldsymbol{x}) \leqslant 1 $$
+
+    类似于最大似然原理，如果$ \lambda(\boldsymbol{x}) $取值较小，这说明当 $ H_{0} $为真时观察到样点$ \boldsymbol{x} $的概率比 $ H_0$不真时观察到样点的概率要小得多，
+    此时我们有理由怀疑假设 $ H_{0} $ 不真。
+    所以从广义似然比出发，该检验问题是当下式成立时拒绝 $ H_{0} $，
+    \begin{equation}
+        \lambda(\boldsymbol{x}) \leqslant {\lambda_{0}}
+    \end{equation}
+
+    其中$\lambda_{0}$ 的选取是使得下式成立，
+    \begin{equation}
+        P_{\boldsymbol{\theta} }\left\{ \lambda(\boldsymbol{X} ) \leq \lambda_{0}\right\} ~ \leq \alpha, \text { 对一切 } ~ \boldsymbol{\theta \in \Theta}
+    \end{equation}
+
+    给出的检验法称为水平为$ \alpha $的广义似然比检验。 当$ \boldsymbol{\theta_{0}} $ 是一个单点时可写为:
+    $$ P_{\boldsymbol{\theta_0} }\left\{\lambda(\boldsymbol{X}) \leq {\lambda_{0}} \right\} \leq \alpha $$
+
+\begin{myexample}
+    设母体$ \boldsymbol{X} $服从正态$ N(\boldsymbol{\mu} ,\sigma^{2} )$ 分布，其中$ \boldsymbol{\mu} $和$ \sigma^{2}$ 均是未知参数，
+    欲检验假设 $ H_{0}: \boldsymbol{\mu=\mu_{0}} $
+
+    设  $ \boldsymbol{X} = (X_{1},\ldots,X_{n}) $ 是从该母体中抽得的一个简单随机子样，它的联合分布密度是
+    $$ f \left(\boldsymbol{x ; \mu}, \sigma^{2}\right)=\left(\frac{1}{\sqrt{2 \pi} \sigma}\right)^{n} \exp 
+          \left\{-\frac{1}{2 \sigma^{2}} \sum_{i=1}^{n}\left(x_{i}-\mu\right)^{2}\right\} $$
+        
+          在这里，参数空间是$ \boldsymbol{\Theta} = \left\{\left(\mu, \sigma^{2}\right):-\infty<\mu<\infty, \sigma^{2}>0\right\} $
+
+          假设 $ H_0 $所对应的子集是$\theta_{0}=\left\{\left(\mu_{0}, \sigma^{2}\right): \sigma^{2}>0\right\} $，
+          运用微分法对$ f\left(\boldsymbol{x ; \mu}, \sigma^{2}\right) $求最大值得到
+          $$ \begin{array}{l}
+            \sup _{\left(\mu, \sigma^{2}\right) \in \boldsymbol{\theta_{0}}} f\left(x ; \mu, \sigma^{2}\right)
+            =\left[2 \pi  \dfrac{1}{n} \sum\left(x_{i}-\mu_{0}\right)^{2}\right]^{-n / 2} e^{-n / 2} \\
+            \sup _{\left(\mu, \sigma^{2}\right) \in \boldsymbol{\Theta}} f\left(x ; \mu, \sigma^{2}\right)
+            =\left[2 \pi \dfrac{1}{n} \sum\left(x_{i}-\bar{x}\right)^{2}\right]^{-n / 2} e^{-n / 2}
+            \end{array} $$
+            
+     所以广义似然比是:
+     \begin{equation}
+        \begin{array}{l}
+            \lambda(x)=\dfrac{\sup _{\left(\mu, \sigma^{2}\right) \in \boldsymbol{\theta_{0}}} 
+            f\left(x ; \mu, \sigma^{2}\right)}{\sup _{\left(\mu, \sigma^{2}\right) \in \boldsymbol{\Theta}} f \left(x ; \mu, \sigma^{2}\right)}
+            =\left\{\dfrac{\sum\left(x_{i}-\bar{x}\right)^{2}}{\sum\left(x_{i}-\mu_{0}\right)^{2}}\right\}^{n / 2}  \vspace{0.5em}\\
+            =\left\{\dfrac{1}{1+n\left(x-\mu_{0}\right)^{2} / \sum\left(x_{i}-\bar{x}\right)^{2}}\right\}^{n / 2}
+            =\left\{\dfrac{1}{1+t^{2} / n-1}\right\}^{n / 2}
+         \end{array}
+     \end{equation}
+
+     其中:
+     \begin{equation}
+         t(x)=\frac{\sqrt{n(n-1)}\left(x-\mu_{0}\right)}{\sqrt{\sum\left(x_{i}-\bar{x}\right)^{2}}} 
+     \end{equation}
+
+     所以，广义似然比检验的是当下式成立时拒绝 $ H_0 $， 
+     \begin{equation}
+        \lambda(\boldsymbol{x}) \leq \lambda_{0}
+        \label{eq 10.3.11}
+     \end{equation}
+     
+     由于$ \lambda(x) $是关于$ t(x) $的单调下降函数，所以 \ref{eq 10.3.11} 又可等价地表示为
+     \begin{equation}
+        |t(\boldsymbol{x})|>c_{0}
+     \end{equation}
+
+     因为$ t(\boldsymbol{X}) $ 当$ H_{0} $成立时服从 $ t(n − 1) $ 分布，所以$ c_0 $由下式决定$ \int_{c_{0}}^{\infty} t(\boldsymbol{x} ; n-1) \mathrm{d} \boldsymbol{x}=a / 2 $
+
+     它就是前面我们所指出的 $ t $-检验法
+\end{myexample}
+    
+\subsection{线性约束检验的另一个统计量}
+
+为了检验$ J $个线性约束 $ \boldsymbol{R \beta  = q}$，相应的统计量是:
+$$ \begin{aligned}
+    F[J, n-K] &=\frac{(\boldsymbol{R \hat{\beta}-q})^{\prime}
+    \left[\boldsymbol{R} \left(\hat{\sigma}^{2}\left( \boldsymbol{X_{*}^{\prime} X_{*}} \right)^{-1} \boldsymbol{R^{\prime}} \right]^{-1}
+    (\boldsymbol{ R \hat{\beta}-q})\right.}{J} \\
+    &= \frac{\left( \boldsymbol{\hat{\varepsilon}_{c}^{\prime} \hat{\varepsilon}_{c}-
+    \hat{\varepsilon}^{\prime} \hat{\varepsilon}} \right) / J}{\hat{\sigma}^{2}}
+    \end{aligned} $$
+
+    其中残差向量是$ \boldsymbol{ \hat{\varepsilon} = y_{*}-X_{*} \hat{\beta} } $
+
+    而
+    $$ \hat{\sigma}^{2} = \frac{ \boldsymbol{ \hat{\varepsilon}^{\prime} \hat{\varepsilon}} }{n-K}=
+       \frac{( \boldsymbol{y-X \hat{\beta}} )^{\prime} \boldsymbol{\Omega^{-1}(y-X \hat{\beta})}}{n-K} $$
+
+    不同于这个检验的另一种用于关于$ \boldsymbol{\beta}  $ 的假设检验的统计量是似然比统计量，同样可以检验带有$ J $个线性约束 $ \boldsymbol{R \beta  = q} $。
+
+    如果我们把上面的（16）和（17）代入（12），可以发现，在 LM 估计量处，
+    $$ \ln \hat{L}=-\frac{n}{2}\left(1+\ln (2 \pi)+\ln \hat{\sigma}^{2}\right)-\frac{1}{2} \ln |\boldsymbol{\Omega}| $$
+
+    因此，似然比检验基于
+
+    可以证明，此统计量渐近服从自由度为$ J $的 $ \chi^{2} $ 分布，其中$ J $是约束条件的个数。
+
+\section{可行的最小二乘估计（FGLS）}
+
+上一节的结果是基于$ \boldsymbol{\Omega} $ 必须是已知的条件基础上的。
+如果$ \boldsymbol{\Omega} $含有必须估计的未知参数，则 GLS 是不可行的。
+但在无约束的情况下， $ \sigma^{2} \boldsymbol{\Omega}$ 中有$ n(n+1)/2 $ 个附加参数。
+这对于用$ n $个 观测值来估计这么多的参数是不现实的。只有当模型中需要估计的参数较少时，
+即模型中$ \boldsymbol{\Omega} $ 某种结构要简化，才可以找到求解的方法
+
+\subsection{ \texorpdfstring{$\Omega$} 未知的条件下}
+
+具有代表性的问题涉及到一小组参数$ \boldsymbol{\theta} $，满足$ \boldsymbol{\Omega}=\boldsymbol{\Omega(\theta)} $，例如， $ \boldsymbol{\Omega} $ 
+只有一个未知数 $ \rho $ ，其常见的表达形式是:
+$$ \boldsymbol{\Omega} =\left[
+    \begin{array}{cccccc}
+        1 & \rho & \rho^{2} & \rho^{3} & \cdots & \rho^{n-1} \\
+        \rho & 1 & \rho & \rho^{2} & \cdots & \rho^{n-2} \\
+        & & & & \vdots & \\
+        \rho^{n-1} & \rho^{n-2} & & \cdots & & 1
+    \end{array}\right] $$
+
+    其中，也只有一个附加的未知参数 $ \rho $。
+
+    另外， 只包含一个新参数的异方差模型是：
+    $$ \sigma_{i}^{2}=\sigma^{2} z_{i}^{\alpha} $$
+
+    接下来，假定$ \boldsymbol{\hat{\theta}} $ 是$ \boldsymbol{\theta} $ 的一致估计量（如果我们知道如何求得这样的估计量）为了使 $ GLS $ 估计可行，我们将使用
+
+    替代真正的$ \boldsymbol{\Omega} $ 。我们所考虑的问题是利用$ \boldsymbol{\Omega (\theta)}$是否要求我们改变上节的某些结果。
+
+    如果利用$ p \lim \boldsymbol{\hat{\theta}} = \boldsymbol{\theta} $ ，
+    $ \boldsymbol{\hat{\Omega }}$ 似乎渐近等价于利用真正的 $ \boldsymbol{\Omega} $ （有时会不成立，施密特（1976）构造了一个反例）。
+
+    令可行广义最小二乘（或 FGLS）估计量记为:
+    $$ \boldsymbol{\hat{\hat{\beta}}=\left(X \hat{\Omega}^{-1} X\right)^{-1} X \hat{\Omega}^{-1} y} $$
+
+    那么，$ \boldsymbol{\hat{\hat{\beta}}} $ 渐近等价于 $ \boldsymbol{\hat{\beta}} $ 的条件是:
+    \begin{equation}
+         p \lim \frac{ \boldsymbol{X^{\prime }\hat{\Omega}^{-1} X}}{n}=p \lim \frac{\boldsymbol{X^{\prime }\Omega^{-1} X}}{n} 
+    \end{equation}
+
+    和
+   \begin{equation}
+      p \lim \frac{1}{\sqrt{n}} \boldsymbol{X^{\prime } \hat{\Omega}^{-1} \varepsilon}
+        =p \lim \frac{1}{\sqrt{n}} \boldsymbol{X^{\prime } \Omega^{-1} \varepsilon}
+     \label{eq 10.4.2}
+   \end{equation}
+
+   如果 \ref{eq 10.2.2} 中变换后的回归量表现良好，则 \ref{eq 10.4.2} 右边服从极限正态分布。这正是我们求最小二乘估计量的渐近分布时所利用的条件。
+   因此，当$ \boldsymbol{\hat{\Omega}} $ 替$ \boldsymbol{\Omega} $时 \ref{eq 10.4.2} 要求同样的条件成立。
+
+   这些是必须逐个情况进行核实的条件，在大多数情况下，它们的确成立。如果我们假设它们成立， 
+     基于$ \boldsymbol{\hat{\theta}} $的 FGLS 估计量与 GLS 估计量具有同样的渐近性质。 这是一个相当有用的结果。特别地，注意以下结论：
+
+   1.{\bf 一个渐近有效的 FLGS 估计量不要求我们有$ \boldsymbol{\theta} $的有效估计量，只需要一个一致估计量}。
+   
+   2. 除了最简单的情况， FGLS 估计量的有限样本性质和精确分布是未知的。 
+   FGLS 估计量的渐近有效性在小样本的情况下可能不再成立，这是因为由估计的$ \boldsymbol{\Omega} $引入的易变性。
+
+   对于异方差情况的一些分析由泰勒（1977 年）给出。自相关的模型由格涅里切斯和拉奥（1969 年）做了分析。 {\bf 在这两项研究中，他们发现对于许多类型的参数， FGLS 比最小二
+    乘更为有效。但是，如果偏离古典假设不太严重，在小样本情况下最小二乘可能比 FGLS 更有效。}
+
+\section{广义矩法（GMM）估计量}
+
+\subsection{广义矩法（GMM）估计量}
+
+    在经济计量学中，尤其是在宏观经济学和金融学中，最近大部分的实证性工作都利用了所谓的 GMM 估计量。
+    正如我们将看到的，这是一大类估计量，实际上包括我们所学过的所有估计量。这个技巧的近期推广大大丰富了应用型经济计量学家可使用的工具。
+
+    GMM 估计方法是一般矩方法技巧的直接推广。
+    
+   {\bf  1. OLS 估计量是一个矩法估计量}
+
+   现在，考虑古典线性回归模型（CLRM）中参数的 OLS 估计量的明显不同情况。模型假设之一是:
+   $$ \mathbb{E}\left[x_{i} \varepsilon_{i}\right]=0 $$
+
+   样本类似物为:
+   $$ \frac{1}{n} \sum_{i} x_{i} e_{i}=\frac{1}{n} \sum_{i} x_{i}\left(y_{i}-x_{i} \hat{\beta}_{i} \right)=0 $$
+
+   $ \beta $ 的估计量满足这些矩方程。当然，这便是最小二乘估计量的正则方程组，因此，我们看到 OLS 估计量是一个矩法估计量。
+
+   {\bf  2. GLS 估计量是一个矩法估计量} 
+
+   GLS 估计量根据
+   $$ \mathbb{E}\left[\boldsymbol{X^{\prime} \Omega^{-1} \varepsilon}\right]=0 $$
+
+
+
+   来定义，我们可以把上式重写成:
+   $$   \mathbb{E}\left[ \boldsymbol{X_{*}^{\prime} \varepsilon} \right] 
+            = 0 \quad or \quad \mathbb{E}\left[\boldsymbol{x_{*}^{\prime} \varepsilon}\right]=0 $$
+
+   {\bf 3. MLE 估计量是一个矩法估计量}
+
+   所有迄今为止我们曾考察过的以及后面将遇到的 MLE 都是通过让对数似然的导数等于0 得到的。操作原理是
+   $$ \ln L=\Sigma_{i} \ln f\left(y_{i}, x_{i} \mid \boldsymbol{\theta} \right) $$
+
+   其中 $f(\cdot)$是密度函数，$ \boldsymbol{\theta} $是参数向量。构成 MLE 理论的基础是下列结果，即对于正常问题，
+
+   $$ \mathbb{E}\left[\frac{\partial \ln f(y, x \mid \boldsymbol{\theta} )}{\partial \boldsymbol{\theta}}\right]=0 $$
+
+   MLE 是通过令样本类似物等于 0 得到:
+   $$ \frac{1}{n} \frac{\partial \ln L}{\partial \boldsymbol{\theta} }=\frac{1}{n} \sum_{i}
+       \left[\frac{\partial \ln f \left(y_{i}, x_{i} \mid \boldsymbol{\theta} \right)}{\partial \boldsymbol{\theta}}\right]=0 $$
+
+   （除以$ n $是为了使这个结果与以前的结果具有可比性，并不改变解）结果是，几乎所有我们曾讨论过的和后面将要遇到的估计量都可以解释为矩法估计量 MME。
+
+   以上 OLS、 GLS 和 MLE 估计量的三个例子都有一个共同方面，在所列的每种情况中，矩方程组的数目与要估计的参数的个数完全一样。
+   因此，每种情况都是恰好可识别的。矩方程组将有惟一解，并在这个解处，方程组将恰好被满足。
+   在有共线性的回归模型中，有$ K $个参数但独立的矩方程个数少于 $ K $；另外，在有些情况中矩方程组超过参数个数（如实例 3 的情况），因此系统是过度决定的。
+\subsection{一致估计——矩方法}
+
+用于许多这种情形中的技术是矩方法，这个方法的基础如下：
+\begin{theorem}[最小二乘定理]
+    从具有有限均值$ \mu $和有限方差$ \sigma^{2} $的任何总体中抽取的随机样本的均值都是 $ \mu $ 的一个一致估计量。
+    \begin{myproof}
+        $ \mathbb{E}[\bar{x}]=\mu $  及  $ \operatorname{Var}[\bar{x}]=\sigma^{2} / n $ 所以，$ \bar{x} $依均方收敛于$ \mu $ ，
+        或 $ p \lim \bar{x}=\mu $ 。
+    \end{myproof}
+\end{theorem}
+
+\begin{theorem}[斯拉茨基定理（Slutsky） ]
+    对一个连续函数 $ g\left(x_{n}\right) $ ，$ p \lim g\left(x_{n}\right)=g\left(p \lim x_{n}\right) $ 
+\end{theorem}
+
+\subsection{随机抽样和分布的参数估计}
+
+考虑来自具有有限矩$ \mathbb{E}\left[x^{k}\right] $的分布随机抽样，样本包含 n 个观测值$ x_{1}, \cdots, x_{K} $。
+第 k 阶“原始”或未中心化矩是：
+$$ m_{k}^{\prime}=\frac{1}{n} \sum_{i} x_{i}^{k} $$
+
+通过代换$ z_{i}=x_{i}^{k} $我们得到如下结果：
+$$ \mathbb{E}\left[m_{k}^{\prime}\right]=\mu_{k}^{\prime}=\mathbb{E}\left[x_{i}^{k}\right] $$
+
+和
+$$ \operatorname{Var}\left[m_{k}^{\prime}\right]=\frac{1}{n} 
+      \operatorname{Var}\left[x_{i}^{k}\right]=\frac{1}{n}\left(\mu_{2 k}^{\prime}-\mu_{k}^{\prime 2}\right) $$
+
+由最小二乘定理
+$$ p \lim m_{k}^{\prime}=\mu_{k}^{\prime}=\mathbb{E}\left[x_{i}^{k}\right] $$
+
+最后，由中心极限定理，有：
+$$ \sqrt{n}\left(m_{k}^{\prime}-\mu_{k}^{\prime}\right) \stackrel{d}{\longrightarrow} N\left[0, \mu_{2 k}^{\prime}-\mu_{k}^{\prime 2}\right] $$
+
+按惯例，
+$$ \mu_{1}^{\prime} = \mathbb{E}\left[x_{i}\right]=\mu $$
+
+一般地，$ \mu_k^{\prime} $将是母体参数的一个函数，通过计算 $ K $ 个原始矩并使它们等于这些函数，我们得到$ K $个方程，解这些方程可以提供$ K $个未知参数的估计。
+
+在随机抽样中，样本统计量将依概率收敛于某个常数。例如， $ (1 / n) \Sigma_{i} x_{i}^{2} $将依均方收敛到$ x_{i} $的分布的方差加均值的平方。这个常数又是分布的未知参数的一个函数。
+为了估计$ K $个参数$ \theta_{1}, \cdots \theta_{K} $ ，我们计算$ K $个统计量  $ m_{1}, \cdots, m_{K} $它们的概率极限都是参数的已知函数，
+这个$ K $个矩等于$ K $个函数，且这些函数反过来又把参数表达为矩的函数。估计量由于斯拉茨基定理和最小二乘定理而都是一致的
+
+虽然基于$ x $的幂的各个矩提供了关于参数的信息的一个自然的来源，数据的其他函数也可能是有用的，令 $ g_{k} (\cdot) $ 是不涉及样本容量$ n $的任何连续函数，并令：
+$$ \bar{g}_{k}=\frac{1}{n} \sum_{i} g_{k}\left(x_{i}\right) k=1,2, \cdots, K $$
+
+这些也是数据的“矩”，由最小二乘定理可推得：
+$$ p \lim \bar{g}_{k}=\mathbb{E}\left[g_{k}(x)\right]=\gamma_{k}\left(\theta_{1}, \cdots, \theta_{K}\right) $$
+
+我们假定$ \gamma_{k}(\cdot) $包含分布的一些或全部参数，由于要估计 K 个参数， K 个矩方程：
+$$ \begin{array}{c}
+    \bar{g}_{1}-\gamma_{1}\left(\theta_{1} \cdots, \theta_{K}\right)=0 \\
+    \vdots \\
+    \bar{g}_{K}-\gamma_{K}\left(\theta_{1}, \cdots, \theta_{K}\right)=0
+    \end{array} $$
+
+提供 K 个未知数 $ \theta_{1}, \cdots \theta_{K} $  的 K 个方程，则通过求解方程组获得矩法估计量：
+$$ \hat{\theta}_{k}=\hat{\theta}_{k}\left[\bar{g}_{1}, \cdots, \bar{g}_{K}\right] $$
+
+\begin{myexample}[实例 2]
+    在来自伽玛分布的抽样中，有：
+    $$ f(x)=\frac{\lambda^{P}}{\Gamma(P)} e^{-\lambda x} x^{P-1}, x>0, \quad \mathrm{P}>0, \quad \lambda>0 $$
+    $$ \begin{aligned}
+        p \lim \frac{1}{n} \sum_{i} x_{i} & = \frac{P}{\lambda} \\
+        p \lim \frac{1}{n} \sum_{i} x_{i}^{2} & = \frac{P(P+1)}{\lambda^{2}} \\
+        p \lim _{n} \sum_{i} \ln x_{i} & = \frac{d \ln \Gamma(P)}{d P}-\ln \lambda  = \Psi(P)-\ln \lambda \\
+        p \lim \frac{1}{n} \sum_{i} \frac{1}{x_{i}} & = \frac{\lambda}{P-1}
+        \end{aligned} $$
+
+        其中函数$ \Gamma(P)$ 和 $ \Psi(P) $ 是关于 P 的函数，这些方程中的任何两个都能用来估计$ \lambda $ 和 P。
+
+        另外，这个方程组还可能扩充，因为对 $   k=1,  2,  \cdots $ ，可以证明$ p \lim m_{r}^{\prime}=\lambda^{-k} \Gamma(P+k) / \Gamma(P) $。
+
+        在多数情形中，矩方法估计量都不是有效的，例外是来自于指数族分布的随机抽样。
+        \begin{mydef}
+            一个指数（参数）族分布是对数似然有如下形式的分布：
+            $$ \ln L(\boldsymbol{\theta \mid X})=a(\boldsymbol{X})+b(\boldsymbol{\theta})+\sum_{j} c_{j}(\boldsymbol{X}) s_{j}(\boldsymbol{\theta}) $$
+
+            其中 $ a(\cdot) $、 $ b(\cdot) $、  $ c(\cdot) $和 $ s(\cdot) $  都是函数。（“族”中的成员由不同参数值来区分）。
+            若对数似然函数具有这个形式，则函数 $ c_j(\cdot) $称作充分统计量。
+
+         { \bf 当充分统计量存在时，矩方法估计量将是它们的函数，而且可以证明， 矩方法估计量将是最大似然估计量，所以，它们当然是有效的，并且是渐近有效的。}
+        \end{mydef}      
+\end{myexample}
+
+\begin{myexample}[实例 3（续前例）]
+    伽马分布的对数似然函数是：
+    $$ \ln L=n\left(P \ln \lambda-\ln \Gamma(P)-\lambda \sum_{i} x_{i}+(P-1) \sum_{i} \ln x_{i}\right) $$
+
+    这是有$ a(\boldsymbol{X})=0, b(\boldsymbol{\theta})=n(P \ln \lambda-\ln \Gamma(P)) $ 的一个指数族，
+    且两个充分统计量是$ \Sigma_{i} x_{i} $和 $ \Sigma_{i} \ln x_{i} $。
+   {\bf $ \Sigma_{i} x_{i} $ 的矩方法估计量将是最大似然估计量。}
+
+   对于原版书中图 4.1（P.98）中的收入数据，下面列出的 4 个矩是：
+   $$ \begin{aligned}
+        \frac{1}{n}\left[\sum_{i} x_{i}, \sum_{i} x_{i}^{2}, \sum_{i} \ln x_{i}, \sum_{i} \frac{1}{x_{i}}\right] & = [31.278,1453.957,3.221387,0.0500141] \\ & = \left(m_{1}^{\prime}, m_{2}^{\prime}, m_{*}^{\prime}, m_{-1}^{\prime}\right)
+    \end{aligned} $$
+
+    将估计的参数表示为$ \theta  = ( P, \lambda) $，基于这些矩中一对的$ P $和 $ \lambda$ 的矩方法估计量如下：
+    $$ \begin{aligned}
+        \hat{\theta}\left(m_{1}^{\prime}, m_{2}^{\prime}\right) & = (2.05682,0.065759), & \hat{\theta}\left(m_{1}^{\prime}, m_{*}^{\prime}\right) & = (2.4106,0.077707) \\
+        \hat{\theta}\left(m_{1}^{\prime}, m_{-1}^{\prime}\right) & = (2.7714,0.088605), & \hat{\theta}\left(m_{2}^{\prime}, m_{*}^{\prime}\right) & = (2.2644,0.071302) \\
+        \hat{\theta}\left(m_{-1}^{\prime}, m_{2}^{\prime}\right) & = (2.3952,0.074797), & \hat{\theta}\left(m_{-1}^{\prime}, m_{*}^{\prime}\right) & = (3.0358,0.101782)
+        \end{aligned} $$
+
+    最大似然估计是:
+    $$ \hat{\theta}\left(m_{1}^{\prime}, m_{*}^{\prime}\right)=(2.4206,0.77707) $$
+\end{myexample}
+
+\begin{myexample}[[实例 4]（例 3 继续）]
+    在例 3 中，我们计算 4 个样本矩
+    $$ \bar{g}=\frac{1}{n} \sum\left[x_{i}, x_{i}^{2}, \frac{1}{x_{i}}, \ln x_{i}\right] $$
+
+    分别具有概率极限$ P / \lambda, P(P+1) / \lambda^{2}, \lambda /(P-1) $ ，任意一对可以用于估计两个参数，但正如前面例子所显示的， 6 对产生$(P,\lambda)$ 的 6 对不同的估计。
+
+    在这样的例子中，为利用样本的所有信息，有必要想出一个办法来调和将出现在过度决定系统中的互相冲突的估计。
+
+    更为一般地，假设模型包括$ K $个参数$ \boldsymbol{\theta} = \left(\theta_{1}, \theta_{2}, \cdots, \theta_{K}\right) $，以及包含一组$ J > K $个矩条件，
+    $$ \mathbb{E}\left[m_{j}(y, x, z, \boldsymbol{\theta})\right]=0, j=1, \cdots, J $$
+
+    其中 $ y_{i}, x_{i}$   和 $ z_{i} $是模型中出现的变量的样本点。把相应的样本和记作
+    $$ \bar{m}_{j}(y, x, Z, \boldsymbol{\theta})=\frac{1}{n} \sum_{i} m_{j}\left(y, x_{i}, z_{i}, \boldsymbol{\theta} \right) $$
+
+    除非方程组是函数相关的（functionally dependent），$ K $个未知参数$ J $个方程的系统，
+    $$ \bar{m}_{j}=\frac{1}{n} \sum_{i} m_{j}\left(y, x_{i}, z_{i}, \boldsymbol{\theta} \right)=0, j=1, \cdots, J $$
+
+    将不会有惟一解。必须调和可能产生的
+    $ \left(\begin{array}{l}
+        J \\K
+        \end{array}\right) $ 种不同的估计。一种可能性是最小化准则函数，例如平方和
+        \begin{equation}
+            q=\sum \bar{m}_{j}^{2}=\bar{m}(\boldsymbol{\theta})^{\prime} \bar{m}(\boldsymbol{\theta})
+            \label{eq 10.5.1}
+        \end{equation}
+
+        以上是一种$ OLS $方法。由于矩是观测值的和，实际上它们是方差可以估计的随机变量。因此，根据使$ GLS $比 $ OLS$ 更可取的同样逻辑，使用一种加权方法应该有所帮助，
+         其中权数与矩的方差成反比。 令$ W $是对角线元素为:
+         $$ w_{j j}=Asy.\operatorname{Var}\left[\bar{m}_{j}\right] $$
+ 
+
+         的对角矩阵。于是，加权最小二乘方法将最小化:
+         $$ q=\bar{m}^{\prime} W^{-1} \bar{m} $$
+        
+         然而，$ \bar{m} $的 J 个元素是自由相关的，上式中我们使用的对角 W 阵忽视了这种相关性。 为了使用 GLS 的思路与方法，我们应定义:
+         \begin{equation}
+            W=Asy\cdot \operatorname{Var}[\bar{m}]
+            \label{eq 10.5.2}
+         \end{equation}
+
+         通过选择$ \boldsymbol{\theta} $ 来最小化
+         $$ q=\boldsymbol{ \bar{m}(\theta)^{\prime} W^{-1} \bar{m}(\theta)} $$
+
+         而定义的估计量是最小距离估计量。由于 \ref{eq 10.5.1} 中的$ OLS $准则使用单位矩阵 $\boldsymbol{I}$，这产生了一 个一致估计量，与加权最小二乘估计量和完全 GLS 估计量一样，剩下要决定的是使用最佳的 W。再一次根据促使$ GLS $的逻辑，直觉告诉我们 \ref{eq 10.5.2} 中定义的是最优的。这是现在著名的汉森（1982）结果。这个广义矩法估计量（$GMME$）的渐近协方差矩阵是
+         $$ \boldsymbol{\Sigma=\left[G^{\prime} W^{-1} G\right]^{-1}} $$
+
+         其中$ G $是一个导数矩阵，它们的第$ j $行是
+         $$ G^{j}=\frac{\partial \boldsymbol{\bar{m}_{j}}}{\partial \boldsymbol{\theta^{\prime}}} $$
+
+         最后，把中心极限定理应用于样本矩并把斯拉茨基定理应用于这个过程，我们可以断定:
+         $$ \boldsymbol{\hat{\theta}} \stackrel{a}{\longrightarrow} N[\boldsymbol{\vartheta, \Sigma}] $$
+ 
+\end{myexample}
+\section{异方差的检验异方差的多数检验均基于下述策略}
+
+    即便存在异方差性，普通最小二乘也是 $ \boldsymbol{\beta} $的一致估计量。所以，尽管由于抽样变化而不是十分完美，普通最小二乘残差仍将非常近似于真实扰动的异方差。
+    因此，在大多数情况下，为判定异方差性是否存在而设计的检验均采用普通最小二乘残差。
+
+    \subsection{怀特的一般检验(White’s General Test)}
+
+    能对下述一般假设进行检验是乎是合理的检验
+    
+    $ H_{0}: \sigma_{i}^{2}=\sigma^{2} $ 对所有$ \mathrm{i} $
+
+    $ H_{1}: \sigma_{i}^{2} \neq \sigma^{2} $
+
+    用 n 个样本对 n 个参数的模型进行的估计，是一件十分困难的事，因此，对这种检验是极具挑战性的。但这种检验已经被怀特于 1980 年设计出来。
+
+    异方差条件下的最小二乘估计量（OLS）的协方差矩阵是：
+    $$ \operatorname{Var}[\boldsymbol{b}]=\sigma^{2} \boldsymbol{\left(X^{\prime} X\right)^{-1}[X \Omega X]\left[X^{\prime} X\right]^{-1}} $$
+
+    我们可用如下式对它加以估计:
+    $$ \operatorname{Est.Var}[\boldsymbol{b}]=\left( \boldsymbol{X^{\prime} X}\right)^{-1}
+        \left[\sum_{i=1}^{n} e_{i}^{2}\left(\boldsymbol{X_{i} X_{i}^{\prime}}\right)\right]\left( \boldsymbol{X^{\prime} X}\right)^{-1} $$
+
+    如果不存在异方差性，最小二乘估计量（OLS）的协方差矩阵是：
+    $$ \operatorname{Var}[\boldsymbol{\mathrm{b}}]=\sigma^{2}\left( \boldsymbol{X^{\prime} X}\right)^{-1} $$
+
+    可得到 $ Var[b] $的一个估计量，
+    $$ \operatorname{Est.Var }[\boldsymbol{b}]=\left(\frac{1}{n}\right) s^{2}
+        \left(\frac{\boldsymbol{X^{\prime} X}}{n}\right)^{-1}=s^{2}\left(\boldsymbol{X^{\prime} X}\right)^{-1} $$
+
+    方法： 将$e_i^{2}$ 对一个常数$ X $中所有的单一变量的组合组成的变量进行回归，得到 $ nR^{2} $。
+
+    {\bf 这个统计量渐近地服从 $ P-1 $个自由度的卡方分布，$n R^{2} \sim \chi^{2}(\mathrm{P}-1),$  (Why? )  }其中 $ R^{2}=SSR/SST $， P 为回归量的数量，但不包含常数
+
+    怀特检验极为一般。为进行此检验，我们不需对异方差的性质作任何特定的假设。尽管这是优点，但同时也是极为严重缺点。怀特检验可揭示异方差性，但也可能导致简单地识别某些其他的设定误差
+    （如从一个简单回归中省略 $ x^{2} $）。此外，不同于我们要讨论的其他检验，怀特检验是非建设性， 如果我们拒绝同方差假设，检验的结果对我们下一步应当做什么没有任何启示。
+
+    \subsection{戈德菲尔德一匡特检验(The Goldfeld-Quandt Test)}
+
+    另外两个相对一般性的检验是戈尔德一匡特检验（1965）和布罗施一帕甘（1979）拉格朗日乘数检验。
+
+    对于戈德菲尔德一匡特检验，我们假设观测值的扰动方差相同，而在备择假设情况下，扰动方差可存在系统性差别。此检验最理想的情形是组间异方差模型或者对某变量$ x $满足
+    $ \sigma_{i}^{2}=\sigma^{2} x_{i}^{2} $ 的这类模型。以该$ x $为基础对观测值进行排列，可将观测值分成高方差和抵方差两部分。
+    通过将样本分成具有 $ n_1 $和$ n_2 $个观测值的两组来进行此检验。为获得统计上独立的方差估计量，回归是采用两组观测值分别进行估计的。该检验统计量为：
+
+        其中我们假定第一个样本中的扰动方差大于第二组（若非如此，可变换下标）。在同方差的零假设情况下，此统计量为自由度是$ n_1 − K $和$ n_2 − K $ 的 $ F $ 分布。可将样本值对照标准$ F $表，
+        若样本值较大，则可拒绝零假设，这样检验就完成了。
+
+    提请注意的是：如果扰动项是正态分布的，戈德菲尔德一匡特统计量在零假设下严格服
+    从$ F $分布，且该检验的名义值是合适的；但如果扰动项不是正态分布，则$ F $分布是不适当的，需要具有已知大样本性质的某些备择方法。
+
+\section{练习}
+
+1. $ X \sim N\left(\mu, \sigma^{2}\right),-\infty<\mu<\infty, \sigma^{2}>0 $ 均是未知参数， 
+   $ X_{1}, \ldots, X_{n}$ 是一子样，试求检验 问题 $ H_0: \sigma^{2} =  \sigma_{0}^{2} $ 的广义似然比检验。
+
+2. $ X \sim N\left(\mu_{1}, \sigma_{1}^{2}\right), Y \sim N\left(\mu_{2}, \sigma_{2}^{2}\right),\left(X_{1}, \ldots, X_{m}\right) $
+    是分别从抽取的独立子样，试求检验问题的 $ H_{0} : \ \ \frac{\sigma_{1}^{2}}{\sigma_{2}^{2}}=\Delta_{0} $ 广义似然比检验。
+
+3. GLS 估计量和它与 OLS 估计量的差的协方差矩阵是什么？
+$$ \operatorname{Cov}[\boldsymbol{\hat{\beta}}, \boldsymbol{\hat{\beta}-b}] $$
+
+其中 $ \boldsymbol{\hat{\beta}} = \left(\boldsymbol{X^{\prime} \Omega^{-1} X}\right)^{-1} \boldsymbol{X^{\prime} \Omega^{-1} y}$
+并且 $ \boldsymbol{b} = \left(\boldsymbol{X^{\prime} X}\right)^{-1} \boldsymbol{X^{\prime} y}$。该结果豪斯曼(1978)的设定检验的发展中起到关键作用。

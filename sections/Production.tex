@@ -1,0 +1,922 @@
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ % @File    : c:\Users\Administrator\Desktop\Econometrics\sections\Production.tex
+ % @Date    : 2021-01-25 12:05:08
+ % @Author  : RankFan
+ % @Email   : 1917703489@qq.com
+ % -----
+ % Last Modified: 2021-01-30 11:38:58
+ % Modified By: Rank_fan
+ % -----
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\chapter{关于生产函数的计量经济模型}
+
+在西方经济学中，生产理论是最重要内容之一；同样，在西方的计量经济学中，生产函
+数模型的研究与发展始终是一个重要的、最活跃的领域。本章主要内容：
+\section{几个重要基本概念} 
+\subsection{生产函数}
+
+{\bf \noindent 1) 定义}
+			
+生产函数是描述生产过程中投入的生产要素的某种组合同它可能的最大产出量之间的依存关系的数学表达。
+即
+\begin{equation}
+	\begin{aligned}
+	    Y=f\left ( A, K, L, \cdots \right ) 
+	\end{aligned}
+\end{equation}
+	 
+其中$ Y $为产出量，$ A $、$ K $、$ L $分别为技术、资本、劳动等投入要素。这里“投入的生产要素”是生产过程中发挥作用、对产出量产生贡献的生产要素；“可能的最大产出量”指这种要素组合应该形成的产出量，而不一定是实际产出量。生产要素对产出量的作用与影响，主要是由一定的技术条件决定的，所以，从本质上讲，生产函数反映了生产过程中投入要素与产出量之间的技术关系。
+		
+{\bf \noindent 2) 生产函数模型的发展}
+
+从20世纪20年代末，美国数学家Charles Cobb和经济学家Paul Duaglas提出了生产函数这一名词，并用1899—1922年的数据资料，导出了著名的Cobb-Dauglas生产函数以来，不断有新的研究成果出现，使生产函数的研究与应用呈现长盛不衰的局面。下面列出的是这期间出现的主要成果。
+\begin{table}[htbp]
+	\centering
+	\caption{生产函数模型的发展}
+	\setlength{\tabcolsep}{3em}
+	\begin{tabular}{ll}
+		\toprule
+		年份				& 生产函数类型             \\
+		\midrule
+		1928年Cobb，Dauglas				& C-D生产函数              \\
+		1937年Dauglas，Durand			& C-D生产函数的改进型       \\
+		1957年Solow					 & C-D 生产函数的改进型       \\
+		1960年Solow				 	 & 含体现型技术进步生产函数   \\
+		1961年Arrow等					& 两要素CES生产函数         \\
+		1967年Sato						 & 二级CES生产函数           \\
+		1968年Sato，Hoffman			    & VES生产函数               \\
+		1968年Aigner，Chu				& 边界生产函数			  \\
+		1971年Revanker					 & VES生产函数				 \\
+		1973年Christensen, Jorgenson	 & 超越对数生产函数           \\
+		1980年							 & 三级CES生产函数    \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+
+在这期间，关于生产函数估计方法的研究成果也很多，在本节中将结合生产函数的估计加以介绍。
+
+{\bf \noindent 3) 生产函数是经验的产物}
+			
+上面列举的生产函数，都是在西方国家发展起来的，当然，作为西方经济理论体系的一部分，它是与特定的生产理论紧密联系的。例如，作为生产函数理论基础的要素价值论和由此产生的分配理论，都体现在生产函数模型中。那么，这些生产函数模型在中国有无应用价值？事实已经表明，西方国家发展的生产函数模型在中国应用具有一定的合理性。
+			
+首先，正如前面已经提及的，生产函数所描述的是投入要素与产出量之间的技术关系。{\bf 无论何种社会制度，任何生产过程都必须是劳动、技术与生产资料的结合，也就是必须具备一定的投入要素、在一定的技术条件下才能进行生产。生产函数实际上是用数学公式对现实发生的生产过程中的投入要素与产出量之间的技术关系进行拟合，是对生产过程中量的关系的描述。}
+			
+其次，西方的生产函数并不是西方生产理论的直接推导结果，而是经验的产物，是以数据为样本，反复拟合、检验、修正后得到的。换句话说，如果抛开已有的生产函数模型，用我国的有关数据，也能得到相同或相似的生产函数模型。
+		
+\noindent 4) 生产函数的一阶齐次性
+			
+如果生产函数1)中资本、劳动等非技术要素的投入量同时增长$ \lambda $倍，根据生产理论中规模报酬不变法则，产出量也应该增长$ \lambda $倍。即
+$$ f(\lambda K, \lambda L, \cdots)=\lambda f(K, L, \cdots) $$
+
+称为生产\textbf{函数的一阶齐次性}。但是在实际生活动中，存在着规模报酬递增或者规模报酬递减的现象，所以并非所有生产函数模型都具有一阶齐次性。
+
+\subsection{要素替代弹性}
+
+在生产函数模型的研究与发展中，要素替代弹性是一个十分重要的概念。\textbf{所谓要素替代弹性，是描述投入要素之间替代性质的一个量，主要用于描述要素之间替代能力的大小。}要素替代弹性是与研究对象、样本区间甚至样本点联系在一起的。所以，在建立生产函数模型之前，需要对要素替代弹性作出假设，不同的假设，会导致差异甚大的生产函数模型。
+		
+在引入要素替代弹性的定义之前，需要首先引入如下概念：
+		
+{\bf \noindent 1) 要素的边际产量}
+			
+	边际产量是指其他条件不变时，某一种投入要素增加一个单位时导致的产出量的增加量。用于描述投入要素对产出量的影响程度。边际产量可以表示为
+	\begin{eqnarray*}
+		M P_{K} & = & \partial f / \partial K \\
+		M P_{L} & = & \partial f / \partial L \\
+				& \vdots &				
+	\end{eqnarray*}
+
+	在一般情况下，边际产量满足
+	$$ M P_{K} \geq 0, M P_{L} \geq 0, \cdots $$
+	即边际产量不为负。在大多数情况下，边际产量还满足
+	\begin{eqnarray*}
+		\frac{\partial\left(M P_{K}\right)}{\partial K} & = & \frac{\partial^{2} f}{\partial K^{2}} \leq 0 \\
+			\frac{\partial\left(M P_{K}\right)}{\partial K} & = & \frac{\partial^{2} f}{\partial K^{2}} \leq 0 \\
+		& \vdots &
+	\end{eqnarray*}
+	即边际产量递减规律。
+		
+{\bf \noindent 2) 要素的边际替代率}
+			
+当两种要素可以互相替代时，就可采用不同的要素组合生产相同数量的产出量。要素的边际替代率指的是在产量一定的情况下，某一种要素的增加与另一种要素的减少之间的比例。
+			
+	用$ MRS_{K \rightarrow L} $表示$ K $对$ L $的边际替代率，即在保持产量不变的情况下，
+	替代1单位$ L $所需要增加的$ K $的数量。于是有
+	$$ MRS_{K \rightarrow L}=\Delta K / \Delta L \quad(\mathrm{Y} \text { 保持不变 }) $$
+
+	因为边际产量也可以表示为
+	\begin{align*}
+		MP_{K} & = \Delta Y / \Delta K \\
+		MP_{L} & = \Delta Y / \Delta L
+	\end{align*}
+
+	所以
+	$$ \frac{M P_{L}}{M P_{K}}=\frac{\Delta Y}{\Delta L} \bigg/ \frac{\Delta Y}{\Delta K}=\frac{\Delta K}{\Delta L} $$
+
+	于是\textbf{要素的边际替代率}可以表示为要素的边际产量之比，即
+	\begin{align*}
+		MRS_{K \rightarrow L} & = M P_{L} / M P_{K} \\
+		MRS_{L \rightarrow K} & = M P_{K} / M P_{L}
+	\end{align*}
+	
+{\bf \noindent 3) 要素替代弹性}
+			
+	将\textbf{要素替代弹性}定义为两种要素的比例的变化率与边际替代率的变化率之比，一般用$ \sigma $表示。则有
+	\begin{align}
+		\sigma = \frac{\mathrm{d}(K / L)}{(K / L)} \bigg/ \frac{\mathrm{d}\left(M P_{L} / M P_{K}\right)}{\left(M P_{L} / M P_{K}\right)} \label{eq (2)}
+	\end{align}
+			
+	一般情况下，要素替代弹性$ \sigma $为一个正数。
+				
+	如果用$ K $替代$ L $，则\eqref{eq (2)}式分子大于0；由于$ L $减少，其边际产量$ MP_{L} $增大，而由于$ K $增加，其边际产量$ MP_{K} $减小，于是\eqref{eq (2)}式分母也大于0。所以要素替代弹性$ \sigma $大于0，表明要素之间具有有限可替代性；
+				
+	在特殊情况下，要素之间不可以替代，此时$ K/L $不变，则\eqref{eq (2)}式分子等于0，所以替代弹性$ \sigma $等于0；
+				
+	另一种极端情况是，无论要素的数量增加或者减少，其边际产量不变，此时\eqref{eq (2)}式分母等于0，替代弹性$ \sigma $为$ \infty $，表明要素之间具有无限可替代性。		
+
+\subsection{要素的产出弹性}
+		
+	\textbf{某投入要素的产出弹性被定义为，当其他投入要素不变时，该要素增加$ 1\% $所引起的产出量的变化率。}
+	这是从动态变化的角度衡量生产要素对产出量的影响的指标。如果用$ E_{K} $表示资本的产出弹性，用$ E_{L} $表示劳动的产出弹性，则有
+	\begin{equation}
+		\begin{aligned}
+			E_{K} & = \frac{\Delta Y}{Y} \bigg/ \frac{\Delta K}{K} = \frac{\partial f}{\partial K} \cdot \frac{K}{Y} \\
+			E_{L} & = \frac{\Delta Y}{Y} \bigg/ \frac{\Delta L}{L} = \frac{\partial f}{\partial L} \cdot \frac{L}{Y}
+		\end{aligned}
+	\end{equation}
+	一般情况下，要素的产出弹性大于0小于1。
+		
+\subsection{技术进步}
+			
+	从本质上讲，生产函数所描述的是投入要素与产出量之间的技术关系。即是说，同样的投入要素组合，在不同的技术条件下，产出量是不同的。所以在生产函数模型中必须引入技术进步因素。技术进步是一个广泛的研究领域，这里仅就生产函数模型中涉及到的有关技术进步的一些概念略作说明。
+		
+{\bf \noindent 1) 广义技术进步与狭义技术进步}
+
+	{\bf{所谓狭义技术进步，仅指要素质量的提高。}}例如，由于性能的改进，同样数量的资本在生产过程中的贡献是不一样的；由于文化水平的提高，同样数量的劳动在生产过程中的贡献是不一样的。
+	\textbf{狭义的技术进步是体现在要素上的，可以通过要素的“等价数量”来表示。}例如，如果一个具有大学文化水平的劳动者对产出量的贡献是一个具有中学文化水平劳动者的3倍，
+	那么就可以将一个具有大学文化水平的劳动者等价于3个具有中学文化水平劳动者，求得“等价劳动数量”，作为生产函数模型的样本观测值，以这样的方法来引入技术进步因素。
+				
+	\textbf{所谓广义技术进步，除了要素质量的提高外，还包括管理水平的提高等对产出量具有重要影响的因素，这些因素是独立于要素之外的。在生产函数模型中需要特别处理。}
+			
+	\noindent 2) 中性技术进步
+			
+	假设在生产活动中除技术以外，只有资本与劳动两种要素，定义两要素的产出弹性之比为\textbf{相对资本密集度}，用$ \omega $表示。即
+	$$ \omega=E_{L} / E_{K} $$
+			
+	a) 如果技术进步使得$ \omega $越来越大，即劳动的产出弹性比资本的产出弹性增长得快，则称之为\textbf{节约劳动型技术进步}；
+			
+	b) 如果技术进步使得$ \omega $越来越小，即劳动的产出弹性比资本的产出弹性增长得慢，则称之为\textbf{节约资本型技术进步}；
+			
+	c) 如果技术进步前后$ \omega $不变，即劳动的产出弹性与资本的产出弹性同步增长，则称之为\textbf{中性技术进步}。
+			
+	在中性技术进步中：
+			
+	如果要素之比$ K/L $不随时间变化，则称为{\bf{希克斯中性技术进步}}；
+			
+	如果劳动产出率$ Y/L $不随时间变化，则称为{\bf{索洛中性技术进步}}；
+			
+	如果资本产出率$ Y/K $不随时间变化，则称为{\bf{哈罗德中性技术进步}}。
+			
+	不同的技术进步类型是建立生产函数模型时必须要考虑的重要因素，对生产函数模型将产生重要影响。 
+
+\section{以要素之间替代性质的描述为线索的生产函数模型的发展}
+	模型是对现实的模拟，生产函数模型是对生产活动中产出量与投入要素组合之间关系的模拟。模型总是建立在一定的假设的基础上的，没有假设，就没有模型。而假设与现实之间是有差距的，差距越小，模型对现实的描述越准确。假设向现实的逼近，导致了模型的不断发展。
+			
+	生产函数模型的一个基本假设是关于要素之间替代性质的假设，由于该假设不同，导致生产函数的发展，出现了各种不同的生产函数模型。在下面的讨论中我们先只考虑两种要素的情况，最后将问题推广到多要素的情况。同时为了书写简便，我们在讨论模型的发展时，只写出它们的数理形态（即不写出随机误差项）。
+	
+	\subsection{线性生产函数模型}
+			
+	如果假设资本K与劳动L之间是无限可以替代的，则产出量Y与投入要素组合之间的关系可以用如下形式的模型描述：	
+	\begin{align}
+		Y=a_{0}+a_{1} K+a_{2} L \label{eq (4)}
+	\end{align}
+
+	对于该模型，要素的边际产量$ MP_{K} = a_{1} $，$ MP_{L} = a_{2} $，边际产量之比$ MP_{K}/MP_{L} = a_{1}/a_{2} $。于是有
+	$$ \mathrm{d}\left (MP_{K}/MP_{L}\right ) = 0 $$
+
+	代入\eqref{eq (2)}得到 ，即要素替代弹性为$ \sigma = \infty $。从\eqref{eq (4)}也可以直观地看出，一种要素可以被另一种要素替代直至减少为0，产出量仍然不变。
+	
+	\subsection{投入产出生产函数模型}
+		
+	另一种极端的情况是假设资本$ K $与劳动$ L $之间是完全不可以替代的，则产出量$ Y $与投入要素组合之间的关系可以用如下形式的模型描述----Harrod-Domar 模型：
+	\begin{align}
+		Y = \text{min}\left ( \frac{K}{a},\frac{L}{b} \right ) \label{eq (5)}
+	\end{align}
+
+	称为投入产出型生产函数。其中$ a $，$ b $为生产1单位的产出量所必须投入的资本、劳动的数量。
+	由于$ a $，$ b $为常数，所以产出量$ Y $所必须的资本投入量$ K=aY $，劳动投入量$ L=bY $，
+	二者之比$ K/L=a/b $为常数，$ \mathrm{d}(K/L)=0 $。代入\eqref{eq (2)}得到 ，即要素替代弹性为0，资本$ K $与劳动$ L $之间完全不可以替代。
+	
+	\subsection{C-D生产函数模型}
+		
+	{\bf \noindent 1) 模型形式与参数的含义}
+		
+	1928年美国数学家Charles Cobb和经济学家Paul Dauglas提出的生产函数的数学形式为:
+	\begin{align}
+		Y = AK^{\alpha }L^{\beta } \label{eq (6)}
+	\end{align}
+
+	根据要素的产出弹性的定义，很容易推出
+	\begin{align*}
+		E_{k} & = \frac{\partial Y}{\partial K} / \frac{Y}{K}  = A \alpha K^{\alpha-1} L^{\beta} \frac{Y}{K}  = \alpha \\
+		E_{L} & = \frac{\partial Y}{\partial L} / \frac{Y}{L}  = A K^{\alpha} \beta L^{\beta-1} \frac{Y}{L}  = \beta
+	\end{align*}
+		
+	即参数$ \alpha $、$ \beta $分别是资本与劳动的产出弹性。那么由产出弹性的经济意义，应该有
+	$$ 0\le \alpha \le 1,0\le \beta \le 1 $$
+		
+	在最初提出的C-D生产函数中，假定参数满足$ \alpha + \beta = 1 $，即生产函数的一阶齐次性，也就是假定研究对象满足规模报酬不变。因为 
+	$$ A\left ( \lambda K \right ) ^{\alpha }\left ( \lambda L \right ) ^{\beta }=\lambda ^{\alpha +\beta }
+	AK^{\alpha }L^{\beta }=\lambda AK^{\alpha }L^{\beta } $$
+		
+	即当资本与劳动的数量同时增长$ \lambda $倍时，产出量也增长$ \lambda $倍。	
+		
+	1937年，Durand提出了C-D生产函数的改进型，即取消了$ \alpha + \beta = 1 $的假定，允许要素的产出弹性之和大于1或小于1，
+	即承认研究对象可以是规模报酬递增的，也可以是规模报酬递减的，取决于参数的估计结果。
+		
+	模型\eqref{eq (6)}中的待估参数A为效率系数，是广义技术进步水平的反映，以后将对它进行专门讨论。
+	显然，应该有$ A > 0 $。
+		
+	由上可见，C-D生产函数模型的参数具有明确的经济意义，这是它的一个显著特点，是它被广泛应用的一个重要原因。
+		
+	Cobb和Dauglas利用美国1899—1922年的数据资料为样本，估计模型的参数，得到
+	$$ Y = 1.01K^{0.25}L^{0.75} $$
+
+	{\bf \noindent 2) 要素替代弹性}
+	
+	现在来看看模型\eqref{eq (6)}对要素替代弹性的假设。根据\eqref{eq (2)}式，可以得到
+	\begin{equation}
+		\begin{aligned}
+			\sigma & = \frac{d(K / L)}{(K / L)} \bigg/ \frac{d\left(M P_{L} / M P_{K}\right)}{\left(M P_{L} / M P_{K}\right)} \\
+			& = d\left(\ln \left(\frac{K}{L}\right)\right) \bigg/ d\left(\ln \left(\frac{M P_{L}}{M P_{K}}\right)\right) \\
+			& = d\left(\ln \left(\frac{K}{L}\right)\right) \bigg/ d\left(\ln \left(\frac{\beta K}{\alpha L}\right)\right) \\
+			& = d\left(\ln \left(\frac{K}{L}\right)\right) \bigg/ d\left(\ln \left(\frac{\beta}{\alpha}\right)+\ln \left(\frac{K}{L}\right)\right) \\
+			& = 1 \notag
+		\end{aligned}
+	\end{equation}
+
+	这是一个重要的结论，它表明\textbf{C-D生产函数模型假设要素替代弹性为1}。
+		
+	显然，与上述要素之间可以无限替代的线性生产函数模型和要素之间完全不可以替代的投入产出生产函数模型相比较，C-D生产函数模型假设要素替代弹性为1，是更加逼近于生产活动的实际，是一个很大的进步。正因为此，加之C-D生产函数模型的参数具有明确的经济意义，使得它一经提出，就得到广泛的应用。直到今天，它仍然是应用最广泛的一种生产函数模型。
+		
+	但是，C-D生产函数模型\textbf{关于要素替代弹性为1}的假设仍然具有缺陷。根据这一假设，不管研究对象是什么，不管样本区间是什么，不管样本观测值是什么，要素替代弹性都为1，这是与实际不符的。例如，劳动密集型的农业与资本密集型的现代工业，资本与劳动之间的替代性质是明显不同的；再例如，对于同一个研究对象，如果样本区间不同，即考察的区间不同，要素之间的替代性质也应该是不同的；即使研究对象相同、样本区间相同，对于不同的样本点，由于要素的比例不同，相互之间的替代性质也应该是不同的。所有这些，都需要人们发展新的生产函数模型。
+	
+
+\subsection{不变替代弹性（CES）生产函数模型}
+		
+	{\bf \noindent 1) 模型形式与参数的含义}
+		
+	在1961年，由Arrow、Chenery、Mihas和Solow四位学者提出了两要素不变替代弹性（Constant Elasticity of Substitution）生产函数模型，简称\textbf{CES生产函数模型}，其基本形式如下：
+	\begin{align}
+		Y=A\left(\delta_{1} K^{-\rho}+\delta_{2} L^{-\rho}\right)^{-\frac{1}{\rho}} \label{eq (7)}
+	\end{align}	
+		
+	其中，待估参数$ A $为效率系数，是广义技术进步水平的反映，显然，应该有$ A>0 $；$ \delta _{1} $
+	和$ \delta _{2} $为分配系数，$ 0<\delta_{1}<1 $，$ 0<\delta_{2}<1 $，并且满足$ \delta_{1}+\delta_{2}=1 $；$ \rho $为替代参数，下面将专门讨论。\eqref{eq (7)}假定研究对象具有不变规模报酬，因为
+	$$ A\left(\delta_{1}(\lambda K)^{-\rho}+\delta_{2}(\lambda L)^{-\rho}\right)^{-\frac{1}{\rho}}
+		=\lambda\left(A\left(\delta_{1} K^{-\rho} \delta_{2} L^{-\rho}\right)^{-\frac{1}{\rho}}\right) $$
+		
+	即当资本与劳动的数量同时增长$ \lambda $倍时，产出量也增长$ \lambda $倍。
+		
+	后来，在应用中取消了这一假定，将\eqref{eq (7)}式改写为
+	\begin{align}
+		Y=A\left(\delta_{1} K^{-\rho}+\delta_{2} L^{-\rho}\right)^{-\frac{m}{\rho}} \label{eq (8)}
+	\end{align}
+	对（8），有
+	$$ A\left(\delta_{1}(\lambda K)^{-\rho}+\delta_{2}(\lambda L)^{-\rho}\right)^{-\frac{m}{\rho}}=\lambda^{m}
+	    \left(A\left(\delta_{1} K^{-\rho}+\delta_{2} L^{-\rho}\right)^{-\frac{m}{\rho}}\right) $$
+		
+	即承认研究对象可以是规模报酬递增的，也可以是规模报酬递减的，取决于参数$ m $的估计结果。于是参数$ m $为规模报酬参数，当\bm{$ m = 1(<1,>1) $}时，\textbf{表明研究对象是规模报酬不变（递减、递增）的。}\eqref{eq (8)}为实际应用的CES生产函数模型的理论形式。
+		
+	{\bf \noindent 2) 要素替代弹性}
+		
+	现在来看看模型\eqref{eq (7)}对要素替代弹性的假设。根据\eqref{eq (2)}式，要素替代弹性为
+	\begin{equation}
+		\begin{aligned}
+			\sigma & = \frac{d(K / L)}{(K / L)} \bigg/ \frac{d\left(M P_{L} / M P_{K}\right)}{\left(M P_{L} / M P_{K}\right)} \\
+			& = d\left(\ln \left(\frac{K}{L}\right)\right) \bigg/ d\left(\ln \left(\frac{M P_{L}}{M P_{K}}\right)\right) \notag
+		\end{aligned}
+	\end{equation}
+
+	因为
+	\begin{equation}
+		\begin{aligned}
+			M P_{K} & = \frac{\partial Y}{\partial K} \\
+			& = A\left(-\frac{1}{\rho}\right)\left(\delta_{1} K^{-\rho}+\delta_{2} L^{-\rho}\right)^{-\frac{1}{\rho}-1} \delta_{1}(-\rho) K^{-\rho-1} \\
+			& = A K^{-1-\rho}\left(\delta_{1} K^{-\rho}+\delta_{2} L^{-\rho}\right)^{-\frac{1}{\rho}-1} \delta_{1} \\
+			M P_{L} & = A L^{-1-\rho}\left(\delta_{1} K^{-\rho}+\delta_{2} L^{-\rho}\right)^{-\frac{1}{\rho}-1} \delta_{2} \\
+			\Rightarrow \frac{M P_{L}}{M P_{K}} & = \frac{\delta_{2}}{\delta_{1}}\left(\frac{K}{L}\right)^{1+\rho} \notag
+		\end{aligned}
+	\end{equation}
+	
+	所以
+	\begin{equation}
+		\begin{aligned}
+			\sigma & = d\left(\ln \left(\frac{K}{L}\right)\right) \bigg/ d\left(\ln \left(\frac{\delta_{2}}{\delta_{1}}\left(\frac{K}{L}\right)^{1+\rho}\right)\right) \\
+			& = d\left(\ln \left(\frac{K}{L}\right)\right) \bigg/ d\left(\ln \left(\frac{\delta_{2}}{\delta_{1}}\right)+(1+\rho) \ln \left(\frac{K}{L}\right)\right) \\
+			& = \frac{1}{1+\rho} \label{eq (9)}
+		\end{aligned}
+	\end{equation}
+	由于要素替代弹性$ \sigma $为一正数，所以参数$ \rho $的数值范围为
+	$$ -1<\rho<\infty $$
+		
+	由\eqref{eq (9)}可以看出，一旦研究对象确定、样本观测值给定，可以得到参数$ \rho $的估计值，并计算得到要素替代弹性$ \sigma $的估计值。对于不同的研究对象，或者同一研究对象的不同的样本区间，由于样本观测值不同，要素替代弹性是不同的。这使得CES生产函数比C-D生产函数更接近现实。但是，在CES生产函数中，仍然假定要素替代弹性与样本点无关，这就是不变替代弹性生产函数模型的“不变”的含义。而这一点，仍然是与实际不符的。对于不同的样本点，由于要素的比例不同，相互之间的替代性质也应该是不同的。所以，不变替代弹性生产函数模型还需要发展。
+		
+	\textbf{值得注意的是：在不变替代弹性生产函数模型中，如果参数\bm{$ \rho $}的估计值等于0，则要素替代弹性\bm{$ \sigma $}的估计值为1，此时CES生产函数退化为C-D生产函数。}
+		
+\subsection{变替代弹性（VES）生产函数模型}
+		
+	变替代弹性（Variable Elasticity of Substitution）生产函数模型，简称VES生产函数模型，有许多理论和方法方面的研究成果，是生产函数研究的一个前沿领域。较著名的是Revankar于1971年提出的模型和Sato与Hoffman于1968年提出的模型。
+		
+	前者假定要素替代弹性$ \sigma $为要素比例的线性函数，即 
+	$$ \sigma=a+b \cdot \frac{K}{L} $$
+		
+	容易理解，要素比例不同，要素之间的替代性能是不同的。当$ K/L $较大时，资本替代过去就比较困难；当$ K/L $较小时，资本替代过去就比较容易。生产函数的一般形式为（不加证明给出）
+	\begin{equation}
+		\begin{aligned}
+			Z=A \exp \int \frac{\mathrm{d}k}{k+c\left(\frac{k}{a+b k}\right)^{1 / a}} 
+			\label{eq (10)}
+		\end{aligned}
+	\end{equation}
+
+	其中，$ Z=Y / L, k=K / L $。
+		
+	后者假定要素替代弹性$ \sigma $为时间的线性函数，即
+	$$ t \sigma=\sigma(t)=a+b \cdot t $$
+
+	随着时间的推移，技术的进步将使得要素之间的替代变得容易。生产函数的一般形式为
+	\begin{align}
+		Y=B\left(\lambda L^{\frac{\sigma(t)-1}{\sigma(t)}}+(1-\lambda) K^{\frac{\sigma(t)-1}{\sigma(t)}}\right)^{\frac{\sigma(t)}{\sigma(t)-1}} \label{eq (11)}
+	\end{align}
+
+	在实际应用中，前者可以与样本观测值相联系，因而实用价值更大。下面将着重讨论\eqref{eq (10)}式所表示的VES生产函数模型。
+
+{\bf \noindent 1) 当$ b=0 $时，\eqref{eq (10)}变为}
+	\begin{equation}
+		\begin{aligned}
+			\frac{Y}{L} & = A \exp \int \frac{\mathrm{d}k}{k+c\left(\frac{k}{a}\right)^{1 / a}} \\
+			& = A \exp \left(\frac{a}{1-a} \ln \frac{k^{\frac{1-a}{a}}}{1+\frac{c}{a^{1 / a}} k^{\frac{1-a}{a}}}+\mu\right) \notag
+		\end{aligned}
+	\end{equation}
+
+	令$ \dfrac{1-a}{a}=\rho $，$ A e^{\mu}=A^{\prime} $，则有
+	\begin{align}
+		\frac{Y}{L} & = A^{\prime}\left(\frac{a^{1 / a}+c k^{\rho}}{a^{1 / a} k^{\rho}}\right)^{-\frac{1}{\rho}} \nonumber \\
+		& = A^{\prime \prime}\left(a^{1 / a} k^{-\rho}+c\right)^{-\frac{1}{\rho}} \nonumber \\
+		\Rightarrow Y & = A^{\prime \prime}\left(a^{1 / a}\left(\frac{K}{L}\right)^{-\rho}+c\right)^{-\frac{1}{\rho}} \cdot L \nonumber \\
+		& = A^{\prime \prime}\left(a^{1 / a} K^{-\rho}+c L^{-\rho}\right)^{-\frac{1}{\rho}} \label{eq (12)}
+	\end{align} 
+
+	此时，VES生产函数模型退化为\eqref{eq (12)}所表示的CES生产函数模型。
+		
+{\bf \noindent 2) 当$ b=0, a=1 $时，\eqref{eq (10)}变为}
+	\begin{align}
+		\frac{Y}{L} & = A \exp \int \frac{\mathrm{d}k}{k(1+c)} \nonumber \\
+		& = A^{\prime} \exp \left(\frac{\ln k}{1+c}\right)=A^{\prime} k^{\frac{1}{1+c}} \nonumber \\
+		\Rightarrow Y & = A^{\prime} K^{\frac{1}{1+c}} \cdot L^{-\frac{1}{1+c}} \cdot L=A^{\prime} K^{\frac{1}{1+c}} \cdot L^{\frac{c}{1+c}} \label{eq (13)}
+	\end{align}
+	 
+	此时，VES生产函数模型退化为\eqref{eq (13)}所表示的C-D生产函数模型。
+		
+{\bf \noindent 3) 当$ a=1 $时，$ \sigma=1+b k $，\eqref{eq (10)}可写成}
+	\begin{align}
+		Y=A K^{\frac{1}{1+c}}\left(L+\left(\frac{b}{1+c}\right) K\right)^{\frac{c}{1+c}} \label{eq (14)}
+	\end{align}
+
+	即为一般常用的VES生产函模型，其中$ A $、$ b $、$ c $是待估参数。\eqref{eq (14)}为规模报酬不变的情况，如果将规模报酬系数$ m $作为一个待估参数，则VES生产函数模型的理论形式为
+	\begin{align}
+		Y=A K^{\left(\frac{1}{1+c}\right) m}\left(L+\left(\frac{b}{1+c}\right) K\right)^{\left(\frac{1}{1+c}\right) m^{m}} \label{eq (15)}
+	\end{align}
+
+\subsection{多要素生产函数模型}
+	
+如果作为产出量的解释变量的投入要素多于2个，可以有不同的处理方法，关键在于对要素之间替代性质的认识。
+下面以三要素（资本$ K $、劳动$ L $和能源$ E $）为例介绍几种多要素生产函数模型。 
+	
+{\bf \noindent 1) 多要素线性生产函数模型}
+	
+	\textbf{如果资本$ K $、劳动$ L $和能源$ E $互相之间都是无限可以替代的，}则产出量$ Y $与投入要素组合之间的关系可以用如下形式的模型描述：
+	\begin{align}
+		Y = \alpha_{0}+\alpha_{1}K+\alpha_{2}L+\alpha_{3}E
+	\end{align}
+		
+{\bf \noindent 2) 多要素投入产出生产函数模型}
+		
+	\textbf{假设资本$ K $、劳动$ L $和能源$ E $互相之间都是完全不可以替代的，}则产出量$ Y $与投入要素组合之间的关系可以用如下形式的模型描述：
+	\begin{align}
+		Y = \text{min}\left ( \frac{K}{a},\frac{L}{b},\frac{E}{c} \right ) 
+	\end{align}
+		
+{\bf \noindent 3) 多要素C-D生产函数模型}
+		
+	假设资本$ K $、劳动$ L $和能源$ E $互相之间的替代弹性都为1，则产出量$ Y $与投入要素组合之间的关系可以用如下形式的模型描述：
+	\begin{align}
+		Y=A K^{\alpha} L^{\beta} E^{\gamma} \label{eq (18)}
+	\end{align}
+
+{\bf \noindent 4) 多要素一级CES生产函数模型}
+		
+	假设资本$ K $、劳动$ L $和能源$ E $互相之间的替代弹性相同，为同一个待估参数，则产出量$ Y $与投入要素组合之间的关系可以用如下形式的模型描述：
+	\begin{align}
+		Y = A\left(\delta_{1} K^{-\rho} \delta_{2} L^{-\rho}+\delta_{3} E^{-\rho}\right)^{-\frac{m 1}{\rho}}
+			\label{eq (19)}
+	\end{align}
+		
+	其中$ \delta_{1} $、$ \delta_{2} $和$ \delta_{3} $为分配系数，$ 0<\delta_{1}<1 $，$ 0<\delta_{2}<1 $，$ 0<\delta_{3}<1 $，并且满足$ \delta_{1}+\delta_{2}+\delta_{3}=1 $。要素之间的替代弹性为
+	$$ \sigma =\frac{1}{1+\rho } $$
+		
+{\bf \noindent 5) 多要素二级CES生产函数模型}
+		
+	假设资本$ K $、劳动$ L $和能源$ E $互相之间的替代弹性不相同，例如资本与能源之间的替代弹性不同于它们与劳动之间的替代弹性，这是比较符合实际的，
+	那么一级CES生产函数模型就不能描述要素之间的替代性质。许多人在探索如何既保持CES生产函数的性质，又能解决多要素之间不同替代弹性的问题。
+	1967年Sato提出的多要素二级CES生产函数模型，是一个比较成功的具有实用价值的成果。以三要素为例，二级CES生产函数模型表达如下：
+	\begin{align}
+		Y_{K E} & = \left(a_{1} K^{-\rho_{1}}+a_{2} E^{-\rho_{1}}\right)^{-\frac{1}{\rho_{1}}} \nonumber \\
+		Y & = A\left(b_{1} Y_{K E}^{-\rho}+b_{2} L^{-\rho}\right)^{-\frac{m}{\rho}}
+		\label{eq (20)}
+	\end{align}
+
+	其中$ Y_{KE} $为第一级CES生产函数，在第二级CES生产函数中，将它作为一个组合要素。
+	
+	李子奈教授于1988年曾经以1963—1984年的时间序列数据为样本，采用\eqref{eq (19)}和\eqref{eq (20)}
+	分别估计我国工业生产函数模型，结果如下：采用\eqref{eq (19)}得到资本$ K $、劳动$ L $和能源$ E $互相之间的替代弹性为0.84；采用\eqref{eq (20)}得到资本K和能源E之间的替代弹性为0.97，组合要素$ Y_{KE} $与劳动L之间的替代弹性为0.71。结果表明，采用模型\eqref{eq (20)}，资本$ K $和能源$ E $之间有较大的替代弹性，而它们二者的组合与劳动之间的替代弹性较小，显然比采用模型\eqref{eq (19)}更符合实际。
+		
+{\bf \noindent 6) 多要素三级CES生产函数模型}
+		
+	当投入要素多于3个时，还可以根据要素之间的替代性质，构造三级CES生产函数模型，其原理与二级CES生产函数模型相同，不再赘述。第一个三级CES生产函数模型出现在1980年美国的一篇博士论文中。
+
+\subsection{超越对数生产函数模型} 
+		
+	一个更具有一般性的变替代弹性生产函数模型是由L.Christensen、D.Jor-genson和Lau于1973年提出的超越对数生产函数模型。其形式为（为何可以采用如下形式？）
+	\begin{align}
+		\ln Y=\beta_{0}+\beta_{K} \ln K+\beta_{L} \ln L+\beta_{K K}(\ln K)^{2}+\beta_{L L}(\ln L)^{2}+\beta_{K L} \ln K \cdot \ln L
+		\label{eq (21)}
+	\end{align} 
+
+	该生产函数模型的显著特点是它的易估计和包容性。它是一个简单线性模型，可以直接采用单方程线性模型的估计方法进行估计。\textbf{所谓包容性}，是它可以被认为是任何形式的生产函数的近似。
+	例如，\textbf{如果\bm{$ \beta _{KK}=\beta _{LL}=-1/2 \beta _{KL} $}，则表现为CES生产函数。}
+	所以可以根据该生产函数的估计结果判断要素的替代性质；另外，可以比较容易设计一些假设检验条件，来验证有关经济理论是否正确。
+		
+	以上是以要素之间的替代性质为线索发展的一系列生产函数模型。从中可以看出，如果没有前人的研究成果，只要掌握模型发展的思路，我们也有可能发展生产函数模型。正是从这个意义说，掌握研究思路比了解几种模型具有更大的意义。
+
+\section{以技术要素的描述为线索的生产函数模型的发展} 
+
+技术是一种重要的生产要素，在现代生产活动中尤其重要，所以在生产函数模型中不能不考虑技术要素。如何将技术要素引入生产函数模型，如何使得模型对技术要素的描述更逼近于现实，是生产函数研究中一个重要领域，也是迄今没有很好解决的一个难题。
+	
+{\subsection{将技术要素作为一个不变参数的生产函数模型}}
+	
+	在模型\eqref{eq (6)}和\eqref{eq (8)}中，已经引入了技术要素，但是仅仅将它作为独立于其他投入要素之外的一个不变的参数。其基本假设是：技术进步是广义的；技术进步是中性的；技术进步改变了由其他投入要素的数量决定的生产活动的效率；技术进步的作用在所有样本点上都是相同的。
+		
+	显然，这些假设是不符合实际的。例如，技术进步的作用在所有样本点上是不相同的。在生产函数研究中，经常以时间序列数据为样本，不同的样本点表示不同的时间，而技术的发展恰恰是与时间紧密相关的。又例如，技术进步的一部分是以其他要素质量的提高为体现的，而各自要素质量提高的速度是不同的，所以技术进步不可能等同地改变所有要素的效率。这就需要发展新的生产函数模型。
+		
+\subsection{改进的C-D、CES生产函数模型}
+		
+	早在1942年，Tinbergen就提出在生产函数中加入时间指数趋势项以测定技术进步，1957年Solow提出如下改进的C-D生产函数模型：
+		
+	关于$ A_{t} $的形式，通常有两种设定：
+	\begin{align*}
+		A_{t} & = Y=A_{0}\left ( 1+\gamma  \right ) ^{t}K^{\alpha }L^{\beta } \\
+		A_{t} & = A_{0}e^{\lambda t}
+	\end{align*}
+
+	前一种表达式中，$ \gamma $具有明确的经济含义，即表示技术的年进步速度；在后一种表达式中，$ \lambda $的经济含义不明确。但是，当技术进步速度很低时，由于
+	$$ \ln\left ( 1+\gamma  \right ) \approx \gamma $$
+
+	于是有
+	\begin{align*}
+		\ln\left ( A_{0}\left ( 1+\gamma  \right ) ^{t}\right ) & = \ln A_{0} + \ln\left ( 1+\gamma  \right )^{t} = \ln A_{0} + t\gamma \\
+		\ln\left (A_{0}e^{\lambda t}\right ) & = \ln A_{0} + t\lambda 		
+	\end{align*}
+
+	所以也可以将后一种表达式中的$ \lambda $看作为技术进步速度。改进的C-D生产函数模型的表达式为
+	\begin{align}
+		Y & = A_{0}\left ( 1+\gamma  \right ) ^{t}K^{\alpha }L^{\beta } \label{eq (22)} \\
+		Y & = A_{0}e^{\lambda t}K^{\alpha }L^{\beta } \label{eq (23)}
+	\end{align}
+		
+	同样的思路，改进的CES生产函数模型的表达式为
+	\begin{align}
+		Y & = A_{0}(1+\gamma)^{t}\left(\delta_{1} K^{-\rho}+\delta_{2} L^{-\rho}\right)^{-\frac{m}{\rho}} \label{eq (24)} \\		
+		Y & = A_{0} e^{\lambda t}\left(\delta_{1} K^{-\rho}+\delta_{2} L^{-\rho}\right)^{-\frac{m}{\rho}}  \label{eq (25)}
+	\end{align}
+		
+	需要特别注意的是，上述改进的C-D、CES生产函数模型是在关于技术进步的特定假设下成立的，离开了特定的假设，这些模型表达式就不正确了。
+		
+	在本节关于技术进步的概念中曾经提到3类技术进步和3类中性技术进步。在改进的C-D、CES生产函数模型中，
+	\textbf{作为资本和劳动产出弹性的参数不随样本点变化}，这就是说技术进步不是节约资本和节约劳动型，而是中性的。
+		
+	而在中性技术进步中，\textbf{希克斯中性技术进步假设要素之比\bm{$ K/L $}不随时间变化}，由此可以证明（证明过程需要求解偏微分方程，我们不加证明）考虑技术进步的生产函数形式为
+	$$ Y = A\left (t\right) f\left ( K,L \right ) $$
+	即技术进步的作用相当于在要素投入不变的情况下，使产出增加$ A\left ( t \right ) $倍。
+		
+	\textbf{索洛中性技术进步假设劳动产出率\bm{$ Y/L $}不随时间变化}，由此可以证明，考虑技术进步的生产函数形式为
+	$$ Y = f\left ( A\left ( t \right ) K,L \right ) $$
+		
+	即技术进步的作用相当于使劳动要素投入增加$ A\left ( t \right ) $倍。那么我们稍加推导，就可以发现，
+	对于改进的C-D生产函数模型\eqref{eq (22)}和\eqref{eq (23)}，3类中性技术进步假设都是适宜的；
+	而对于改进的CES生产函数模型\eqref{eq (24)}和\eqref{eq (25)}，则只有希克斯中性技术进步假设是适宜，
+	\textbf{因为索洛中性或哈罗德中性技术进步假设下是无法得到\eqref{eq (24)}和\eqref{eq (25)}形式的生产函数模型表达式的。}
+		
+	从这里我们得到一个启示，\textbf{任何经济计量模型都是建立在一定假设基础上的，我们在学习与应用已有的模型时，必须搞清楚模型的假设条件，否则就会犯错误。}
+		
+\subsection{含体现型技术进步的生产函数模型}
+		
+	技术进步要素中有一部分是体现为资本、劳动等要素质量的提高，而资本、劳动等要素质量的提高使得相同数量的要素投入量具有不同的产出效果。所以，如果能将体现为资本、劳动等要素质量提高的技术进步因素从广义技术进步中分离出来，无论是对技术进步的作用机制描述，还是对技术进步作用的数量描述都是十分重要的。由Solow于1964年首先提出并由Nelson于1964年补充应用的含体现型技术进步的生产函数模型（也称为Solow-Nelson同期模型），就是在这个思路下发展起来的，是生产函数模型的一个重大进展。
+		
+{\bf \noindent 1) 总量增长方程}
+		
+	在1957年由Solow提出了用总量生产函数度量技术进步的\textbf{总量增长方程}，认为产出量的增长是由资本数量的增长、劳动数量的增长和技术的进步共同贡献的结果。用数学表达式表示为  
+	\begin{align}
+		\frac{\Delta Y}{Y}=\frac{\Delta A}{A}+\alpha \frac{\Delta K}{K}+\beta \frac{\Delta L}{L} \label{eq (26)}
+	\end{align}
+		
+	其中$ \alpha $和$ \beta $分别为资本和劳动的产出弹性，那么式中后两项分别表示资本数量的增长和劳动数量的增长对产出增长的贡献；
+	$ \Delta A / A $被用来度量技术进步对产出增长的贡献。但是，在实际上$ \Delta A / A $ 是一个余项，是产出增长中不能被要素数量增长所解释的那一部分，是一个大杂烩，甚至被称为“垃圾箱”。
+	如何从$ \Delta A / A $中将不同类型的技术进步因素分离出来，显然是有意义的。
+	
+{\bf \noindent 2) 分离资本质量的含体现型技术进步的生产函数模型}
+	
+	将C-D生产函数模型改变为
+	\begin{align}
+		Y_{t}=A_{t}^{\prime} J_{t}^{\alpha} L_{t}^{\beta} \label{eq (27)}
+	\end{align} 
+
+	其中$ J_{t} $是以质量加权的资本数量，也称为有效资本；$ A_{t}^{\prime} $是除了体现为资本质量提高以外的技术效率系数。$ J_{t} $的计算式为
+	\begin{align}
+		J_{t}=\sum_{m=0}^{t} K_{m t}(1+\lambda)^{m} \label{eq (28)}
+	\end{align}
+
+	其中，$ K_{m t} $为在第$ m $年形成的第$ t $年仍然使用的资本数量，$ \lambda $为由于资本质量提高带来的资本效率年提高速度。即认为新资本具有更高的质量，因而具有更高的效率，相当于资本数量增加了。\textbf{\eqref{eq (27)}即为含体现型技术进步的生产函数模型}，在实际应用时，给定$ \lambda $，计算$ J_{t} $的样本观测值，即可以估计该生产函数模型。
+		
+	人们经常不直接应用\eqref{eq (27)}，而是采用另外一种近似形式。引入第$ t $年资本的平均寿命$ \bar{a}_{t} $，则有效资本的增长率可以近似写成
+	\begin{align}
+		\frac{\Delta Y}{Y}=\frac{\Delta K}{K}+\lambda-\lambda \cdot \Delta \bar{a}
+		\label{eq (29)}
+	\end{align}
+		
+	其中$ \Delta \bar{a} $为资本平均年龄的变化，当资本平均年龄降低时，$ \Delta \bar{a} $为负值；$ \Delta K / K$为实际资本数量的变化率；引入调整量$ \lambda \cdot \Delta \bar{a} $，$ $反映资本平均年龄变化的作用。于是总量增长方程\eqref{eq (26)}变为
+	\begin{align}
+		\frac{\Delta Y}{Y}=\left(\frac{\Delta A^{\prime}}{A^{\prime}}+\alpha \lambda-\alpha \lambda \Delta \bar{a}\right)+\alpha \frac{\Delta K}{K}+\beta \frac{\Delta L}{L}
+		\label{eq (30)}
+	\end{align}
+		
+	其中括号中部分相当于原方程中的$ \Delta A / A $，现在从这个“垃圾箱”中将体现资本质量提高的部分$ \alpha \lambda $和反映资本平均年龄变化的部分$ \alpha \lambda \Delta $分离出来了。\eqref{eq (30)}可以改写为
+	\begin{align}
+		\frac{\Delta Y}{Y}=\frac{\Delta A^{\prime}}{A^{\prime}}+\alpha\left(\lambda-\lambda \Delta \bar{a}+\frac{\Delta K}{K}\right)+\beta \frac{\Delta L}{L} 
+		\label{eq (31)}
+	\end{align}
+	
+	\textbf{这是常用的分离资本质量的含体现型技术进步的生产函数模型。}
+		
+{\bf \noindent 3) 分离劳动质量的含体现型技术进步的生产函数模型}
+
+	按照同样的思路，可以从上述$ \Delta A^{\prime}/A^{\prime} $中将体现为劳动质量提高的技术进步因素分离出来。例如，用$ \delta $表示由于劳动者平均受教育水平的提高带来的劳动效率年提高速度，用$ \Delta \bar{b} $表示劳动者平均年龄的变化。式\eqref{eq (30)}可以改写为:
+	\begin{align}
+		\frac{\Delta Y}{\Delta}=\frac{\Delta A^{\prime \prime}}{A^{\prime \prime}}+\alpha\left(\lambda-\lambda \Delta \bar{a}+\frac{\Delta K}{K}\right)+\beta\left(\delta-\delta \Delta \bar{b}+\frac{\Delta L}{L}\right)
+		\label{eq (32)}
+	\end{align}
+
+	式中$ \Delta A^{\prime \prime}/A^{\prime \prime} $仅表示由于管理水平的提高等技术进步因素对产出增长的贡献。
+	当然，劳动质量比资本质量更为复杂，\eqref{eq (32)}只是一个示意性模型，有待于我们进一步发展。
+
+  \subsection{边界生产函数模型}
+		
+	前面曾经提及，从理论上讲，\textbf{生产函数是描述一定的投入要素组合与最大产出量之间的关系。}但是在实际应用中，人们无法得到最大产出量的样本观测值，只能用实际产出量作为样本观测值估计生产函数模型，因而得到的生产函数仅描述一定的投入要素组合与平均产出量之间的关系。\textbf{人们已经习惯将后者称为生产函数，为了区别起见，我们把前者称为边界生产函数。}
+		
+	对于平均生产函数，实际产出量可以在它的上方，也可以在它的下方；而对于边界生产函数，实际产出量只能在它的下方。边界生产函数正是根据这一点设置的，它实质上是平均生产函数向上的平移。正是由于这一点，\textbf{边界生产函数在比较不同样本点的技术效率方面具有重要的应用价值。}
+		
+	边界生产函数按照边界的性质分为确定性边界生产函数和随机边界生产函数两大类。
+		
+{\bf \noindent 1) 确定性边界生产函数}
+		
+	确定性边界生产函数把影响产出量的不可控因素（例如观测误差、方程设定误差等）和可控因素（例如生产非效率因素）不加区别，统统归入一个单侧的误差项中，作为对非效率的反映。其模型可以写成
+	\begin{align}
+		Y=f(K, L, \cdots) e^{-u} \quad(u \geq 0) \label{eq (33)}
+	\end{align}
+		
+	其中$ Y $为实际产出量，$ f(K, L, \cdots) $为边界生产函数，$ 0 \leq e^{-u} \leq 1 $反映生产非效率，实际产出量总是在$ f(K, L, \cdots) $的下方。
+	可见边界生产函数$ f(K, L, \cdots) $为确定性的。
+		
+	确定性边界生产函数又可以分为确定性非参数边界、确定性参数边界和确定性统计边界生产函数。区别在于估计方法的不同。
+		
+{\bf \noindent 2) 随机边界生产函数}
+		
+	随机边界生产函数把影响产出量的不可控因素和可控因素加以区别。其模型可以写成
+	\begin{align}
+		Y=f(K, L, \cdots) e^{v-u}=\left(f(K, L, \cdots) e^{v}\right) e^{-u}
+	\end{align}
+		
+	其中$ Y $为实际产出量，$ f(K, L, \cdots) e^{v} $为边界生产函数，$ 0 \leq e^{-u} \leq 1 $反映相对于随机边界的生产非效率，实际产出量总是在$ f(K, L, \cdots) e^{v} $的下方，
+	但可以由于随机因素的作用而处于$ f(K, L, \cdots) $的上方，边界生产函数$ f(K, L, \cdots) e^{v} $为随机性的。
+
+\section{几个重要生产函数模型的参数估计方法}
+\subsection{线性生产函数模型的估计} 
+		
+	对于线性生产函数模型\eqref{eq (4)}，其计量经济学形态为
+	$$ Y=\alpha_{0}+\alpha_{1} K+\alpha_{2} L+\mu $$
+
+	采用单方程线性计量经济学模型的估计方法，可以很方便地估计其参数。
+		
+\subsection{C-D生产函数模型及其改进型的估计}
+		
+	对于C-D生产函数模型\eqref{eq (6)}及其改进型\eqref{eq (22)}和\eqref{eq (23)}，两边取对数，即可化成线性模型，然后采用单方程线性计量经济学模型的估计方法估计其参数。但是其假设条件是随机误差项可以作为方程的一个因子与理论模型相乘，即模型的计量经济学形态为
+	$$ Y=A K^{\alpha} L^{\beta} \mu $$
+
+	\textbf{注意这里的随即干扰项并不能作0均值处理。}
+		
+	如果随机误差项作为方程的一个因子与理论模型相加，即
+	$$ Y=A K^{\alpha} L^{\beta} \mu+\mu $$
+		
+	则要采用非线性模型的估计方法估计其参数，但在实际应用中，都假设为前一种情况。
+		
+\subsection{CES生产函数模型及其改进型的估计}
+		
+	对于\eqref{eq (8)}所表示的CES生产函数模型
+	$$ Y=A\left(\delta_{1} K^{-\rho}+\delta_{2} L^{-\rho}\right)^{-\frac{m}{\rho}} $$
+		
+	为一个关于参数的非线性模型，采用简单的方法难以化为线性模型。自1961年以来，关于它的估计问题有许多研究，主要有两类方法，即利用边际生产力条件的估计方法和直接估计方法。
+		
+	所谓边际生产力条件，即当生产活动处于均衡的情况下，存在
+	$$ \frac{\partial Y}{\partial K}=\frac{r}{p} \quad \frac{\partial Y}{\partial L}=\frac{w}{p} $$
+		
+	其中$ r $，$ w $，$ p $分别表示资本的利率、劳动的工资率和产出品的价格。将该条件应用于\eqref{eq (8)}，经过适当的变换，可以得到线性计量经济方程。由于边际生产力条件与实际生产活动有较大距离，在实际上我们基本不采用这类估计方法。顺便指出，对其他形式的生产函数模型，从理论上讲，也可以利用边际生产力条件进行估计，所以我们称其为“一类”估计方法。
+		
+	直接估计方法。将C-D生产函数模型的计量形态假设为
+	$$ Y=A\left(\delta_{1} K^{-\rho}+\delta_{2} L^{-\rho}\right)^{-\frac{m}{p}} \mu $$
+
+	两边取对数，得到
+	\begin{align}
+		\ln Y=\ln A-\frac{m}{\rho} \ln \left(\delta_{1} K^{-\rho}+\delta_{2} L^{-\rho}\right)+\varepsilon \label{eq (35)}
+	\end{align}
+
+	将其中的$ \ln \left(\delta_{1} K^{-\rho}+\delta_{2} L^{-\rho}\right) $在$ \rho = 0 $处展开泰勒级数，取0阶、1阶和2阶项，代入\eqref{eq (35)}，得到
+	\begin{align}
+		\ln Y=\ln A-\frac{m}{\rho} \ln \left(\delta_{1} K^{-\rho}+\delta_{2} L^{-\rho}\right)+\varepsilon \label{eq (36)}
+	\end{align}
+
+	\eqref{eq (36)}为一个简单线性模型，通过变量置换，可以表示成
+	$$ Z=\alpha_{0}+\alpha_{1} X_{1}+\alpha_{2} X_{2}+\alpha_{2} X_{3}+\varepsilon $$
+
+	采用单方程模型的估计方法，得到$ \alpha_{0} $，$ \alpha_{1} $，$ \alpha_{2} $，$ \alpha_{3} $的估计值，
+	利用对应关系和$ \delta _{1}+\delta _{2}=1 $，可以计算得到关于参数$ A $，$ \rho $，$ m $，$ \delta _{1} $，$ \delta _{2} $的估计值。
+		
+	选择在$ \rho = 0 $处展开台劳级数，是因为当$ \rho = 0 $时，要素替代弹性等于1，即模型退化为C-D生产函数，由于C-D生产函数的普遍适用性，所以可以假定$ \rho $为接近于0的数。当参数估计完成后，\textbf{可以根据 \bm{$ \rho $}的估计值是否接近于0来检验这种估计方法的可用性。（完成从样本到母体的检验！）}
+		
+	从\eqref{eq (36)}可以看出，当$ \rho = 0 $时，方程为
+	$$ \ln Y=\ln A+\delta_{1} m \ln K+\delta_{2} m \ln L+\varepsilon $$
+
+	即为C-D生产函数模型。所以可以认为CES生产函数模型是对C-D生产函数模型的修正。
+		
+	对于改进的CES生产函数模型\eqref{eq (24)}和\eqref{eq (25)}，估计方法是相同的。
+		
+\subsection{VES生产函数的估计} 
+		
+	这里仅讨论\eqref{eq (15)}式
+	$$ Y=A K^{\left(\frac{1}{1+c}\right) m}\left(L+\left(\frac{b}{1+c}\right) K\right)^{\left(\frac{c}{1+c}\right) m} $$
+	的直接估计方法。将它的计量形态假设为
+	\begin{align}
+		Y=A K^{\left(\frac{1}{1+c}\right) m}\left(L+\left(\frac{b}{1+c}\right) K\right)^{\left(\frac{c}{1+c}\right) m} \cdot \mu \label{eq (37)}
+	\end{align}
+
+	其对数形式为
+	\begin{align}
+		\ln Y=\ln A+\frac{m}{1+c} \ln K+\frac{c m}{1+c} \ln \left(L+\frac{b}{1+c} K\right)+\varepsilon \label{eq (38)}
+	\end{align}
+
+	令  
+	$$ \ln \left(L+\frac{b}{1+c} K\right)=\ln (L+\lambda \cdot K)=Z(\lambda) $$
+
+	在$ \lambda = 0 $，即$ b=0 $处展开泰勒级数
+	$$ Z(\lambda)=\ln L+\frac{K}{L} \cdot \lambda+0(\lambda) $$
+
+	代入\eqref{eq (38)}得到
+	\begin{align}
+		\ln Y=\ln A+\frac{m}{1+c} \ln K+\frac{c m}{1+c} \ln L+\frac{c m b}{(1+c)^{2}} \frac{K}{L}+\varepsilon  \label{eq (39)}
+	\end{align}
+
+	对\eqref{eq (39)}进行变量置换，得到
+	$$ Z=\alpha_{0}+\alpha_{1} X_{1}+\alpha_{2} X_{2}+\alpha_{3} X_{3}+\varepsilon $$
+
+	采用单方程模型的估计方法，得到$ \alpha_{0} $，$ \alpha_{1} $，$ \alpha_{2} $，$ \alpha_{3} $ 的估计值，
+	利用对应关系可以计算得到关于参数$ A $，$ c $，$ m $，$ b $的估计值。当参数估计完成后，可以根据$ b $的估计值是否接近于0来检验这种估计方法的可用性。
+		
+\subsection{二级CES生产函数模型的估计}
+		
+	对于二级CES生产函数模型\eqref{eq (20)}
+	\begin{align*}
+		Y_{K E} & = \left(a_{1} K^{-\rho_{1}}+a_{2} E^{-\rho_{1}}\right)^{-\frac{1}{\rho_{1}}} \nonumber \\
+			Y & = A\left(b_{1} Y_{K E}^{-\rho}+b_{2} L^{-\rho}\right)^{-\frac{m}{\rho}}
+	\end{align*}
+		
+	首先将第二级CES生产函数取对数，在$ \rho = 0 $处展开台劳级数，得到如下近似式：
+	$$ \ln Y=\ln A+b_{1} m \ln Y_{K E}+b_{2} m \ln L-\frac{1}{2} \rho m b_{1} b_{2}\left(\ln \left(\frac{Y_{K E}}{L}\right)\right)^{2}+\varepsilon $$
+
+	式中包含$ Y_{KE} $；再将第一级CES生产函数在$ \rho_{1} = 0 $处展开台劳级数，得到关于$ Y_{KE} $的近似式
+	$$ \ln Y_{K E}=a_{1} \ln K+a_{2} \ln E-\frac{1}{2} \rho_{1} a_{1} a_{2}\left(\ln \left(\frac{K}{E}\right)\right)^{2} $$
+
+	将$ Y_{KE} $的近似式代入第一级CES生产函数的展开近似式中，考虑到可能引起共线性和计算复杂性等因素，用逐步回归筛选出如下线性方程：
+	\begin{gather}
+		\ln Y=\ln A+b_{1} m a_{1} \ln K+b_{1} m a_{2} \ln E+b_{2} m \ln L
+			-\frac{1}{2} m b_{1} \rho_{1} a_{1} a_{2}\left(\ln \left(\frac{K}{E}\right)\right)^{2} \nonumber \\
+		-\frac{1}{2} \rho m b_{1} b_{2}\left(\ln \left(\frac{K}{L}\right)\right)^{2}+\varepsilon 
+		\label{eq (40)}
+	\end{gather}
+
+	通过变量置换，可以表示成
+	$$ Z=\alpha_{0}+\alpha_{1} X_{1}+\alpha_{2} X_{2}+\alpha_{3} X_{3}+\alpha_{4} X_{4}+\alpha_{5} X_{5}+\varepsilon $$
+
+	采用单方程模型的估计方法，得到$ \alpha_{0} $，$ \alpha_{1} $，$ \alpha_{2} $，$ \alpha_{3} $，$ \alpha_{4} $，$ \alpha_{5} $的估计值，
+	利用对应关系和$ a_{1}+a_{2}=1 $，$ b_{1}+b_{2}=1 $，可以计算得到关于参数$ A $，$ \rho $，$ \rho_{1} $，$ m $，$ a_{1} $，$ a_{2} $，$ b_{1} $，$ b_{2} $的估计值。
+	对于这些估计值，除了级数展开时展开点的选择误差和逼近误差外，在代入后的筛选也带来了误差。
+		
+{\subsection{含体现型技术进步的生产函数模型的估计}  }
+		
+	以分离资本质量的含体现型技术进步的生产函数模型\eqref{eq (31)}
+	$$ \frac{\Delta Y}{Y}=\frac{\Delta A^{\prime}}{A^{\prime}}+\alpha
+	\left(\lambda-\lambda \Delta \bar{a}+\frac{\Delta K}{K}\right)+\beta \frac{\Delta L}{L}+\varepsilon $$
+	
+	为例。将模型进行变量置换，得到
+	$$ Z_{t}=\alpha_{0}+a X_{1 t}+\beta X_{2 t}+\varepsilon_{t} $$ 
+		
+	其中$ Z $，$ X_{2} $的样本观测值可以直接取得，在$ X_{1} $中，$ \Delta \bar{a} $，$ \Delta K/K $ 的样本观测值也可以直接取得，需要给定不同的值，进行反复估计，以拟合效果最好者作为最后估计结果。
+
+\subsection{确定性统计边界生产函数模型的修正的普通最小二乘估计（COLS）}
+		
+	修正的普通最小二乘估计（COLS）是Richmand于1974年首先提出的在普通最小二乘估计结果的基础上对常数项进行修正的一种估计方法，得到了广泛的应用。
+		
+	对于确定性统计边界生产函数\eqref{eq (33)} 
+	$$ Y=f(K, L, \cdots) e^{-u} \quad(u \geq 0) $$
+
+	如果用C-D生产函数的形式表示，则写成
+
+	$$ Y=A K^{\alpha} L^{\beta} e^{-u} \quad(u \geq 0) $$
+	其对数形式为
+	\begin{align}
+		\ln Y=\ln A+\alpha \ln K+\beta \ln L-u \label{eq (41)}
+	\end{align}
+
+	其中实质上的边界生产函数为
+	$$ \ln Y^{\prime}=\ln A+\alpha \ln K+\beta \ln L $$
+
+	$ Y^{\prime} $为理论上的最大产出量。设$ \mathbb{E} (u)=\mu $，$ \ln A=a $，将\eqref{eq (41)}写成
+	\begin{align}
+		\ln Y=(a-\mu)+\alpha \ln K+\beta \ln L-(u-\mu)  \label{eq (42)}
+	\end{align}
+
+	式中$ \mathbb{E}\left ( u-\mu \right ) = 0 $，可以用普通最小二乘法估计模型\eqref{eq (42)}，得到
+	\begin{align}
+		\ln \hat{Y}=(a-\hat{\mu})+\hat{\alpha} \ln K+\hat{\beta} \ln L \label{eq (43)}
+	\end{align}
+		
+	这就是我们所说的平均生产函数，它与我们所要求的边界生产函数的差别在于常数项。如何才能求得边界生产函数的常数项$ \alpha $的估计值？显然，应该有
+	\begin{align}
+		\hat{a}=(a-\hat{\mu})+\hat{\mu}  \label{eq (44)}
+	\end{align}	
+
+	根据边界生产函数应该使得所有实际产出量都在它的下面的特点，可以用
+	\begin{align}
+		\operatorname{Max}\left(\ln Y_{i}-\ln \hat{Y}_{i}\right)=\operatorname{Max}\left(\ln Y_{i}-\left((a-\hat{\mu})+\hat{\alpha} \ln K_{i}+\hat{\beta} \ln L_{i}\right)\right)
+		\label{eq (45)}
+	\end{align}	
+
+	作为$ \hat{\mu} $的值，代入\eqref{eq (44)}得到$ \hat{\alpha} $。于是所要求的边界生产函数为
+	$$ \hat{Y}^{\prime}=e^{\hat{a}} K^{\hat{\alpha}} L^{\hat{\beta}} $$
+	
+	该边界生产函数即是平均生产函数\eqref{eq (43)}向上平移了$ \hat{\mu} $。
+		
+	概括起来，用修正的普通最小二乘法估计确定性统计边界生产函数模型，即是首先用最小二乘法估计平均生产函数，然后计算所有样本点的产出量的观测值与平均生产函数估计值之差，取其最大者加到平均生产函数的常数项上，即得到边界生产函数的常数项，进行而得到边界生产函数。
+
+\section{生产函数模型在技术进步分析中的应用} 
+		
+	生产函数模型是对生产活动进行数量分析的有效工具，有其广泛的应用。首先，生产函数模型的参数具有特定的经济含义，可以直接用于生产活动的结构分析；生产函数模型揭示了投入要素与产出量之间的技术关系，可以用于生产预测。生产函数模型在技术进步分析中的应用，更是其显著的功能。下面以此为例。说明生产函数模型在技术进步分析中的应用。
+		
+	技术进步的定量分析，主要包括两方面内容：一是测算技术进步速度及其对经济增长的贡献，显然这是从纵向研究技术进步；一是关于部门之间、企业之间技术进步水平的比较研究，这是从横向研究技术进步。对于这两方面研究，生产函数模型都是有效的方法。
+		
+{\subsection{技术进步速度的测定} }
+		
+	年技术进步速度，是一项反映在一定时期内技术进步快慢的综合指标。通常用常用下式定义：
+	\begin{align}
+		\gamma=y-\alpha \cdot k-\beta \cdot l \label{eq (46)}
+	\end{align}
+	其中$ \gamma $为技术进步速度；$ \alpha $，$ \beta $为资本与劳动的产出弹性；$ y $，$ k $，$ l $分别为产出、资本和劳动数量的增长速度。显然，在\eqref{eq (46)}中是将资本与劳动数量增长之外的所有因素全部归入“技术进步”之中。
+		
+	$ \alpha $，$ \beta $可以通过生产函数模型估计得到，$ y $，$ k $，$ l $则由样本观测值计算得到，根据\eqref{eq (46)}式就可以计算得到技术进步速度$ \gamma $的值。李子奈曾经利用1963—1984年我国全民所有制工业的数据为样本，估计修正的C-D生产函数模型，得到如下估计结果：
+	$$ Y=0.6479 e^{0.0128 t} K^{0.3608} L^{0.6756} $$
+	由样本数据计算得到1963—1984年间全民所有制工业不变价总产值、不变价固定资产原值和劳动者人数的平均增长速度为
+	\begin{align*}
+		y=10.5\%  \\
+		k=8.74\%  \\
+		l=5.71\% 
+	\end{align*}
+
+	并且由$ \alpha = 0.360 $，$ \beta = 0.6765 $，根据\eqref{eq (46)}式计算得到1963—1984年间我国全民所有制工业平均技术进步速度为
+	$$ \gamma = 3.49\% $$
+		
+\subsection{技术进步对增长的贡献} 
+		
+	技术进步对增长的贡献，是一项直接反映技术进步对增长影响的综合指标。它的定义由下式给出：
+	\begin{align}
+		E_{A}=\frac{\gamma}{y} \times 100 \%
+		\label{eq (47)}
+	\end{align}
+
+	它是由\eqref{eq (46)}式的两边同除以$ y $后得到的：
+	$$ \frac{\gamma}{y}=1-\frac{\alpha \cdot k}{y}-\frac{\beta \cdot l}{y} $$
+	对于1963—1984年间我国全民所有制工业，计算得到技术进步对增长的贡献为
+	$$ E_{A}=\frac{3.49 \%}{10.5 \%} \times 10 \%=33.2 \% $$
+	当然，这是除了资本与劳动数量增长的贡献外所有因素对增长的贡献。
+		
+	根据最新的计算，我国的经济增长中，技术进步的贡献一直维持在30\%～40\%之间，而一些发达国家，该项指标达到60\%以上。
+		
+	上述用于测算技术进步速度和技术进步对增长的贡献的方法存在不少问题，主要是在“技术进步”中包含的因素过于复杂。所以，积极创造条件，主要是基础数据条件，使得含体现型技术进步生产函数模型进入实际应用，将会使技术进步的定量分析水平提高一大步。
+		
+\subsection{部门之间、企业之间技术进步水平的比较分析}
+		
+	对部门之间、企业之间的技术进步水平进行比较分析，无论是正确地评价部门或企业，或是确定技术进步的方向，都是十分重要的。边界生产函数模型是一种有有效的方法。
+		
+	例如，建立某行业的企业确定性统计边界生产函数模型
+	$$ Y=A K^{\alpha} L^{\beta} e^{-u} \quad(u \geq 0) $$
+
+	进行变换后用普通最小二乘法估计得到
+	$$ \ln \hat{Y}=(a-\hat{\mu})+\hat{\alpha} \ln K+\hat{\beta} \ln L $$ 
+
+	设   
+	$$ \hat{\mu}_{j}=\ln Y_{j}-\ln \hat{Y}_{j} $$
+
+	定义$ \left ( a-\hat{\mu} \right ) + \hat{\mu}_{j} $为第$ j $个样本企业的技术水平。如果第$ m $个样本企业处在边界上，根据修正的最小二乘法的原理，应该有
+	$$ \hat{\mu}_{m}=\operatorname{Max}\left(\ln Y_{i}-\ln \hat{Y}_{i}\right)=\operatorname{Max}
+	\left(\ln Y_{i}-\left((a-\hat{\mu})+\hat{\alpha} \ln K_{i}+\hat{\beta} \ln L_{i}\right)\right) $$
+
+	那么我们将该企业的技术效率定义为1，即认为它处于最佳技术状态。这样第$ j $个样本企业的技术效率为
+	\begin{align}
+		E_{j}=e^{(a-\hat{\mu})+\hat{\mu}_{j}} / e^{\left(a-\hat{\mu}_{i}\right)+\hat{\mu}_{m}}=e^{\hat{\mu}_{j}-\hat{\mu}_{n}}
+		\label{eq (48)}
+	\end{align}
+
+	根据\eqref{eq (48)}式可以对同一时间截面上不同样本企业的技术水平进行定量比较。
+		
+	李子奈曾经以1985年煤炭行为63个大型企业的截面数据为样本分别估计煤炭企业平均生产函数和边界生产函数模型：
+	\begin{align}
+		\ln \hat{Y} & = -4.3279+0.4074 \ln K+0.2766 \ln L+0.2885 \ln E    
+		\label{eq (49)} \\
+		\ln \hat{Y}^{\prime} & = -3.6477+0.4074 \ln K+0.2766 \ln L+0.2885 \ln E
+		\label{eq (50)}
+	\end{align}
+
+	其中$ \hat{Y^{\prime}} $为应该达到的最大产出量的估计量，$ E $为钢材消耗量。可见，平均生产函数\eqref{eq (49)}和边界生产函数\eqref{eq (50)}的差别仅在于常数项。
+	根据\eqref{eq (48)}计算每个企业的技术效率，结果如下：
+	\begin{equation}
+		\begin{array}{ll}
+			E_{j}^{1985} \geq 80 \% 		& 	\qquad 	2 \\
+			60 \% \leq E_{j}^{1985}<80 \% 	& 	\qquad	9 \\
+			40 \% \leq E_{j}^{1985}<60 \% 	& 	\qquad	43 \\
+			E_{j}^{1985}<40 \% 				& 	\qquad	9 \notag
+		\end{array}
+	\end{equation}
+
+	即技术效率化较高的只有2个企业，有9个企业技术效率相当低。这样就将63个大型企业按技术水平排了队，无论对行业主管部门，还是对企业，都是有重要意义的。
+	
+\section{建立生产函数模型中的数据质量问题} 
+% \setcounter{section}{0}
+在建立与应用生产函数模型过程中，有许多实际问题需要认真处理，其中较为突出的是数据质量问题。
+	
+\subsection{样本数据的一致性问题} 
+	
+可以作为生产函数模型样本数据的有两类：时间序列数据和截面数据。在选择哪类数据作样本时，需要特别注意一致性问题。正如在绪论中提及的，
+\textbf{计量经济学模型是通过样本估计母体的参数，那么样本必须是从母体中随机抽取的。}例如，同行业的企业截面数据只能用于该行业企业生产函数的估计，不可以将由此得到的生产函数用于整个行业的总量分析；
+行业生产函数一般选取该行业的时间序列数据为样本，如果一定要采用截面数据的话，也只能采用不同国家的同行业数据，而不能采用企业截面数据；
+同样，如果采用某一企业的时间序列数据，只能估计该企业的生产函数，而不能作为行业的企业生产函数应用。
+	
+这个概念是重要的。曾经有人采用全国大中型煤炭企业的截面数据，估计生产函数模型，然后用该模型预测未来煤炭行业的产出量。
+这就违反了一致性原则。也曾经有人采用某钢铁企业的时间序列数据建立了一个生产函数模型，然后将该模型作为钢铁行业的一般企业生产函数应用。这也违反了一致性原则。
+	 
+\subsection{样本数据的准确性问题}
+	
+在生产函数模型估计中，经常遇到样本数据口径不一致的问题。例如，估计我国工业生产函数，作为被解释变量的总产值是全国口径的，作为解释变量的固定资产原值只有独立核算工业的数据；
+估计企业生产函数，作为被解释变量的产值是生产性口径的，作为解释变量的劳动力却包含非生产性人员；等等。
+这类问题几乎普遍存在。这就违反了数据的准确性原则。处理的方法，
+一是按照最小口径建立模型，然后在应用中对全口径进行估算；
+二是利用其他信息对样本数据首先进行调整，然后再估计模型。在特殊情况下，当生产函数模型是线性的，
+或者是C-D生产函数，在假设不同样本点上不同口径的数据之间存在着固定比例时，采用不同口径的样本数据不影响结构参数的估计结果，只影响常数项。
+	
+\subsection{样本数据的可比性问题} 
+	
+在生产函数模型估计中，更严重的问题是样本数据的可比性问题，而这个问题经常被忽视。主要表现是在不同的样本点上，实际相同的产出量或要素投入量出现不同的观测值数据。
+例如，产出量用当年价格计算时，采用时间序列数据为样本，由于价格的变化，会使不同样本点上实际相同的产出量表现出相差甚大的观测值。再如，固定资产原值按固定资产形成时的价格计算，
+对于同行业的两个规模相同、生产工艺相同、设备技术水平相同的企业，只是因为投产时间不同，账面上的固定资产原值差别会很大，作为样本数据时，尽管在不同样本点上实际投入的固定资产数量相同，却出现了不同的观测值。
+诸如此类的样本数据不可比问题，会给生产函数的结构参数估计值造成很大的“失真”。
+
+曾经以1963—1984年全民所有制工业总产值（1970年不变价计算）、全民所有制工业职工人数和全民所有制工业固定资产原值（分别以形成年当年价格计算和以1970年不变价计算）作为样本，对C-D生产函数的参数进行估计，得到
+$$ Y=0.9181 e^{0.0273 t} K^{-0.1789} L^{0.7386} $$
+
+和
+$$ Y=0.6479 e^{0.0128 t} K^{-0.3608} L^{0.6756} $$
+
+二者的结构参数相差甚大。其中前者是以固定资产形成年当年价格计算的固定资产原值为样本观测值，后者是以1970年不变价计算的固定资产原值作为样本观测值。这个例子足以说明样本数据的可比性对模型质量的影响。
+	
+生产函数模型离不开固定资产，而统计中的固定资产原值是按照资产形成年的当年价格计算的，这是建立生产函数模型中的一个突出的困难。简单的调整方法是：
+将固定资产原值按照形成的年份分解，每一年形成的固定资产又可以分解为设备与建筑安装两部分，将每一部分按照各自的价格指数向某一基准年调整，然后再汇总为各年的固定资产原值。分解得越细，调整越准确。
+	
+人们有时对计量经济学模型提出疑问：同样的研究对象、同样的模型形式、同样的样本区间，不同的研究者得到的结果不同，那么计量经济学模型还有没有科学性？
+上面的例子就是一个明证。所以，说样本数据的质量关系到模型的成败，是恰如其分的。这个总是不仅在生产函数模型研究中是一个突出问题，在所有的应用模型研究中都是一个突出的问题。  
+

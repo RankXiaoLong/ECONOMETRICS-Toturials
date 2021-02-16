@@ -1,0 +1,720 @@
+\chapter{数学基础}
+\section{ 矩阵及其二次型(Matrix and its Quadratic Forms) }
+\subsection{矩阵的基本概念与运算}
+一个m×n矩阵可表示为：
+\vspace{-1em}
+$$  \boldsymbol{A}=\left[a_{i j}\right]=\left[\begin{array}{llll}
+a_{11} & a_{12} &\cdots & a_{1 n} \\
+a_{21} & a_{22} & \cdots &a_{2 n} \\
+\cdots & \cdots & \cdots & \cdots \\
+a_{m 1} & a_{m 2} & \cdots & a_{m n}
+\end{array}\right] $$
+
+矩阵的加法较为简单，若$ \boldsymbol{C} = \boldsymbol{A} + \boldsymbol{B} , c_{i,j} = a_{i,j} + b_{i,j}$。 但矩阵的乘法的定义比较特殊，若A是一个$ m×n_1 $的矩阵，B是一个$ n_1×n $的矩阵，则$ \boldsymbol{C}=\boldsymbol{AB} $是一个$ m×n $的矩阵，而且 ，一般来讲，$ \boldsymbol{AB} \neq \boldsymbol{BA} $，但如下运算是成立的：
+
+ {a. \bf 结合律}（Associative Law）   $  \rm (\boldsymbol{AB}) \boldsymbol{C}=\boldsymbol{A}(\boldsymbol{BC}) $
+ 
+ {b. \bf 分配律}（Distributive Law）  $  \rm \boldsymbol{A}(\boldsymbol{B+C})=\boldsymbol{AB}+\boldsymbol{AC} $
+ 
+ 向量（Vector）是一个有序的数组，既可以按行，也可以按列排列。 行向量(row vector)是只有一行的向量，列向量(column vector)只有一列的向量。如果α是一个标量，则$ \alpha \boldsymbol{A}=\left[\alpha a_{i j}\right]  $。
+ 
+ 矩阵$ \boldsymbol{A} $ 的转置矩阵(transpose matrix)记为$ \rm {\boldsymbol{A}}^{\prime}$ ，是通过把A的行向量变成相应的列向量而得到。显然
+ $ (\rm {\boldsymbol{A}}^{\prime} )^{\prime}= \boldsymbol{A} $，而且$ \rm (\boldsymbol{A + B})^{\prime}= {\boldsymbol{A}}^{\prime} + {\boldsymbol{B}}^{\prime} $。
+ 
+ 乘积的转置( Transpose of  production ) \quad  $ \rm (\boldsymbol{AB})^{\prime}= {\boldsymbol{B}}^{\prime} {\boldsymbol{A}}^{\prime}   $ ， 
+        $ \rm (\boldsymbol{ABC})^{\prime}={\boldsymbol{C}}^{\prime}  {\boldsymbol{B}}^{\prime}  {\boldsymbol{A}}^{\prime}  $
+ 
+ 可逆矩阵（inverse matrix），如果n级方阵(square matrix)$ {\boldsymbol{A}} $和 ${\boldsymbol{B}}$，满足$ \boldsymbol{AB}=\boldsymbol{BA}=
+ \boldsymbol{I} $。则称$ \boldsymbol{B} $、$ \boldsymbol{B}$ 是可逆矩阵，显然
+ $ \rm \boldsymbol{A} = {\boldsymbol{B}}^{-1} $ ，  $ \rm \boldsymbol{B} = {\boldsymbol{A}}^{-1} $。如下结果是成立的：
+
+  $$  \rm (\boldsymbol{A}^{-1}) ^{-1} = \boldsymbol{A},  \quad 
+	   (\boldsymbol{A}^{\prime}) ^{-1} = (\boldsymbol{A}^{-1}) ^{\prime} , \quad 
+	    (\boldsymbol{AB})^{-1} = \boldsymbol{B}^{-1} \boldsymbol{A}^{-1} $$
+   
+\subsection{特殊矩阵}
+
+\begin{enumerate}[ 1) ] 
+	\item 恒等矩阵(identity matrix)：对角线上元素全为1，其余全为0，可记为$\boldsymbol{I}$；
+	\item 标量矩阵(scalar matrix)：即形如$ \alpha \boldsymbol{I} $的矩阵，其中$ \alpha $是标量；
+	\item 幂等矩阵(idempotent matrix):如果矩阵 $ \boldsymbol{A} $ 具有性质 $ \boldsymbol{A} \cdot  \boldsymbol{A} = {\boldsymbol{A}}^{2} = \boldsymbol{A} $，
+			这样的矩阵称为幂等矩阵。
+	
+	\begin{theorem}
+		幂等矩阵的特征根要么是1，要么是零。
+	\end{theorem}
+	
+	\item 正定矩阵 (positive definite)和负定矩阵(negative definite)，非负定矩阵(nonnegative)或半正定矩阵(positive semi-definite)，非正定矩阵(nonpositive  definite)或半负定矩阵(negative semi-definite);
+	
+		对于任意的非零向量 ，如有$ \vec{ \boldsymbol{x} }^{\prime} \boldsymbol{A} \vec{\boldsymbol{x}}>0 \quad(<0)$，则称A是正（负）定矩阵；
+		如有 $  \vec { \boldsymbol{x}}^{\prime} \boldsymbol{A}  \vec {\boldsymbol{x}} \ge  0(\leq 0) $，非负（非正）定矩阵。
+		如果A是非负定的，则记为$ \rm \boldsymbol{A} \ge 0 $；
+		如果是正定的，则记为$ \rm \boldsymbol{A} > 0 $。
+		协方差矩阵 是半正定矩阵，{\bf 几个结论： }
+		
+	\begin{enumerate}[ a) ]
+		\item 恒等矩阵或单位矩阵是正定的；
+		\item 如果 $ \boldsymbol{A} $ 是正定的，则$ \boldsymbol{A} ^{-1} $也是正定的；
+		\item 如果 $ \boldsymbol{A} $ 是正定的，$ \boldsymbol{B} $ 是可逆矩阵，则 $ \boldsymbol{B}^{\prime} \boldsymbol{A} \boldsymbol{B} $ 是正定的；
+		\item 如果 $ \boldsymbol{A} $ 是一个$ n \times m $矩阵，且$ n > m $，$ r(A) = m $ ，
+				则 $ \boldsymbol{A}^{\prime} \boldsymbol{A}  $ 是正定的，$  \boldsymbol{A} \boldsymbol{A}^{\prime}  $ 是非负定矩阵。
+	\end{enumerate}
+
+	\item 对称矩阵（symmetric matrix）:如果$ \boldsymbol{A} =  \boldsymbol{A}^{\prime} $ ，则$ \boldsymbol{A} $称为对称矩阵。
+\end{enumerate}
+
+\subsection{矩阵的迹（trace）}
+
+一个n×n矩阵的迹被定义为它的对角线上的元素之和，记为$ tr(\boldsymbol{A}) $，则 $  tr(\boldsymbol{A}) = \sum_{i}^{n} a_{ii} $。
+如下结论是显然的。
+
+\begin{enumerate}[ 1) ]
+	\item  $ {tr}(\alpha \boldsymbol{A}) = \alpha {tr}(\boldsymbol{A}) \cdots(\alpha \text { 是标量 }) \cdots  
+	    Special \ \ case:  {tr}(\boldsymbol{I}) = n $  ；
+	\item  $ {tr}\left( \boldsymbol{A} ^{\prime}\right) = {tr}(\boldsymbol{A}) $；
+	\item  $ {tr}(\boldsymbol{ A + B }) = {tr}( \boldsymbol{A} )+{tr}( \boldsymbol{B} ) $；
+	\item  $ {tr}(\boldsymbol{A B }) = {tr}(\boldsymbol{B A}), $ \qquad  
+				特例  $ {tr}\left(\boldsymbol{A}^{\prime} \boldsymbol{A} \right) = \sum_{i = 1}^{n} \sum_{j = 1}^{n} a_{i j}^{2} $
+	\item  循环排列原则: \quad $ tr(\boldsymbol{ABCD}) = tr(\boldsymbol{BCDA}) = tr(\boldsymbol{CDAB}) =tr(\boldsymbol{DABC}) $
+	
+	\begin{theorem}
+		实对称矩阵$ \boldsymbol{A} $的迹等于它的特征根之和。
+	\end{theorem}
+	
+	因为$ \boldsymbol{A} $是实对称矩阵，故有在矩阵$ \boldsymbol{C} $，使得 
+	$  \rm \boldsymbol{C}^{\prime} \boldsymbol{A}  \boldsymbol{C}  = 
+	\left(\begin{array}{ccc}
+		\lambda_{1} 	&  		  		& \\
+		&      			\ddots    		&\\
+		&  				&     			\lambda_{n}
+	\end{array} \right) $，
+	其中 $ \boldsymbol{C}^{\prime}  \boldsymbol{C} = \boldsymbol{I} $ ，
+	因此 $ \sum_{i=1}^{n} \lambda_{i}={tr}(\Lambda)
+		={tr}\left(\boldsymbol{C}^{\prime} \boldsymbol{A} \boldsymbol{C}\right)
+	    = {tr}\left(\boldsymbol{A} \boldsymbol{C}^{\prime} \boldsymbol{C}\right)={tr}(\boldsymbol{AI} )={tr}(\boldsymbol{A}) $
+\end{enumerate}
+
+	\subsection{矩阵的秩(rank)}
+
+  一个矩阵A的行秩和列秩一定相等，一个矩阵的秩就可以定义为它的行秩或列秩，记为r(A)，不加证明，我们给出如下结果：
+  \begin{enumerate}[ 1) ]
+ 	\item $  r(\boldsymbol{A}) = r\left( \boldsymbol{A}^{\prime}\right) \leqslant \min( \rm row,col) $
+	\item $  r(\boldsymbol{A})+r(\boldsymbol{A})-n_{1} \leqslant r(\boldsymbol{A B}) \leqslant \min (r(\boldsymbol{A}, r(\boldsymbol{A})) $ ，
+	  其中$\boldsymbol{A}$、$\boldsymbol{B}$分别为$m \times n_1$、$n_{1} \times n$矩阵，
+	  特例：如果$\boldsymbol{A}$、$\boldsymbol{B}$为 $n \times n$矩阵，而且$ \boldsymbol{AB=0}$，则 $ r(\boldsymbol{A})+r(\boldsymbol{A}) \le n $
+ 	\item $ r(\boldsymbol{A})=r\left(\boldsymbol{A} \boldsymbol{A}^{\prime}\right)=r\left(\boldsymbol{A}^{\prime} \boldsymbol{A}\right) $，其中 是$n \times n$的方阵
+ 	\item $ r(\boldsymbol{AB}) \le r(\boldsymbol{A})+r(\boldsymbol{B}) $
+ 	\item $ A $设 是$n \times n$矩阵，且$ \boldsymbol{A}^2 = \boldsymbol{I} $，则$ r(\boldsymbol{A+I})+r(\boldsymbol{A-I})=n $
+ 	\item $ A $设 是$n \times n$矩阵，且$ \boldsymbol{A}^2 = \boldsymbol{A} $，则$ r(\boldsymbol{A})+r(\boldsymbol{A-I})=n $
+  \end{enumerate}
+
+\subsection{统计量的矩阵表示}
+
+向量可理解为特殊的矩阵。$ \vec{\boldsymbol{i}} $是一个其元素都为1的n维列向量，即$ \vec{\boldsymbol{i}} = (1,1,\cdots \cdots,1)$，
+如果我们再假定$ \vec{\boldsymbol{x}} ^{\prime} = (X_1,X_2,\cdots \cdots,X_n) $，计量经济模型中的许多统计量就可以用矩阵的形式表示出来，很方便进行数学推导。
+
+显而易见，$ \sum_{i=1}^{n} x_{i}=\vec{\boldsymbol{i}}^{\prime} \cdot \vec{\boldsymbol{x}}, \quad 
+            \sum_{i=1}^{n} x_{i}^{2}=\vec{\boldsymbol{x}}^{\prime} \cdot \vec{\boldsymbol{x}} $，样本的均值与方差的矩阵表示如下：
+
+  \begin{enumerate}[ 1) ]
+	\item 样本均值矩阵表示：
+	
+	事实上 $ \vec{\boldsymbol{i}}^{\prime} \vec{\boldsymbol{i}} =n \text { 即 } 
+				\dfrac{\vec{\boldsymbol{i}}^{\prime} \vec{\boldsymbol{i}}}{n}=1, \text { 而 } 
+				\vec{\boldsymbol{i}} \vec{\boldsymbol{i}}^{\prime} =
+	\left( \begin{array}{cccc}
+	1 		& 1 			&\cdots	 		&	1 \\
+	1 		& 1 			&\cdots	  		&	1 \\
+	\cdots  & \vdots 		&\cdots 		&  \cdots \\
+	1 	    & 1				&\cdots 		& 	1
+	\end{array} \right),
+	\overline{x} =\dfrac{\sum_{i=1}^{n} x_{i}}{n} =\dfrac{\vec{\boldsymbol{i}}^{\prime} \cdot \vec{\boldsymbol{x}} }{n}  $
+	
+	\item 样本方差矩阵表示：
+	
+	易知:  
+	$ \left(\begin{array}{l}
+		    \bar{x} \\ \vdots \\ \bar{x}
+		   \end{array}  \right)
+		=\vec{i} \bar{x}=\vec{i} \cdot \dfrac{\vec{i}^{\prime}  \cdot \vec{x} }{n}  
+		=\dfrac{\vec{i} \vec{i}^{\prime} \vec{x}}{n}  $ 。  
+	其中矩阵  $ \dfrac{1}{n} \vec{i} \vec{i}^{\prime} $ 是一个每个元素都为  $ \dfrac{1}{n} $的n阶
+	阵, 从而  
+	$ \left(\begin{array}
+		{c}x_{1}-\bar{x} \\ 
+		x_{2}-\bar{x} \\ 
+		\vdots \\ 
+		x_{n}-\bar{x}
+	\end{array}\right)
+	=(\vec{x}-\vec{i} \bar{x})=\left(\vec{x}-\dfrac{ \vec{i} \vec{i}^{\prime} \vec{x}}{n}\right)
+	=\left(I-\dfrac{\vec{i} \cdot \vec{i}^{\prime}}{n} \right) \vec{x}  \triangleq  {\boldsymbol{M^{0}}} \vec{x} $
+	
+	矩阵$ \boldsymbol{M^{0}}  $的对角线上的元素为$ 1-\dfrac{1}{n} $，非对角线的元素为$ -\dfrac{1}{n} $，是一个对称矩阵。故样本方差：
+	\begin{eqnarray}
+			S^{2} & = &  \frac{1}{n} \sum_{i  =  1}^{n}\left(x_{i}-\bar{x}\right)^{2}  
+			=  \frac{1}{n}(\vec{x}-\bar{x})^{\prime}(\vec{x}-\bar{x}) \notag \\
+			& = &  \dfrac{1}{n} \vec{x} \cdot \boldsymbol{{M^{0}} ^{\prime }}  \boldsymbol{M^{0}} \vec{x}  
+			=  \dfrac{1}{n} \vec{x} {\boldsymbol{M^{0}}^{2}} \vec{x}  =  \dfrac{1}{n} \vec{x}^{\prime}  \boldsymbol{M^{0}} \vec{x} \notag
+	\end{eqnarray}	
+	
+	\begin{theorem}
+		矩阵$  \boldsymbol{M^{0}} $是幂等矩阵。
+	\end{theorem}
+\end{enumerate}
+
+\subsubsection {矩阵的二次型与多元正态分布}
+   
+	\begin{enumerate}[ 1) ]
+		\item  \setlength{\parindent}{2\ccwd} 矩阵的二次型（Quadratic Forms）和线性变换（linear transferring）
+		
+		设$ \mathbb{P} $ 是一数域，一个系数在数域 $ \mathbb{P} $ 中的$ f \left(x_{1}, x_{2}, \cdots, x_{n} \right) $ 的二次齐次多项式
+		\begin{eqnarray}
+			f\left(x_{1}, x_{2}, \cdots, x_{n}\right)  =   
+			a_{11} x_{1}^{2}+2 a_{12} x_{1} x_{2}+\cdots+2 a_{1 n} x_{1} x_{n}  \notag \\
+			+a_{22} x_{2}^{2}+\cdots+2 a_{2 n} x_{2} x_{n}  \label{eq 2.1.1} \\
+			\ldots \ldots \ldots \ldots . .  \notag \\
+			+a_{n n} x_{n}^{2}  \notag 
+		\end{eqnarray} 
+		
+		称为数域$ \mathbb{P} $ 上的一个n元二次型，或者，在不致引起混淆时简称二次型。例如
+		$$ x_{1}^{2}+x_{1} x_{2}+3 x_{1} x_{3}+2 x_{2}^{2}+4 x_{2} x_{3}+3 x_{3}^{2} $$
+		
+		就是有理数域上的一个三元二次型，为了以后讨论上的方便，在\eqref{eq 2.1.1}中， $ x_{i} x_{j}(i<j) $的系数写在 $ 2a_{i} a_{j}$。而不简单地写成$ a_{i} a_{j}$。
+		
+		和在几何中一样，在处理许多其它问题时也常常希望通过变量的线性替换简化有关的二次型，为此，我们引入
+		
+		\begin{mydef} 
+			设 $ x_{1}, \cdots, x_{n} ; \quad y_{1}, \cdots, y_{n} $是两组文字，系数在数域$ \mathbb{P} $ 中的一级关系式。
+		\end{mydef}
+		
+		\vspace{-1em}
+		\begin{eqnarray}
+		\left\{\begin{array}{l}
+		x_{1}  =  c_{11} y_{1}+c_{12} y_{2} +   \cdots + c_{1 n} y_{n}   \\
+		x_{2}  =  c_{21} y_{1}+c_{22} y_{2} +   \cdots + c_{2 n} y_{n} \\
+		\cdots  \cdots \\
+		x_{n}  =  c_{n 1} y_{1}+c_{n 2} y_{2} + \cdots + c_{n n} y_{n}
+		\end{array}\right.
+		\label{eq 2.1.2}
+		\end{eqnarray}
+		
+		称为由  $ x_{1}, \cdots, x_{n}, \quad x_{n} $ 到 $  y_{1}, \cdots, y_{n}  $
+		的一个线性替换，或简称线性替换，如果系数行列式
+		\vspace{-1em}
+		$$ \left|c_{i j}\right| \neq 0 $$
+		 % \vspace{-1.5em}
+		那么线性替换 \eqref{eq 2.1.2}就称为非退化的。在讨论二次型时，矩阵是一个有力的工具，因此我们先把二次型与线性替换用矩阵来表示。
+		
+        令 $ a_{j} a_{i} = a_{i} a_{j} , \quad i <j$。由于 $ x_{j} x_{i} = x_{i} x_{j} $ 所以二次型
+        \eqref{eq 2.1.2}
+        	可以写成
+        	 \begin{eqnarray}
+	        		f\left(x_{1}, x_{2}, \cdots, x_{n}\right)  & =  & a_{11} x_{1}^{2}+a_{12} x_{1} x_{2}+\cdots+a_{1 n} x_{1} x_{n} \notag  \\
+	        		&   & +a_{21} x_{2} x_{1}+a_{22} x_{2}^{2}+\cdots+a_{2 n} x_{2} x_{n} \notag \notag \\
+	        		&   & \cdots \cdots \cdots \cdots \cdots \cdots\cdots \cdots \cdots \cdots \label{eq 2.1.3}  \\
+	        		&   &  +a_{n 1} x_{n} x_{1}+a_{n 2} x_{n} x_{2}+\cdots+a_{n n} x_{n}^{2} \notag \\ 
+	        		& = & \sum_{i  =  1}^{n} \sum_{j  =  1}^{n} a_{i j} x_{i}x_{j} \notag
+			\end{eqnarray}
+			
+        把 \eqref{eq 2.1.3} 的系数排成一个n×n矩阵	
+       \begin{eqnarray}
+		\boldsymbol{A} & = & \left(
+			\begin{array}{llll}
+					a_{11} & a_{12} & \cdots & a_{1 n} \\
+					a_{21} & a_{22} & \cdots & a_{2 n} \\
+					\cdots & \cdots & \cdots & \cdots \\
+					a_{n 1} & a_{n 2} & \cdots & a_{n n}
+	       \end{array}\right)
+	   \label{eq 2.1.4}
+       \end{eqnarray}
+       
+       \eqref{eq 2.1.4} 就称为二次型\eqref{eq 2.1.3}的矩阵，因为$ a_{i j}  =  a_{j i}, \quad i, j  =  1, \cdots, n $。
+       所以$ \boldsymbol{A} = \boldsymbol{A^{\prime}} $。我们把这样的矩阵称为对称矩阵，因此二次型的矩阵都是对称的。
+       
+       令 $  \boldsymbol{X} =\left(\begin{array}{c}
+       x_{1} \\
+       x_{2} \\
+       \vdots \\
+       x_{n}
+       \end{array}\right)  $
+       于是，二次型可以用矩阵的乘积表示出来，
+       \vspace{-1em}
+       \begin{eqnarray}
+			\begin{array}{l}
+				f\left(x_{1}, x_{2}, \cdots, x_{n}\right) = \boldsymbol{X^{\prime}} \boldsymbol{A} \boldsymbol{X} 
+				\vspace{1em}  \\
+					=  \left(x_{1}, x_{2}, \cdots, x_{n}\right)\left(
+						\begin{array}{cccc}
+							a_{11} & a_{12} & \cdots & a_{1 n} \\
+							a_{21} & a_{22} & \cdots & a_{2 n} \\
+							\cdots & \cdots & \cdots & \cdots \\
+							a_{n 1} & a_{n 2} & \cdots & a_{n n}
+						\end{array}\right)\left(
+						\begin{array}{c}
+							x_{1} \\
+							x_{2} \\
+							\vdots \\
+							x_{n}
+						\end{array}\right)
+       \vspace{1em} \\
+					=  \left(x_{1}, x_{2}, \cdots, x_{n}\right)\left(
+						\begin{array}{l}
+							a_{11} x_{1}+a_{12} x_{2}+\cdots+a_{1 n} x_{n} \\
+							a_{21} x_{1}+a_{22} x_{2}+\cdots+x_{2 n} x_{n} \\
+							a_{n 1} x_{1}+a_{n 2} x_{2}+\cdots+a_{n n} x_{n}
+						\end{array}\right)\\
+				=  \sum_{i=1}^{n} \sum_{j=1}^{n} a_{i j} x_{i} x_{j}  \notag
+			\end{array}  
+        \end{eqnarray}
+        
+        应该看到，二次型 \eqref{eq 2.1.1} 的矩阵$ \boldsymbol{A} $的元素 $ a_{i}a_{j} = a_{j}a_{i} $，
+        正是它的$ x_{i}x_{j} = x_{j}x_{i} $项的系数的一半，因此二次型和它的矩阵是相互唯一决定的，由此还能得到，若二次型
+        \begin{eqnarray}
+			f\left( x_{1}, x_{2}, \cdots, x_{n}\right)  =  \boldsymbol{X^{\prime}} \boldsymbol{A} \boldsymbol{X}   
+			   = \boldsymbol{X^{\prime}} \boldsymbol{B} \boldsymbol{X} \notag
+		\end{eqnarray}
+		
+		且$ \boldsymbol{A} = \boldsymbol{A^{\prime}}, \boldsymbol{B} = \boldsymbol{B^{\prime}} $ 
+		 则 $ \boldsymbol{A} = \boldsymbol{B} $。令：
+        \begin{eqnarray}
+			\boldsymbol{C} & = & \left(
+				\begin{array}{llll}
+					c_{11} & c_{12} & \cdots & c_{1 n} \\
+					c_{21} & c_{22} & \cdots & c_{2 n} \\
+					\cdots & \cdots & \cdots & \cdots \\
+					c_{n 1} & c_{n 2} & \cdots & c_{n n}
+				\end{array}\right), 
+				\boldsymbol{Y}  =  \left(
+				\begin{array}{l}
+					y_{1} \\
+					y_{2} \\
+					\vdots \\
+					y_{n}
+				\end{array}\right)  \notag 
+        \end{eqnarray}
+        
+        于是线性替换\eqref{eq 2.1.2} 可以写成
+        
+        \begin{eqnarray}
+			\left(
+				\begin{array}{l}
+					x_{1} \\
+					x_{2} \\
+					\vdots \\
+					x_{n}
+				\end{array}\right) & = & \left(
+				\begin{array}{llll}
+					c_{11} & c_{12} & \cdots & c_{1 n} \\
+					c_{21} & c_{22} & \cdots & c_{2 n} \\
+					\cdots & \cdots & \cdots & \cdots \\
+					c_{n 1} & c_{n 2} & \cdots & c_{n n}
+				\end{array}\right)\left(
+				\begin{array}{l}
+					y_{1} \\
+					y_{2} \\
+					\vdots \\
+					y_{n}
+				\end{array}\right) \quad or \quad \rm \boldsymbol{X}=\boldsymbol{CY} \notag
+        \end{eqnarray}
+        
+		\setlength{\parindent}{2\ccwd}  我们知道，经过一个非退化的线性替换，二次型还是变成二次型，现在就来看一下，替换后的二次型与原来的二次型之间有什么关系，
+		也就是说，找出替换后的二次的矩阵与原二次型的矩阵之间的关系。
+        \begin{eqnarray}
+			Suppose \quad f\left(x_{1}, x_{2}, \cdots, x_{n}\right)  = \boldsymbol{X^{\prime}} \boldsymbol{A} \boldsymbol{X} , \quad \boldsymbol{A}   
+			=  \boldsymbol{A^{\prime}}  \label{eq 2.1.5}
+        \end{eqnarray}
+        
+        是一个二次型，作非退化线性替换
+        \begin{eqnarray}
+			\boldsymbol{X}   = \boldsymbol{CY}  \label{eq 2.1.6}
+        \end{eqnarray}
+
+        我们得到一个$ y_{1}, y_{2}, \cdots, y_{n}$ 的二次型
+         $  \Longrightarrow \boldsymbol{Y^{\prime} B Y} $ 
+         
+        \setlength{\parindent}{2\ccwd} 现在来看矩阵B与A的关系。把\eqref{eq 2.1.6}代入\eqref{eq 2.1.5}，有
+        \begin{eqnarray}
+			f\left(x_{1}, x_{2}, \cdots, x_{n}\right)  & = & \boldsymbol{ X^{\prime} A X } = 
+			\boldsymbol{ (C Y)^{\prime} A(C Y) }  =  \boldsymbol{ Y^{\prime} C^{\prime} A C Y }  \notag \\
+			& = &{ \boldsymbol{ Y^{\prime}\left(C^{\prime} A C\right) Y} } = \boldsymbol{ Y^{\prime} B Y } \notag
+        \end{eqnarray}
+
+        容易看出，矩阵$ C^{\prime} A C $也是对称的，事实上，
+        \begin{eqnarray}
+			\boldsymbol{ \left(C^{\prime} A C\right)^{\prime} } = \boldsymbol{ C^{\prime} A^{\prime} C^{\prime \prime} }
+			= \boldsymbol{ C^{\prime} A C } \notag
+        \end{eqnarray}
+
+        由此，即得$ \boldsymbol{ B = C^{\prime} A C }$ 这就是前后两个二次型的矩阵的关系，与之相应，我们引入
+        
+        \begin{mydef}
+			数域  $ \mathbb{ P } $ 上 $ n \times n $ 短阵  $ \boldsymbol{ A, B }$ 称为合同的，如果有数域  $ \mathbb{ P } $  上可逆的
+        	$ n \times n $  矩阵  $ \boldsymbol{ C } $,使$ \boldsymbol{ B = C^{\prime} A C } $。
+		\end{mydef}
+
+        合同是矩阵之间的一个关系，不难看出，合同关系具有
+        \begin{enumerate}[1)]
+        	\item 反身性：$ \rm A = E^{\prime} A E $
+        	\item 对称性：由$ \rm B = C^{\prime} A C $即得$ \rm B = (C^{-1})^{\prime} A C^{-1} $
+        	\item 传递性：由$ \rm A_1 = C_{1}^{\prime} A C_{1} , A_2 = C_{2}^{\prime} A C_{2} $
+        	即得$ \rm A_2 = (C_{1} C_{2})^{\prime} A (C_{1} C_{2}) $
+        \end{enumerate}	
+        \setlength{\parindent}{2\ccwd}	
+        
+        因之，经过非退化的线性替换，新二次型的矩阵与原二次型的矩阵是合同的。这样，我们就把二次型的变换通过矩阵表示出来，为以下的探讨提供了有力的工具。
+        	
+        最后指出，在变换二次型时，我们总是要求所作的线性替换是非退化的。从几何上看，这一点是自然的，因为坐标变换一定是非退化的，一般地，当线性替换。
+        $$ \boldsymbol{ X = CY } $$
+
+        是非退化时，由上面的关系即得
+        $$ \boldsymbol{ Y = C^{-1}X } $$
+        
+        这也是一个线性替换，它把所得的二次型还原。这样就使我们从所得二次型的性质可以推知原来二次型的一些性质。
+        \begin{theorem}
+			定理：若$ \boldsymbol{ A } $是实对称矩阵，则存在可逆矩阵$ \boldsymbol{C} $，满足： 
+			$ \begin{array}{l}
+				\boldsymbol{ C^{\prime} A C}  = \boldsymbol{ \Lambda }=  \left(
+					\begin{array}{ccc}
+						\lambda_{1}               \\
+						&            \ddots      &\\
+						&              &      \lambda_{n}
+					\end{array} \right)
+			\end{array} $
+		\end{theorem}
+       \item 多元正态分布
+       		\begin{enumerate}[a)]
+       			\item 二元正态分布
+       			\setlength{\parindent}{2\ccwd}
+       			直观上，二元正态分布是两个正态随机变量的联合分布。如果两个随机变量$ X_1 $ 和$ X_2 $的联合密度函数为
+					\begin{eqnarray}
+					f\left(x_{1}, x_{2}\right) & =  &\frac{1}{2 \pi \sigma_{1} \sigma_{2} \sqrt{1-\rho^{2}}} 
+					\exp \left\{-\frac{\Sigma }{2}\right\}^{-1} \notag \\
+					where \quad -\infty<x_{1}, \quad x_{2}<\infty, &  &\quad \sigma_{1}>0, \quad \sigma_{2}>0, \quad-1<\rho<1 \notag \\
+					\boldsymbol{\Sigma^{-1} } & = & \frac{1}{1-\rho^{2}} 
+					\left[\left(\frac{x_{1}-\mu_{1}}{\sigma_{1}}\right)^{2}-2 \rho\left(\frac{x_{1}-\mu_{1}}{\sigma_{1}}\right)\left(\frac{x_{2}-\mu_{2}}{\sigma_{2}}\right)+\left(\frac{x_{2}-\mu_{2}}{\sigma_{2}}\right)^{2}\right] \notag
+       			\end{eqnarray}
+       			
+				我们称$ X_1 $ 和$ X_2 $服从二元正态分布。通过计算可得$ X_1 $ 和$ X_2 $的边际分布分别为
+				   $ \rm N(\mu_{1} ,\sigma_{1}^{2})$ , $ \rm N(\mu_{2} ,\sigma_{2}^{2})$。上式中的参数$ \rho $是$ X_1 $ 和$ X_2 $的相关系数。
+       			
+       			如果$ X_1 $ 和$ X_2 $服从二元正态分布，那么在给定$ X = \it x $ 的条件下$ X_2 $的条件分布也是正态的。它的条件密度函数为
+       			\begin{eqnarray}
+					f\left(x_{2} \mid x_{1}\right) \sim N\left(b, \sigma_{2}^{2}\left(1-\rho^{2}\right)\right) ,\quad 
+					where \ \ b=\mu_{2}+\rho \frac{\sigma_{2}}{\sigma_{1}} \left(x_{1}-\mu_{1}\right) \notag
+       			\end{eqnarray}
+       			
+       			条件均值$ \rm b =  \mathbb{E} \left(X_{2} \mid X_{1} \right) $是
+				   $ \it x_{1} $的线性函数。并且，二元正态分布具有一个独特的性质，那就是如果$ \rho = 0 $，那么$ X_1 $ 和$ X_2 $是相互独立的。
+				   这是由于当$ \rho = 0 $时，我们有 $ f\left(x_{2} \mid x_{1}\right) $。这对于一般的两个随机变量是不对的。
+       			
+       			有时如果把联合概率密度函数写成矩阵的形式，则从形式上来看就简单多了。记$ X^{\prime}=\left(X_{1}, X_{2}\right) $，那么二元正态概率密度函数可以写成如下的简单形式
+       			\begin{eqnarray}
+					f(x)  =  (2 \pi)^{-1}|\Sigma|^{-1 / 2} 
+					 \exp \left\{-\frac{1}{2}(x-\mu)^{\prime} \Sigma^{-1}(x-\mu)\right\} \notag \\
+       			where \ \ x=\left[
+					   \begin{array}{l}
+							x_{1} \\
+							x_{2}
+	       			   \end{array}\right], \mu=\left[
+					   \begin{array}{l}
+							\mu_{1} \\
+							\mu_{2}
+	       			   \end{array}\right], \boldsymbol{\Sigma}=\left[
+					   \begin{array}{cc}
+							\sigma_{1}^{2} & \sigma_{1} \sigma_{2} \rho \\
+							\sigma_{1} \sigma_{2} \rho & \sigma_{2}^{2}
+	       			   \end{array}\right] \notag
+				   \end{eqnarray}
+				   
+       			\item 多元正态分布
+       			
+				   $ g(x)=\dfrac{1}{2 \pi^{\frac{n}{2}} \Sigma^{\frac{1 }{2}} }\exp \left\{-\frac{1}{2} { \boldsymbol{(x-\mu)^{\prime} \Sigma^{-1}(x-\mu)}} \right\}, 
+				   \quad x \in \mathbb{R}^{n} $
+       			这就是均值为$ \boldsymbol{ \mu }$ 协方差矩阵为$ \sum $的多元正态分布，记为$ \boldsymbol{ X } \sim  N(\boldsymbol{ \mu } , \boldsymbol{ \Sigma }) $
+       			
+       			\item 多元正态分布的二次型的分布
+       			
+       			如果$ \boldsymbol{X} \sim  N(\boldsymbol{\mu, \Sigma}) $，那么
+       			$$ \boldsymbol{ Y=(X-\mu)^{\prime} \Sigma^{-1}(X-\mu) } \sim \chi_{(n)}^{2} $$
+       			
+				   这里n是$ \boldsymbol{X} $的维数。我们可以简单地证明这个结果。由于$ \boldsymbol{\Sigma} $是对称可逆矩阵，那么存在一个可逆的矩阵$ \boldsymbol{A} $，
+				   使得 $ \boldsymbol{ A \sum A^{\prime}=I }$ 。我们有 $ \boldsymbol{ A X }\sim N(\boldsymbol{A \mu, I}), \boldsymbol{Z=A(X-\mu)} 
+				   \sim N(0, \boldsymbol{I}) $ 
+				   所以 $ \boldsymbol{ Y=Z^{\prime} Z=(X-\mu)^{\prime} \Sigma^{-1}(X-\mu)} \sim \chi_{(n)}^{2} $。
+       		\end{enumerate}
+	\end{enumerate}
+
+   \subsection{幂等矩阵与二次型}
+   幂等矩阵满足$ \boldsymbol{A^2=A} $的矩阵称为幂等矩阵。
+   
+   幂等矩阵可以是对称的，也可以是非对称的，但在我们计量统计学中，所研究的幂等矩阵都是对称的。与幂等矩阵的有关的结果有：
+   \begin{enumerate}[1)]
+   
+   	\item 幂等矩阵的特征根要么是1，要么是零。
+   	
+ \begin{myproof}
+		设 $ \lambda $ 是$ \boldsymbol{A} $的特征根，则  $ \boldsymbol{A E}=\lambda \boldsymbol{E}$ , 同时 
+	$ \lambda \boldsymbol{E =A=A^{2}}=\lambda^{2} \boldsymbol{E} $ , \text { 故 } $ \lambda^{2}=\lambda$ , 
+	从而 $  \lambda=1 $  或  $ \lambda=0$ 
+ \end{myproof}
+  
+   	\item 唯一满秩的对称幂等矩阵是单位矩阵。
+   	
+  \begin{myproof}
+	$ \because \boldsymbol{A^{2}=A} \Rightarrow \boldsymbol{A(I-A)}=0 \Rightarrow \boldsymbol{A^{-1} A(I-A)}=0 \Longrightarrow \boldsymbol{I=A} $
+  \end{myproof}
+   	\item $ \boldsymbol{A} $是幂等矩阵，则$\boldsymbol{I-A}$也是幂等矩阵，且秩$ \boldsymbol{(A)} $ + 秩$ \boldsymbol{(I - A)} $ = n。
+   	\item 对称幂等矩阵的秩等于它的迹。
+   	
+   	\setlength{\parindent}{2\ccwd}
+   	从而我们很容易知道$ \boldsymbol{M^{0}} $ 的秩。因$ \boldsymbol{M^{0}} $的每个对角元素都是 $ 1 - \dfrac{1}{n} $。因此
+   	$ {tr} \left(\boldsymbol{M^{0}}\right) = n \cdot\left(1-\dfrac{1}{n}\right)
+   	= n-1 = r\left(\boldsymbol{M^{0}}\right) $
+   \item 
+   $ \left.n S_{n}^{2} \text { 的服从 } \chi^{2}(n-1) \text { 分布（如果 } 
+   \mathrm{X}_{i} \sim N(0, \boldsymbol{I}), i=1 ,\cdots , n\right) $ 
+   
+   这是因为：$ n S_{n}^{2}=\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}=\vec{x} \boldsymbol{M^{0}} \vec{x} \ \
+   \text { 和 } \ \  r \left(\boldsymbol{ M^{0} }\right)=n-1 $
+   
+   \item $ \rm \boldsymbol{ M = I-X }\left( \boldsymbol{X^{\prime} X } \right)^{-1} \boldsymbol{ X^{\prime}} $ \quad $\boldsymbol{ X }$
+   是一个$n \times m$的矩阵，秩
+   $ \rm (\boldsymbol{X}) = m $，则 $\boldsymbol{M}$ 是幂等矩阵。
+   \end{enumerate}
+
+\subsection{微分及其矩阵的微分表示}
+\begin{enumerate} [1、]
+	\item 矩阵的微分
+		\setlength{\parindent}{2\ccwd}
+		如果$ y=f\left(x_{1}, x_{2}, \cdots, x_{n}\right) $ 或写成 $ y=f(x) $
+		\begin{eqnarray}
+		\begin{array}{c}
+		\dfrac{\partial f(x)}{\partial x} = \left[\begin{array}{c}
+		\partial y / \partial x_{1} \\
+		\partial y / \partial x_{2} \\
+		\vdots \\
+		\partial y / \partial x_{n}
+		\end{array}\right] = \left[\begin{array}{c}
+		f_{1} \\
+		f_{2} \\
+		\vdots \\
+		f_{n}
+		\end{array}\right]
+		\end{array} \notag
+		\end{eqnarray}
+		
+		二阶偏导数矩阵为
+		\begin{eqnarray}
+		\frac{\partial f^{2}(x)}{\partial x \partial x^{\prime}}  =  \left[\begin{array}{cccc}
+		\partial^{2} y / \partial x_{1} \partial x_{1} & \partial^{2} y / \partial x_{1} \partial x_{2} & \cdots & \partial^{2} y / \partial x_{1} \partial x_{n} \\
+		\partial^{2} y / \partial x_{2} \partial x_{1} & \partial^{2} y / \partial x_{2} \partial x_{2} & \cdots & \partial^{2} y / \partial x_{2} \partial x_{n} \\
+		\cdots & \cdots & & \cdots \\
+		\partial^{2} y / \partial x_{n} \partial x_{1} & \partial^{2} y / \partial x_{n} \partial x_{2} & \cdots & \partial^{2} y / \partial x_{n} \partial x_{n}
+		\end{array}\right] \notag
+		\end{eqnarray}
+		
+		特别地，如果 $ y = \boldsymbol{ a^{\prime} x=x^{\prime} a }=\sum_{i=1}^{n} a_{i} x_{i} $，那么
+		\begin{eqnarray}
+		\frac{\partial \left( \boldsymbol{ a^{\prime} x } \right) }{ \partial \boldsymbol{x} }  =  
+		\frac{\partial \left( \boldsymbol{ x^{\prime} a } \right) }{ \partial \boldsymbol{x} }  =  a \notag
+		\end{eqnarray} 
+		 
+		同样地可得
+		\begin{eqnarray}
+		\frac{\partial \boldsymbol{A x}}{\partial \boldsymbol{x}}  =  \boldsymbol{A^{\prime}}  \notag
+		\end{eqnarray}
+		
+		如果A是对称矩阵，那么
+		\begin{eqnarray}
+		\frac{\partial \boldsymbol{ x^{\prime} A x} }{\partial \boldsymbol{x}}  = 2 \boldsymbol{ A x } = \left( \boldsymbol{ A+A^{\prime} }\right) x \notag
+		\end{eqnarray}
+		
+		{\bf 思考题：}
+		
+		1、证明：$ {tr}\left( \boldsymbol{ A A^{\prime} }\right) = \sum_{j = 1}^{n} \sum_{j=1}^{n} a_{i j}^{2} $
+		
+		2、证明矩阵$ \boldsymbol{M^{0}} $是幂等矩阵。
+		
+		3、如果$  L_{1} $、 $L_{2} \cdots L_{\mathrm{n}}  $ 的百分比变动较小$   \Delta L_{1}, \cdots \Delta L_{n} $
+		
+		如果 $  Y_{1}$ 、$ Y_{2} \cdots Y_{\mathrm{m}} $  巾百分比变动较小 $  \Delta Y_{1}, \cdots \Delta Y_{m} $
+		则如下计算公式是否可行？
+		
+		\quad a) $  \Delta\left(L_{1}, L_{2} \cdots L_{n}\right) \approx \sum_{i=1}^{n} \Delta L_{i}  $
+		
+		\quad b) $  \Delta\left(\dfrac{Y_{1} \cdots Y_{m}}{L_{1} \cdots L_{n}}\right) \approx \sum_{i=1}^{m} \Delta Y_{i}-\sum_{i=1}^{n} \Delta L_{i}  $
+	\item 矩阵的分块（partitioned matrix）
+	
+		在表述一个矩阵的元素时——如构造一个方程组——将一些元素以子矩阵的形式进行分组有时是有用的，例如，我们可以写
+       \vspace{-0.5em}
+		\begin{eqnarray}
+		\boldsymbol{A}  =  \left[\begin{array}{lll}
+		1 & 4 & 5 \\
+		2 & 9 & 3 \\
+		8 & 9 & 6
+		\end{array}\right]  \notag =  \left[\begin{array}{ll}
+			\boldsymbol{A_{11}} & \boldsymbol{A_{12}} \\
+			\boldsymbol{A_{21}} & \boldsymbol{A_{22}}
+		\end{array}\right]  \notag
+		\end{eqnarray}
+		
+		A称为一个分块矩阵，子矩阵的下标和矩阵中的元素的下标按同样方式定义，一个普通的特殊情形是分块对角矩阵。其中$A_{11}
+		$ 和$ A_{22} $都是方阵。
+		\begin{eqnarray}
+		\left[\begin{array}{cc}
+			\boldsymbol{A_{11}} & \boldsymbol{0} \\
+			\boldsymbol{0} & \boldsymbol{A_{22}}
+		\end{array}\right]  \notag
+		\end{eqnarray}
+		
+		{\bf 分块矩阵的加法和乘法}
+		
+		加法和乘法可以推广到分块矩阵，对一致的分块矩阵$ \boldsymbol{A} $和$ \boldsymbol{B} $有：
+		\vspace{-0em}
+		\begin{eqnarray}
+			\boldsymbol{A+B} & = & \left[\begin{array}{ll}
+				\boldsymbol{A_{11}+B_{11}} & \boldsymbol{A_{12}+B_{12}} \\
+				\boldsymbol{A_{21}+B_{21}} & \boldsymbol{A_{22}+B_{22}}
+		\end{array}\right]
+		\end{eqnarray}
+		\begin{eqnarray}
+			\boldsymbol{A B}  & = & \left[\begin{array}{ll}
+				\boldsymbol{A_{11}} & \boldsymbol{A_{12}} \\
+				\boldsymbol{A_{21}} & \boldsymbol{A_{22}}
+		\end{array}\right]\left[\begin{array}{ll}
+			\boldsymbol{B_{11}} & \boldsymbol{B_{12}} \\
+			\boldsymbol{B_{21}} & \boldsymbol{B_{22}}
+		\end{array}\right] \\ \notag
+		& = & \left[\begin{array}{ll}
+			\boldsymbol{A_{11} B_{11}+A_{12} B_{21}} & \boldsymbol{A_{11} B_{12}+A_{12} B_{22}} \\
+			\boldsymbol{A_{21} B_{11}+A_{22} B_{21}} & \boldsymbol{A_{21} B_{12}+A_{22} B_{22}}
+		\end{array}\right]
+		\end{eqnarray}
+		
+		其中所有矩阵必须适于所用运算，对于加法，$ A_{ij} $和$ B_{ij} $的阶数必须相同；
+		在乘法中，对所有的数对i和j，$ A_{ij} $的列数必须等于$ B_{ij} $的行数，即矩阵相乘所必需的条件都要得到满足。两个经常遇到的情况是如下的形式：
+		\begin{eqnarray}
+		\left[\begin{array}{c}
+			\boldsymbol{A_{1}} \\
+			\boldsymbol{A_{2}}
+		\end{array}\right]^{\prime}\left[\begin{array}{c}
+			\boldsymbol{A_{1}} \\
+			\boldsymbol{A_{2}}
+		\end{array}\right]  & = & \left[\begin{array}{cc}
+			\boldsymbol{A_{1}^{\prime}} & \boldsymbol{A_{2}^{\prime}}
+		\end{array}\right]\left[\begin{array}{c}
+			\boldsymbol{A_{1}} \\
+			\boldsymbol{A_{2}}
+		\end{array}\right] \\
+		& = & \left[ \boldsymbol{ A_{1}^{\prime} A_{1}+A_{2}^{\prime} A_{2} }\right] \notag
+		\end{eqnarray}
+		\begin{eqnarray}
+		\left[\begin{array}{cc}
+			\boldsymbol{A_{11}} & \boldsymbol{0} \\
+			\boldsymbol{0} & \boldsymbol{A_{22}}
+		\end{array}\right]^{\prime}\left[\begin{array}{cc} 
+			\boldsymbol{A_{11}} & \boldsymbol{0} \\
+			\boldsymbol{0} & \boldsymbol{A_{22}}
+		\end{array}\right] & = & \left[
+			\begin{array}{cc}
+				\boldsymbol{A_{11}^{\prime} A_{11} } & \boldsymbol{0} \\
+				\boldsymbol{0} & \boldsymbol{A_{22}^{\prime} A_{22}}
+			\end{array}\right] 
+		\end{eqnarray}
+		
+		{\bf 分块矩阵的行列式}
+		
+		类似于对角矩阵的行列式，分块对角矩阵的行列式可以得到
+		\begin{eqnarray}
+		\left|\begin{array}{ll}
+			\boldsymbol{A_{11}} & \boldsymbol{0} \\
+			\boldsymbol{0} & \boldsymbol{A_{22}}
+		\end{array}\right| & = & \left| \boldsymbol{ A_{11} }\right| \cdot\left| \boldsymbol{A_{22}} \right|
+		\end{eqnarray}
+		
+		一个一般的$2 \times 2$分块矩阵的结果为：
+	
+		
+		大于$2 \times 2$分块矩阵的结果极其繁琐，且在我们的工作中也不必要。
+		
+		{\bf 分块矩阵的逆}
+		
+		分块对角矩阵的逆是：
+		 \vspace{-1em}
+		\begin{eqnarray}
+		\left|\begin{array}{cc}
+		\boldsymbol{A_{11}} & \boldsymbol{A_{12}} \\
+		\boldsymbol{A_{21}} & \boldsymbol{A_{22}}
+		\end{array}\right|  & = & \left| \boldsymbol{A_{22}} \right| \cdot\left| \boldsymbol{A_{11}-A_{12} A_{22}^{-1} A_{21}} \right| \\
+		& = & \left| \boldsymbol{ A_{11} } \right| \cdot\left| \boldsymbol{A_{22}-A_{21} A_{11}^{-1} A_{12}}\right| \notag
+		\end{eqnarray}
+		
+		这可以最简单地用逆去乘A来证实。由于计算的对称性，左上块可以写作：
+		
+		\begin{eqnarray}
+		\left[\begin{array}{cc}
+			\boldsymbol{A_{11}} & \boldsymbol{0} \\
+			\boldsymbol{0} & \boldsymbol{A_{22}}
+		\end{array}\right]^{-1} & = & \left[
+			\begin{array}{cc}
+				\boldsymbol{A_{11}^{-1}} & \boldsymbol{0} \\
+				\boldsymbol{0} & \boldsymbol{A_{22}^{-1}}
+			\end{array}\right]
+		\end{eqnarray}
+		
+		这可由直接相乘证实。对一般的$2 \times 2$分块矩阵，分块逆的一个形式是：
+		\begin{eqnarray}
+		\left[\begin{array}{cc}
+			\boldsymbol{A_{11}} & \boldsymbol{A_{12}} \\
+			\boldsymbol{A_{21}} & \boldsymbol{A_{22}}
+		\end{array}\right]^{-1} & = & \left[\begin{array}{cc}
+			\boldsymbol{A_{11}^{-1}} \left( \boldsymbol{ I+A_{12} F_{2} A_{21} A_{11}^{-1}} \right) & -\boldsymbol{ A_{11}^{-1} A_{12} F_{2}} \\
+		-\boldsymbol{F_{2} A_{21} A_{11}^{-1}} & \boldsymbol{F_{2}} \\ 
+		\end{array}\right]  \label{eq 2.1.14} \\
+		where \ \ \boldsymbol{ F_{2} } & = & \left( \boldsymbol{ A_{22}-A_{21} A_{11}^{-1} A_{12}} \right)^{-1} \notag
+		\end{eqnarray}
+		
+		这可以最简单地用逆去乘A来证实。由于计算的对称性，左上块可以写作：
+		\begin{eqnarray}
+			\boldsymbol{F_{1}} & = & \left( \boldsymbol{ A_{11}-A_{12} A_{22}^{-1} A_{21} }\right)^{-1} \notag
+		\end{eqnarray}
+		
+		{\bf 对均值的偏差}
+		
+		上述内容的一个有用的应用是如下的计算：假设我们从一个n个元素的列向量$ \it x $开始。且令
+		\begin{eqnarray}
+			\boldsymbol{A} & = & \left[
+			\begin{array}{ll}
+				n & \Sigma_{i} x_{i} \\
+				\Sigma_{i} x_{i} & \sum_{i} x_{i}^{2}
+			\end{array}\right] 
+		=\left[\begin{array}{ll}
+			\boldsymbol{i^{\prime} i} & \boldsymbol{i^{\prime} x} \\
+			\boldsymbol{x^{\prime} i} & \boldsymbol{x^{\prime} x}
+		\end{array}\right] \notag
+		\end{eqnarray}
+		
+		我们关心的是$ A^{-1} $中的右下角元素，根据\eqref{eq 2.1.14}中$F_2$的定义，这将是
+		\begin{eqnarray}
+		F_{2}  & = & \left[ \boldsymbol{ x^{\prime} x-\left(x^{\prime} i\right)\left(i^{\prime} i\right)^{-1}\left(i^{\prime} x\right)}\right]^{-1} \notag \\
+		& = & \left\{ \boldsymbol{x^{\prime}\left[I x-i\left(\frac{1}{n}\right) i^{\prime} x\right] }\right\}^{-1} \notag \\
+		& = & \left\{ \boldsymbol{x^{\prime}\left[I-\left(\frac{1}{n}\right) i^{\prime} i\right] x}\right\}^{-1} \notag \\
+		& = & \left[ \boldsymbol{x^{\prime} M^{0} x }\right]^{-1} \notag
+		\end{eqnarray}
+		
+		所以，逆矩阵中的右下角值是
+		\begin{eqnarray}
+			\left( \boldsymbol{x^{\prime} M^{0} x} \right)^{-1}  =  \dfrac{1}{\sum_{i}\left(x_{i}-\bar{x}\right)^{2}}  =  a_{22}  \notag
+		\end{eqnarray}
+		
+		现在，假设以含有若干列的矩阵$ \boldsymbol{X} $代替只有一列的$x$，我们要求$ \boldsymbol{[Z′Z]}^{-1} $中的右下块，这里$ \boldsymbol{ Z=[i,X] }$，类似的结果是
+		\begin{eqnarray}
+		\left( \boldsymbol{ Z^{\prime} Z }\right)^{-1} & = & \left[ \boldsymbol{ X^{\prime} X-X^{\prime} i\left(i^{\prime} i\right)^{-1} i^{\prime} X }\right]^{-1} \\ & = & \left[ \boldsymbol{ X^{\prime} M^{0} X }\right]^{-1} \notag
+		\end{eqnarray}
+		
+		这暗示着
+		$ [ \boldsymbol{ Z{^{\prime}}Z }]^{-1} $的右下块， $ K \times K $矩阵是第$ jk $元素为$ \Sigma_{i}\left(x_{i j}-\bar{x}_{j}\right)
+		\left(x_{i k}-\bar{x}_{k}\right) $的$ K \times K $矩阵的逆，
+		这样，当一个数据矩阵含有一列1时，平方和及交叉积矩阵的逆的元素将用原始数据以对其相对应列均值的离差的形式计算得出。
+		
+\end{enumerate}

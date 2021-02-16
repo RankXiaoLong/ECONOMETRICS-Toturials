@@ -1,0 +1,43 @@
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ % @File    : c:\Users\Administrator\Desktop\Econometrics\太极图\TaiJi.tex
+ % @Date    : 2021-02-10 11:03:26
+ % @Author  : RankFan
+ % @Email   : 1917703489@qq.com
+ % -----
+ % Last Modified: 2021-02-10 11:05:53
+ % Modified By: Rank_fan
+ % -----
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ \documentclass[border=1cm, 12pt]{standalone}
+\usepackage{tikz}
+\begin{document}
+    \begin{tikzpicture}
+        \draw(0,0) circle(3cm);  %画一个4cm的圆圈
+        %把圆的右半边填黑
+        \begin{scope}
+            \clip(0,0) circle(3cm);
+            \fill[black] (0,-3) rectangle (3,3);
+        \end{scope}
+        %填黑八卦图左边的半圆
+        \begin{scope}
+            \clip(0,1.5) circle(1.5cm);
+            \fill[white] (-3,0) rectangle (3,3);
+        \end{scope}
+        %填白八卦图右边的半圆
+        \begin{scope}
+            \clip(0,-1.5) circle(1.5cm);
+            \fill[black] (-3,0) rectangle (3,-3);
+        \end{scope}
+        %把黑色部分的小圆圈填为白色
+        \begin{scope}
+            \clip(0,1.5) circle(0.5cm);
+            \fill[black] (-3,0) rectangle (3,3);
+        \end{scope}
+    %绘制下面的白色圆圈
+        \begin{scope}
+            \clip(0,-1.5) circle(0.5cm);
+            \fill[white] (-3,0) rectangle (3,-3);
+        \end{scope}
+        % \node[elegant,black](a) at (0,3.5) {——}
+    \end{tikzpicture}	
+\end{document}

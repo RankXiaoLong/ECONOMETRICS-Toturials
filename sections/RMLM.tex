@@ -1,0 +1,616 @@
+\chapter{带有线性约束的多元线性回归模型及其假设检验}
+	
+	在本章中，继续讨论第五章的模型，但新的模型中，参数$ \boldsymbol{\beta} $满足$ J $个线性约束集，$ \boldsymbol{R}\boldsymbol{\beta} = \boldsymbol{q} $，矩阵$ \boldsymbol{R} $有和$ \boldsymbol{\beta} $相一致的$ K $列和总共$ J $个约束的$ J $行，且$ \boldsymbol{R} $是行满秩的，我们考虑不是过度约束的情况，因此，$ J<K $。
+	 
+	带有线性约束的参数的假设检验，我们可以用两种方法来处理：
+	 
+	第一个方法是我们按照无约束条件求出一组参数估计后，然后我们对求出的这组参数是否满足假设所暗示的约束，进行检验，我们在本章的第一节中讨论。
+	 
+	第二个方法是我们把参数所满足的线性约束和模型一起考虑，求出参数的最小二乘解，尔后再作检验，后者就是参数带有约束的最小二乘估计方法，我们在本章的第二节中讨论。
+	\section{线性约束的检验}
+	从线性回归模型开始，
+	\begin{align}
+		\boldsymbol{y} = \boldsymbol{X \beta}+\boldsymbol{\varepsilon}
+	\end{align}
+	我们考虑具有如下形式的一组线性约束，
+	\vspace{-0.5em}
+	\begin{eqnarray*}
+		r_{11} \beta_{1}+r_{12} \beta_{2}+\cdots+r_{1 K} \beta_{K} & = & q_{1} \\
+		r_{21} \beta_{1}+r_{22} \beta_{2}+\cdots+r_{2 K} \beta_{K} & = & q_{2} \\
+		& \vdots & \\
+		r_{J 1} \beta_{1}+r_{J 2} \beta_{2}+\cdots+r_{J K} \beta_{K} & = & q_{J}
+	\end{eqnarray*}
+	这些可以用矩阵改写成一个方程
+	\begin{align}
+		\boldsymbol{R \beta} = \boldsymbol{q}	
+	\end{align}
+	作为我们的假设条件$ H_{0} $。
+	
+	$ \boldsymbol{R} $中每一行都是一个约束中的系数。矩阵$ \boldsymbol{R} $有和$ \boldsymbol{\beta} $相一致的$ K $列和总共$ J $个约束的$ J $行，且$ \boldsymbol{R} $是行满秩的。因此，$ J $一定要小于或等于$ K $。$ \boldsymbol{R} $的各行必须是线性无关的，虽然$ J = K $的情况并不违反条件，但其唯一决定了$ \boldsymbol{\beta} $，这样的约束没有意义，我们不考虑这种情况。
+	
+	给定最小二乘估计量$ \boldsymbol{b} $，我们的兴趣集中于“差异”向量$ \boldsymbol{d} = \boldsymbol{Rb}-\boldsymbol{q} $。$ \boldsymbol{d} $精确等于$ \boldsymbol{0} $是不可能的事件（因为其概率是0），统计问题是$ \boldsymbol{d} $对$ \boldsymbol{0} $的离差是否可归因于抽样误差或它是否是显著的。
+	
+	由于$ \boldsymbol{b} $是多元正态分布的，且$ \boldsymbol{d} $是$ \boldsymbol{b} $的一个线性函数，所以$ \boldsymbol{d} $也是多元正态分布的，若原假设为真，$ \boldsymbol{d} $的均值为0，方差为
+	\begin{align}
+	var\left [ \boldsymbol{d} \right ] = var\left [ \boldsymbol{Rb-q} \right ] = \boldsymbol{R}\left ( var\left [ \boldsymbol{d} \right ]  \right )
+	\boldsymbol{R}^{\prime} = \sigma^{2}\boldsymbol{R}\left ( \boldsymbol{X}^{\prime}\boldsymbol{X} \right )^{-1}\boldsymbol{R}^{\prime} 
+	\end{align}
+	对$ H_{0} $的检验我们可以将其基于沃尔德（Wald）准则： 
+	\begin{equation}
+		\begin{aligned}
+			W & = \chi^{2}\left ( J \right ) \\
+	      	  & = \boldsymbol{d}^{\prime}\left(Var\left [ \boldsymbol{d} \right] \right )
+		      ^{-1} \boldsymbol{d} \\
+		  	  & = \left ( \boldsymbol{Rb}-\boldsymbol{q} \right )^{\prime}\left [ \sigma^{2}
+		      \boldsymbol{R} \left ( \boldsymbol{X}^{\prime}\boldsymbol{X} \right )^{-1}
+		      \boldsymbol{R}^{\prime} \right ]^{-1}\left ( \boldsymbol{Rb}-\boldsymbol{q} \right ) \\
+		\end{aligned}
+		\label{eq 7_1_4}
+	\end{equation}
+	在假设正确时将服从自由度为\bm{$ J $}的$ \chi^{2} $分布。
+	
+	直觉上，$ \boldsymbol{d} $越大，即最小二乘满足约束的错误越大，$ \chi^{2} $统计量越大，所以，一个大的
+	$ \chi^{2} $值将加重对假设的怀疑。
+	\begin{align}
+		\frac{(n-K)s^{2}}{\sigma^{2}} = \frac{\boldsymbol{e}^{\prime} \boldsymbol{e}}{\sigma^{2}} = \left(\frac{\boldsymbol{\varepsilon}}
+		{\sigma}\right)^{\prime} \boldsymbol{M}\left(\frac{\boldsymbol{\varepsilon}}
+		{\sigma}\right)
+		\label{eq 7_1_5} 
+	\end{align}
+
+	由于$ \sigma $未知，\ref{eq 7_1_4} 中的统计量是不可用的，用$ s^{2} $替代$ \sigma^{2} $，我们可以导出一个$ F\left [ J,\left ( n - K \right )  \right ] $样本统计量，令
+	\begin{align}
+		F=\frac{(\boldsymbol{R b}-\boldsymbol{q})^{\prime}\left[\sigma^{2} \boldsymbol{R}\left(\boldsymbol{X^{\prime} X}\right)^{-1} \boldsymbol{R}^{\prime}\right]^{-1}(\boldsymbol{R b}-\boldsymbol{q}) / J}{\left[(n-K) s^{2} / \sigma^{2}\right] /(n-K)}
+		\label{eq 7_1_6} 
+	\end{align}
+
+	分子是$ \left ( 1/J \right )  $乘 \ref{eq 7_1_4} 中的$ W $，分母是$ 1 /\left ( n-K \right ) $乘 \ref{eq 7_1_5}  中的幂等二次型。所以，$ F $是两个除以其自由度的卡方变量的比率。如果它们是独立的，则$ F $的分布是$ F\left [ J,\left (n - K\right ) \right ] $，我们前边发现$ \boldsymbol{b} $是独立于$ s^{2} $分布的，所以条件是满足的。
+	
+	我们也可以直接推导。利用 \ref{eq 7_1_5} 及$ \boldsymbol{M} $是幂等的这一事实，我们可以把$ F $写为
+	\begin{align}
+		F=\frac{\{\boldsymbol{R}(\boldsymbol{b}-\boldsymbol{\beta}) / \sigma\}^{\prime}\left[\boldsymbol{R}\left(\boldsymbol{X^{\prime} X}\right)^{-1} \boldsymbol{R}^{\prime}\right]^{-1}\{\boldsymbol{R}(\boldsymbol{b}-\boldsymbol{\beta}) / \sigma\} / J}{[\boldsymbol{M}(\boldsymbol{\varepsilon} / \sigma)]^{\prime}[\boldsymbol{M}(\boldsymbol{\varepsilon} / \sigma)] /(n-K)}
+	\end{align}
+
+	由于
+	$$\frac{\{\boldsymbol{R}(\boldsymbol{b}-\boldsymbol{\beta})}{\sigma}=\boldsymbol{R}
+	\left(\boldsymbol{X^{\prime} X}\right)^{-1} \boldsymbol{X}^{\prime}
+	\left(\frac{\boldsymbol{\varepsilon}}{\sigma}\right)=\boldsymbol{T}\left(\frac{\boldsymbol{\varepsilon}}{\sigma}\right) $$
+
+	$ F $统计量是$ \left ( \boldsymbol{\varepsilon} / \sigma\right ) $的两个二次型的比率，由于$ \boldsymbol{M}(\boldsymbol{\varepsilon} / \sigma) $和$ \boldsymbol{T}(\boldsymbol{\varepsilon} / \sigma) $都服从正态分布且它们的协方差$ \boldsymbol{TM} $为$ \boldsymbol{0} $，所以二次型的向量都是独立的。$ F $的分子和分母都是独立随机向量的函数，因而它们也是独立的。这就完成了证明。
+	
+	消掉 \ref{eq 7_1_6} 中的两个$ \sigma^{2} $，剩下的是检验一个线性假设的$ F $统计量，
+	\begin{equation}
+		\begin{aligned}
+			F & = \frac{(\boldsymbol{Rb}-\boldsymbol{q})^{\prime}\left[\boldsymbol{R}
+				\left(\boldsymbol{X^{\prime} X}\right)^{-1} \boldsymbol{R}^{\prime}\right]^{-1}(\boldsymbol{Rb}-\boldsymbol{q}) / J}{\boldsymbol{e}^{\prime} \boldsymbol{e} /(n-K)} \\
+			  & = \frac{(\boldsymbol{Rb}-\boldsymbol{q})^{\prime}\left[s^{2} \boldsymbol{R}\left(\boldsymbol{X^{\prime} X}\right)^{-1} \boldsymbol{R}^{\prime}\right]^{-1}(\boldsymbol{Rb}-\boldsymbol{q})}{J}
+		\end{aligned}
+	\end{equation}
+
+	我们将检验统计量
+	$$ F[J, n-K]
+	=\frac{(\boldsymbol{Rb}-\boldsymbol{q})^{\prime}\left\{\boldsymbol{R}\left[s^{2}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1}\right] \boldsymbol{R}^{\prime}\right\}^{-1}(\boldsymbol{Rb}-\boldsymbol{q})}{J} $$
+	和$ F $分布表中的临界值相比较，一个大的$ F $值是反对假设的证据。		
+	
+	注意：将wald统计量中的$ \sigma^{2} $用$ s^{2} $去替代，相应的就将$ J $维的卡方分布转换为维度为$ \left ( J,n-K \right ) $的$ F $分布。
+	
+	\section{参数带有约束的最小二乘估计}
+	\subsection{带有约束的最小二乘函数}
+	在许多问题中，要求其中的未知参数$ \boldsymbol{\beta} $满足某特定的线性约束条件：$ \boldsymbol{R\beta}=\boldsymbol{q} $，这里$ \boldsymbol{R} $是$ J\times K $矩阵（$ J< K $），并假定它的秩为$ J $维向量，常常希望求$ \boldsymbol{\beta} $的估计$ \hat{\boldsymbol{\beta}} $，使得
+	\begin{align}
+		\|\boldsymbol{Y}-\boldsymbol{X} \hat{\boldsymbol{\beta}}\|^{2}=\min _{\{\boldsymbol{\beta}: \boldsymbol{R \beta}=\boldsymbol{q}\}}\|\boldsymbol{Y}-\boldsymbol{X \beta}\|^{2}
+		\label{eq 7_2_1} 
+	\end{align}
+	满足条件\ref{eq 7_1_5} 的称为$ \boldsymbol{\beta} $的具有线性约束$ \boldsymbol{R\beta}=\boldsymbol{q} $的最小二乘估计。
+	
+	解$ \boldsymbol{\hat{\beta}} $的问题实际上是在约束条件
+	$$ \boldsymbol{R\beta}=\boldsymbol{q} $$
+
+	下求
+	$$ f=\|\boldsymbol{Y}-\boldsymbol{X \beta}\|^{2}=\sum_{i=1}^{n}\left(Y_{i}-\sum_{j=1}^{m} x_{i j} \beta_{j}\right)^{2} $$
+	的限制极值点问题。
+
+	这个问题的一个拉格朗日解可写作
+	$$ S^{*}=(\boldsymbol{y}-\boldsymbol{X \beta})^{\prime}(\boldsymbol{y}-\boldsymbol{X \beta})+2 \boldsymbol{\lambda}^{\prime}(\boldsymbol{R \beta}-\boldsymbol{q}) $$
+	解$ \boldsymbol{b}_{*} $和$ \boldsymbol{\lambda} $将满足必要条件
+	\vspace{-0.5em}
+	\begin{align*}
+		\frac{\partial S^{*}}{\partial \boldsymbol{\beta}} & =  -2 \boldsymbol{X}^{\prime}\left(\boldsymbol{y}-\boldsymbol{X}\boldsymbol{b}_{*}\right)+2 \boldsymbol{R}^{\prime} \boldsymbol{\lambda}=\boldsymbol{0} \\
+		\frac{\partial S^{*}}{\partial \boldsymbol{\lambda}} & =  2\left(\boldsymbol{R} \boldsymbol{b}_{*}-\boldsymbol{q}\right)=\boldsymbol{0}
+	\end{align*}
+
+	展开可以得到分块矩阵方程
+	\begin{equation}
+		\left[\begin{array}{lll}
+			\boldsymbol{X}^{\prime} \boldsymbol{X} & \boldsymbol{R}^{\prime}  \\
+			\boldsymbol{R} & \boldsymbol{0}
+		\end{array}\right]\left[\begin{array}{l}
+			\boldsymbol{b}_{*} \\
+			\boldsymbol{\lambda}
+		\end{array}\right]=\left[\begin{array}{l}
+			\boldsymbol{X}^{\prime} \boldsymbol{y} \\
+			\boldsymbol{q}
+		\end{array}\right]
+	\end{equation}
+
+	或
+	$$ \boldsymbol{Wd}_{*}=\boldsymbol{v} $$
+
+	假定括号中的分块矩阵是非奇异的，约束最小二乘估计量
+	\begin{equation}
+		\begin{aligned}
+			\boldsymbol{d}_{*} & = \boldsymbol{W}^{-1}\boldsymbol{v} = \left[\begin{array}{l} \boldsymbol{b}_{*} \\ 
+			\boldsymbol{\lambda}
+			\end{array}\right]
+		\end{aligned}
+	\end{equation}
+
+	其中
+	$$  \boldsymbol{W}^{-1}=\left[ \begin{array}{cc}
+			\left( \boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1}-
+			\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} 
+			\boldsymbol{R}^{\prime}
+			 \left(\boldsymbol{R}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{R}^{\prime}\right)^{-1} \boldsymbol{R}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} & 
+			 \left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} 
+			 \boldsymbol{R}^{\prime}\left(\boldsymbol{R}
+			 \left(\boldsymbol{X}^{\prime} 
+			 \boldsymbol{X}\right)^{-1} \boldsymbol{R}^{\prime}\right)^{-1} \\
+			\left(\boldsymbol{R}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{R}^{\prime}\right)^{-1} 
+			\boldsymbol{R}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} & -
+			\left(\boldsymbol{R}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{}\boldsymbol{R}^{\prime}\right)^{-1}
+	\end{array}\right] $$
+
+	的解。此外，若$ \boldsymbol{X}^{\prime} \boldsymbol{X} $是非奇异的，则用分块逆公式可以得到$ \boldsymbol{b}_{*} $和$ \boldsymbol{\lambda} $的显示解
+	{ \small
+		\begin{equation}
+			% \small
+			\begin{aligned}
+				\boldsymbol{b}_{*} & = \left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{X}^{\prime} \boldsymbol{y}-\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{R}^{\prime}\left(\boldsymbol{R}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{R}^{\prime}\right)^{-1} \boldsymbol{R}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{X}^{\prime} \boldsymbol{y}+\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{R}^{\prime}\left(\boldsymbol{R}\left(\boldsymbol{X}^{\prime} X\right)^{-1} \boldsymbol{R}^{\prime}\right)^{-1} \boldsymbol{q} \\
+				& = \left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{X}^{\prime} \boldsymbol{y}-\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{R}^{\prime}\left(\boldsymbol{R}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{R}^{\prime}\right)^{-1} \boldsymbol{R}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{X}^{\prime}(\boldsymbol{X }\boldsymbol{b}+\boldsymbol{e})+\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{R}^{\prime}\left(\boldsymbol{R}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{R}^{\prime}\right)^{-1} \boldsymbol{q} \\
+				& = \left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{X}^{\prime} \boldsymbol{y}-\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{R}^{\prime}\left(\boldsymbol{R}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{R}^{\prime}\right)^{-1} \boldsymbol{R} \boldsymbol{b}+\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{R}^{\prime}\left(\boldsymbol{R}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{R}^{\prime}\right)^{-1} \boldsymbol{q} \\
+				& = \boldsymbol{b}-\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{R}^{\prime}\left[\boldsymbol{R}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{R}^{\prime}\right]^{-1}(\boldsymbol{R b}-\boldsymbol{q}) \nonumber
+			\end{aligned}
+		\end{equation} 
+	}
+
+	和
+		$$ \boldsymbol{\lambda}=\left[\boldsymbol{R}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} 
+		\boldsymbol{R}^{\prime}\right]^{-1}(\boldsymbol{R b}-\boldsymbol{q}) $$
+
+	格林和西克斯（1991）表明$ \boldsymbol{b}_{*} $的协方差矩阵简单地就是$ \sigma^{2} $乘以$ W^{-1} $
+	的左上块，在$ \boldsymbol{X}^{\prime} \boldsymbol{X} $非奇异的通常情况下，再一次可以得到一个显性公式
+	$$ \operatorname{Var}\left[\boldsymbol{b}_{*}\right]=\sigma^{2}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1}-\sigma^{2}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{R}^{\prime}\left[\boldsymbol{R}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{R}^{\prime}\right]^{-1} \boldsymbol{R}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} $$
+
+	这样，
+	$$ \operatorname{Var}\left[\boldsymbol{b}_{*}\right]=\operatorname{Var}[\boldsymbol{b}]-\ \ (\text {一个非负定矩阵 }) $$
+
+	$ \operatorname{Var}\left[\boldsymbol{b}_{*}\right] $的方差比$ \operatorname{Var}[\boldsymbol{b}] $小的一个解释是约束条件提供了更多的信息价值。
+	\subsection{对约束的检验的另一个方法}
+	令$ \boldsymbol{e}_{*}=\boldsymbol{y}-\boldsymbol{X b}_{*} $，我们来计算新的离差平方和$ \boldsymbol{e}_{*}^{\prime} \boldsymbol{e}_{*} $。
+	$$ \boldsymbol{e}_{*}=\boldsymbol{y}-\boldsymbol{Xb}-\boldsymbol{X}\left(\boldsymbol{b}_{*}-\boldsymbol{b}\right)=\boldsymbol{e}-\boldsymbol{X}\left(\boldsymbol{b}_{*}-\boldsymbol{b}\right) $$
+	
+	则新的离差平方和是
+	$$ \boldsymbol{e}_{*}^{\prime} \boldsymbol{e}_{*}=\boldsymbol{e}^{\prime} \boldsymbol{e}+\left(\boldsymbol{b}_{*}-\boldsymbol{b}\right)^{\prime} \boldsymbol{X}^{\prime} \boldsymbol{X}\left(\boldsymbol{b}_{*}-\boldsymbol{b}\right) \geq \boldsymbol{e}^{\prime} \boldsymbol{e} $$
+
+	其中，
+	$$ \frac{\boldsymbol{e}^{\prime} \boldsymbol{e}}{\sigma^{2}} \sim \chi_{n-k}^{2}\quad \frac{\boldsymbol{e}_{*}^{\prime} \boldsymbol{e}_{*}}{\sigma^{2}} \sim \chi_{n-(k-J)}^{2}  $$
+
+	因为新的模型中参数的个数为$ k-J $个，$ J $个榆树条件是原模型中的$ J $个参数可以被其他$ k-J $个表示。（此表达式中的中间项含有$ \boldsymbol{X}^{\prime} \boldsymbol{e} $，它是$ \boldsymbol{0} $）。这说明我们可以将一个约束检验基于拟合的损失。这个损失是，
+	$$ \boldsymbol{e}_{*}^{\prime} \boldsymbol{e}_{*}-\boldsymbol{e}^{\prime} \boldsymbol{e}=(\boldsymbol{Rb}-\boldsymbol{q})^{\prime}\left[\boldsymbol{R}\left(\boldsymbol{X}^{\prime} \boldsymbol{X}\right)^{-1} \boldsymbol{R}^{\prime}\right]^{-1}(\boldsymbol{Rb}-\boldsymbol{q}) $$
+
+	这出现在前边推导的$ F $统计量的分子上，我们得到统计量的另一个可选形式。可选形式是
+		$$ F[J, n-K]=\frac{\left(\boldsymbol{e}_{*}^{\prime} \boldsymbol{e}_{*}-\boldsymbol{e}^{\prime} 
+		\boldsymbol{e}\right) / J}{\boldsymbol{e}^{\prime} \boldsymbol{e} /(n-K)} $$
+
+	最后，以$ \mathrm{SST}=\Sigma(y-\bar{y})^{2} $除$ F $的分子和分母，我们得到第三种形式，
+	$$ F[J, n-K]=\frac{\left(R^{2}-R_{*}^{2}\right) / J}{\left(1-R^{2}\right) /(n-K)} $$
+	
+	由于两个模型的拟合之差直接体现在检验统计量中，这个形式具有一些直观吸引力。
+	\subsection{实例}
+	所有柯布—道格拉斯模型的一般化是如下的对数变换模型，
+	\begin{align}
+		\log Y = \beta_{1}+\beta_{2} \log L+\beta_{3} \log K+\beta_{4} \frac{\log ^{2} L}{2}+\beta_{5} \frac{\log ^{2} K}{2}+\beta_{6} \frac{\log L \log K}{2}+\varepsilon
+	\end{align}
+
+	无约束回归的结果在表\ref{tab 7.1}中给出。
+	\begin{table}[htbp]
+		\centering
+		\setlength{\tabcolsep}{3em}
+		\caption{无约束回归的结果}
+		\begin{tabular}{ll}
+		\hline
+			回归标准误差 & 0.17994 \\
+			残差平方和  & 0.67993 \\
+			R平方    & 0.95486 \\
+			调整R平方  & 0.94411 \\
+		\hline
+		\end{tabular}
+		\label{tab 7.1}
+	\end{table}
+
+	\begin{table}[htbp]
+		\centering
+		\setlength{\tabcolsep}{3em}
+		\caption{无约束回归的系数结果}
+		\begin{tabular}{llll}
+			\hline
+			变量   & 系数       & 标准误差   & t值     \\
+			\hline
+			常数项  & 0.944216 & 2.911  & 0.324  \\
+			$ \log L $ & 3.61363  & 1.548  & 2.334  \\
+			$ \log K $ & －1.89311 & 1.016  & －1.863 \\
+			$ \frac{1}{2}\log^{2}L $ & －0.96406 & 0.7074 & －1.363 \\
+			$ \frac{1}{2}\log^{2}K $ & 0.08529  & 0.2926 & 0.291  \\
+			$ \log L \times \log K $ & 0.31239  & 0.4389 & 0.71  \\
+			\hline
+		\end{tabular}
+	\end{table}
+	\begin{table}[htbp]
+		\centering
+		\caption{系数估计量的估计协方差矩阵}
+		\begin{tabular}{llllccc}
+			\hline
+			& 常数项  & $ \log L $  & $ \log K $  & $ \frac{1}{2}\log^{2}L $  & $ \frac{1}{2}\log^{2}K $  & $ \log L \times \log K $        \\
+			常数项      & 8.472    &         &         &         &         &        \\
+			$ \log L $ & －2.388   & 2.397   &         &         &         &        \\
+			$ \log K $ & －0.3313  & －1.231  & 1.033   &         &         &        \\
+			$ \frac{1}{2}\log^{2}L $ & －0.08760 & －0.6658 & 0.5231  & 0.5004  &         &        \\
+			$ \frac{1}{2}\log^{2}K $ & 0.2332   & 0.03477 & 0.02637 & 0.1467  & 0.08562 &        \\
+			$ \log L \times \log K $ & 0.3635   & 0.1831  & －0.2255 & －0.2880 & －0.1160 & 0.1927    \\
+			\hline
+		\end{tabular}
+	\end{table}
+
+	考虑了约束条件$ \beta_{4}=\beta_{5}=\beta_{6}=0 $的模型就可以得到柯布一道格拉斯模型：
+	$$ \log Y=\beta_{1}+\beta_{2} \log L+\beta_{3} \log K+\varepsilon $$
+	
+	这是一个条件约束下的无条件的多元线性回归模型。就可以用一般线性回归的方法求解模型。假如我们通过有约束条件下的无条件的多元线性回归模型得到：$ \boldsymbol{e}_{*}^{\prime} \boldsymbol{e}_{*}=0.85163 $，而且$ n-K=21  $，则柯布—道格拉斯模型假设的$ F $统计量是
+	$$ F\left [ 3,21 \right ] =\frac{(0.85163-0.67993) / 3}{0.67993 / 21}=1.768 $$
+
+	查自$ F $分布表的$ 5\% $临界值是3.07，所以我们不能拒绝柯布—道格拉斯模型是适当的这一假设。
+	
+	考虑了约束条件$ \beta_{4}=\beta_{5}=\beta_{6}=0 $和条件$ \beta_{2}+\beta_{3}=1 $的模型就是满足规模效应的柯布—道格拉斯生产函数。这个模型可以推导如下：
+	\begin{equation}
+		\begin{aligned}
+			\log Y & = \beta_{1}+\beta_{2} \log L+\beta_{3} \log K+\varepsilon \\
+			       & = \beta_{1}+\beta_{2} \log L+\left(1-\beta_{2}\right) \log K+\varepsilon
+		\end{aligned}
+	\end{equation}
+	$$ \Longrightarrow \log Y-\log L=\beta_{1}+\beta_{2}(\log L-\log K)+\varepsilon $$
+	
+	假如我们通过有约束条件下的无条件的多元线性回归模型得到：
+	$ {\boldsymbol{e}_{*}}^{\prime} \boldsymbol{e}_{*}=0.89172 $，而且$ n-K=21  $，则柯布—道格拉斯模型假设的$ F $统计量是
+	$$ F\left [ 4,21 \right ] =\frac{(0.89172-0.67993) / 4}{0.67993 / 21}=1.635 $$
+	查自$ F $分布表的$ 5\% $临界值是$ 2.85 $，所以我们不能拒绝柯布—道格拉斯模型是规模效应的生产函数的这一假设。
+	
+	\section{结构变化与邹至庄检验(Structure Change and Chou-Test)}
+	\subsection{问题提出}
+	我们经常碰到这样的问题。某项政策的出台及实施，其效果如何？不同地区或不同时期内，我们分别可以得到这两个地区或时期的观测值，我们的问题是：这两个地区或时期的情况是否不同，经济结构有无差异。
+	
+	这类问题，被华人经济学家邹至庄用构造的$ F $检验解决了（1960年）。这样的$ F $检验的统计量，就称为邹至庄检验（ Chou-Test）。
+	\subsection{问题的模型表述}
+	设$ \left(\boldsymbol{Z}_{1},\boldsymbol{Y}_{1}\right) $，$ \left(\boldsymbol{Z}_{2},\boldsymbol{Y}_{2}\right) $分别表示这两个时期的观测值，允许两个时期中系数不同的无约束回归是
+	$$  \left\{\begin{array}{l}
+		   \boldsymbol{Y}_{1}=\boldsymbol{Z}_{1} \boldsymbol{\beta}_{1}+\boldsymbol{\varepsilon}_{1} \\
+		   \boldsymbol{Y}_{2}=\boldsymbol{Z}_{2} \boldsymbol{\beta}_{2}+\boldsymbol{\varepsilon}_{2}
+	\end{array}\right. $$
+	我们可以将其改写成一个回归方程：
+	\begin{equation}
+		\left(\begin{array}{l}
+			\boldsymbol{Y}_{1} \\
+			\boldsymbol{Y}_{2}
+		\end{array}\right)=\left(\begin{array}{cc}
+			\boldsymbol{Z}_{1} & \boldsymbol{0} \\
+			\boldsymbol{0} & \boldsymbol{Z}_{2}
+		\end{array}\right)\left(\begin{array}{c}
+			\boldsymbol{\beta}_{1} \\
+			\boldsymbol{\beta}_{2}
+		\end{array}\right)+\left(\begin{array}{c}
+			\boldsymbol{\varepsilon}_{1} \\
+			\boldsymbol{\varepsilon}_{2}
+		\end{array}\right)
+		\label{eq 7_3_1}
+	\end{equation}
+
+	即$ \boldsymbol{Y}=\boldsymbol{Z \beta}+\boldsymbol{\varepsilon} $模型，其中
+	$$ \boldsymbol{Y}=\left(\begin{array}{l}
+		\boldsymbol{Y}_{1} \\
+		\boldsymbol{Y}_{2}
+	\end{array}\right),
+	\boldsymbol{Z}=\left(\begin{array}{cc}
+		\boldsymbol{Z}_{1} & \boldsymbol{0} \\
+		\boldsymbol{0} & \boldsymbol{Z}_{2}
+	\end{array}\right),
+	\boldsymbol{\beta}=\left(\begin{array}{l}
+		\boldsymbol{\beta}_{1} \\
+		\boldsymbol{\beta}_{2}
+	\end{array}\right),
+	\boldsymbol{\varepsilon}=\left(\begin{array}{c}
+		\boldsymbol{\varepsilon}_{1} \\
+		\boldsymbol{\varepsilon}_{2}
+	\end{array}\right) $$
+
+	上述问题就转换成检验
+	$$ \begin{array}{l}
+		H_{0}: \boldsymbol{\beta}_{1}=\boldsymbol{\beta}_{2} \\
+		H_{1}: \boldsymbol{\beta}_{1} \neq \boldsymbol{\beta}_{2}
+	\end{array} $$
+
+	的问题。我们可以用两种方式来处理问题：
+
+		{ \heiti{ 1. }} 用约束条件$ \boldsymbol{\beta}_{1}=\boldsymbol{\beta}_{2} $来检验。
+		$ \boldsymbol{\beta}_{1}=\boldsymbol{\beta}_{2} $是更一般约束条件$ \boldsymbol{R\beta}=\boldsymbol{q} $的一个特殊形式，其中$ \boldsymbol{R}=(\boldsymbol{I},-\boldsymbol{I}) $和$ \boldsymbol{q}=\boldsymbol{0} $。这个直接可以从基于{\bf Wald统计量}的带约束条件的$ F $检验得到。（请自己推导）。
+		
+		\begin{myexample}
+			用约束条件下的$ F $ 检验推导出邹至庄检验的表达式。
+			\begin{myproof}
+				在约束条件$ \boldsymbol{R\beta}=\boldsymbol{q} $下，$ F $检验
+					$$ F(J, n-k)=\frac{(\boldsymbol{Rb}-\boldsymbol{q})^{\prime}\left[S^{2} \boldsymbol{R}\left(\boldsymbol{Z}^{\prime} 
+					\boldsymbol{Z}\right)^{-1} \boldsymbol{R}^{\prime}\right]^{-1}(\boldsymbol{Rb}-\boldsymbol{q})}{J} $$
+
+					而邹至庄检验时约束条件$ \boldsymbol{R\beta}=\boldsymbol{q} $的一种特殊形式，即$ \boldsymbol{R}=(\boldsymbol{I},-\boldsymbol{I}) $和$ \boldsymbol{q}=\boldsymbol{0} $，也即等同于条件$ \boldsymbol{\beta}_{1}=\boldsymbol{\beta}_{2} $（有$ 2k $个参数，并且是有$ k $个约束）。故
+					\begin{align*}
+						F\left(k, n_{1}+n_{2}-2 k\right) & =  \dfrac{(\boldsymbol{Rb}-\boldsymbol{q})^{\prime}\left[S^{2} \boldsymbol{R}\left(\boldsymbol{Z}^{\prime} \boldsymbol{Z}\right)^{-1} \boldsymbol{R}^{\prime}\right]^{-1}(\boldsymbol{Rb}-\boldsymbol{q})}{k} \\
+						& =  \dfrac{\left(\boldsymbol{b}_{1}-\boldsymbol{b}_{2}\right)^{\prime}\left[S^{2}(\boldsymbol{I},-\boldsymbol{I})\left(\begin{array}{cc}
+								\left(\boldsymbol{Z}_{1}^{\prime} \boldsymbol{Z}_{1}\right)^{-1} & \boldsymbol{0} \\
+								\boldsymbol{0} & \left(\boldsymbol{Z}_{2}^{\prime} \boldsymbol{Z}_{2}\right)^{-1}
+							\end{array}\right)\left(\begin{array}{c}
+								\boldsymbol{I} \\
+								-\boldsymbol{I}
+							\end{array}\right)\right]^{-1}\left(\boldsymbol{b}_{1}-\boldsymbol{b}_{2}\right)}{k} \\
+						& =  \dfrac{\left(\boldsymbol{b}_{1}-\boldsymbol{b}_{2}\right)^{\prime}\left[S^{2}\left(\left(\boldsymbol{Z}_{1}^{\prime} \boldsymbol{Z}_{1}\right)^{-1}+\left(\boldsymbol{Z}_{2}^{\prime} \boldsymbol{Z}_{2}\right)^{-1}\right)\right]^{-1}\left(\boldsymbol{b}_{1}-\boldsymbol{b}_{2}\right)}{k}
+					\end{align*}
+
+					服从$ F\left(k, n_{1}+n_{2}-2 k\right) $的分布。
+			\end{myproof}
+		\end{myexample}
+		
+
+		% \setlength{\parindent}{2\ccwd}
+
+		
+		另外，在考虑了约束条件$ \boldsymbol{\beta}_{1}=\boldsymbol{\beta}_{2} $后，我们可以将模型 \ref{eq 7_3_1} 改写成一个无约束的新的回归方程
+		
+		$$ \left(
+				\begin{array}{l}
+					\boldsymbol{Y}_{1} \\
+					\boldsymbol{Y}_{2}
+				\end{array}\right)		
+			=\left(\begin{array}{cc}
+				\boldsymbol{Z}_{1} & \boldsymbol{0} \\
+				\boldsymbol{0} & \boldsymbol{Z}_{2}
+			\end{array}\right)\left(\begin{array}{c}
+				\boldsymbol{\beta}_{1} \\
+				\boldsymbol{\beta}_{1}
+			\end{array}\right)+\left(\begin{array}{c}
+				\boldsymbol{\varepsilon}_{1} \\
+				\boldsymbol{\varepsilon}_{2}
+			\end{array} \right) $$
+
+		即
+		\begin{equation}
+			\left(\begin{array}{c}
+				\boldsymbol{Y}_{1} \\
+				\boldsymbol{Y}_{2}
+			\end{array}\right)=\left(\begin{array}{c}
+				\boldsymbol{Z}_{1} \\
+				\boldsymbol{Z}_{2}
+			\end{array}\right) \boldsymbol{\beta}_{1}+\left(\begin{array}{c}
+				\boldsymbol{\varepsilon}_{1} \\
+				\boldsymbol{\varepsilon}_{2}
+			\end{array}\right) 
+			\label{eq 7_3_2}
+		\end{equation}
+
+		即无约束的线性模型即$ \boldsymbol{Y}=\boldsymbol{Z} \boldsymbol{\beta}+\boldsymbol{\varepsilon} $模型，其中
+		$$ \boldsymbol{Y}=\left(\begin{array}{l}
+			\boldsymbol{Y}_{1} \\
+			\boldsymbol{Y}_{2}
+		\end{array}\right),
+		\boldsymbol{Z}=\left(\begin{array}{cc}
+			\boldsymbol{Z}_{1}  \\
+			\boldsymbol{Z}_{2}
+		\end{array}\right),
+		\boldsymbol{\beta} = \boldsymbol{\beta}_{1} = \boldsymbol{\beta}_{2},
+		\boldsymbol{\varepsilon}=\left(\begin{array}{c}
+			\boldsymbol{\varepsilon}_{1} \\
+			\boldsymbol{\varepsilon}_{2}
+		\end{array}\right) $$
+		
+		假如模型 \ref{eq 7_3_2} 的残差平方和是$ \boldsymbol{e}_{*}^{\prime} \boldsymbol{e}_{*} $ ，在假设条件$ \beta_{1}=\beta_{2} $下， 我们可以得到$ F $统计量可更简单地表示为：
+		$$ F\left[k, n_{1}+n_{2}-2 k\right]=\frac{\left ( \boldsymbol{e}_{*}^{\prime} \boldsymbol{e}_{*}-\boldsymbol{e}^{\prime} \boldsymbol{e} \right )/k }{\left ( \boldsymbol{e}^{\prime} \boldsymbol{e}  \right )/\left ( n_{1}+n_{2}-2k \right ) } $$
+
+		{\bf{2.}} 更直接、更容易的一个处理是将约束直接构造进模型中。若两个系数向量相同，则模型 \ref{eq 7_3_1} 就转换为 \ref{eq 7_3_3} ：
+		\begin{equation}
+			\left(\begin{array}{c}
+				\boldsymbol{Y}_{1} \\
+				\boldsymbol{Y}_{2}
+			\end{array}\right)=\left(\begin{array}{c}
+				\boldsymbol{Z}_{1} \\
+				\boldsymbol{Z}_{2}
+			\end{array}\right) \boldsymbol{\beta}+\left(\begin{array}{c}
+				\boldsymbol{\varepsilon}_{1} \\
+				\boldsymbol{\varepsilon}_{2}
+			\end{array}\right)
+			\label{eq 7_3_3}
+		\end{equation}	
+
+		由此我们推导出可以检验的邹至庄统计量Chou-Test。
+		
+		从模型 \ref{eq 7_3_1}  中，我们可以得到无约束最小二乘估计量是
+		\begin{eqnarray*}
+			\boldsymbol{b} & = & \left(\boldsymbol{Z}^{\prime} \boldsymbol{Z}\right)^{-1} \boldsymbol{Z}^{\prime} \boldsymbol{Y} \\
+			 & = & \left(\begin{array}{cc}
+			\boldsymbol{Z}_{1}^{\prime} \boldsymbol{Z}_{1} & \boldsymbol{0} \\
+			\boldsymbol{0} & \boldsymbol{Z}_{2}^{\prime} \boldsymbol{Z}_{2}
+			\end{array}\right)^{-1}\left(\begin{array}{c}
+			\boldsymbol{Z}_{1}^{\prime} \boldsymbol{Y}_{1} \\
+			\boldsymbol{Z}_{2}^{\prime} \boldsymbol{Y}_{2} \end{array}\right) \\
+		    & = & \left(\begin{array}{cc}
+			\left(\boldsymbol{Z}_{1}^{\prime} \boldsymbol{Z}_{1}\right)^{-1} & \boldsymbol{0} \\ 
+			\boldsymbol{0} & \left(\boldsymbol{Z}_{2}^{\prime} \boldsymbol{Z}_{2}\right)^{-1}
+			\end{array}\right)\left(\begin{array}{c}
+			\boldsymbol{Z}_{1}^{\prime} \boldsymbol{Y}_{1} \\
+			\boldsymbol{Z}_{2}^{\prime} \boldsymbol{Y}_{2}
+			\end{array}\right) \\
+		     & = & \left(\begin{array}{c}
+			\boldsymbol{b}_{1} \\
+			\boldsymbol{b}_{2}
+			\end{array}\right)		
+		\end{eqnarray*}
+
+		故		
+		\begin{eqnarray*}
+			\boldsymbol{e}=\boldsymbol{Y}-\boldsymbol{Zb} & = & \left(\begin{array}{c}
+				\boldsymbol{Y}_{1} \\
+				\boldsymbol{Y}_{2}
+			\end{array}\right)-\left(\begin{array}{cc}
+				\boldsymbol{Z}_{1} & \boldsymbol{0} \\
+				\boldsymbol{0} & \boldsymbol{Z}_{2}
+			\end{array}\right)\left(\begin{array}{c}
+				\left(\boldsymbol{Z}_{1}^{\prime} \boldsymbol{Z}_{1}\right)^{-1} \boldsymbol{Z}_{1}^{\prime} \boldsymbol{Y}_{1} \\
+				\left(\boldsymbol{Z}_{2}^{\prime} \boldsymbol{Z}_{2}\right)^{-1} \boldsymbol{Z}_{2}^{\prime} \boldsymbol{Y}_{2}
+			\end{array}\right) \\
+			& = & \left(\begin{array}{c}
+				\boldsymbol{Y}_{1} \\
+				\boldsymbol{Y}_{2}
+			\end{array}\right)-\left(\begin{array}{cc}
+				\boldsymbol{Z}_{1} & \boldsymbol{0} \\
+				\boldsymbol{0} & \boldsymbol{Z}_{2}
+			\end{array}\right)\left(\begin{array}{cc}
+				\left(\boldsymbol{Z}_{1}^{\prime} \boldsymbol{Z}_{1}\right)^{-1} \boldsymbol{Z}_{1}^{\prime} & \boldsymbol{0} \\
+				\boldsymbol{0} & \left(\boldsymbol{Z}_{2}^{\prime} \boldsymbol{Z}_{2}\right)^{-1} \boldsymbol{Z}_{2}^{\prime}
+			\end{array}\right)\left(\begin{array}{c}
+				\boldsymbol{Y}_{1} \\
+				\boldsymbol{Y}_{2}
+			\end{array}\right) \\
+			& = & \left[\boldsymbol{I}-\left(\begin{array}{cc}
+				\boldsymbol{Z}_{1}\left(\boldsymbol{Z}_{1}^{\prime} \boldsymbol{Z}_{1}\right)^{-1} \boldsymbol{Z}_{1}^{\prime} & \boldsymbol{0} \\
+				\boldsymbol{0} & \boldsymbol{Z}_{2}\left(\boldsymbol{Z}_{2}^{\prime} \boldsymbol{Z}_{2}\right)^{-1} \boldsymbol{Z}_{2}^{\prime}
+			\end{array}\right)
+			\left(\begin{array}{c}
+				\boldsymbol{Y}_{1} \\
+				\boldsymbol{Y}_{2}
+			\end{array}\right) \right]=
+			\left(\begin{array}{c}
+				\boldsymbol{e}_{1} \\
+				\boldsymbol{e}_{2}
+			\end{array}\right) \\
+			& = & \boldsymbol{M}_{1}\left(\begin{array}{l}
+				\boldsymbol{Y}_{1} \\
+				\boldsymbol{Y}_{2}
+			\end{array}\right)
+		\end{eqnarray*}
+
+		因此
+		$$ \boldsymbol{e}^{\prime} \boldsymbol{e}=\left(\boldsymbol{Y}_{1}^{\prime} \boldsymbol{Y}_{2}^{\prime}\right) \boldsymbol{M}_{1}^{\prime} \boldsymbol{M}_{1}\left(\begin{array}{l}
+			\boldsymbol{Y}_{1} \\
+			\boldsymbol{Y}_{2}
+		\end{array}\right)=\left(\boldsymbol{Y}_{1}^{\prime} \boldsymbol{Y}_{2}^{\prime}\right) \boldsymbol{M}_{1}\left(\begin{array}{l}
+			\boldsymbol{Y}_{1} \\
+			\boldsymbol{Y}_{2}
+		\end{array}\right) $$
+
+		则$ \boldsymbol{e}^{\prime} \boldsymbol{e}/\sigma^{2} \sim \chi^{2}\left(n_{1}+n_{2}-2 k\right) $。
+		
+		对于有约束条件$ \boldsymbol{\beta}_{1}=\boldsymbol{\beta}_{2} $限制的模型\ref{eq 7_3_3} 
+		\begin{eqnarray*}
+			\boldsymbol{e}^{*} & = & \left(\boldsymbol{I}-\left(\begin{array}{c}
+				\boldsymbol{Z}_{1} \\
+				\boldsymbol{Z}_{2}
+			\end{array}\right)\left(\left(\boldsymbol{Z}_{1}^{\prime} \boldsymbol{Z}_{2}^{\prime}\right) \cdot\left(\begin{array}{c}
+				\boldsymbol{Z}_{1} \\
+				\boldsymbol{Z}_{2}
+			\end{array}\right)\right)^{-1}\left(\boldsymbol{Z}_{1}^{\prime} \boldsymbol{Z}_{2}^{\prime}\right)\right)\left(\begin{array}{c}
+				\boldsymbol{Y}_{1} \\
+				\boldsymbol{Y}_{2}
+			\end{array}\right) \\
+			& = & \left(\boldsymbol{I}-\left(\begin{array}{c}
+				\boldsymbol{Z}_{1} \\
+				\boldsymbol{Z}_{2}
+			\end{array}\right)\left(\boldsymbol{Z}_{1}^{\prime} \boldsymbol{Z}_{1}+\boldsymbol{Z}_{2}^{\prime} \boldsymbol{Z}_{2}\right)^{-1}\left(\boldsymbol{Z}_{1}^{\prime} \boldsymbol{Z}_{2}^{\prime}\right)\right)\left(\begin{array}{c}
+				\boldsymbol{Y}_{1} \\
+				\boldsymbol{Y}_{2}
+			\end{array}\right) \\
+			& = & \boldsymbol{M}_{2}\left(\begin{array}{l}
+			\boldsymbol{Y}_{1} \\
+			\boldsymbol{Y}_{2}
+		\end{array}\right)
+		\end{eqnarray*}
+
+		因此
+		$$ \boldsymbol{e}^{* \prime} \boldsymbol{e}^{*}=\left(\boldsymbol{Y}_{1}^{\prime} \boldsymbol{Y}_{2}^{\prime}\right) \boldsymbol{M}_{2}^{\prime} \boldsymbol{M}_{2}\left(\begin{array}{c}
+			\boldsymbol{Y}_{1} \\
+			\boldsymbol{Y}_{2}
+		\end{array}\right)=\left(\boldsymbol{Y}_{1}^{\prime} \boldsymbol{Y}_{2}^{\prime}\right) \boldsymbol{M}_{2}\left(\begin{array}{c}
+			\boldsymbol{Y}_{1} \\
+			\boldsymbol{Y}_{2}
+		\end{array}\right) $$
+
+		则$ \boldsymbol{e}^{*\prime} \boldsymbol{e}^{*}/\sigma^{2} \sim \chi^{2}\left(n_{1}+n_{2}-k\right) $。
+		$$ \boldsymbol{e}^{* \prime} \boldsymbol{e}^{*}-\boldsymbol{e}^{\prime} \boldsymbol{e}=\left(\boldsymbol{Y}_{1}^{\prime} \boldsymbol{Y}_{2}^{\prime}\right)\left(\boldsymbol{M}_{2}-\boldsymbol{M}_{1}\right)\left(\begin{array}{l}
+			\boldsymbol{Y}_{1} \\
+			\boldsymbol{Y}_{2}
+		\end{array}\right) $$
+	
+		那么，$ \left ( \boldsymbol{e}^{* \prime} \boldsymbol{e}^{*}-\boldsymbol{e}^{\prime} \boldsymbol{e} \right ) /\sigma^{2} $服从何分布？
+		
+		\begin{myproof}
+			首先证明：$ \boldsymbol{M}_{3} \boldsymbol{M}_{1}=\boldsymbol{0} $
+			\begin{equation*}
+				\begin{aligned}
+					\left(\boldsymbol{M}_{2}-\boldsymbol{M}_{1}\right) \boldsymbol{M}_{1} 
+					& = \boldsymbol{M}_{2} \boldsymbol{M}_{1}-\boldsymbol{M}_{1}^{2} \\
+					& = \boldsymbol{M}_{2} \boldsymbol{M}_{1}-\boldsymbol{M}_{1} \\
+					& = \left[ \boldsymbol{I}-
+							\left(\begin{array}{c}
+								\boldsymbol{Z}_{1} \\
+								\boldsymbol{Z}_{2}
+							\end{array}\right)
+							\left(\boldsymbol{Z}_{1}^{\prime} \boldsymbol{Z}_{1}+\boldsymbol{Z}_{2}^{\prime} \boldsymbol{Z}_{2}\right)^{-1}
+							\left(\boldsymbol{Z}_{1}^{\prime} \boldsymbol{Z}_{2}^{\prime}\right) 
+						\right] 
+					\cdot \boldsymbol{M}_{1}-\boldsymbol{M}_{1} \\
+					& = -\left(\begin{array}{c}
+						\boldsymbol{Z}_{1} \\
+						\boldsymbol{Z}_{2}
+					\end{array}\right)
+					\left(\boldsymbol{Z}_{1}^{\prime} \boldsymbol{Z}_{1}+\boldsymbol{Z}_{2}^{\prime} \boldsymbol{Z}_{2}\right)^{-1}
+					\left(\boldsymbol{Z}_{1}^{\prime} \boldsymbol{Z}_{2}^{\prime}\right)
+					\left[ \boldsymbol{I}-
+						\left(\begin{array}{cc}
+							\boldsymbol{Z}_{1}\left(\boldsymbol{Z}_{1}^{\prime} \boldsymbol{Z}_{1}\right)^{-1} \boldsymbol{Z}_{1}^{\prime} & \boldsymbol{0} \\
+							\boldsymbol{0} & \boldsymbol{Z}_{2}\left(\boldsymbol{Z}_{2}^{\prime} \boldsymbol{Z}_{2}\right)^{-1} \boldsymbol{Z}_{2}^{\prime}
+						\end{array}\right) 
+					\right] \\
+					& = -\left(\begin{array}{c}
+						\boldsymbol{Z}_{1} \\
+						\boldsymbol{Z}_{2}
+					\end{array}\right)	
+					\left( \boldsymbol{Z}_{1}^{\prime} \boldsymbol{Z}_{1}+\boldsymbol{Z}_{2}^{\prime} \boldsymbol{Z}_{2}\right)^{-1}
+					\left(\boldsymbol{Z}_{1}^{\prime} \boldsymbol{Z}_{2}^{\prime}\right) +
+					\left(\begin{array}{c}
+						\boldsymbol{Z}_{1} \\
+						\boldsymbol{Z}_{2}
+					\end{array}\right)
+					\left( \boldsymbol{Z}_{1}^{\prime} \boldsymbol{Z}_{1}+\boldsymbol{Z}_{2}^{\prime} \boldsymbol{Z}_{2}\right)^{-1}\left(\boldsymbol{Z}_{1}^{\prime} \boldsymbol{Z}_{2}^{\prime} \right) 
+					= \boldsymbol{0} 
+				\end{aligned}
+			\end{equation*}
+
+			故$ \boldsymbol{M}_{2}-\boldsymbol{M}_{1}+\boldsymbol{M}_{1}=\boldsymbol{M}_{2} $
+			 而且$ \left(\boldsymbol{M}_{2}-\boldsymbol{M}_{1}\right) \boldsymbol{M}_{1}=\boldsymbol{0} $
+		
+			故$ \boldsymbol{r}\left(\boldsymbol{M}_{2}-\boldsymbol{M}_{1}\right)=\boldsymbol{r}\left(\boldsymbol{M}_{2}\right)-\boldsymbol{r}\left(\boldsymbol{M}_{1}\right)=n_{1}+n_{2}-k-\left(n_{1}+n_{2}-2 k\right)=k $
+			
+			同样$ \left(\boldsymbol{M}_{2}-\boldsymbol{M}_{1}\right) $是幂等矩阵
+			
+			故$ \left ( \boldsymbol{e}^{* \prime} \boldsymbol{e}^{*}-\boldsymbol{e}^{\prime} \boldsymbol{e} \right ) /\sigma^{2} \sim \chi^{2}\left(k\right) $且与$ \boldsymbol{e}^{\prime} \boldsymbol{e}/\sigma^{2} \sim \chi^{2}\left(n_{1}+n_{2}-2k\right) $是独立的，所以
+			$$ F\left[k, n_{1}+n_{2}-2 k\right]=\frac{\left ( \boldsymbol{e}_{*}^{\prime} \boldsymbol{e}_{*}-\boldsymbol{e}^{\prime} \boldsymbol{e} \right )/k }{\left ( \boldsymbol{e}^{\prime} \boldsymbol{e}  \right )/\left ( n_{1}+n_{2}-2k \right ) } $$
+			
+			这个就是邹至庄检验统计量（ \bf{ Chou-Test }）。
+		\end{myproof}
+		
+		
+
+			

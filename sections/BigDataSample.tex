@@ -1,0 +1,453 @@
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ % @File    : c:\Users\Administrator\Desktop\Econometrics\sections\BigDataSample.tex
+ % @Date    : 2021-01-21 13:07:03
+ % @Author  : RankFan
+ % @Email   : 1917703489@qq.com
+ % -----
+ % Last Modified: 2021-02-13 15:27:32
+ % Modified By: Rank_fan
+ % -----
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\chapter{古典线性回归的大样本理论}
+
+迄今为止的讨论涉及了最小二乘估计量的有限样本性质。根据非随机回归量和扰动项正态分布这两个假设，我们知道了最小二乘估计量的精确分布和一些检验统计量。
+
+在本章中，我们去总结前一章关于最小二乘法的有限样本特性，然后我们重点讨论古典回归模型的大样本结果。
+
+\section{最小二乘法的有限样本特性}
+古典回归模型的基本假设是:
+\begin{enumerate}[I]
+    \item $ \boldsymbol{ \mathrm{y}= \beta^{ \prime }\mathrm{X} +\varepsilon } $
+    \item $  \boldsymbol{ X } $ 是秩为$ K $的 $n \times K$ 非随机矩阵
+    \item $ \mathbb{E} \left[  \boldsymbol{\varepsilon} \right]=0 $
+    \item $\mathbb{E} \left[\begin{array}{ll}
+        \boldsymbol{ \varepsilon  \varepsilon^{\prime} }
+        \end{array}\right]=\sigma^{2} \mathrm{ \boldsymbol{I} }$
+\end{enumerate}
+
+未知参数$  \boldsymbol{\beta} $和$ \sigma $ 的最小二乘估计量是:
+$$  \boldsymbol{b} = \left(  \boldsymbol{X^{\prime} X} \right)^{-1}  \boldsymbol{X^{\prime} y}  \qquad s^{2}=\frac{ \boldsymbol{e^{\prime} e}}{(n-K)} $$
+
+通过分析 
+$$  \boldsymbol{b} =  \boldsymbol{\beta} +
+            \left(  \boldsymbol{X^{\prime} X} \right)^{-1}  \boldsymbol{X^{\prime} \varepsilon}  \quad  s^{2}
+            = \frac{ \boldsymbol{\varepsilon^{\prime} M \varepsilon}}{n-K} $$
+
+我们可得下列精确的有限样本结果：
+\begin{enumerate}
+    \item $ \mathbb{E}[\mathrm{b}]=\beta $ ，（最小二乘估计是无偏的） 
+    \item $ \operatorname{Var}[\mathrm{b}]=\sigma^{2}\left(  \boldsymbol{\mathrm{X}^{\prime} \mathrm{X}}\right)^{-1} $
+    \item 任意函数 $  \boldsymbol{r^{\prime} \beta} $的最小方差线性无偏估计量是$  \boldsymbol{r^{\prime}b} $（这就是高斯—马尔科夫定理）
+    \item $ \mathbb{E}\left[s^{2}\right]=\sigma^{2} $
+    \item $ \operatorname{Cov}[ \boldsymbol{\mathrm{b}, \mathrm{e}}]=0 $
+    
+    为了构造置信区间和检验假设，我们根据正态分布的假设 $ V .  \boldsymbol{\varepsilon} \sim N\left[0, \sigma^{2}  \boldsymbol{I} \right] $推导额外了的结果，即
+    \item $  \boldsymbol{b} $和$  \boldsymbol{e} $在统计上是相互独立的。相应的，$  \boldsymbol{b} $和$ s^{2} $无关并在统计上相互独立。
+    \item $  \boldsymbol{b} $的精确分布依赖于$ X $，$ N\left[ \boldsymbol{\beta}, \sigma^{2}\left( \boldsymbol{X^{\prime} X}\right)^{-1}\right] $
+    \item $ (n-K) s^{2} / \sigma^{2} $的分布是$ \chi^{2}[n-K] $。$ s^{2} $的均值是$ \sigma^{2} $，方差是 $ 2 \sigma^{4} /(n-K) $
+    \item 根据 6 至 8 结果，统计量 $ t[n-K]=\dfrac{b_{k}-\beta_{k}}{\left.s^{2}\left( \boldsymbol{X^{\prime} X} \right)_{k k}^{-1}\right.} $ 服从自由度为$ n-K $的$ t $分布。
+    \item 用于检验一组$ J $个线性约束 $  \boldsymbol{\mathrm{R} \beta=\mathrm{q}} $ 的检验统计量
+    $$ \frac{ \boldsymbol{(R b-q)^{\prime}\left[R\left(X^{\prime} X\right)^{-1} R^{\prime}\right]^{-1}(R b-q)} / J}{ \boldsymbol{e^{\prime} e} /(n-K)}
+        =\frac{ \boldsymbol{(R b-q)^{\prime}\left[R s^{2}\left(X^{\prime} X\right)^{-1} R^{\prime}\right]^{-1}(R b-q)}}{J} $$
+\end{enumerate}
+
+    服从自由度为$ J $和$ n-K $的$ F $分布。
+
+    注意，利用 I 至 IV 建立起来的$  \boldsymbol{b} $的各种性质和根据扰动项更进一步的正态分布假设而得到的额外推断结果之间的区别。
+    第一组中最重要的结果是高斯—马尔科夫定理，{ \bf 它与扰动项的分布无关}。 根据正态分布假设得到的重要的附加结果是 7、 8、 9、 10。 
+    {\bf 正态性没有产生任何额外的有限样本的最优性结果。（没有得出额外的有关统计量好坏的结论）}
+
+\section{古典回归模型的渐近分布理论}
+{\bf 为什么要用大样本理论？} 
+
+在 OLS 的方法中，我们如果用数据得到的 wald 统计量：$ W = n\left[\frac{b_{1}}{6}+\frac{\left(b_{2}-3\right)^{2}}{24}\right] \sim \chi^{2}(2) $
+
+通不过检验，即假设$\operatorname{V .}  \boldsymbol{\varepsilon} \sim N\left[0, \sigma^{2}  \boldsymbol{I} \right]$不满足，这样的话我们就不能用 OLS 完成相关的假设检验问题，
+所以我们要用到中心极限定理：在$ n $足够大的情况下， $  \boldsymbol{Y} $ 和$  \boldsymbol{\varepsilon} $都服从正态分布。
+这样，相应的判别估计量好坏的方法和标准要捉相应的调整，其中重要的概念是一致估计量。虽然估计量有可能相同，但我们关心的是他们的一致性，而不是无偏性。
+
+所以我们要区分那些结论是可以在没有正态性的假设下仍然成立的，利用这些条件来推断最小二乘系数估计量的一致性。
+
+对于满足 I 到 IV 假设的模型，可以直接推导大样本最小二乘估计量的特性
+
+\subsection{依概率分布}
+
+\begin{theorem}[依概率分布]
+    从具有有限均值$ \mu $和有限方差$\sigma^{ 2 }$的任何总体中抽取的随机样本的均值都是$ \mu $的一个一致估计量
+    \begin{myproof}
+        $\mathbb {E}[\bar{x}]=\mu $ 及  $ \operatorname{Var}[\bar{x}]=\sigma^{2} / n $，所以，$ \bar{x} $依均方收敛于$ \mu $ ，或 $ p \lim\bar{x}=\mu $
+    \end{myproof}
+\end{theorem}
+\begin{theorem}[斯拉茨基定理（Slutsky）]
+    对一个不是 n 的函数的连续函数 $ g\left(x_{n}\right) $有
+    $$ p \lim g\left(x_{n}\right)=g\left(p \lim x_{n}\right) $$
+\end{theorem}
+
+假设 
+\begin{equation}
+     \lim _{n \rightarrow \infty} \frac{1}{n}  \boldsymbol{X^{\prime} X=Q } \qquad  \text{是正定矩阵} 
+     \label{eq 7.2.1}
+\end{equation}
+
+这个假设在大多数时候是不过份的，考虑一元的情况：$  \boldsymbol{\mathrm{X}}=\left(\begin{array}{cc}
+    1 & x_{1} \\
+    1 & x_{2} \\
+    \vdots & \vdots \\
+    1 & x_{n}
+    \end{array}\right) $
+    
+$$ \frac{1}{n}  \boldsymbol{X^{\prime} X} = \frac{1}{n}\left(\begin{array}{cccc}
+    1 & 1 & \cdots & 1 \\
+    x_{1} & x_{2} & \cdots & x_{n}
+    \end{array}\right)\left(\begin{array}{cc}
+    1 & x_{1} \\
+    1 & x_{2} \\
+    \vdots & \vdots \\
+    1 & x_{n}
+    \end{array}\right)=\frac{1}{n}\left(\begin{array}{cc}
+    n & \sum x_{i} \\
+    \sum x_{i} & \sum x_{i}^{2}
+    \end{array}\right)=\left(\begin{array}{cc}
+    1 & \bar{x} \\
+    \bar{x} & \frac{n-1}{n} s^{2}+\bar{x}
+    \end{array}\right) $$
+
+    我们知道:
+$$ \begin{aligned}
+        \operatorname{plim} \bar{x} & = \mu \\
+        \mathrm{p} \lim \frac{\sum x_{i}^{2}}{n} & =\lim \left[\frac{n-1}{n} s^{2}+\bar{x}^{2}\right]=\sigma^{2}+\mu^{2}
+    \end{aligned} $$
+$$ \therefore \qquad 
+    \lim \frac{1}{n}  \boldsymbol{X^{\prime} X} = \left(\begin{array}{cc}
+    1 & \mu \\
+    \mu & \sigma^{2}+\mu^{2}
+    \end{array}\right)  $$
+
+    which is positive definite as its principal submatrices all have positive determinants.
+
+    \begin{equation}
+        \boldsymbol{b} =  \boldsymbol{\beta} + \left(\frac{1}{n}  \boldsymbol{X^{\prime} X} \right)^{-1}
+        \left(\frac{1}{n}  \boldsymbol{X^{\prime} \varepsilon} \right) 
+    \end{equation}
+
+    假设$ Q^{-1} $存在，因为逆矩阵是原矩阵的连续函数，我们得到:
+    $$ p \lim  \boldsymbol{b} =  \boldsymbol{\beta} +  \boldsymbol{Q^{-1}}
+             p \lim \left(\frac{1}{n}  \boldsymbol{X^{\prime} \varepsilon} \right) $$
+
+    现在我们需要最后一项的概率极限。令
+    $$ \bar{w}=\frac{1}{n}  \boldsymbol{X^{\prime} \varepsilon}
+        =\frac{1}{n} \sum_{i} x_{i} \varepsilon_{i}=\frac{1}{n} \sum_{i} w_{i}, \quad \text { 其中 } x_{i}=\left(\begin{array}{c}
+        x_{i 1} \\
+        x_{i 2} \\
+        \vdots \\
+        x_{i k}
+        \end{array}\right), \text { 为 }  \boldsymbol{X^{\prime}} \text { 的列向量 } $$
+
+        那么 
+        $$  \boldsymbol{b} =  \boldsymbol{\beta} +\left(\frac{1}{n}  \boldsymbol{X^{\prime} X} \right)^{-1} \bar{w} $$
+
+        且
+        $$ p \lim  \boldsymbol{b} =  \boldsymbol{\beta+Q^{-1}} p \lim \bar{w} $$
+
+        因为，$  \boldsymbol{X} $是非随机矩阵，所以
+        $$ \mathbb{E}[\bar{w}]=\frac{1}{n}  \boldsymbol{X^{\prime}} \mathbb{E} [  \boldsymbol{\varepsilon} ]=0 $$
+
+        且
+        $$ \operatorname{Var}[\bar{w}]=\mathbb{E} [\bar{w} \bar{w}]=\frac{1}{n}  \boldsymbol{X^{\prime}}
+        \mathbb{E}\left[ \boldsymbol{\varepsilon \varepsilon^{\prime}} \right]  \boldsymbol{X}
+             \frac{1}{n} = \frac{\sigma^{2}}{n}\left(\frac{  \boldsymbol{X^{\prime} X} }{n}\right) $$
+
+        于是可得:
+        $$ \lim_{n \rightarrow \infty} \operatorname{Var}[\bar{w}]=0 \cdot Q=0 $$
+
+        由于$ w $的均值是 0，并且它的方差收敛于 0，所以$ \bar{w} $按均方收敛于 0，且$ p \lim \bar{w}=0 $。
+        (下面定理揭示了 r-阶收敛与依概率收敛的关系)
+
+        \begin{theorem}
+            $$ \xi_{n} \stackrel{r}{\longrightarrow} \xi \Rightarrow \xi_{n} \stackrel{P}{\longrightarrow} \xi $$
+        \end{theorem}
+
+        因此 
+        \begin{equation}
+            p \lim \left(\frac{1}{n}  \boldsymbol{X^{\prime} \varepsilon} = 0\right)
+        \end{equation}
+
+        所以
+        \begin{equation}
+            p \lim  \boldsymbol{b} =  \boldsymbol{\beta + Q^{-1}} \cdot 0 =  \boldsymbol{\beta}
+        \end{equation}
+
+        这表明了在古典回归模型中，在假设（1）条件下 $  \boldsymbol{b} $是 $  \boldsymbol{\beta} $的一致估计量。
+
+\subsection{最小二乘估计量的渐近正态性}
+
+为了导出最小二乘估计量的渐近分布，利用以前结果可得:
+$$ \sqrt{n}(  \boldsymbol{b-\beta} )=\left(\frac{  \boldsymbol{X^{\prime} X} }{n}\right)^{-1}
+        \left(\frac{1}{\sqrt{n}}\right)  \boldsymbol{X^{\prime}} \varepsilon $$
+
+由于逆矩阵是原矩阵的连续函数，$ \lim _{n \rightarrow \infty}\left(  \boldsymbol{X^{\prime} X} / n\right)^{-1}=  \boldsymbol{Q^{-1}} $ 
+因此，如果极限分布存在，则统计量的极限分布与下式相同：
+\begin{equation}
+    \left[\lim _{n \rightarrow \infty}\left(\frac{  \boldsymbol{X^{\prime} X} }{n}\right)^{-1}\right]
+    \left(\frac{1}{\sqrt{n}}\right)  \boldsymbol{ X^{\prime} \varepsilon } = \boldsymbol{ Q^{-1} } \left(\frac{1}{\sqrt{n}}\right) \boldsymbol{X^{\prime} \varepsilon }
+    \label{eq 7.2.5}
+\end{equation}
+
+因此，我们必须建立下式的极限分布:
+$$ \frac{1}{\sqrt{n}} \boldsymbol{X^{\prime} \varepsilon} = \sqrt{n}(\bar{w}-\mathbb{E}[\bar{w}]) $$
+
+其中$ \mathbb{E} [\bar{w}]=0 $ 我们可以利用林德伯格-费勒形式的中心极限定理得到 $ \sqrt{n} \bar{w} $ 利用定理中的表达式，
+$$ \bar{w}=\frac{1}{n} \sum_{i} x_{i} \varepsilon_{i} $$
+
+是$ n $个互不相关的随机向量 $ \boldsymbol{{x_{i}}^{\prime} \varepsilon_{i}} $的平均值，其中
+$ \boldsymbol{x_{i}}=\left(\begin{array}{c}
+            x_{i 1} \\
+            x_{i 2} \\
+            \vdots \\
+            x_{i k}
+    \end{array}\right) $
+
+  $ \varepsilon_{i} $的均值为 0 ，方差为:
+  $$ \operatorname{Var}\left[x_{i} \varepsilon_{i}\right]=\sigma^{2} \boldsymbol{x_{i} x_{i}^{\prime}} =\sigma^{2} \boldsymbol{Q_{i}} $$
+
+ $ \sqrt{n} \bar{w} $的方差；
+ $$ \begin{aligned}
+    \sigma^{2} \bar{Q}_{n} &=\sigma^{2}\left(\frac{1}{n}\right)\left[Q_{1}+Q_{2}+\cdots+Q_{n}\right] \\
+    &=\sigma^{2}\left(\frac{1}{n}\right) \sum_{i} \boldsymbol{ x_{i}^{\prime} x_{i} } = \sigma^{2}\left(\frac{\boldsymbol{X^{\prime} X}}{n}\right)
+    \end{aligned} $$ 
+
+    下列结果的正式证明是根据林德伯格-费勒形式的中心极限定理，由施密特（1976）和怀特（1984）给出。如果
+    \begin{enumerate}
+        \item 扰动项都服从具有零均值和有限方差$ \sigma ^{2} $的同样的分布。
+        \item $ \boldsymbol{X} $ 的元素受到限制使得 $ \left|x_{t k}\right| $有限并且 $ \lim \left( \boldsymbol{ X^{\prime} X } / n\right) = \boldsymbol{Q} $ 
+        是一个有限正定矩阵。则
+        \begin{equation}
+            \left(\frac{1}{\sqrt{n}}\right) \boldsymbol{X^{\prime} \varepsilon} \stackrel{d}{\longrightarrow} N\left[0, \sigma^{2} \boldsymbol{Q} \right]
+        \end{equation}
+    \end{enumerate}
+
+(这也是为什么我们要假设$ \boldsymbol{Q} $是正定的，因为正态的协方差都是正定的)
+
+我们利用这一结果可得, 即作一个变换：
+$$ \boldsymbol{Q^{-1}} \left(\frac{1}{\sqrt{n}}\right) \boldsymbol{X^{\prime} \varepsilon} \
+        stackrel{d}{\longrightarrow} N \left[ \boldsymbol{Q^{-1}} 0, \boldsymbol{Q^{-1}} \left(\sigma^{2} \boldsymbol{Q} \right) \boldsymbol{Q^{-1}}\right] $$
+
+根据 \ref{eq 7.2.5}式
+$$ \sqrt{n}(\boldsymbol{b-\beta}) \stackrel{d}{\longrightarrow} N\left[0, \sigma^{2} \boldsymbol{Q^{-1}} \right] $$
+
+我们可以得到 b 的渐近分布(不加证明):
+$$ \boldsymbol{b} \stackrel{a}{\longrightarrow} N \left[ \boldsymbol{\beta}, \frac{\sigma^{2}}{n} \boldsymbol{Q^{-1}}\right] $$
+
+\subsection{标准检验统计量的渐近行为}
+如果没有$ \boldsymbol{\varepsilon} $的正态性，前面给出的$ t $， $ F $ 和 $\chi{2}$  统计量则不会服从相应的这些分布。因为
+$$ b \stackrel{a}{\longrightarrow} N \left[\beta, \frac{\sigma^{2}}{n} \boldsymbol{Q^{-1}} \right] $$
+
+由此得出
+$$ \theta_{k}=\frac{b_{k}-\beta_{k}}{\left[\left(\sigma^{2} / n\right) Q_{k k}^{-1}\right]^{1 / 2}} $$
+
+的渐近分布是标准正态分布。
+
+由于 $ p \lim s^{2}\left( \boldsymbol{X^{\prime} X} / n\right)^{-1}=\sigma^{2} \boldsymbol{Q^{-1}} $
+（在下一节中将证明$ p \lim s^{2}=\sigma^{2} $ 这个结果）
+$$ t_{k}=\frac{b_{k}-\beta_{k}}{\left[s^{2}\left(X^{\prime} X\right)_{k k}^{-1}\right]^{1 / 2}} $$
+
+将与$ \theta_{k} $有同样的渐近分布。因此，我们可以认为，关于$ \boldsymbol{\beta} $的一个元素的假设的通常统计量服从标准正态分布，
+而不是$ t $分布。 ( 也就是大样本情况下，没有$ t $分布了，相应的
+$ t $分布是正态分布。)
+
+用于检验一组线性约束的$ F $统计量:
+$$ F=\frac{\left( \boldsymbol{e_{*}^{\prime} e_{*}-e^{\prime} e}\right) / J}
+        {\boldsymbol{e^{\prime} e} /(n-K)}
+        =\frac{(\boldsymbol{R b-q})^{\prime}\left[\boldsymbol{R}\left(s^{2}\left(\boldsymbol{X^{\prime} X}\right)^{-1} \boldsymbol{R^{\prime}}\right]^{-1}
+        (\boldsymbol{R b-q})\right.}{J} $$
+
+不再是$ F $分布，因为分子和分母都不是要求的$ \chi^{2} $分布。不过, 沃尔德统计量$ JF[J,n-K] $渐近地服从$ \chi^{2} $分布并可以用来替代使用。
+这与扰动项正态分布情况的结果相同。在通常的假设下，无论扰动项是否服从正态分布，在处理古典模型的大样本时，沃尔德统计量都可使用。
+
+\begin{theorem}[沃尔德统计量的极限分布定理]
+    如果$ \sqrt{n}(\boldsymbol{b-\beta}) \stackrel{d}{\longrightarrow} N \left[0, \sigma^{2} \boldsymbol{Q^{-1}}\right] $
+    以及$ H_{0}: \boldsymbol{R \beta-q} = 0 $是正确的，那么
+    $$ W=(\boldsymbol{R b-q})^{\prime} \left[\boldsymbol{R}\left(s^{2}\left(\boldsymbol{X^{\prime} X}\right)^{-1} \boldsymbol{R^{\prime}}\right]^{-1}
+    (\boldsymbol{R b-q})=J F\right. $$
+\end{theorem}
+
+依分布收敛于自由度为$ J $的$ \chi^{2} $统计量。（我们不要求正式严格证明）。
+
+{\bf 特别提醒与注意： 模型的整体检验统计量}
+这个沃尔德统计量就是可以用来作为我们模型的整体检验，只不过检验时，这里的$ \boldsymbol{R = I} $， 而 $ \boldsymbol{q} = 0 $ 而已。
+但注意沃尔德统计量$ W $是自由度为 $ J $ 的$ \chi^{2} $统计量，而不再是用$ F $分布来检验了。但$ W = JF $。
+\begin{myproof}[定理的证明]
+    由于$ R $是常数矩阵，
+    \begin{equation}
+        \sqrt{n} \boldsymbol{R(b-\beta)} \stackrel{d}{\longrightarrow} N \left[0, \boldsymbol{R}\left(\sigma^{2} 
+        \boldsymbol{Q^{-1}}\right) \boldsymbol{R^{\prime}}\right]  
+    \end{equation}
+    
+    又 $ \boldsymbol{R \beta = q} $，因此
+    \begin{equation}
+        \sqrt{n}(\boldsymbol{R b-q}) \stackrel{d}{\longrightarrow} N\left[0, \boldsymbol{R}\left(\sigma^{2} \boldsymbol{Q^{-1}}\right) \boldsymbol{R^{\prime}}\right]
+    \end{equation}
+
+    为方便起见，将此写成:
+    \begin{equation}
+        z \stackrel{\boldsymbol{d}}{\longrightarrow} N[0, \boldsymbol{P}]
+    \end{equation}
+    
+    令$ \boldsymbol{T} $满足$ \boldsymbol{T^{2}=P^{-1}}$，并把$ \boldsymbol{T} $记为 $ \boldsymbol{P^{-\frac{1}{2}}} $ ，即$ \boldsymbol{T} $是$ \boldsymbol{P} $的逆平方根。
+
+    如果$ z \stackrel{d}{\longrightarrow} N[0, P] $ ，那么 $ P^{-1 / 2} z \stackrel{d}{\longrightarrow} N\left[0, P^{-1 / 2} P P^{-1 / 2}\right]=N[0, I] $
+    现在，我们对随机变量函数的极限分布利用斯拉茨基（ Slutsky ）定理，无关的（即，相互独立）标准正态分布变量的平方和服从$ \chi^{2} $ 分布。因此，有下面的极限分布
+    \begin{equation}
+      \left( \boldsymbol{P^{-1 / 2} z} \right)^{\prime}\left( \boldsymbol{P^{-1 / 2} z} \right)
+      = \boldsymbol{z^{\prime} P^{-1} z} \stackrel{d}{\longrightarrow} \chi^{2}(J) 
+    \end{equation}
+
+    再结合前面的各部分， 不难证明：
+    \begin{equation}
+        \boldsymbol{z^{\prime} P^{-1} z} =n(\boldsymbol{R b-q})^{\prime}\left[\boldsymbol{R}\left(\sigma^{2} \boldsymbol{Q^{-1}}\right) 
+        \boldsymbol{R^{\prime}} \right]^{-1}(\boldsymbol{R b-q}) \stackrel{d}{\longrightarrow} \chi^{2}(J)
+        \label{eq 7.2.11}
+    \end{equation}
+
+    即我们已经证明了其极限分布是自由度为$ J $的$ \chi^{2} $ 分布。
+    
+    由于 $ \boldsymbol{P}  \lim s^{2}\left( \boldsymbol{X^{\prime} X} / n\right)^{-1}=\sigma^{2} \boldsymbol{Q^{-1}} $（在下一节中将证明这个结果），这样：
+
+    $ n(\boldsymbol{R b-q})^{\prime}\left[\boldsymbol{R} \left(s^{2}\left(\boldsymbol{X^{\prime} X} / n\right)^{-1}\right) 
+    \boldsymbol{R}^{\prime}\right]^{-1}(\boldsymbol{R b-q}) $的极限分布式
+    与 \ref{eq 7.2.11} 式的极限分布是一样的。约去 $ n $，对左边进行整理就得到沃尔德统计量$ W $。证明完毕。
+\end{myproof}
+
+{\bf 注意：} 沃尔德统计量$ W $可以用$ J $乘以通常的$ F $的统计量而得到。$ F $仍然是$ OLS $得到的$ F $统计量。
+
+\section{ \texorpdfstring{$ s^{2} $}{s2} 的一致性和 Var[b]的估计量}
+
+本节证明上节用到的结果$ \operatorname{plim} s^{2}\left( \boldsymbol{X^{\prime} X} / n\right)^{-1}
+    =\sigma^{2} \boldsymbol{Q^{-1}} $的假设,即证明$ s^{2} $对$ \sigma^{2} $的一致性，
+也就是证明  $ p \lim s^{2} = \sigma^{2} $ 。 展开
+$$ s^{2} = \frac{1}{n-K} \boldsymbol{\varepsilon^{\prime} M \varepsilon} $$
+
+可得
+$$ \begin{aligned}
+    s^{2} & = \frac{1}{n-K}\left[ \boldsymbol{\varepsilon^{\prime} \varepsilon-\varepsilon^{\prime} X\left(X^{\prime} X\right)^{-1} X^{\prime} \varepsilon} \right] \\ 
+          & = \frac{n}{n-K}\left[\frac{ \boldsymbol{\varepsilon^{\prime} \varepsilon}}{n}
+          -\left(\frac{\boldsymbol{\varepsilon^{\prime} X}}{n}\right)\left(\frac{\boldsymbol{X^{\prime} X}}{n}\right)^{-1}
+           \left(\frac{\boldsymbol{X^{\prime} \varepsilon}}{n}\right)\right]
+    \end{aligned} $$
+
+    最前面的常数显然收敛于 1，括号中第一项依概率收敛于$ \sigma^{2} $ ，因为：$ \frac{ \boldsymbol{\varepsilon^{\prime} \varepsilon}}{n}=\frac{1}{n} \sum \varepsilon_{i}^{2} $
+    而且：$ \mathbb{E} \left(\varepsilon_{i}^{2}\right)=\operatorname{Var}\left(\varepsilon_{i}\right)
+      =\sigma^{2} \qquad  \operatorname{Var}\left(\varepsilon_{i}^{2}\right)
+      =\mathbb{E} \left(\varepsilon_{i}^{4}\right)-\left[\mathbb{E} \left(\varepsilon_{i}^{2}\right)\right]^{2}
+      =\mathbb{E} \left(\varepsilon_{i}^{4}\right)-\sigma^{4} $
+
+    因为有：（定理 从具有有限均值$ \mu  $和有限方差$ \sigma^{2} $ 的任何总体中抽取的随机样本的均值都是$ \mu  $ 的一个一致估计量。 P357(大 Green)）
+
+    所以只有在 $ \mathbb{E} \left( \varepsilon_{i}^{4}\right) $为有限的情况下，$ \frac{ \boldsymbol{\varepsilon^{\prime} \varepsilon}}{n} $ 是$ \sigma^{2} $的一致估计量。
+
+    所以我们要假设 $ \mathbb{E} \left(\varepsilon_{i}^{4}\right) $ 是有限的。这意味着
+    $$  p \lim s^{2}=\sigma^{2}-p \lim \left(\frac{\boldsymbol{\varepsilon^{\prime} X}}{n}\right)
+        \left(\frac{\boldsymbol{X^{\prime} X}}{n}\right)^{-1}\left(\frac{\boldsymbol{X^{\prime} \varepsilon}}{n}\right) $$
+
+   单独看 $ p \lim s^{2} $的第二项，略微整理之后，我们有
+   $$ \left(\frac{\boldsymbol{\varepsilon^{\prime} X}}{n}\right) \left(\frac{\boldsymbol{X^{\prime} X}}{n}\right)^{-1}
+        \left(\frac{\boldsymbol{X^{\prime} \varepsilon}}{n}\right)=\left(\frac{1}{n}\right)\left(\frac{\boldsymbol{\varepsilon^{\prime} X}}{\sqrt{n}}\right)
+        \left(\frac{\boldsymbol{X^{\prime} X}}{n}\right)^{-1}\left(\frac{\boldsymbol{X^{\prime} \varepsilon}}{\sqrt{n}}\right) $$
+
+   这个统计量的大样本特性与
+   $$ q = \left(\frac{1}{n}\right)\left(\frac{\boldsymbol{\varepsilon^{\prime} X}}{\sqrt{n}}\right) \boldsymbol{Q^{-1}}
+        \left(\frac{\boldsymbol{X^{\prime} \varepsilon}}{\sqrt{n}}\right) $$
+
+   的相同。注意$ q $等于$ \frac{1}{n} $乘以正态分布向量的二次型， 该向量 $ \left(\frac{\boldsymbol{X^{\prime} \varepsilon}}{\sqrt{n}}\right) $
+   渐近方差矩阵是$ \sigma^{2} \boldsymbol{\mathrm{Q}} $
+
+   因此，利用沃尔德统计量极限分布证明的结果，我们发现 q 可以写成 
+   $$ \frac{q}{\sigma^{2}}=\left(\frac{1}{n}\right) \boldsymbol{z^{\prime} z}, \quad \text { 其中 }, 
+        \mathrm{z}=\boldsymbol{Q^{-1 / 2}}\left(\frac{\boldsymbol{X^{\prime} \varepsilon}}{\sigma \sqrt{n}}\right),
+         \text { 所以, } z \stackrel{d}{\longrightarrow} N[0, I] $$
+
+   这样
+   $$ n q / \sigma^{2} \stackrel{d}{\longrightarrow} \chi^{2}[K] $$
+
+   $ E\left(n q / \sigma^{2}\right) \rightarrow $ 常数,即$ \mathbb{E}(q) \rightarrow \sigma^{2} \times$ 常数$ / n \rightarrow 0$
+
+   而且 $ \operatorname{Var}\left(n q / \sigma^{2}\right) \rightarrow $常数,即
+  $ \operatorname{Var}(q) \rightarrow \dfrac{\sigma^{4} \times \text { 常数 }}{n^{2}} \rightarrow 0 $,
+ $ q $是二阶收敛的，所以保证了概率收敛，即 $ p \displaystyle \lim_{n \rightarrow \infty} q \rightarrow E q \rightarrow 0 $ 
+ 由此可得$ q $本身依均方收敛于 0。这表明了$ s^{ 2 }$对$ \sigma^{2} $的一致性。 由此 $ b $ 的渐近协方差的适当的估计量是：
+ $$ \text { Est.Asy. } \operatorname{Var}[b]=\left(\frac{1}{n}\right) s^{2}\left(\frac{ \boldsymbol{X^{\prime} X} }{n}\right)^{-1}
+        =s^{2}\left( \boldsymbol{X^{\prime} X} \right)^{-1} $$
+
+ \subsection{B 的函数的渐近分布——得尔塔方法}
+
+ 利用泰勒展开，把 $f(\boldsymbol{x})$线性化。
+
+ 令$ f(\boldsymbol{b}) $是一组关于最小二乘估计量$ J $个连续的线性或非线性的函数并令
+ $$ G=\frac{\partial f(\boldsymbol{b})}{\partial \boldsymbol{b^{\prime}}} $$
+
+ $ G $ 是 $J \times K$ 矩阵，其中第$ j $行是第$ j $个函数关于$ \boldsymbol{b} $的导数。利用斯拉茨基（Slutsky）定理，
+$$ p \lim f(\boldsymbol{b})=f(\boldsymbol{\beta}) $$
+
+并且
+$$ p \lim G=\frac{\partial f(\boldsymbol{\beta})}{\partial \boldsymbol{\beta^{\prime}}} = \boldsymbol{\Gamma} $$
+
+于是
+\begin{equation}
+    f(\boldsymbol{b}) \stackrel{a}{\longrightarrow} N\left[f(\boldsymbol{\beta}), \Gamma 
+    \left(\frac{\sigma^{2}}{n} \boldsymbol{Q^{-1}} \right) \boldsymbol{\Gamma^{\prime}} \right]
+    \label{eq 7.3.1}
+\end{equation}
+
+实际上，渐近协方差矩阵的估计量是:
+$$ \text { Est.Asy.Var }[f(\boldsymbol{b})]=
+    G\left[s^{2}\left( \boldsymbol{X^{\prime} X} \right)^{-1}\right] \boldsymbol{G^{\prime}} $$
+
+如果某个函数是非线性的，则$ \boldsymbol{b} $的无偏的性质不会传给$ f(\boldsymbol{b}) $。不过从\ref{eq 7.3.1}中可得$ f(\boldsymbol{b}) $
+是 $ f(\boldsymbol{\beta}) $ 的一致估计量，而且渐近协方差矩阵很容易获得。
+\begin{myexample}[P324（小 Green）]
+\end{myexample}
+
+\begin{table}[htb!]
+    \centering
+    \setlength{\tabcolsep}{0.5em}
+    \caption{小结：有限样本和大样本的结果比较}
+        \begin{tabular}{l l}
+            \toprule
+            有限样本在条件 $ V . \varepsilon \sim N\left[0, \sigma^{2} \boldsymbol{I}\right] $ 下的结果
+             & 大样本在不满足 条件 $ V . \varepsilon \sim N\left[0, \sigma^{2} \boldsymbol{I} \right] $ 下的结果   \\
+            \midrule
+            $ 1. \mathbb{E} [\boldsymbol{b}]=\boldsymbol { \boldsymbol{\beta} } $最小二乘估计是无偏的  & $ 1.  p \lim \boldsymbol{\boldsymbol{b}} 
+            =\boldsymbol{\beta+Q^{-1}} \cdot 0=\boldsymbol{\beta} $    \vspace{0.5em} \\
+            $ 2. \mathbb{E} \left[s^{2}\right]=\sigma^{2} $  & 2. $ s^{2} $ 是方差 $ \sigma^{2} $的一致估计量    \vspace{0.5em} \\
+            $ 3. \text {Est.}\operatorname{Var}[\mathrm{b}]=\mathrm{s}^{2}\left(\boldsymbol{\mathrm{X}^{\prime} \mathrm{X}}\right)^{-1} $ 
+            &  3. $\text {Est.}\operatorname{Var}[b]=\left(\frac{1}{n}\right) s^{2}\left(\frac{\boldsymbol{X^{\prime}X}}{n}\right)^{-1}=s^{2}
+            \left(\boldsymbol{X^{\prime} X}\right)^{-1} $  \vspace{0.5em} \\
+            $ 4. N\left[\boldsymbol{\beta}, \sigma^{2}\left(\boldsymbol{X^{\prime} X}\right)^{-1}\right] $ 
+            & 4.  $b \stackrel{a}{\longrightarrow} N\left[\boldsymbol{\beta}, \dfrac{\sigma^{2}}{n} \boldsymbol{Q^{-1}}\right]$  \vspace{0.5em}\\
+            $ 5. t[n-K]=\dfrac{b_{k}-\beta_{k}}{s^{2}\left(\boldsymbol{X^{\prime} X}\right)_{k k}^{-1}} $
+            & 5. $t_{k}=\dfrac{b_{k}-\beta_{k}}{\left[s^{2}\left(\boldsymbol{X^{\prime} X}\right)_{k k}^{-1}\right]^{1 / 2}}$  服从标准正态分布，而不是 $t$ 分布\\
+            $ 6. \begin{aligned}
+                \frac{\boldsymbol{(R b-q)^{\prime}\left[R\left(X^{\prime} X\right)^{-1} R^{\prime}\right]^{-1}(R b-q)} / J}
+                {\boldsymbol{e^{\prime} e} /(n-K)} & = \\
+                \frac{\boldsymbol{(R b-q)^{\prime}}\left[\boldsymbol{R} s^{2}\left(\boldsymbol{X^{\prime} X}\right)^{-1} \boldsymbol{R^{\prime}}\right]^{-1}
+                (\boldsymbol{R b-q})}{J}
+                \end{aligned} $ & 6. $ 
+                W=(\boldsymbol{R b-q})^{\prime}\left[\boldsymbol{R}\left(s^{2}\left(\boldsymbol{X^{\prime} X}\right)^{-1} \boldsymbol{R^{\prime}}\right]^{-1}
+                (\boldsymbol{R b-q}) = JF \right. $\\
+            \bottomrule     
+        \end{tabular}      
+\end{table}
+
+有限样本在条件 $ V . \varepsilon \sim N\left[0, \sigma^{2} I\right] $ 下的结果，用于检验一组$ J $个线性约束$ R \beta =q $的检验统计量：
+$$ \begin{aligned}
+    \frac{\boldsymbol{(R b-q)^{\prime}\left[R\left(X^{\prime} X\right)^{-1} R^{\prime}\right]^{-1}(R b-q)} / J}{\boldsymbol{e^{\prime} e} /(n-K)} & = \\
+    \frac{\boldsymbol{(R b-q)^{\prime}}\left[\boldsymbol{R} s^{2}\left(\boldsymbol{X^{\prime} X}\right)^{-1} \boldsymbol{R^{\prime}}\right]^{-1}
+    (\boldsymbol{R b-q})}{J}
+    \end{aligned} $$
+
+大样本在不满足 条件 $ V . \varepsilon \sim N\left[0, \sigma^{2} I\right] $ 下的结果，
+    $$ W=(\boldsymbol{R b-q})^{\prime}\left[\boldsymbol{R}\left(s^{2}\left(\boldsymbol{X^{\prime} X}\right)^{-1} \boldsymbol{R^{\prime}}\right]^{-1}
+    (\boldsymbol{R b-q}) = JF \right. $$
+
+依分布收敛于自由度为 $J $ 的 $\chi^{2}$  统计量。{\bf 非线性问题的处理： （利用泰勒展开，转换为线性）}

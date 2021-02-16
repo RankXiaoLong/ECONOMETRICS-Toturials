@@ -1,0 +1,740 @@
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ % @File    : c:\Users\Administrator\Desktop\Econometrics\sections\math_2.tex
+ % @Date    : 2021-02-02 08:58:51
+ % @Author  : RankFan
+ % @Email   : 1917703489@qq.com
+ % -----
+ % Last Modified: 2021-02-13 15:35:10
+ % Modified By: Rank_fan
+ % -----
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{ 分布函数(Distribution function)，数学期望(Expectation) 与方差(Variance)}
+
+本节主要介绍概率及其分布函数，数学期望，方差等方面的基础知识。
+
+\subsection{ 概率(Probability)}
+
+	\begin{enumerate}[1、]
+		\item 概率定义(Definition of Probability)
+		\setlength{\parindent}{2\ccwd}
+		
+		在自然界和人类社会中有着两类不同的现象，一类是决定性现象，其特征是在一定条件必然会发生的现象；另一类是随机现象，其特征是在基本条件不变的情况下，观察到或试验的结果会不同。换句话说，就个别的试验或观察而言，它会时而出现这种结果，时而出现那样结果，呈现出一种偶然情况，这种现象称为随机现象。
+		
+		随机现象有其偶然性的一面，也有其必然性的一面，这种必然性表现为大量试验中随机事件出现的频率的稳定性，即一个随机事件出现的频率常在某了固定的常数附近变动，这种规律性我们称之为统计规律性
+		。
+		频率的稳定性说明随机事件发生可能性大小是随机事件本身固定的，不随人们意志而改变的一种客观属性，因此可以对它进行度量。
+		
+		对于一个随机事件A，用一个数P（A）来表示该事件发生的可能性大小，这个数P（A）就称为随机事件A的概率，因此，概率度量了随机事件发生的可能性的大小。
+		
+		对于随机现象，光知道它可能出现什么结果，价值不大，而指出各种结果出现的可能性的大小则具有很大的意义。有了概率的概念，就使我们能对随机现象进行定量研究，由此建立了一个新的数学分支——{\bf 概率论}。
+		
+		概率的定义：
+		
+		定义在事件域F上的一个集合函数P称为概率，如果它满足如下三个条件：
+		\begin{enumerate}[i、]
+			\item $ \mathrm{P}(\mathrm{A}) \ge 0 $，对一切$ A \in \mathcal{F}  $
+			\item $ \mathrm{P}(\Omega)=1 $
+			\item 若 $ A_{i} \in \mathcal{F} , \quad i=1,2 \cdots $ ，且两两互不相容，则 
+			$ P\left(\sum_{i=1}^{\infty} A_{i}\right)=\sum_{i=1}^{\infty} P\left(A_{i}\right) $
+			
+			性质（iii）称为可列可加性（conformable addition）或完全可加性。
+		\end{enumerate}
+	
+		{\bf 推论1：}对任何事件A有 $ P( \overline{A} )=1-P(A) $
+		
+		{\bf 推论2：}不可能事件的概率为0，即 $ P(\phi)=0 $
+		
+		{\bf 推论3：} $ P(A \cup B)=P(A)+P(B)-P(A B) $
+		
+		\item 条件概率(Conditional Probability)
+		\setlength{\parindent}{2\ccwd}
+		如果$ \rm P(B)>0, \text { 记 } P(A \mid B)=\dfrac{P(A B)}{P(B)} $ 
+		称 $ P(A \mid B) $ 为在事件B发生的条件下事件A发生的条件概率。
+		
+		转化后有：$ \rm P(A B)=P(A) \cdot P(B \mid A)=P(B) \cdot P(A \mid B) $
+		如果$ \rm P(A) > 0 $ ，称为概率的乘法原理。
+		
+		推广后的乘法原理：$ P\left(A_{1} A_{2} \cdots A_{n}\right)=P\left(A_{1}\right) \cdot P\left(A_{2} \mid A_{1}\right) \cdot P\left(A_{3} \mid A_{1} A_{2}\right) \cdots P\left(A_{n} \mid A_{1} A_{2} \cdots A_{n-1}\right) $
+		
+		\item 全概率公式与贝叶斯（Bayes）公式
+		
+		设事件$ \rm A_{I}, A_{2}, \cdots, A_{n} \cdots \cdots $ 是样本空间的一个分割，即
+		$ \rm A_{i} A_{j}=\phi,i \neq j, \text { 而且: }: \sum_{j=1}^{\infty} A_{i} = $ $ \Omega $
+		从而$ \rm B=\sum_{i=1}^{\infty} A_{i} B $ 这里 $ A_{i} B $也两两互不相容。
+		
+		则$ P(B)=\sum_{i=1}^{\infty} P\left(A_{i} B\right)=\sum_{i=1}^{\infty} P\left(A_{i}\right) \cdot P\left(B \mid A_{i}\right) $ 这个公式称为全概率公式。
+		
+		由于$ P\left(A_{i} B\right)=P(B) P\left(A_{i} \mid B\right)=P\left(A_{i}\right) P\left(B \mid A_{i}\right) $。故 $ P\left(A_{i} \mid B\right)=\frac{P\left(A_{i}\right) P\left(B \mid A_{i}\right)}{P(B)} $
+		
+		再利用全概率公式即得:
+		\begin{eqnarray}
+		\begin{array}{c}
+		P\left(A_{i} \mid B\right) = \dfrac{P\left(A_{i}\right) P\left(B \mid A_{i}\right)}{\sum_{i = 1}^{\infty} P\left(A_{i}\right) P\left(B \mid A_{i}\right)}
+		\end{array} \notag
+		\end{eqnarray}
+	 
+	 这个公式称为贝叶斯公式。贝叶斯公式在概率论和数理统计中有着多方面的应用，假定$ \rm A_{I}, A_{2}, \cdots,$
+	 是导致试验结果的“原因”，
+	 $P (A_i) $称为先验概率，它反映了各种“原因”发生的可能性大小，一般是以往经验的总结，在这次试验前已经知道，现在若试验产生了事件B，这个信息将有助于探讨事件发生的“原因”，条件概率 $P (A \mid B) $称为后验概率，它反映了试验之后对各种“原因”发生的可能性大小的新知识。
+	 
+	 \item 事件(Random event)独立性(Independence)
+		 \begin{enumerate}[1)、]
+		 	\item 两个事件的独立性
+		 	\setlength{\parindent}{2\ccwd}
+		 	\begin{mydef}
+				对事件A及B，若 $ \rm P(AB) = P(A) P(B) $ 则称它们是统计独立的，简称独立的。
+			 \end{mydef}
+		 	
+		 	{\bf 推论1：}  若事件独立，且 $ \rm P(B) > 0 $ 则 $ \rm P(A\mid B) = P(A) $
+			\begin{myproof}
+				由条件概率定义 $ P(A \mid B)=\dfrac{P(A B)}{P(B)}=\dfrac{P(A) P(B)}{P(B)}=P(A) $
+			\end{myproof}
+		 	
+		 	因此，若事件A，B相互独立，由A关于B的条件概率等于无条件概率$ \rm P(A)  $ ，这表示B的发生对于事件A是否发生没有提供任何消息，独立性就是把这种关系从数学上加以严格定义。
+		 	
+		 	{\bf 推论2：} 若事件A与B独立，则下列各对事件也相互独立： $ \{\bar{A}, B\},\{A, \overline{B}\},\{\bar{A}, \overline{B}\} $
+		 	
+		 	\begin{myproof}
+		 	 \begin{eqnarray}
+		 	P(\bar{A} B) & = & P(B-A B)  =  P(B)-P(A B) \\  \notag
+		 	& = & P(B)-P(A) P(B) =  P(B)[1-P(A)] \\  \notag
+		 	& = & P(\bar{A}) P(B) \notag
+			 \end{eqnarray} 	
+			\end{myproof} 	 	
+
+		 	所以 $ \bar{A} $与B相互独立，由它立刻推出$  \bar{A} $ 与 $ \bar{B}  $相互独立，
+		 	由$ \overline{\overline{A} }  = A$
+		 	又推出A与由$ \overline{B} $ 相互独立。
+		 	
+		 	\item 多个事件的独立性
+		 	
+		 	\begin{mydef}
+				对  n  个事件  $ A_{1}, A_{2}, \cdots A_{n}, $ 若对于所有可能的组合  $ 1 \leqslant i<j<\cdots \le n $成立着
+			 \end{mydef}
+		 	\begin{eqnarray}
+		 	\left.\begin{array}{l}
+		 	P\left(A_{i} A_{j}\right)=P\left(A_{i}\right) P\left(A_{j}\right) \\
+		 	P\left(A_{i} A_{j} A_{k}\right)=P\left(A_{i}\right) P\left(A_{j}\right) P\left(A_{k}\right) \\
+		 	\cdots \cdots\\
+		 	P\left(A_{1} A_{2} \cdots A_{n}\right)=P\left(A_{1}\right) P\left(A_{2}\right) \cdots P\left(A_{n}\right)
+		 	\end{array}\right\}  \notag
+		 	\end{eqnarray}
+		 	
+		 	则称$ A_{1}, A_{2}, \cdots A_{n}, $ 相互独立。
+		 	这里第一行有 $ \left(\begin{array}{l}
+		 	n \\
+		 	2
+		 	\end{array}\right) $
+		 	这里第二行有$ \left(\begin{array}{l}
+		 	n \\
+		 	3
+		 	\end{array}\right) $
+		 	等等，因此共应满足 $ \left(\begin{array}{l}
+		 	n \\ 2
+		 	\end{array}\right)+\left(\begin{array}{l}
+		 	n \\ 3
+		 	\end{array}\right)+\cdots+\left(\begin{array}{l}
+		 	n \\ n
+		 	\end{array}\right)=2^{n}-n-1 $ 个等式。
+		 \end{enumerate} 
+	\end{enumerate}
+
+\subsection{ 随机变量(Random Variable)和概率分布函数(Probability Distribution Function) }
+	\begin{enumerate}[1、]
+		\item 随机变量(Random Variable)
+			\setlength{\parindent}{2\ccwd}
+			
+		    如果A为某个随机事件，则一定可以通过如下示性函数使它与数值发生联系：
+		    $$ \rm I_{A}=\left\{\begin{array}{ll}
+		    1, & \text { 如果A发生 } \\
+		    0, & \text { 如果A不发生 }
+		    \end{array}\right. $$
+		    
+		    这样试验的结果就能有一个数Χ来表示，这个数是随着试验的结果的不同而变化，也即它是样本点的一个函数，这种量以后称为随机变量，随机变量可分为离散型随机变量和连续型随机变量。
+		    
+		    \item 概率分布函数（P.d.f = probability density function）
+		    
+		    称 $ \mathrm{F}(\mathrm{x})=\mathrm{P}\{\mathrm{X}<\mathrm{x}\}, \quad-\infty<\mathrm{x}<\infty $
+		    为随机变量Χ的分布函数CDF，对于连续型随机变量，存在可能函数 $ f(x) $，使
+		    
+		    $  F({\it x})=\int_{\infty}^{{\it x}} f({\it x}) d X $  ，$ f(x) $称为随机变量的（分布）密度函数（density function）。
+		    
+		    \item 随机向量（Random Vector）及其分布
+		    
+		    在有些随机现象中，每次试验的结果不能只用一个数来描述，而要同时用几个数来描述。试验的结果将是一个向量
+		    $ \left(X_{1}, X_{2}, \cdots X_{n}\right) $，称n维随机向量。 
+		    
+		    随机向量的联合分布函数也有离散型与连续型的分别，在离散型场合，概率分布集中在有限或可列个点上，多项分布，就是一个例子；在连续型场合，存在着非负函数 $ f \left(x_{1}, x_{2}, \cdots x_{n}\right)$ 使
+		    \vspace{-0.5em}
+		   \begin{eqnarray}
+		   F\left(x_{1}, \cdots, x_{n}\right)  =  \int_{-\infty}^{x_{1}} \cdots \int_{-\infty}^{x_{n}} f\left(y_{1}, \cdots, y_{n}\right) d y_{1} \cdots d y_{n} \notag
+		   \end{eqnarray}
+		   
+		   这里的$ f \left(x_{1}, x_{2}, \cdots x_{n}\right)$ 称为密度函数，满足如下两个条件:
+		   \vspace{-0.5em}
+		   \begin{eqnarray}
+		   \begin{array}{l}
+		   f\left(x_{1}, \cdots, x_{n}\right) \geqslant 0 \\  
+		   \int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} f\left(x_{1}, \cdots, x_{n}\right) d x_{1} \cdots d x_{n}=1 
+		   \end{array} \notag
+		   \end{eqnarray}
+		   
+		   一般地，若$ \left (  \xi, \eta  \right )  $ 是二维随机向量，其分布函数为$ F  (\mathrm{x}, \mathrm{y}),  $我们能由  $ \mathrm{F}(\mathrm{x}, \mathrm{y})  $ 得出  $ \zeta $ 或
+		   $ \eta  $的分布 函数，事实上，
+		   \begin{eqnarray}
+		   F_{1}(x)  =  P\{\xi<x\}  =  P\{\xi<x, \eta<\infty\}  =  F(x,+\infty) \notag
+		   \end{eqnarray}
+		   
+		   同理 $ F_{2}(y)=P\{\eta<y\}=F(+\infty, y) $， $ F_{1}(x)  $ 及 $  F_{2}(y) $  称为  F(x, y)  的边际分布函数（Marginal Distribution Function）。
+		   
+		   \begin{myexample} 
+				若$ F(x,y) $是连续型分布函数，有密度函数 $ f(x,y) $，那么 $ f_{1}(x)=\int_{-\infty}^{\infty} f(x, y) d y $。因此 $ F_{1}(x) $是连续型分布函数，其密度函数为 $ f_{1}(x)=\int_{-\infty}^{\infty} f(x, y) d y $
+				   同理$ F_{2}(x) $是连续型分布函数，其密度函数为 $ f_{2}(y)=\int_{-\infty}^{\infty} f(x, y) d x $。
+		   \end{myexample}
+		   
+		   {\bf [二元正态分布]}  函数
+		   \begin{eqnarray}
+		   f(x, y) & = & \frac{1}{2 \pi \sigma_{1} \sigma_{2} \sqrt{1-r^{2}}} \exp \left\{-\frac{1}{2\left(1-r^{2}\right)} \cdot\left[\frac{(x-a)^{2}}{\sigma_{1}^{2}}-\frac{2 r(x-a)(y-b)}{\sigma_{1} \sigma_{2}}+\frac{(y-b)^{2}}{\sigma_{2}^{2}}\right]\right\} \notag
+		   \end{eqnarray}
+		   
+		   \text { 这里 } a, b, $ \sigma_{1}, \sigma_{2}, r $ \text { 为常数， } $ \sigma_{1}>0,$ \quad 
+		   $ \sigma_{2}>0, $ \quad |r|<1, \text { 称为二元正态分布密度函数。 }
+		   
+		   \begin{theorem}[二元正态分布的边际分布仍为正态分布]	   	
+		   	{ \begin{align*}
+		   		N\left(\mu_{2}+\rho \frac{\sigma^{2}}{\sigma^{1}}\left(x-\mu_{1}\right), \sigma_{2}^{2}\left(1-\rho^{2}\right)\right)
+		   		\end{align*}
+		   	}	
+		   \end{theorem}
+	   
+	      其均值 $ \mu=\mu_{2}+\rho \frac{\sigma^{*}}{\sigma^{1}}\left(x-\mu_{1}\right) $ 是x的线性函数，这个结论在一些统计问题中很重要。
+	      
+	      条件分布(Conditional Distribution)
+	      	
+	      离散型：若已知 $ \xi=x_{1}, \quad\left(p 1\left(x_{1}\right)>0\right) $ 则事件 \{ $ \eta = y_i$ \}的条件概率为
+	      \vspace{-0.5em}
+	      \begin{eqnarray}
+	      P\left\{\eta  =  y_{j} \mid \xi  =  x_{i}\right\}  =  \frac{P\left\{\zeta  =  x_{i}, \eta  =  y_{j}\right\}}{P\left\{\xi  =  x_{i}\right\}} 
+	      =  \frac{P\left(x_{i}, y_{j}\right)}{p_{1}\left(x_{i}\right)} \notag
+	      \end{eqnarray}
+	      
+	      这式子定义了随机变量 $ \eta $ 关于随机变量 $ \xi $的条件分布。
+	      
+	      连续型：在给定$ \xi = x $条件下，$ \eta $ 的分布密度函数为 $ f(y \mid x)=\dfrac{f(x, y)}{f_{1}(x)}  $。
+	      同理可行在给定$ \eta = y $的条件下，$ \xi  $ 的分布密度函数为$ f(y \mid x)=\dfrac{f(x, y)}{f_{2}(x)}  $。
+	      这里当然也要求$ f_{2}(y) \neq 0 $。
+    
+     \item 随机变量的独立性
+     \setlength{\parindent}{2\ccwd}
+     
+     	\begin{mydef}
+		 	 \text { 设 } $ \xi_{1}, \cdots,  \xi_{\text {n }} $  \text { 为n个随机变量，若对于任意的 } $ \mathrm{x}_{1}, \cdots, \mathrm{x}_{\mathrm{n}} \text { 成立 } $
+			\vspace{-0.6em}
+			\begin{eqnarray}
+			P\left\{\xi_{1}<x_{1}, \cdots, \xi_{n}<x_{n}\right\} & = & P\left\{\xi_{1}<x_{1}\right\} \cdots P\left\{\xi_{n}<x_{n}\right\} \label{eq 2.2.2}
+			\end{eqnarray}
+			
+			则称$ \xi_{1}, \cdots, \quad \xi_{\text {n }} $ 是相互独立的。
+			若$ \xi_{i} $的分布函数为$ F\left( \xi_{1}, \cdots,  \xi_{\text {n }} \right) $
+			则\eqref{eq 2.2.2}等价于对一切$ x_{1}, \cdots,  x_{\text {n }} $ 成立
+			$ F\left(x_{1}, \cdots, x_{n}\right)=F_{1}\left(x_{1}\right) \cdots F_{n}\left(x_{n}\right) $。
+			在这种场合，由每个随机变量的（边际）分布函数可以唯一地确定联合分布函数(Joint Distribution Function)。
+		\end{mydef}
+
+     	对于离散型随机变量，\eqref{eq 2.2.2} 等价于任何一组可能取的值$ \left( x_{1}, \cdots,  x_{\text {n }} \right) $成立
+     	\vspace{-0.5em}
+     	\begin{eqnarray}
+     	\begin{array}{c}
+     	P\left\{\xi_{1} = x_{1}, \cdots, \xi_{n} = x_{n}\right\} = P\left\{\xi_{1} = x_{1}\right\} \cdots P\left\{\xi_{n} = x_{n}\right\}
+     	\end{array} \notag 
+     	\end{eqnarray}
+     	
+     	对于连续型随机变量，\eqref{eq 2.2.2} 等价于任何一组可能取的值$ \left( x_{1}, \cdots,  x_{\text {n }} \right) $成立
+     	\vspace{-1em}
+     	$$  f\left(x_{1}, \cdots, x_{n}\right)=f_{1}\left(x_{1}\right) \cdots f_{n}\left(x_{n}\right) $$
+     	
+     	这里$  f \left(x_{1}, \cdots, x_{n}\right) $是联合分布密度函数(Joint density function)，而$ f_{i}(xi)$是各随机变量的密度函数。
+     	
+     	此外，注意到若  $ \xi_{1}, \xi_{2}, \cdots, \xi_{n}  $ 相互独立，则其中的任意  $\mathrm{r}(2 \leqslant \mathrm{r}<\mathrm{n})  $个随机变量也相互.
+     	独立，例如，我们证明 $ \xi_{1}, \xi_{2}, \cdots, \xi_{n-1} $ 相互独立。
+     	
+     	\vspace{-1cm}
+     	\begin{eqnarray}
+     	P\left\{\xi_{1}<x_{1}, \cdots, \xi_{n-1}<x_{n-1}\right\} 
+     	& =  &  P\left\{\xi_{1}<x_{1}, \cdots, \xi_{n-1}<x_{n-1}, \xi_{n}<\infty\right\} \notag \\
+     	& =  &  P\left\{\xi_{1}<x_{1}\right\} \cdots P\left\{\xi_{n-1}<x_{n-1}\right\} P\left\{\xi_{1}<\infty\right\} \notag \\ 
+     	& =  & P\left\{\xi_{1}<x_{1}\right\} \cdots P\left\{\xi_{n-1}<x_{n-1}\right\} \notag
+     	\end{eqnarray}
+     	
+     	随机变量的独立性概念是概率论中最基本的概念之一，也是最重要的概念之一。
+    \item 随机向量变换(Transformation)及其分布
+    
+   	   若 $  \left(\xi_{1}, \cdots, \xi_{n}\right) $ 的密度函数为 $ f\left(x_{1}, \cdots, x_{n}\right) $，求
+   	   $  \eta_{1}=f_{1}\left(\xi_{1}, \cdots, \xi_{n}\right), \cdots \eta_{n}=f_{n}\left(\xi_{1}, \cdots, \xi_{n}\right) $ 的分布，这时有
+   	   \vspace{-1em}
+   		\begin{eqnarray} 
+	   	   	G\left(y_{1}, \cdots, y_{n}\right) &=P\left\{\eta_{1}<y_{1}, \cdots, \eta_{n}<y_{n}\right\}  \notag \\ 
+	   	   	&=\int \cdots \int f\left(x_{1}, \cdots, x_{n}\right) d x_{1} \cdots d x_{n} \label{eq 2.2.3} \\    	   	
+	   	   	& where \ \ \begin{array}{l}
+	   	   		f_{1}\left(x_{1}, \cdots, x_{n}\right) <  y_{1} \\
+	   	   		f_{m}\left(x_{1}, \cdots, x_{n}\right) <  y_{m}
+	   	   	\end{array} \notag   	   	
+   		\end{eqnarray} 
+   	   
+   	   若对 $ f\left(x_{1}, \cdots, x_{n}\right) $存在唯一的反函数 $ x_{i}\left(y_{1}, \cdots, y_{n}\right)=x_{i},(i=1, \cdots, n) $ ，且 $ \left(\eta_{1}, \cdots, \eta_{n}\right) $  的密度函数为
+   	   $ q\left(y_{1}, \cdots, y_{n}\right) $ 那么
+   	   	\vspace{-1em}
+   	   \begin{align}
+   	   	G\left(y_{1}, \cdots, y_{n}\right)=& \int \cdots \int q\left(u_{1}, \cdots, u_{n}\right) d u_{1} \cdots d u_{n} \notag \\
+   	   	where \ \ u_{1} < \ \ y_{1}& \ \ ,   \ \ u_{n} <  \ \ y_{n} \label{eq 2.2.4}
+   	   \end{align}
+   	   
+   	   比较\eqref{eq 2.2.3}与\eqref{eq 2.2.4}可知
+   	   \vspace{-1em}
+		$$ 
+		%\begin{eqnarray*}
+		\begin{array}{l}
+		q\left(y_{1}, \cdots, y_{n}\right)
+		=\left\{\begin{array}{l}
+		f\left(x_{1}, \cdots, x_{n}\right)|J|, \quad \text { 若 }\left(y_{1}, \cdots, y_{n}\right) \text { 属于 } f_{1}, \cdots, f_{n} \text { 的值域 } \\
+		0,   \quad \text { 其它 }
+		\end{array}\right.
+		\end{array} $$
+	  % \end{eqnarray*} 
+	  
+	  其中J为坐标变换的雅可比行列式(Jacobian Determinant)，这里，我们假定上述偏导数存在而且连续。
+	  \vspace{-1em}
+	  \begin{eqnarray}
+	  \boldsymbol{ J }& = & \left|\begin{array}{ccc}
+	  \dfrac{\partial x_{1}}{\partial y_{1}} & \cdots &\dfrac{\partial x_{n}}{\partial y_{1}} \\
+	  \cdots  & \cdots  & \cdots\\
+	  \dfrac{\partial x_{1}}{\partial y_{n}} & \cdots &\dfrac{\partial x_{n}}{\partial y_{n}}
+	  \end{array}\right| \notag
+	  \end{eqnarray}
+	  
+	  {\bf 随机变量的函数的独立性 } 
+	  
+	 \begin{theorem}
+		若$ \xi_{1}, \cdots, \xi_{n}  $是相互独立的随机变量，则 $ f_{1}\left(\xi_{1}\right), \cdots, f_{n}\left(\xi_{n}\right) $也是相互独立的，这里$ f_{i}(i=1, \cdots, n) $是任意的一元函数。
+	 \end{theorem}
+\end{enumerate} 
+
+\subsection{  数字期望及方差 }
+\begin{enumerate}[1、]
+	\item 数学期望
+		\setlength{\parindent}{2\ccwd}
+		一般地，如果X是随机变量，它的概率密度函数为$ f(x) $，那么它的期望值为
+		$$ 
+		\mathbb{E}[X]=\left\{\begin{array}{ll}
+			\sum_{x} x f(x) & \text { 当 } X \text { 是离散型随机变量时 } \vspace{ 0.5em} \\
+			\int_{-\infty}^{\infty} x f(x) d x & \text { 当 } X \text { 是连续型 }
+		\end{array}\right. $$
+		
+		在许多问题中我们不仅需要知道$ E[X] $ ，而且还想知道X的某个函数$ g(X) $的数学期望。
+		\vspace{-0.3em}
+		$$ \mathbb{E}[g(X)]=\left\{\begin{array}{ll}
+			\sum_{x} g(x) f(x) & \text { 当 } X \text { 是离散型时 } \vspace{ 0.5em} \\
+			\int_{-\infty}^{\infty} g(x) f(x) d x & \text { 当 } X \text { 是连续时 }
+		\end{array}\right. $$ 
+		
+		我们可以用同样的方法定义多元随机变量的函数的数学期望。假设随机变量$ X_{1}, \quad X_{2}, \dots X_n $的联合概率密度函数为 $ f\left(x_{1}, x_{2}, \cdots, x_{n}\right), \quad Y=g\left(X_{1}, X_{2}, \cdots, X_{n}\right) $
+		\vspace{-0.3em}
+		$$
+		\mathbb{E}[Y]=\int_{-\infty}^{\infty} \cdots \int_{-\infty}^{\infty} g\left(x_{1}, x_{2}, \cdots, x_{n}\right) f\left(x_{1}, x_{2}, \cdots, x_{n}\right) d x_{1} d x_{2} \cdots d x_{n} $$
+		
+		如果随机变量是离散的，那么上面公式里的积分号用和号代替。
+		
+		利用这个定义我们可以得到下列结果
+		
+		如果$ a_{0}, a_{1} \cdots, a_{n} $是常数，那么
+		$$ \mathbb{E}\left[a_{0}+a_{1} X_{1}+\cdots+a_{n} X_{n}\right]=a_{0}+a_{1} \mathbb{E}\left[X_{1}\right]+\cdots+a_{n} \mathbb{E}\left[X_{n}\right]  $$
+		
+		如果$ X_{1}, \quad X_{2}, \dots X_n $是相互独立的随机变量，那么
+		$$ \mathbb{E}\left[X_{1} X_{2} \cdots X_{n}\right]=\mathbb{E}\left[X_{1}\right] \mathbb{E}\left[X_{2}\right] \cdots \mathbb{E}\left[X_{n}\right] $$
+	
+	\item 方差(Variance)与协方差(Covariance)
+		\setlength{\parindent}{2\ccwd}
+		
+		一个随机变量X的r阶中心矩被定义为$ \mathbb{E}\left[(X-\mu)^{r}\right] $
+		记为$ \mu_{r} $。如果$ r = 2, \mathbb{E}\left[(X-\mu)^{2}\right] $被称为X的分布的方差或X的方差，常常记为
+		$ \sigma^{2} $ 或$ \rm Var(X) $。	$ \sigma^{2} $的正平方根	$ \sigma $被称为X的标准差。关于方差，我们有一个有用的公式
+		$$ \sigma^{2}=\mathbb{E}\left[(X-\mathbb{E}[X])^{2}\right]=\mathbb{E}\left[X^{2}\right]-(\mathbb{E}[X])^{2} $$
+		
+		X和Y之间的协方差，记为 $ \rm \sigma_{X Y} \text { 或 } {cov}(X, Y) $
+		\begin{eqnarray}
+		\sigma_{X Y}  =  \mathbb{E}[(X-\mathbb{E} X)(Y-\mathbb{E} Y)]  =  \mathbb{E}[X Y]-\mathbb{E}[X] \mathbb{E}[Y] \notag
+		\end{eqnarray}
+		
+		X和Y之间的协方差是对它们之间的相关性的一个测度。如果X和Y是相互独立的，那么$ {cov}(X, Y) = 0  $。这导致下面的相关系数的定义，X和Y之间的相关系数记为$ \rho_{XY}   $被定义为
+		\begin{eqnarray}
+		\rho_{X Y}  =  \frac{\operatorname{cov}(X, Y)}{\sqrt{\operatorname{var}(X)} \sqrt{\operatorname{var}(Y)}} \notag
+		\end{eqnarray}
+		
+		由这个定义，$ \rho_{XY}  $的取值一定在-1和1之间。如果X和Y是相互独立的，那么
+		$ \rho_{XY}  = 0$。如果$ \rm Y=aX+b $，这里a,b是不等于0的常数，那么$ \| \rho_{XY}  \|=1$ ，此时，我们说X和Y是完全相关的。X和Y的值越接近线性关系，$ \|\rho_{XY}  \| $值接近1。
+		
+		利用这些定义，我们可以得到下面的结果：如果$ a_{0}, a_{1} \cdots, a_{n} $是常数，$ X_{1}, \quad X_{2}, \dots X_n $是相互独立的随机变量，那么
+		\begin{eqnarray}
+			\operatorname{var}\left[a_{0}+a_{1} X_{1}+\cdots+a_{n} X_{n}\right]  =  \sum a_{i}^{2} \operatorname{var}\left(X_{i}\right)+2 \sum \sum_{i  < j} a_{i} a_{j} 
+			\operatorname{cov}\left(X_{i}, X_{j}\right) \notag
+		\end{eqnarray}
+
+		特别地，有
+		\begin{eqnarray}
+			\operatorname{var}\left(a_{0}+a_{1} X_{1}\right) & = & a_{1}^{2} \operatorname{var}\left(X_{1}\right)  \notag \\
+			\operatorname{var}\left(X_{1} \pm X_{2}\right) & = & \operatorname{var}\left(X_{1}\right)+\operatorname{var}\left(X_{2}\right) \pm 2 \operatorname{cov}\left(X_{1}, X_{2}\right)  \notag
+		\end{eqnarray}
+
+	\item 随机向量的协方差矩阵
+	
+		对于随机向量而言，我们可以相似地定义它的期望和协方差矩阵。用X表示随机变量组成的向量，即
+		\begin{eqnarray}
+			\boldsymbol{X} & = & \left[\begin{array}{l}
+			X_{1} \\
+			X_{2} \\
+			\vdots \\
+			X_{n}
+		    \end{array}\right] \notag
+		\end{eqnarray}
+		
+		假设 $ \mathbb{E}\left(X_{i}\right)=\mu_{i}, \operatorname{var}\left(X_{i}\right)=\sigma_{i}^{2}, \operatorname{cov}\left(X_{i}, X_{j}\right)=\sigma_{i j} $
+		那么X的期望值为
+		\begin{eqnarray}
+			\begin{array}{c}
+				\mathbb{E}[\boldsymbol{X}] = \left[\begin{array}{l}
+					\mathbb{E}\left[X_{1}\right] \\
+					\mathbb{E}\left[X_{2}\right] \\
+					\vdots \\
+					\mathbb{E}\left[X_{n}\right]
+				\end{array}\right] = \left[\begin{array}{l}
+				\mu_{1} \\
+				\mu_{2} \\
+				\vdots \\
+				\mu_{n}
+			\end{array}\right] = \boldsymbol{\mu}
+			\end{array} \notag 
+		\end{eqnarray}
+	
+		也即是一个随机向量的期望值等于它的各个分量的期望值组成的向量。我们定义一个随机向量X的协方差矩阵(Covariance Matrix)如下:
+		\vspace{-1em}
+		\begin{eqnarray}
+        \operatorname{cov}(\boldsymbol{X}) & = &   \mathbb{E} \left[(X-\mathbb{E}[\boldsymbol{X}])(X-\mathbb{E}[\boldsymbol{X}])^{\prime}\right] 
+        \vspace{1.5em} \notag \\
+		& = & \mathbb{E} \left[\begin{array}{cccc}
+			\left(X_{1}-\mu_{1}\right)^{2} & \left(X_{1}-\mu_{1}\right)\left(X_{2}-\mu_{2}\right) & \cdots & \left(X_{1}-\mu_{1}\right)\left(X_{n}-\mu_{n}\right) \\
+			\left(X_{2}-\mu_{2}\right)\left(X_{1}-\mu_{1}\right) & \left(X_{2}-\mu_{2}\right)^{2} & \cdots & \left(X_{2}-\mu_{2}\right)\left(X_{n}-\mu_{n}\right) \\
+			\cdots & \cdots & \cdots & \cdots \\
+			\left(X_{n}-\mu_{n}\right)\left(X_{1}-\mu_{1}\right) & \left(X_{n}-\mu_{n}\left(X_{2}-\mu_{2}\right)\right. & \cdots & \left(X_{n}-\mu_{n}\right)^{2}
+			\end{array}\right] \notag  \vspace{1.5em}\\
+		& = & \left[\begin{array}{cccc}
+			\operatorname{var}\left(X_{1}\right) & \operatorname{cov}\left(X_{1}, X_{2}\right) & \cdots & \operatorname{cov}\left(X_{1}, X_{n}\right) \\
+			\operatorname{cov}\left(X_{2}, X_{1}\right) & \operatorname{var}\left(X_{2}\right) & \cdots & \operatorname{cov}\left(X_{2}, X_{n}\right) \\
+			\cdots & \cdots & \cdots & \cdots \\
+			\operatorname{cov}\left(X_{n}, X_{1}\right) & \operatorname{cov}\left(X_{n}, X_{1}\right) & \cdots & \operatorname{var}\left(X_{n}\right)
+			\end{array}\right] \notag  \vspace{1.5em} \\
+		& = & \left[\begin{array}{cccc}
+			\sigma_{1}^{2} & \sigma_{12} & \cdots & \sigma_{1 n} \\
+			\sigma_{21} & \sigma_{22}^{2} & \cdots & \sigma_{2 n} \\
+			\cdots & \cdots & \cdots & \cdots \\
+			\sigma_{n 1} & \sigma_{n 2} & \cdots & \sigma_{n}^{2}
+			\end{array}\right] \notag 
+		\end {eqnarray}
+		
+    $ \boldsymbol{X} $的协方差矩阵常常记为$ \boldsymbol{\Sigma_{x}} $，它是一个正定矩阵，如下是证明：对于任意的不为零的向量
+    $ \boldsymbol{ a^{\prime}}=\left(a_{1}, a_{2}, \cdots, a_{n}\right)$。我们构造一个变量 $ \boldsymbol{ Y = a^{\prime}X }$ 
+    那么Y的方差 $ \operatorname{Var}(\boldsymbol{Y})=\operatorname{Var}\left( \boldsymbol{a^{\prime} X }\right)= \boldsymbol{a^{\prime} \Sigma_{x} a} \geq 0 $ 
+    即证明了$ \boldsymbol{ \Sigma_{x} } $是非负定的。
+\end{enumerate}
+
+\section[条件分布、条件数学期望及其条件方差]{ 条件分布(Conditional Distribution)、条件数学期望(Conditional Expectation)及其条件方差（Conditional Variance）}
+
+	条件均值（Conditional Mean）是条件分布的均值，其定义为:
+	$$  \mathbb{E}[y \mid x]=\left\{\begin{array}{ll}
+	\int_{y} y f(y \mid x) d y & \text { 若 } y \text { 是连续的, }  	\vspace{0.5em} \\
+	\sum_{y} y f(y \mid x) & \text { 若 } y \text { 是离散的 }
+	\end{array}\right. $$
+	
+	条件均值函数$ \mathbb{E}[y \mid x] $的回归对称为$ y $ 对$ x $的回归。
+	
+	{\bf 条件方差（Conditional Variance）是条件分布的方差}：
+	\begin{eqnarray}
+		\operatorname{Var}[y \mid x]  & = & \mathbb{E}\left[(y-\mathbb{E}[y \mid x])^{2} \mid x\right] \notag  \\
+		& = & \int_{y}(y-\mathbb{E}[y \mid x])^{2} f(y \mid x) d y  \notag  	\vspace{0.5em}\\
+		\text{或} \ \ &  &    \sum_{y}(y-\mathbb{E}[y \mid x])^{2} f(y \mid x) \quad(\text { 离散时 }) \notag 
+    \end{eqnarray}
+    
+	利用下式可以简化计算
+	\begin{eqnarray}
+		\operatorname{Var}[y \mid x] & = & \mathbb{E}\left[y^{2} \mid x\right]-(\mathbb{E}[y \mid x])^{2} \notag
+	\end{eqnarray}
+
+	\text { 并且有: } \qquad $ \mathbb{E}[y] = \mathbb{E}_{x}[\mathbb{E}[y \mid x]]  $ 。记号$ \mathbb{E}_{x}[\cdot] $表示对X的值的期望。
+	
+	{\bf 几个重要的公式:}
+	 
+	\begin{enumerate}
+		\item  $  \mathbb{E} (X Y \mid X)=X \mathbb{E} (Y \mid X) $
+		
+		思考: $  \mathbb{E} \left [ g(X) Y \mid X \right ] =g(X) \mathbb{E}(Y \mid X)  $ 是否成立?  ? 
+		\item  $ \mathbb{E}(X Y)=\mathbb{E}\left [  X \mathbb{E}(Y \mid X)  \right ] $
+		\item 方差分解公式(Decomposition of Variance )
+		
+		推导：分两步，先证明
+			
+			\begin{enumerate} [i)]
+				\item $  E(Y \mid X) $\text { 和 } $ Z=Y-E(Y \mid X) $ \text { 是不相关的,即 } $ \operatorname{cov}(E(Y \mid X), Z)=0 $
+				
+				这是因为：
+				\begin{eqnarray}
+					\mathbb{E} (Z \mid X)  & = & \mathbb{E} \left \{ \left [   Y-\mathbb{E}(Y \mid X)\right ] \mid X\right \} \notag \\
+					& = & \mathbb{E}(Y \mid X)-\mathbb{E}(Y \mid X)  =  0,  \notag \\
+				\text { 从而 \ \ } \mathbb{E} Z & = & \mathbb{E}\left [ \mathbb{E}(Z \mid X)\right ]  = 0 \notag
+				\end{eqnarray}
+				
+				进而有 \qquad $ \operatorname{cov}\left [ \mathbb{E}(Y \mid X), Z) \right ] = \mathbb{E}\left [ Z \mathbb{E}(Y \mid X) \right ]  $
+				\begin{eqnarray}
+					&\text { 我们考察 } \quad \mathbb{E} \left \{ \left [ Z \mathbb{E}(Y \mid X)\right ]  \mid X \right \}  
+					=  \mathbb{E}(Y \mid X) \mathbb{E}(Z \mid X)  = 0 \notag \\
+					&\therefore \quad \mathbb{E}\left [ Z \mathbb{E}(Y \mid X) \right ]  
+					=  \mathbb{E}\{\mathbb{E}\left [ Z \mathbb{E}(Y \mid X) \mid X) \right ] \}  =  0 \notag
+				\end{eqnarray}
+				
+				\item 
+				\setlength{\parindent}{2\ccwd}
+				
+				对于任意Y有： $ Y=Y-\mathbb{E}(Y \mid X)+\mathbb{E}(Y \mid X)=Z+\mathbb{E}(Y \mid X) $，因为X与$  \mathbb{E} (Y \mid X) $是不相关，
+				     故 $ \operatorname{Var}(Y)=\operatorname{Var}\left [ Y-\mathbb{E}(\mathbb{E}(Y \mid X) \right ]
+				+\operatorname{Var}\left [ \mathbb{E}(Y \mid X) \right ]  $
+				\begin{eqnarray}
+					\operatorname{Var}(Y-\mathbb{E}(Y \mid X)) & = & \mathbb{E}(Y-\mathbb{E}(Y \mid X))^{2} \notag \\
+					& = & \mathbb{E}\left\{  \mathbb{E}\left[Y-\mathbb{E}(Y \mid X)^{2} \mid X \right]  \right\} \notag  \\
+					& = & \mathbb{E}\left[\operatorname{Var}_{x}(Y \mid X)\right] \notag
+				\end{eqnarray}
+				
+				我们得到方差分解公式：
+				\begin{eqnarray}
+				\operatorname{Var}(Y) & = & \operatorname{Var}\left [ \mathbb{E}(Y \mid X) \right ] + \mathbb{E}\left[\operatorname{Var}_{x}(Y \mid X)\right] \notag 
+				\end{eqnarray}
+				
+				方差分解结果表明，在双变量分布中，y的变差出自两个来源：
+				
+				1. 由于$ \mathbb{E}[y \mid x] $随x变化的事实所产生的变差为回归方差（Regression Variance）：
+				$$ \text { 回归方差= } \operatorname{Var}_{x}[\mathbb{E}[y \mid x]] $$
+				
+				2. 由于在每一条件分布中，y都围绕条件均值变化而产生的变差为残差方差(Residual Variance)：
+				$$ \text { 残差方差= } \operatorname{Var}_{x}[var[y \mid x]] $$
+				
+				
+				这样 $\quad \operatorname{Var}[\mathrm{y}] = $ 回归方差  +  残差方差。
+				
+				
+				由方差分解公式，我们得到$ \operatorname{Var}[\mathbb{E}(y \mid x)] \le  \operatorname{Var}[y] $，
+				这个是非常重要的公式，它常被应用到寻求最小方差估计量的方法中.我们可以看一个实际的例子。
+				
+				\begin{myexample} 
+					设X和Y服从二元正态分布联合分布，我们已经知道，在给定X的条件下，其条件分布仍然是正态分布，并且 $ \mathbb{E} (Y \mid X)=\mu_{2}+\rho 
+					\dfrac{\sigma_{2}}{\sigma_{1}}\left(X-\mu_{1}\right) $，并且 $ \mathbb{E}\left [ \mathbb{E}(Y \mid X) \right ] =\mu_{2}=\mathbb{E} Y $ ，然而
+					\begin{eqnarray}
+					\operatorname{Var}(\mathbb{E}(Y \mid X))  & = & \mathbb{E}\left[E(Y \mid X)-\mu_{2}\right]^{2} 
+					=  \mathbb{E} \left(\rho \dfrac{\sigma_{2}}{\sigma_{1}}\left(X-\mu_{1}\right)\right)^{2} \notag \\
+					& = & \rho^{2} \dfrac{\sigma_{2}^{2}}{\sigma_{1}^{2}} \mathbb{E} \left(X-\mu_{1}\right)^{2}  =  \rho^{2} \sigma_{2}^{2} \notag
+					\end{eqnarray}
+					
+					在$ -1< \rho<1 $ 条件下， $  \sigma_{2}^{2}>\rho^{2} \sigma_{2}^{2}  $ 。满足方差分解公式，并且我们很容易知道，
+					$ \mathbb{E} \left(\operatorname{Var}_{x}(Y \mid X)\right)=\sigma_{2}^{2}-\rho^{2} \sigma_{2}^{2}=\sigma_{2}^{2}\left(1-\rho^{2}\right)  $。
+				\end{myexample}
+			\end{enumerate}
+	\end{enumerate}
+
+\subsection{极限分布理论 (Limit Distribution Theory) }
+	\begin{enumerate}[1]
+		\item 几个极限的定义
+			\begin{enumerate}[1)]
+				\item 分布函数的弱收敛(Weak Convergence of the Distribution Function)
+				
+				\begin{mydef}
+					对于分布函数列$ \left\{F_{n}(x)\right\} $ ，如果存在一个非降函数$F(x) $使 
+					$ \lim_{n \rightarrow \infty} F_{n}(x)=F(x) $ 。在$ F(x) $ 的每一连续点上都成立，则称
+				$ F_{n}(x) $弱收敛于$ F(x) $，并记为 
+				$ F_{n}(x) \stackrel{w}{\longrightarrow} F(x) $，中心极限定理就是一个分布函数弱收敛的例子。
+				\end{mydef}
+					
+				\item 随机变量的收敛性(Convergence of the Random Variable)
+				\setlength{\parindent}{2\ccwd}
+				
+				概率论中的极限定理研究的是随机变量序列的某种收敛性，对随机变量收敛性的不同定义将导致不同的极限定理，而随机变量的收敛性的确可以有各种不同的定义，理解这些不同的极限定义，对于我们分析线性回归的大样本结果很重要。现在就来讨论这个问题。
+				
+					\begin{enumerate}[ a) ]
+						\item 依分布收敛(Convergence in Distribution)
+						
+						分布函数弱收敛的讨论启发我们引进如下定义。
+						
+						\begin{mydef}[依分布收敛]  
+							设随机变量 $ \xi_{n}, \xi $ 的分布函数分别为$ F_{n}(x) $
+						及 $ F(x) $ 如果 $ F_{n}(x) \stackrel{w}{\longrightarrow} F(x) $ 则称 $ \xi_{n} $依分布收敛于$  \xi $，并记为 $ \xi_{n} \stackrel{L}{\longrightarrow} \xi $
+						\end{mydef}
+						
+						\item 依概率收敛(Convergence in Probability)
+						
+						\begin{mydef}[依概率收敛]   如果 $ \lim_{n \rightarrow \infty} P\left\{\left|\xi_{n}-\xi\right| \geq \varepsilon\right\}=0 $ 
+						对任意的$   \varepsilon > 0 $ 成立，则称$ \xi_{n} $ 依概率收敛于$ \xi $，并记为 $ \xi_{n} \stackrel{P}{\longrightarrow} \xi $
+						\end{mydef}
+						\item r-阶收敛
+						
+						\begin{mydef}[$\mathrm{r}-$  阶收敛]  设对随机变量  $ \xi_{n}$  及 $\xi $\
+							有 $  \mathbb{E}\left|\xi_{n}\right|^{r}<\infty, \quad \mathbb{E}|\xi|^{r}<\infty,$ \quad 
+							其中$ r>0 $ 为常数，如果  $ \lim_{n \rightarrow \infty} \mathbb{E} \left|\xi_{n}-\xi\right|^{r}=0, $  则称 $ \left\{\xi_{n}\right\} r - $ \ \ 
+							阶收敘于 $  \xi, $ 并记为  \ \  $ \xi_{n} \stackrel{r}{\longrightarrow} \xi $
+						\end{mydef}
+						下面定理揭示了r-阶收敛与依概率收敛的关系。
+						
+						\begin{theorem}
+							$ \xi_{n} \stackrel{r}{\longrightarrow} \xi \Longrightarrow \xi_{n} \stackrel{P}{\longrightarrow} \xi $
+						\end{theorem}
+						
+					\end{enumerate}
+				\item 极限的应用——贝努里分布与泊松分布
+					\begin{enumerate}[ a) ]
+						\item 近似计算
+							在 n 次贝努里试验中正好出现 k 次成功的概率 $ b (k;n, p): $
+							\begin{eqnarray}
+							b(k ; n, p) = \left(\begin{array}{c}
+							n  \\  k
+							\end{array}\right) p^{k} q^{n-k}, \quad k = 0,1,2, \cdots, n \notag
+							\end{eqnarray}
+							
+							其中$ q=1-p$ 。$ \quad b(k ; n, p), \quad 
+							\mathrm{k}=0,1,2, \cdots, \quad \mathrm{n} $称为二项分布。
+							
+							在很多应用问题中，我们常常遇到这样的贝努里试验，其中，相对地说n大，p小，而乘积
+							$ \lambda=n p $大小适中，在这种情况下，有一个便于使用的近似公式。
+							
+							\begin{theorem}[泊松]
+								在贝努里试验中，以pn代表事件A在试验中出现的概率，它与试验总数n有关，如果 $ n p_{n} \rightarrow \lambda $ ，则当 $ n \rightarrow \infty \text { 时 }, \quad b\left(k ; n, P_{n}\right) \rightarrow \frac{\lambda^{k}}{k !} e^{-\lambda} $ 
+							\end{theorem}
+						
+						若 $ X_{1}, \ \  X_{2}, \ \  \cdots X_{n}, \ \   \cdots $ 是一串相互独立相同分布的随机变量序列，且 $ \mathbb{E} X_{k}=\mu, 
+						\operatorname{Var}\left(X_{k}\right)=\sigma^{2} $
+						
+						我们来讨论标准化随机变量和 $ \xi_{n}=\frac{1}{\sigma \sqrt{n}} 
+						\sum_{k=1}^{n}\left(X_{k}-\mu\right) $ 的极限分布。林德贝格与勒维（Lindeberg and Levy）建立了下列中心极限定理。
+						
+						\begin{theorem}[林德贝格-勒维]
+							若 $ 0< \sigma^{2} < \infty $ ，则
+							$ \lim _{n \rightarrow \infty} P\left\{\xi_{n}<x\right\}=\dfrac{1}{\sqrt{2 \pi}} \int_{-\infty}^{x} e^{-t^{2} / 2} d t $
+						\end{theorem}
+					\end{enumerate}
+			\end{enumerate}
+	   \item 契比雪夫（Chebyshevs Inequality）不等式
+	    \setlength{\parindent}{2\ccwd}
+	    
+		   对于任何具有有限方差的随机变量X，都有
+		   \begin{eqnarray}
+		   P\{|X-\mathbb{E} X| \geqslant \varepsilon\} \leqslant \frac{\operatorname{Var}(X)}{\varepsilon^{2}}, \quad 
+		   \text{其中}  \varepsilon   \text{是任一正数} \label{eq 2.3.1}
+		   \end{eqnarray}
+		   
+		   \begin{myproof}
+				若F(x)是X的分布函数，则显然有
+				\begin{eqnarray}
+				P\{|X-\mathbb{E} X|\geqslant \varepsilon\} & =  &\int_{|x- \mathbb{E} X| \geq \varepsilon} d F(x) \vspace{0.5em} \notag \\
+				& &\leqslant \int_{|x-\mathbb{E} X|>\varepsilon} \frac{(x-\mathbb{E} X)^{2}}{\varepsilon^{2}} d F(x) \vspace{0.5em}  \\
+				& &\leqslant \frac{1}{\varepsilon^{2}} \int_{-\infty}^{\infty}(x-\mathbb{E} X)^{2} d F(x)  
+				= \frac{\operatorname{Var}(X)}{\varepsilon^{2}} \notag
+				\end{eqnarray}
+		   \end{myproof}
+		   这就证得了不等式\eqref{eq 2.3.1}，有时把\eqref{eq 2.3.1}改写成
+		   \begin{eqnarray}
+		   P\{|X-\mathbb{E} X|<\varepsilon\} \geqslant 1-\frac{\operatorname{Var}(X)}{\varepsilon^{2}}, \quad
+		   or  \ \ 
+		   P \left\{\left |  \dfrac{X-\mathbb{E} X}{\sqrt{\operatorname{Var}(X)} }\right |  \geq \delta\right\} \leqslant \dfrac{1}{\delta^{2}}  \label{eq 2.3.3} 
+		   \end{eqnarray}
+		   
+		   契比雪夫不等式利用随机变量X的数学期望$ \mathbb{E}(X) $及方差 $\operatorname{Var}(X)=\sigma^{2}$对X的概率分布进行估计。
+		   例如\eqref{eq 2.3.3}断言不管X的分布是什么，X落在$ ( \mathbb{E} X-\sigma \delta, \mathbb{E} X+\sigma \delta) $ 中的概率不小于 
+		   $ 1-\dfrac{1}{\delta^{2}} $，因为契比雪夫不等式只利用数学期望及方差就描述了随机变量的变化情况，因此它在理论研究及实际应用中很有价值。
+		   
+	   \item 大数定律 
+	   \setlength{\parindent}{2\ccwd}
+	   
+	   	\begin{mydef}
+			若 $  \xi_{1}, \xi_{2}, \cdots, \xi_{n}, \cdots $是随机变量序列，令 $  \eta_{n}=\dfrac{\xi_{1}+\xi_{2}+\cdots+\xi_{n}}{n}   $ 。如果存在这样的一个常数序列
+			$ a_{1}, a_{2}, \cdots, a_{n}, \cdots, $ 对任意的  $ \varepsilon>0  $ 恒有
+		\end{mydef}
+			$$ \lim _{n \rightarrow \infty} P\left\{\left|\eta_{n}-a_{n}\right|<\varepsilon\right\}=1 $$
+	   	  
+		\begin{mydef}[契比雪夫大数定律]  设 $ X_{1}, X_{2}, \cdots, X_{n}, \cdots $是由两两不相关的随机变量所构成的序列，每一随机变量都有有限的方差，并且它们有公共上界C，即
+	   	  $$ \operatorname{Var}\left(X_{1}\right) \leqslant \mathrm{c}, \operatorname{Var}\left(X_{2}\right) \leqslant \mathrm{c}, \cdots, \operatorname{Var}\left(X_{n}\right) \leqslant \mathrm{c}, \cdots $$
+		\end{mydef}
+
+	   	  则对任意的 $ \varepsilon>0  $ 恒有
+	   	  \begin{eqnarray}
+			 \lim _{n \rightarrow \infty} P\left\{\left|\frac{1}{n} \sum_{k  =  1}^{n} X_{k}-\frac{1}{n} \sum_{k =  1}^{n} 
+			 \mathbb{E} X_{k}\right|<\varepsilon\right\}  =  1
+			 \label{eq 2.3.4}
+	   	  \end{eqnarray}
+	   	  
+	   	\begin{myproof}
+			\ \ 因为\{ $ \xi_{k} $\}两两不相关，故
+	   	   \begin{eqnarray}
+	   	  \operatorname{Var}\left(\frac{1}{n} \sum_{k  =  1}^{n} X_{k}\right) & = & \frac{1}{n^{2}} \sum_{k  =  1}^{n} \operatorname{Var}\left(X_{k}\right) \leqslant \frac{C}{n} \notag
+	   	  \end{eqnarray} 
+	   	  
+	   	  再由契比雪夫不等式得到
+	   	  \begin{eqnarray}
+			 P\left\{\left|\frac{1}{n} \sum_{k  =  1}^{n} X_{k}-\frac{1}{n} \sum_{k  =  1}^{n} \mathbb{E} X_{k}\right|<\varepsilon\right\} \geqslant 
+			 1-\dfrac{\operatorname{Var}\left(\frac{1}{n} \sum_{k  =  1}^{n} X_{k}\right)}{\varepsilon^{2}} \geqslant 1-\dfrac{C}{n \varepsilon^{2}} \notag \\ 
+	   	  \therefore \quad  1 \geqslant P\left\{\left|\dfrac{1}{n} \sum_{k  =  1}^{n} X_{k}-\frac{1}{n} \sum_{k  =  1}^{n} \mathbb{E} X_{k}\right|<\varepsilon\right\} \geqslant 1-\dfrac{C}{n \varepsilon^{2}}  \notag
+	   	  \end{eqnarray}
+	   	  
+		  于是，当 $ n \rightarrow \infty $ 时有\eqref{eq 2.3.4}。
+		  That's it.
+		\end{myproof}  
+
+		\begin{mydef}[贝努里大数定律]
+					设$ \mu_{n} $ 是n次贝努里试验中事件A出现的次数，而p是事件A在每次试验中出现的概率，则对任意$ \varepsilon > 0 $ ，都有
+				\begin{eqnarray}
+					\lim _{n \rightarrow \infty} P\left\{\left|\frac{\mu_{n}}{n}-p\right|<\varepsilon\right\}=1 \notag 
+				\end{eqnarray}
+	    \end{mydef}
+	   	  
+	   	\begin{myproof}
+				 
+		   定义随机变量  $X_{i}=\left\{\begin{array}{ll}1, & \text { 第 } i \text { 次试验出现 } A \\ 0, & \text { 第 } i \text { 次试验不出现 } A\end{array}\right.  $
+	   	  \begin{eqnarray}
+			\mathbb{E} X_{i}  = p, \quad \operatorname{Var}\left(X_{i}\right)  =  p q \leqslant \frac{1}{4} \notag
+	   	  \end{eqnarray}
+	   	  
+	   	  \vspace{-1cm}
+	   	  \begin{eqnarray}
+	   	  \frac{1}{n} \sum_{k  = 1}^{n} X_{k}-\frac{1}{n} \sum_{k  =  1}^{n} \mathbb{E} X_{k} & = & \frac{\mu_{n}}{n}-p \notag \\
+			 P\left\{\left|\frac{\mu_{n}}{n}-p\right| \geq \varepsilon\right\} \leqslant \frac{1}{\varepsilon^{2}} \operatorname{Var}
+			 \left(\frac{\mu_{n}}{n}\right) &  = &\frac{1}{n \varepsilon^{2}} \operatorname{Var}\left(X_{i}\right) \leqslant \frac{1}{4 n \varepsilon^{2}} \notag
+	   	  \end{eqnarray}
+		\end{myproof}
+
+	   	  贝努里大数定律建立了在大量重复独立试验中事件出现频率的稳定性，正因为这种稳定性，概率的概念才有客观意义，贝努里大数定律还提供了通过试验来确定事件概率的方法，既然频率 $ \dfrac{\mu_{n}}{n} $ 与概率p有较大偏差的可能性很小，那么我们便可以通过做试验确定某事件发生的频率并把它作为相应概率的估计，这种方法称为参数估计，它是数理统计中的主要研究课题之一，参数估计的重要理论基础就是大数定律。
+	   	  
+	\end{enumerate}
+
+\subsection{实例}
+
+在一次全民选举中，总共有5个候选人A、B、C、D、E竞选总统，经全民投票后，结果如下：
+
+$$
+\begin{array}{cccc}
+	\hline 
+	& A  & c  \\
+	\hline 
+	& ABCDE  &  33\%  \\
+	& BDCEA  &  16\%  \\
+	& CDBAE  &  3\% \\
+	& CEBDA  &  8\%\\
+	& DECBA  &  18\%\\
+	& ECBDA  &  22\% \\ 
+	\hline
+\end{array} $$
+
+\vspace{0.5em}
+问谁是总统？ 请制定一些合理的选举规则，使5个候选人都有可能当选。

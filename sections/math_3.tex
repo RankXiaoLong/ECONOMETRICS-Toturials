@@ -1,0 +1,633 @@
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ % @File    : c:\Users\Administrator\Desktop\Econometrics\sections\math_3.tex
+ % @Date    : 2021-02-02 08:58:07
+ % @Author  : RankFan
+ % @Email   : 1917703489@qq.com
+ % -----
+ % Last Modified: 2021-02-15 18:10:48
+ % Modified By: Rank_fan
+ % -----
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\section{数理统计（Mathematical Statistics）}
+
+数理统计的方法及考虑的问题不同于一般的资料统计，它更侧重于应用随机现象本身的规律性来考虑资料的收集、整理和分析，从而找出相应的随机变量的分布律或它的数字特征。由于大量的随机试验必能呈现出它的规律性，因而从理论上讲，只要对随机现象进行足够多次观察，被研究的随机现象的规律性一定能清楚地呈现出来，但是实际上所允许的观察永远只能是有限的，有时甚至是少量的。因此我们所关心的问题是怎样有效地利用有限的资料，便能去掉那些由于资料不足所引起的随机干扰，而把那些实质性的东西找出来，一个好的统计方法 就在于能有效地利用所获得的资料，尽可能作出精确而可靠的结论。
+
+\subsection{ 数理统计的基本概}
+{\bf 1） \ \ 母体和子样 }
+
+	我们把所研究的全部元素组成的集合称为母体或总体，而把组成母体的每个元素称为个体。
+	
+	为了对母体的分布律进行各种研究，就必需对母体进行抽样观察。一般来说，我们还不止进行一次抽样观察，而要进行几次观察。设$ X_{1}, X_{2}, \cdots X_{n} $ 是所观察到的结果，显然它是随机变量，称它为容量是n的子样。把 $ X_{1}, X_{2}, \cdots X_{n} $
+	所取值的全体称为子样空间。
+	
+	我们抽取子样的目的是为了对母体的分布律进行各种分析推断，因而要求抽取的子样能很好地反映母体的特性，这就必须对随机抽样的方法提出一定的要求。通常提出下面两点：
+	
+	{\bf (i) } 代表性：要求子样的每个分量 $ X_{i} $ 与所考察的母体$  \boldsymbol{X} $具有相同的分布$  F( \boldsymbol{X} ) $
+	
+	{\bf (ii) }独立性：$ X_{1}, X_{2}, \cdots X_{n} $  为相互独立的随机变量，也就是说，每个观察结果即不影响其它观察结果，也不受其它观察结果的影响。
+	
+	满足上述两点性质的子样称为简单随机子样，获得简单随机子样的抽样方法称为简单随机抽样。
+	
+	对于简单随机子样 $ \boldsymbol{X} = (X_{1}, X_{2}, \cdots X_{n})  $  其分布可以由母体的分布函数$  F( \boldsymbol{X} ) $完全决定，
+	$ \boldsymbol{X} $ 的分布函数
+	$ \prod_{i=1}^{n} F\left(x_{i}\right) $
+
+{\bf 2） \ \ 统计量 } 
+
+	一般来说，子样的某种不含任何未知参数的函数，在统计学中都可以称为统计量。
+	
+	$ \text { 统计量: } \dfrac{1}{3}\left(X_{1}+X_{2}+X_{3}\right), \quad X_{1}^{2}+X_{2}^{2}, \quad \dfrac{1}{3}\left(2 X_{1}+X_{2}\right) ; 
+	 \ \ 
+	\text { 非统计量: } \dfrac{1}{3}\left(Z_{1}+Z_{2}+Z_{3}\right)-\mu, \dfrac{Z_{1}-Z_{2}}{\sigma} $
+
+{\bf 3） \ \ 常用的统计量—子样矩  }
+
+	{\bf r阶矩（或r阶原点矩）}  $ A_{r}=\frac{1}{n} \sum_{i=1}^{n} X_{i}^{r} $ 特别地， $ \bar{X}=\frac{1}{n} \sum_{i=1}^{n} X_{i} $ 为子样均值。
+	
+	{\bf  r阶中心矩：}  $ B_{r}=\frac{1}{n} \sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{r} $ 特别地，$ 
+	S_{n}^{2}=\frac{1}{n} \sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2} $ 为子样方差。
+	
+	总结：对于母体，我们有母体均值 $ \mu $ ，母体方差$ \sigma ^2 $，母体的k阶原点矩$ k\mu $ 和k阶中心矩$  k \sigma  $；
+	
+	我们可以得到如下结论：
+	
+	\begin{theorem}
+		设母体服从分布$ F( \boldsymbol{X}) ,   \boldsymbol{X} = (X_{1}, X_{2}, \cdots X_{n})  $ 是从该母体中抽得的一个简单随机子样，如果的
+		$ F( \boldsymbol{X}) $ 二阶矩阵存在，则对子样均值$ \overline{X} $ ，有
+		\begin{eqnarray}
+		E \overline {X}  =  \mu \text { 和 } \operatorname{Var}(\overline{X})  =  \dfrac{\sigma^{2}}{n} \notag
+		\end{eqnarray} 		
+	\end{theorem}
+		\begin{eqnarray}
+		Proof:
+			& \quad \mathbb{E}(\overline{X}) =  \mathbb{E} \left(\frac{1}{n} \sum_{i  =  1}^{n} X_{i}\right)  
+			=  \frac{1}{n} \sum_{i =  1}^{n} \mathbb{E} \left(X_{i}\right)  =  \frac{1}{n} \sum_{i  =  1}^{n} \mu =  \mu  \notag \\
+			& \qquad \begin{array}{c}
+			\operatorname{Var}(\overline {X})  =  \mathbb{E} (\overline{X}-\mu)^{2}  =  \mathbb{E} \left(\dfrac{1}{n} \sum_{i  = 1}^{n} X_{i}-\mu\right)^{2} \\  
+			=   \dfrac{1}{n^{2}} \mathbb{E} \left[\sum_{i  =  1}^{n}\left(X_{i}-\mu\right)\right]^{2}  
+			=  \frac{1}{n^{2}} \sum_{i  =  1}^{n} \mathbb{E} \left(X_{i}-\mu\right)^{2}  =  \dfrac{\sigma^{2}}{n}
+			\end{array} \notag
+		\end{eqnarray}
+		
+		思考：是否存在更简单的证明方法？
+		
+	\begin{theorem}
+		对于子样方差$ S_{n}^{2} $ ，其均值 $ \mathbb{E} S_{n}^{2}=\frac{n-1}{n} \sigma^{2} $
+	\end{theorem}
+		\begin{eqnarray}
+			Proof: \quad \because  \ \  S_{n}^{2} & = & \frac{1}{n} \sum_{i  =  1}^{n}\left(X_{i}-\bar{X}\right)^{2}  
+			=  \frac{1}{n} \sum_{i  = 1}^{n} X_{i}^{2}-\frac{1}{n^{2}}\left(\sum_{i  =  1}^{n} X_{i}\right)^{2}
+			\notag \\
+			\therefore  \ \  \mathbb{E} S_{n}^{2} & = & \mathbb{E}\left\{\frac{1}{n} \sum_{i=1}^{n} X_{i}^{2}-\frac{1}{n^{2}}\left(\sum_{i=1}^{n} X_{i}\right)^{2}\right\}
+			\notag \\ 
+			& = & \alpha_{2}-\frac{1}{n^{2}} \mathbb{E}\left\{\sum_{i=1}^{n} X_{i}^{2}+\sum_{i \neq j} \sum X_{i} X_{j}\right\}
+			,\quad where \ \  \alpha_{2} = \mathbb{E} \frac{1}{n} \sum X_{i}^{2} \notag \\
+			& = & \alpha_{2}-\frac{1}{n^{2}}\left(n \alpha_{2}+n(n-1) \mu^{2}\right) 
+			=\frac{n-1}{n}\left(\alpha_{2}-\mu^{2}\right)=\frac{n-1}{n} \sigma^{2} \notag
+		\end{eqnarray}
+		
+{\bf 4） \ \ 顺序统计量、经验分布函数与子样矩}
+		
+		设是从母体 $  (X_{1}, X_{2}, \cdots X_{n})  $  中抽取的一个子样，记 $  (x_{1}, x_{2}, \cdots x_{n})  $  是子样的一个观察值，将观察值的各分量按大小递增次序排列，得到		
+			$$ x_{1}^{*} \leqslant x_{2}^{*} \leqslant \cdots \leqslant x_{n}^{*} $$
+			
+        当$  (X_{1}, X_{2}, \cdots X_{n})  $ 取值为 $  (x_{1}, x_{2}, \cdots x_{n})  $ 。我们定义$ X_{k}^{(n)} $取值为$ x_{k}^{*} $ 称由此得到的  $ X_{1}^{n}, X_{2}^{n}, \cdots X_{n}^{n}   $  为$  (X_{1}, X_{2}, \cdots X_{n})  $ 的一组顺序统计量。 显然 
+        $ X_{1}^{(n)} \leqslant X_{2}^{(n)} \leqslant \cdots \leqslant X_{n}^{(n)}, \quad X_{1}^{(n)}= \displaystyle \min _{1 \leq i \leq n} X_{i} $
+		即$ X_{1}^{(n)} $的观察值是子样观察值中最小的一个，而
+		$  X_{n}^{(n)} = \displaystyle \max _{1 \leq i \leq n} X_{i}, X_{n}^{(n)} $ 的观察值是子样观察值中最大的一个。记：
+		\begin{eqnarray}
+			F_{n}^{*}(x)    
+			\left\{\begin{array}{ll}
+				0,               & when   \ \   x \leq x_{1}^{*} \notag  \\
+				\dfrac{k}{n},    & when   \ \   x<x \leq x_{k+1,  \ \ k  =  1,2, \cdots, n-1}^{*} \notag \\
+				1,               & when   \ \   x>x_{n}^{*} \notag
+			\end{array}\right.
+		\end{eqnarray}
+		
+        $ 0\le F_{n}^{*}(x)\le 1 $，且作为$ \boldsymbol{x} $的函数是一非减左连续函数，把 $  F_{n}^{*}( \boldsymbol{x}) $
+        看作为$  \boldsymbol{x} $的函数，它具备分布函数所要求的性质，故称为经验分布函数（或子样分布函数）。
+		
+		经验分布函数也是子样的函数，它与子样矩之间具有下列关系：设$  (x_{1}, x_{2}, \cdots x_{n})  $  是子样观察值， $  F_{n}^{*}(x) $是对应的经验分布函数，则有：
+		\begin{eqnarray}
+			\bar{x}   & = & \frac{1}{n} \sum_{i  =  1}^{n} x_{i}  =  \int x d F_{n}^{*}(x) \notag \\
+			s_{n}^{2} & = & \frac{1}{n} \sum_{i  =  1}^{n}\left(x_{i}-\bar{x}\right)^{2} = \int(x-\bar{x})^{2} d F_{n}^{*}(x) \notag \\
+			A_{v}     & = & \frac{1}{n} \sum_{i  =  1}^{n} x_{i}^{v}  =  \int x^{v} d F_{n}^{*}(x), \quad v  =  2,3, \cdots \notag \\
+			B_{v}     & = & \frac{1}{n} \sum_{i  =  1}^{n}\left(x_{i}-\bar{x}\right)^{v} =  \int(x-\bar{x})^{v} d F_{n}^{*}(x), \quad v  = 3,4, \cdots  \notag
+		\end{eqnarray}
+		
+\subsection{正态母体子样的线性函数的分布}
+
+	\begin{theorem}
+	\ \ $  X_{1}, X_{2}, \cdots X_{n}  $ 是抽自正态母体 $ N(\mu , \sigma^{2}) $的一个子样，统计量U是子样的任一确定的线性函数
+		\begin{eqnarray}
+			U & = & a_{1} X_{1}+a_{2} X_{2}+\cdots+a_{n} X_{n} \label{eq 2.4.1}
+		\end{eqnarray}
+	\end{theorem}
+
+	
+	则U也是正态随机变量，均值、方差分别为
+	\begin{eqnarray}
+		\mathbb{E}(U)  =  \mu \sum_{k  =  1}^{n} a_{k}\ \ , \quad\operatorname{Var}(U)  =  \sigma^{2} \sum_{k  =  1}^{n} a_{k}^{2}
+	\end{eqnarray}
+	
+	在 \eqref{eq 2.4.1} 式中，特别地取$ a_{k}=\dfrac{1}{n}, k=1, \cdots, n $ 此时行到的U是子样均值X。$ \begin{array}{c}
+	E(\overline {X})=\mu \ \ ,\ \ \operatorname{Var}(\overline{X})=\dfrac{1}{n} \sigma^{2}
+	\end{array} $
+	
+	由此可见，$ \bar{X}$ 具有与X相同的均值，但是它更向数学期望集中，集中程度与子样容量n的大小有关。
+	
+	\begin{theorem}
+		
+	   （1） $ X_{1}, \ \ X_{2} \cdots,  \ \  X_{n} $ 是独立同分布随机变量，同服从于正态分布 $  N\left(\mu, \sigma^{2}\right)  $
+		
+		(2) $   \boldsymbol{A} = \left(a_{i j}\right)  $ 是  $ p \times n $  矩阵，记
+		$$ 
+		\begin{array}{l}
+            \boldsymbol{Y_{ }} \triangleq\left(\begin{array}{l}
+			Y_{1} \\
+			Y_{2} \\
+			\vdots \\
+			Y_{p}
+		\end{array}\right)=\left(\begin{array}{ccc}
+			a_{11}  & \cdots &  a_{1 n}  \\
+			a_{21}  & \cdots &  a_{2 n}  \\
+			\cdots  & \cdots &  \cdots   \\
+			a_{p 1} & \cdots &  a_{p n}
+		\end{array}\right)\left(\begin{array}{l}
+			X_{1}  \\    X_{2} \\
+			\vdots \\     X_{n}
+			\end{array}\right) \triangleq  \boldsymbol{A X } 
+			\triangleq \left(Y_{1} , Y_{2}, \cdots , Y_{p}\right)^{T}
+		\end{array} $$
+	\end{theorem}
+	
+	则$ Y_{1},Y_{2},\cdots Y_{p} $也是正态随机变量，均值、方差、协方差分别为：
+		\begin{eqnarray}
+			\mathbb{E} Y_{i} & = &  \mu \sum_{k  =  1}^{n} a_{i k}, i = 1, \cdots, p \notag \\
+			\operatorname{Var}\left(Y_{i}\right) & = & \sigma^{2} \sum_{k = 1}^{n} a_{i k}^{2}, i  =  1, \cdots, p \notag \\
+			\operatorname{cov}\left(Y_{i}, Y_{j}\right) & = & \sigma^{2} \sum_{k  =  1}^{n} a_{i k} a_{j k}, i, j  =  1, \cdots, p \notag
+		\end{eqnarray}
+		
+		特别地，当$ \mu = 0 $，且$ \boldsymbol{ A } $是一 $ n \times n$ 正交矩阵时，$ Y_{1},Y_{2},\cdots Y_{p} $
+		也是相互独立且同服从于 $  N\left(\mu, \sigma^{2}\right)  $ 分布的随机变量。
+
+\subsection{几种与正态分布N(0,1)有关的常用分布}
+	\begin{enumerate}[1)]
+		\item $ \chi ^2 $ 分布
+			\begin{mydef}
+				设$ X_1, X_2 , \cdots ,X_n $是相互独立，且同服从于N(0,1)分布的随机变量，
+				\vspace{-1em}
+				$$ x_{n}^{2}=\sum_{i=1}^{n} X_{i}^{2} $$
+				
+				所服从的分布为 $ \chi ^2 $ 分布，$ \chi_{n}^{2} $ 称为自由度为n的 $ \chi ^2 $ 
+	        \end{mydef} 
+			\begin{theorem}
+				设  $ X_{1} \sim \chi^{2}\left(n_{1}\right) $  和 $  X_{2} \sim \chi^{2}\left(n_{2}\right), $且 $ X_{1}, X_{2} $  相互独立, 则 $ X_{1}+X_{2} \sim \chi^{2}\left(n_{1}+n_{2}\right) $
+			\end{theorem}
+	\item t分布
+	
+		设 $ X \sim N(0,1) \text { 和 } Y \sim \chi^{2}(n) $，且X和Y相互独立，则称随机变量 $ T=\dfrac{X}{\sqrt{Y / n}} $
+		
+		所服从的分布为t分布。n称为它的自由度，且记$ T \sim t(n) $。
+	\item F 分布
+	
+		\begin{mydef}
+			
+			设X和Y是相互独立的$ \chi ^2 $ 分布随机变量，自由度分别为m和n，则称随机变量
+			$$ F=\frac{X / m}{Y / n}=\frac{X}{Y} \cdot \frac{n}{m} $$	
+			
+			所服从的分布为F分布，（m,n）称为它的自由度，且通常写为$ F \sim F(m,n) $。
+		\end{mydef}
+		{\bf 推论} \ \ 如果 $ X / \sigma^{2} \sim \chi^{2}(m), Y / \sigma^{2} \sim \chi^{2}(n) $ 且相互独立，则 
+		$ F=\dfrac{X}{Y} \cdot \dfrac{n}{m} \sim F(m, n) $分布。
+		
+		{\bf 推论} \ \ 如果$ X \sim F(m,n) $分布，则$ 1/X \sim F(n,m)   $
+		
+		{\bf 结论} \ \ 设 $ X_{1}, \cdots, X_{m} \text { 和 } Y_{1}, \cdots, Y_{n} $分别是从正态母体
+		$ N\left(\mu_{1}, \sigma^{2}\right) \text { 和 } N\left(\mu_{2}, \sigma^{2}\right) $中所抽取的独立子样。则
+		$$ T=\dfrac{(\bar{X}-\bar{Y})-\left(\mu_{1}-\mu_{2}\right)}{\sqrt{m S_{1 m}^{2}+n S_{2 n}^{2}}} \cdot \sqrt{\dfrac{m n(m+n-2)}{m+n}} $$
+		
+		服从于t(m+n－2)分布。
+		
+		\begin{myexample}[练习] 
+			\ \ 设$ X_1, X_2 , \cdots ,X_n $是从正态$ N\left(\mu_{1}, \sigma^{2}\right) $分布的母体中抽取的简单子样，$  \bar{X} , S_{n} ^2 $分别表示它的子样均值和子样方差。又设
+			$X_{n+1} \sim  N\left(\mu_{1} \sigma^{2}\right) $ 且与$ X_1, X_2 , \cdots ,X_n $独立。 试求统计量
+			$$  \dfrac{X_{x+1}-\bar{X}}{S_{n}} \sqrt{\dfrac{n-1}{n+1}} \text{（提示: 服从 t(n-1)分布）} $$
+		\end{myexample}
+	\end{enumerate}
+
+\subsection{统计量的分布与独立性}
+	\begin{theorem}
+		若 $ \mathrm{x} \sim \mathrm{N}[0, \mathrm{\boldsymbol{ I }}] \text { 且 } \boldsymbol{ x^{\prime} A x } \text { 和 } \boldsymbol{ x^{\prime} B x } $
+		是 x 的两个幂等二次型，则  $ \boldsymbol{ x^{\prime} A x }  $和   $ \boldsymbol{ x^{\prime} B x }   $在  $ \boldsymbol{ AB=0 } $  时是独立的。
+		\begin{myproof} 
+			由于A和B都是对称的和幂等的，$ \boldsymbol{A=A^{\prime} A}  $ \text { 和 } $ \boldsymbol{ B=B^{\prime} B } $ ，所以二次型是：
+			\begin{eqnarray} \left\{\begin{matrix}
+				\boldsymbol{x^{\prime} A x  = x^{\prime} A^{\prime} A x  = x_{1}^{\prime} x_{1} }\qquad \text { 其中 } x_{1}  = A x
+				\\
+				\boldsymbol{ x^{\prime} B x  = x^{\prime} B^{\prime} B  x  = x_{2}^{\prime}} x_{2} \qquad \text { 其中 } x_{2}  = B x
+				\end{matrix}\right. \notag
+			\end{eqnarray}
+		\end{myproof}
+			  
+		
+		两个向量都有零均值向量，所以$ X_1 $和$ X_2 $协方差矩阵是
+		 $ \mathbb{E}\left( \boldsymbol{X_{1} X_{2}^{\prime} }\right)= \boldsymbol{A I B^{\prime}=A B}=0 $
+		 
+         由于AX和BX都是一个正态分布随机向量的线性函数，因而它们也都服从正态分布，零协方差矩阵暗示它们是统计上独立的。所以，它们的函数形式
+         $  \boldsymbol{X^{\prime}AX} $ 和$  \boldsymbol{X^{\prime}BX} $ 是独立的，这就证明了两个二次型统计量的独立性。
+		 \begin{myexample} 
+			易知 $  \boldsymbol{X^{\prime} X }=\sum_{i=1}^{n} X_{i}^{2}=\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}+n \bar{X}^{2} $ 
+			\begin{eqnarray}
+                \boldsymbol{ X^{\prime} X }=\sum_{i=1}^{n} X_{i}^{2}=\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}+n \bar{X}^{2} \notag \\
+				\left\{\begin{matrix} 
+					\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}=  \boldsymbol{ X^{\prime} M^{0} }X,  \notag\\	
+					n \bar{x}^{2} =  \boldsymbol{ X^{\prime}\left(I-M^{0}\right)} X 
+				\end{matrix}\right. \\
+				\because  \ \  \boldsymbol{ M^{0}\left(I-M^{0}\right)=M^{0}-M^{0^{2}}}=0 \notag\\
+				\therefore  \ \ n \bar{x}^{2} \text { 与 } \sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2} \text { 是相互独立的 } \notag
+			\end{eqnarray} 
+		\end{myexample}
+	\end{theorem}
+
+\subsection{线性变换及二次型的独立性}
+
+\begin{theorem}
+	标准正态向量的一个线性函数$ \boldsymbol{Lx} $和一个幂等二次型$ \boldsymbol{ x^{\prime} A x } $，当$  \boldsymbol{ LA }=0 $时两个统计量是独立的。
+	证明遵循与对两个二次型的证明同样的逻辑，将$ \boldsymbol{ x^{\prime} A x }$写作$ \boldsymbol{ x^{\prime} A ^{\prime} x = (AX)^{\prime} AX }$
+	，变量$ \boldsymbol{ Lx }$ 和 $ \boldsymbol{ Ax }$ 的协方差矩阵是$ \boldsymbol{ LA=0 }$ ，这证实了这两个随机向量的独立性，线性函数和二次型的独立性就可以立即推导。
+\end{theorem} 
+\begin{myexample} 
+	$ \begin{array}{c}
+	\sqrt{n} \boldsymbol{\bar{x}}=\dfrac{1}{\sqrt{n}} \boldsymbol{ \bar{i}^{\prime} X}, \quad S^{2}=\dfrac{ \boldsymbol{ X^{\prime} M^{0} X} }{n-1} 
+	\quad \Longrightarrow   \quad 
+	\boldsymbol{ M^{0} \vec{i}} =\left[ \boldsymbol{ I-\dfrac{1}{n} \vec{i} \vec{i}^{\prime}} \right] \cdot \boldsymbol{ \vec{i}}=0
+	\end{array} $ 所以上面两个统计量是相互独立的。从而
+	$$ \dfrac{\sqrt{n} \bar{X}}{\sqrt{\sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2} \dfrac{1}{n-1}}}=\dfrac{\sqrt{n} \bar{X}}{S} \sim t(n-1) $$
+\end{myexample}
+	{\bf} 设$ X_1, X_2 , \cdots ,X_n $是从正态母体$ N\left(\mu_{1}, \sigma^{2}\right) $中抽取的一个简单子样。记
+	$$ \bar{X}=\dfrac{1}{n} \sum_{k=1}^{n} X_{k},  \ \ S_{n}^{2}=\dfrac{1}{n} \sum_{k=1}^{n}\left(X_{k}-\bar{X}\right)^{2}  $$
+	\begin{eqnarray} \text{则有}
+	&  (1)  &  \bar{X} \text{和} S_n  \text{独立}  ; \notag \\
+	&  (2)  &  \bar{X} \sim N\left(\mu, \frac{1}{n} \sigma^{2}\right) ;\notag  \\
+	&  (3)  &  n S_{n}^{2} / \sigma^{2} \sim x^{2}(n-1) \qquad T =   \frac{\bar{X}-\mu}{S_{n}} \sqrt{n-1} \sim t(n-1)
+	\notag 
+	\end{eqnarray}
+	
+	\begin{myproof} 
+		$ \because \quad \dfrac{\sqrt{n}(\bar{X}-\mu)}{\sigma} \sim N(0,1), n S_{n}^{2} / \sigma^{2} \sim x^{2}(n-1) $
+	\end{myproof}
+	\vspace{-1em}
+	\begin{eqnarray}
+	\because   &  \quad\dfrac{\sqrt{n}(\bar{X}-\mu)}{\sigma} \sim N(0,1), \quad  n S_{n}^{2} / \sigma^{2} \sim x^{2}(n-1) \notag \\
+	\therefore &  T  = \dfrac{\dfrac{\sqrt{n}(\bar{X}-\mu)}{\sigma}}{\sqrt{\dfrac{n S_{n}^{2}}{\sigma^{2}(n-1)}}}  =  \dfrac{(\bar{X}-\mu)}{S_{n}} \sqrt{n-1} \qquad \text{服从自由度为(n-1)的t分布。}\notag
+	\end{eqnarray}
+	
+\subsection{参数估计的常用方法}
+
+	在参数估计问题中，我们总是首先假设母体$ X $具有一族可能的分布$ F $，且$ F $的函数形式是已知的，仅包含有几个未知参数，记$ \theta $是支配这分布的未知参数（可以是向量），在统计学上，我们把分布$ F $的未知参数
+	$ \theta $的全部可容许值组成的集合称为{\bf 参数空间 }，记为 $ \Theta $。
+	
+	我们用$ F(\cdot ; \theta)  $ 表示$ X $的分布，又称集合  $ \{F(\cdot , \theta), \theta \in \Theta\} $为$ X $的分布函数族。类似地，如果X是连续型随机变量，我们有概率密度函数族，如果X是离散型随机变量，我们有概率分布族。
+	
+	一个参数估计问题就是要求通过子样估计母体分布所包含的未知参数$ \theta $。
+	
+	一般地，设母体具有分布族$ \{F(\cdot , \theta), \theta \in \Theta\} $，$ X_1, X_2 , \cdots ,X_n $是它的一个子样。点估计问题就是要求构造一个统计量$ T(X_1, X_2 , \cdots ,X_n) $作为参数$ \theta $的估计
+	（  $ T $的维数与  $ \theta $的维数相同）。在统计学上，我们称$ T $为 $ \theta $的估计量。
+	
+	\begin{enumerate}[1)]
+		\item 矩方法
+		\setlength{\parindent}{2\ccwd}
+		
+        设 $ \{F(\cdot , \theta),  \boldsymbol{\theta} \in \Theta\} $是母体X的可能分布族，\
+        $  \boldsymbol{\theta} = \left(\theta_{1}, \cdots, \theta_{k}\right) $ 是待估计的未知参数，假定母体分布的$ k $阶矩存在，则母体分布的$ v $阶矩
+		
+		\vspace{-1em}
+		$$ a_{v}\left(\theta_{1}, \cdots, \theta_{k}\right)=\int_{-\infty}^{\infty} x^{v} d F(x ; \theta), \quad 1 \leqslant v \leqslant k
+		\quad \text { 是 } \theta=\left(\begin{array}{ccc}
+		\theta_{1},  \cdots,  \theta_{k}
+		\end{array}\right) \text { 的函数 } $$
+		
+		对于子样$ X = (X_1, X_2 , \cdots ,X_n) $ ， 其$ v $阶子样矩是
+		$$ A_{v}=\frac{1}{n} \sum_{i=1}^{n} X_{i}^{v}=\int_{-\infty}^{\infty} x^{v} d F_{n}^{*}(x), \quad 1 \leqslant v \leqslant k $$
+		
+		现在用子样矩作为母体矩的估计，即令
+		\begin{eqnarray}
+			a_{v}\left(\theta_{1}, \cdots, \theta_{k}\right)  =  A_{v}  =  \frac{1}{n} \sum_{i  = 1}^{n} X_{i}^{v}, \quad v  =  1,2, \cdots, k
+			\label{eq 2.4.3}
+		\end{eqnarray}
+		
+		这样，\eqref{eq 2.4.3}式确定了包含k个未知参数$  \boldsymbol{\theta}=\left(\theta_{1}, \cdots, \theta_{k}\right) $的k个方程式。
+		
+		\begin{myexample} 
+			 母体均值和方差的矩估计。
+		\end{myexample}
+		设 $ X_{1}, \cdots, X_{n} $是一子样，设母体的二阶矩存在 ，则有$ \alpha_{2}=\sigma^{2}+\mu^{2} $用矩方法得方程组
+		$$ \left\{\begin{matrix}
+			\hat{\mu} & = &\frac{1}{n} \sum_{i=1}^{n} X_{i}=\bar{X}  \vspace{0.5em} \\
+			\hat{\mu}^{2}+\hat{\sigma}^{2} & = & \hat{\alpha}_{2}=\dfrac{1}{n} \sum_{i=1}^{n} X_{i}^{2}
+		\end{matrix}\right. \Longrightarrow 
+		\hat{\sigma}^{2}=\dfrac{1}{n} \sum_{i=1}^{n}\left(X_{i}-\bar{X}\right)^{2}=S_{n}^{2} $$
+		
+		所以母体均值$ \mu $ 和方差$ \sigma^2 $的矩估计分别是子样均值$ \bar{x} $和子样方差 $ S_{n}^{2} $。运用以前的有关定理有
+		$$ \begin{array}{l}
+			    \mathbb{E} \hat{\mu}=\mathbb{E} \bar{X}=\mu  \vspace{0.5em}  \\
+				\operatorname{Var}(\hat{\mu})=\dfrac{1}{n} \sigma^{2}  \vspace{0.5em}  \\
+				\mathbb{E} \left(\hat{\sigma}^{2}\right)=\dfrac{n-1}{n} \sigma^{2}
+		   \end{array} $$
+		
+		由此可见，$ \hat{\mu} $ 作为$ \mu $的估计它是在$ \mu $的真值的周围波动，且其平均值恰好是真值$ \mu $，这一性质在统计学上称为无偏性。
+		
+	\item 最大似然估计方法
+	\setlength{\parindent}{2\ccwd}
+	
+    一般地，设母体具有分布密度族 $ \{F(\cdot ,  \boldsymbol{\theta}),  \boldsymbol{\theta} \in  \boldsymbol{\Theta} \} $，
+    其中$  \boldsymbol{\theta} = \left(\theta_{1}, \cdots, \theta_{k}\right) $是一个未知的k维参数向量，需待估计，
+    又设$  (x_1, x_2 , \cdots ,x_n) $是子样$  (X_1, X_2 , \cdots ,X_n) $的一个观察值，
+     那么子样$  (X_1, X_2 , \cdots ,X_n) $落在点$  (x_1, x_2 , \cdots ,x_n) $的邻域里的概率$ \prod_{i=1}^{n} f\left(x_{i} ;  \boldsymbol{\theta} \right) d x_{i} $
+	
+    为方便起见，记$ L(x ;  \boldsymbol{\theta} ) \triangleq \prod_{i=1}^{n} f\left(x_{i} ;  \boldsymbol{\theta} \right) $，
+    （$  \boldsymbol{\theta} $可以是向量）它看作为$  \boldsymbol{\theta} $的函数称为$  \boldsymbol{\theta} $的似然函数。如果选取使下式
+		\begin{eqnarray}
+			L\left(x_{1}, \cdots, x_{n} ; \hat{\theta}\right) & = & \sup _{\theta \in \Theta} L\left(x_{1}, \cdots x_{n} ; \theta\right) 
+			\label{eq 2.4.4}
+		\end{eqnarray}
+	
+    成立的$  \boldsymbol{\hat{\theta}(X)} =\left[\hat{ \boldsymbol{\theta} }_{1}(X), \cdots, \hat{\theta}_{k}(X)\right]$
+    作为$  \boldsymbol{\theta} $的估计，则称$ \boldsymbol{ \hat{\theta}(X)} $是$ \boldsymbol{\theta }$的最大似然估计。
+    由于$ \log x  $是$ x $的单调函数，所以\eqref{eq 2.4.4}式可等价地写为：
+		\begin{eqnarray}
+            \log L\left(x_{1}, \cdots, x_{n} ; \boldsymbol{ \hat{\theta} } \right) & = 
+            & \sup _{\boldsymbol{\theta} \in \boldsymbol{\Theta}} \log L\left(x_{1}, \cdots, x_{n} ; \boldsymbol{\theta} \right)
+		\end{eqnarray}
+
+	如果$ \boldsymbol{\Theta} $是开集，且$ f(x;\boldsymbol{\theta}) $
+	关于$ \boldsymbol{\theta} $ 可微，则满足（4）式的解$ \boldsymbol{\hat{\theta}} $ 也一定满足下列似然方程 
+    $$ \left.\dfrac{\partial \log L\left(x_{1}, \cdots, x_{n} ; \boldsymbol{\theta}\right)}
+                {\partial \theta_{j}}\right|_{\boldsymbol{ \theta=\hat{\theta}}}=0, \quad j=1, \cdots, k $$
+
+	设$  \boldsymbol{X} = (X_1, X_2 , \cdots ,X_n) $是取自均匀分布的子样，试求$ \boldsymbol{\theta} $的最大似然估计。
+	$$  f(x ; \theta)=\left\{\begin{array}{ll}
+	\dfrac{1}{\theta}, & 0 < \mathrm{x} \leqslant \theta \\
+	0, & \text { 其它 }
+	\end{array} \quad(\theta>0)\right. $$
+	
+	此时$ L(x ; \theta)=\prod_{i=1}^{n} f\left(x_{i} ; \boldsymbol{\theta} \right)=\left\{
+        \begin{array}{l}
+		\theta^{-n}, \text { 当 } \displaystyle 0<  \max_{1 \leq i \leq n} x_{i} \leq \theta \\
+		0, \quad \text { 其它 }
+	\end{array}\right. $（注意：条件 $ 0<x_{i} \leqslant \theta, \quad i=1, \cdots, n $和条件
+	$0 < \displaystyle \max _{1 \leq i \leq n} x_{i} \leq \theta  $是等价的。
+	
+	显然当$ \theta= \displaystyle \max_{1 \leq i \leq n} x_{i} $时，$ L(x;\theta)$取到最大值，所以
+	  $ \hat{\theta}_{L}= \displaystyle \max _{1 \leq i \leq n} X_{i}=X_{n}^{(n)} $是$ \theta $的最大似然估计。
+	 可以计算出 $ \mathbb{E}_{\theta}\left(\hat{\theta}_{L}\right)=\dfrac{n}{n+1} \theta $
+	
+\end{enumerate}
+\subsection{估计的有效性}
+	\begin{enumerate}[1)]
+		\item 无偏估计
+		\setlength{\parindent}{2\ccwd}
+		\begin{mydef}
+		\ \ 一般地，如果T(X)是未知参数$ \theta $的一个估计量，且满足下面的关系式，$ \mathbb{E}_{\boldsymbol{\theta}} T(X)= \boldsymbol{\theta} $对一切
+		$ \boldsymbol{ \theta \in \Theta }$ 则称T（X）是$ \boldsymbol{ \theta } $的无偏估计。
+		\end{mydef}
+		\item 有效估计
+		\begin{mydef} 
+			对两个无偏估计量 $ \hat{\theta}_{1} $ 和 $ \hat{\theta}_{2} $，若 $ \hat{\theta}_{1} $的方差小于 $ \hat{\theta}_{2} $的方差，
+		即$ \operatorname{Var}\left(\hat{\theta}_{1}\right)<\operatorname{Var}\left(\hat{\theta}_{2}\right) $。
+		\end{mydef}
+
+		{\bf 判别方式 } ：在多数情形中，比较基于两个估计量的协方差矩阵，若$ \operatorname{Var}\left(\hat{\theta}_{1}\right)-\operatorname{Var}\left(\hat{\theta}_{2}\right) $
+		是非负定矩阵，则$ \hat{\theta}_{1} $ 比 $ \hat{\theta}_{2} $ 更有效。
+		\item 渐近无偏估计 
+		
+        如果有一列$ \boldsymbol{\theta } $的估计$ \boldsymbol{ T_{n} } \triangleq T_{n} \left(X_{1}, \cdots, X_{n}\right) $ 满足下面的关系式，
+        则称$ \boldsymbol{ T_n } $ 是 $ \boldsymbol{\theta} $的渐近无偏估计。
+        $$ \lim _{n \rightarrow \infty} \mathbb{E}_{\theta}\left(\boldsymbol{T_{n}}\right)
+                         =\boldsymbol{\theta}, \text { 对一切 } \boldsymbol{ \theta \in \Theta} $$
+		\item 一致估计
+		
+        设$  X_1, X_2 , \cdots ,X_n $是取自分布族$ \{F(\cdot , \boldsymbol{\theta}), \boldsymbol{\theta \in \Theta}\} $的子样，
+        $ \boldsymbol{ T_n }= T_n (X_1, X_2 , \cdots ,X_n) $是
+		$ \boldsymbol{\theta} $的一个估计。如果序列{$ \boldsymbol{T_n} $}随机收敛到真参数值$ \boldsymbol{\theta} $，即对任意$ \varepsilon > 0 $ ， 
+        $ \displaystyle \lim _{n \rightarrow \infty} P_{\boldsymbol{\theta}} 
+                \left\{\left|\boldsymbol{T_{n}-\theta}\right| >\varepsilon\right\}=0, $  对一切 
+		 $ \boldsymbol{\theta \in \Theta} $ 。
+		则称$  \boldsymbol{T_n} $ 是$ \boldsymbol{\theta} $的一致估计。
+		\item 最小方差无偏估计
+		
+		一般地若 $ \boldsymbol{T_1} $ 是 $ \boldsymbol{\theta} $ 的一个无偏估计，关于 $ \boldsymbol{\theta} $ 的任一无偏估计$ \boldsymbol{T_2} $成立下式
+        $ \operatorname{Var}_{\boldsymbol{\theta}}\left(\boldsymbol{T_{1}}\right) \leqslant 
+           \operatorname{Var}_{\boldsymbol{\theta}}\left(\boldsymbol{T_{2}}\right),$  对一切  $\boldsymbol{\theta \in \Theta }$。
+		则称$\boldsymbol{ T_1 } $是$ \boldsymbol{\theta} $的最小方差无偏估计。
+		
+		\item 线性估计
+		
+		如果估计$ T $是子样的线性函数，即$ T $可以表示为$ T=\sum_{i=1}^{n} a_{i} X_{i},  $ 其中  $ a_{1}, \cdots, a_{n} $是固定常数，则称$ T $为线性估计。类似地可以定义，如果$ T $是线性估计，且满足无偏性条件，则$ T $称为线性无偏估计；如果$ U_L $表示$ \boldsymbol{\theta} $的具有有限方差的线性无偏估计的全体所组成的集合，而对$ T_0 \in U_L$，有
+        $ \operatorname{Var}_{\boldsymbol{\theta}}\left(T_{0}\right) \leqslant \operatorname{Var}_{\boldsymbol{\theta}}(T),$  
+        对一切  $ \boldsymbol{\theta \in \Theta}$ 和  $T \in U_{L} $ 
+		则称 $ T_0 $ 为 $ \boldsymbol{\theta} $的最小方差线性无偏估计。
+		
+		{\bf 高斯—马尔科夫定理} 在线性无偏估计量中，最小二乘估计量具有最小方差。
+		
+		\item 克拉美—劳（Cramer-Rao）下界
+		\begin{mydef}[克拉美—劳（Cramer-Rao）下界]
+			假定$ x $的密度满足一定的正则条件，参数$ \boldsymbol{\theta} $的一个无偏估计量的方差将大于等于：
+		\begin{eqnarray}
+            \operatorname{Var}(\boldsymbol{\theta}) \geq[I(\boldsymbol{\theta})]^{-1}  & = & \left(-E\left[\frac{\partial^{2} 
+            \ln L(\boldsymbol{\theta} )}{\partial \boldsymbol{\theta^{2}} }\right]\right)^{-1} \notag \\
+            & = & \left(E\left[\left(\frac{\partial \ln L(\boldsymbol{\theta})}{\partial \boldsymbol{\theta}}\right)
+            \left(\frac{\partial \ln L(\boldsymbol{\theta})}{\partial \boldsymbol{\theta^{\prime}} }\right)\right]\right)^{-1} \notag
+		\end{eqnarray}
+		\end{mydef}
+
+		$ I(\boldsymbol{\theta}) $是样本的信息数。再考虑一个多变量情形。若θ是一个参数向量，$ I(\boldsymbol{ \theta }) $是信息矩阵。
+		克拉美—劳定理，任何无偏估计量的方差矩阵与信息矩阵的逆 $ [I(\boldsymbol{ \theta })]^{-1} $的差将是一个非负定矩阵，其中
+		\begin{eqnarray}
+            [I(\boldsymbol{theta)}]^{-1}  & = & \left\{- \mathbb{E}\left[\frac{\partial^{2} 
+            \ln L(\boldsymbol{\theta)}}{\partial \boldsymbol{\theta} \partial \boldsymbol{\theta^{\prime}} }\right]\right\}^{-1}  \notag \\
+            & = & \left\{\mathbb{E}\left[\left(\frac{\partial 
+            \ln L(\boldsymbol{\theta)}}{\partial \boldsymbol{\theta}}\right)
+            \left(\frac{\partial \ln L(\boldsymbol{\theta)}}{\partial \boldsymbol{\theta^{\prime}}}\right)\right]\right\}^{-1}
+			\vspace{0.8cm}  \notag \\
+			\text{即} &  & I(\theta)=\left[\begin{array}{cccc}
+			-\mathbb{E}\left(\dfrac{\partial^{2} L}{\partial \theta_{1}^{2}}\right) & -\mathbb{E}\left(\dfrac{\partial^{2} L}{\partial \theta_{1} \partial \theta_{2}}\right) & \cdots & 
+			-\mathbb{E}\left(\dfrac{\partial^{2} L}{\partial \theta_{1} \partial \theta_{k}}\right) \vspace{0.5em} \\
+			-\mathbb{E}\left(\dfrac{\partial^{2} L}{\partial \theta_{2} \partial \theta_{1}}\right) & -\mathbb{E}\left(\dfrac{\partial^{2} L}{\partial \theta_{2}^{2}}\right) & \cdots & 
+			-\mathbb{E}\left(\dfrac{\partial^{2} L}{\partial \theta_{2} \partial \theta_{k}}\right)  \vspace{0.5em}\\
+			\cdots & \cdots & \cdots & \cdots \vspace{0.5em}  \\
+			-\mathbb{E}\left(\dfrac{\partial^{2} L}{\partial \theta_{k} \partial \theta_{1}}\right) & -\mathbb{E}\left(\dfrac{\partial^{2} L}{\partial \theta_{k} \partial \theta_{2}}\right) & \cdots & -\mathbb{E}\left(\dfrac{\partial^{2} L}{\partial \theta_{k}^{2}}\right) \notag
+			\end{array}\right]  
+		\end{eqnarray}
+		
+		这个矩阵的逆矩阵$ [I(\theta)]^{-1} $称为C-R下界或CRLB。
+	\end{enumerate}
+\subsection{假设检验}
+	\begin{enumerate}[1)]
+		\item 正态母样参数检验
+		\setlength{\parindent}{2\ccwd}
+		
+		前面我们介绍了两种常用的参数估计方法。实践中还提出了统计推断问题。先看一个例子
+		
+		\begin{myexample}
+			某厂有一批产品，共一万件，须经检验后方可出厂。按规定标准，次品率不得超过5\%，今在其中任意选取50件产品进行检查，发现有次品4件，问这批产品能否出厂？
+		
+			在这个例子中，我们事先对这批产品次品率的情况一无所知，当然，从频率稳定性来说，我们可以用被检查的50件产品的次品率4/50来估计这整批产品的次品率，但是我们目前所关心的问题是：如何根据抽样的次品率ν/n（=4/50）推断这批产品的次品率是否超过了5\%，也就是说，首先我们可以对整批产品作一种假设：次品率低于5\%，然后利用子样的次品率ν/n来检验我们所作这一假设的正确性。
+			
+			我们把任何一个在母体的未知分布上所作的假设称为统计假设。并记为$ H_0 $。对上面所举的例子中，统计假设分别是：$H_0:p$（次品率）$ le 0.05 $。
+			
+			由于母体的真分布完全被几个未知参数所决定。因此任何一个关于母体未知分布的假设总可以等价地给出在它的未知参数上。这种仅涉及到母体分布中所包含的几个未知参数的统计假设称为参数假设。
+			
+			对于一个假设检验问题，首先是根据实际问题的要求提出统计假设$ H_0 $，但这仅是第一步，提出统计假设的目的是要求进一步推断所提出的统计假设$ H_0 $是否正确。这就要求建立推断统计假设$ H_0 $的方法。在统计学上，称判断给定统计假设$ H_0 $的方法为统计假设检验，或简称为统计检验。
+			
+			如果一个统计问题中仅提出一个统计假设， 而且我们的目的也仅仅是判断这一个统计假设是否成立，并不同时研究其它统计假设。这类检验问题称为显著性检验。
+			显著性检验问题的处理一般步骤是：
+			
+			（1）建立统计假设$ H_0 $；
+			
+			（2）构造一个合适的统计量$ U $和从子样观察值计算出统计量$ U $的观察值 $ u $；
+			
+			（3）规定一个显著水平$ \alpha $（一般取0.05或0.01），求出在$ H_0 $成立条件下能使$ P_{H_O}\{|U|\left.\geqslant u_{0}\right\} \leq \alpha $满足的值 $ u_0 $；
+			
+			（4）比较观察值$ u $和 $ u_0 $，如果$ |u| \ge u_0 $ ，则拒绝设$ H_0 $。
+			
+			显然，寻找检验统计量$ U $ 的分布，至少对于给定的α要找出满足$ P_{H_O}\{|U|\left.\geqslant u_{0}\right\} \leq \alpha $的临界值$ u_0 $是很重要的。
+			按进行检验时所取的子样容量的大、小，分为小样和大样两类问题，对于小样的显著性检验，需要给出检验统计量$ U $的精确分布，而对于大样问题可利用$ U $的极限分布作为近似。
+			
+			正态母体参数的显著性检验可总结如下表\ref{tabel2}。
+		\end{myexample}
+			\begin{table}[htb!]
+			% \centering    % 设置表格是否居中
+			\caption{正态母体参数的显著性检验}  % 插入图表标题
+			\begin{center}   %  作用同 `\centering`,不同：设置表格和标题之间的间隔,效果见表2.
+				\begin{tabular}{ccccccc}  % {l:左对齐,C:居中,r:右对齐} 有多少列设置多少个
+					\toprule    % \toprule、\midrule 和 \bottomrule，可分别对表格顶部、中部和底部使用不同粗细的水平线
+					检验参数   & 假设$ H_0 $  & 统计量 & 分布 &  \\ \midrule  % 中部水平线
+					$ \mu  $  & $ \mu=\mu_{o}(\sigma=\sigma_0) $   & $ U=\dfrac{\bar{X}-\mu_{0}}{\sigma_{0}} \sqrt{n} $    & $ N(0,1)  $  \vspace{0.5em} \\
+					$ \mu  $  & $   \mu_{1}=\mu_{2}\left(\sigma_{1}, \sigma_{2}\right. \text{已知} )  $    & $ U=(\bar{X}-\bar{Y}) / \sqrt{\dfrac{\sigma_{1}^{2}}{m}+\dfrac{\sigma_{2}^{2}}{n}}  $    & 
+					$ N(0,1)  $      \vspace{0.5em} \\ 
+					$ \mu  $  & $   \mu_{1}=\mu_{2},\sigma^2 > 0   $    & $ T=\dfrac{\bar{X}-\mu_{0}}{S_{n}} \sqrt{n-1}  $    & 	$ t(n-1)  $     \vspace{0.5em}  \\ 
+					$ \mu  $  & $   \mu_{1}=\mu_{2},\sigma_{1} = \sigma_{2} )  $    & $ T=\dfrac{(\bar{X}-\bar{Y})}{\sqrt{m S_{1 m}^{2}+n S_{2 n}^{2}}} \cdot \sqrt{\dfrac{m n(m+n-2)}{m+n}} $    & 	$t\left(m + n -2\right) $     \vspace{0.5em}  \\ 
+					\midrule
+					$\sigma^2 $  &   $  \sigma = \sigma_{0}  $ & $ x^{2}=\dfrac{n S_{n}^{2}}{\sigma_{0}^{2}} $    &
+					$ \chi^{2}(n-1) $    \vspace{0.5em} \\
+					$\sigma^2 $  &   $  \sigma_{1} ^2= \sigma_{2}^2 $ & $ F=\dfrac{m S_{1 m}^{2}}{n S_{2 n}^{2}} \cdot \dfrac{n-1}{n-1} $    & $ F(m-1, n-1) $   \\ 
+					\bottomrule   % 底部水平线
+					\label{tabel2}
+				\end{tabular}
+			\end{center}
+		\end{table}
+
+	上例的解：为简单起见，我们可将此问题归结为希望利用次品率v/n来检验母体次品率p是否满足假设$ H_0:p=p_0 (=0.05) $ 用Y记母体元素的指标，有
+	 $ \mathrm{Y}=\left\{\begin{array}{ll}
+			0, & \text { 好品 } \\
+			1, & \text { 次品 }
+	\end{array}\right. $ 
+	则在假设$ H_0 $成立时。$ P\{Y=0\}=1-p_{o}, P\{Y=1\}=p_{0} ; \ \  \mathbb{E}  Y=p_{0}, \ \ 
+	 \operatorname{Var}(Y)=p_{o}\left(1-p_{o}\right) $，设$  x_1, x_2 , \cdots ,x_n $，
+	  则$ \bar{X}=\frac{1}{n} \sum_{i=1}^{n} X_{i}=\frac{v}{n} $，其中$ v $ 表示子样中的次品数。
+	
+	由中心极限定理知道，在$ H_{0}\left(p=p_{o}\right) $ 成立的条件下，
+	\begin{eqnarray}
+	U  & = & \dfrac{(\bar{X}-\mathbb{E} X)}{\sqrt{\operatorname{Var}(X)}} \sqrt{n}  =  
+	  \dfrac{\left(\dfrac{v}{n}-p_{0}\right)}{\sqrt{p_{0}\left(1-p_{0}\right)}} \sqrt{n} =  
+	   \dfrac{\left(v-n p_{0}\right)}{\sqrt{n p_{0}\left(1-p_{0}\right)}} 
+	\label{eq 2.4.6}
+	\end{eqnarray}
+	
+	渐近于$ N(0,1) $分布，因此当n较大时（一般在30以上），可把\eqref{eq 2.4.6}式决定的U近似地作为正态变量来处理。
+
+		\item 正态母体参数的置信区间
+		
+		在许多实际问题中，我们往往希望通过子样的观察给出一个范围，便得这个范围能按足够大的概率（给定的）包含我们所感兴趣的参数，在统计学上，我们称这个范围叫置信区间（或置信域），这类问题称为区间估计问题。
+		
+		参数的置信区间与参数的假设检验之间有着密切的联系。
+		可以直接正从态母体参数的各种检验法构造正态母体参数的各种置信区间。
+		正态母体参数的各科置信区间的情况可总结如下表\ref{tabel3}。
+		\begin{table}
+			% \centering    % 设置表格是否居中
+			\caption{正态母体参数的置信区间}  % 插入图表标题
+			\begin{center}   %  作用同 `\centering`,不同：设置表格和标题之间的间隔,效果见表2.
+				\begin{tabular}{ccccc}  % {l:左对齐,C:居中,r:右对齐} 有多少列设置多少个
+					\toprule    % \toprule、\midrule 和 \bottomrule，可分别对表格顶部、中部和底部使用不同粗细的水平线
+					待估参数   & 条件  & 置信区间下限 & 置信区间上限 & 对应的检验统计量 \\ \midrule  % 中部水平线
+					$ \mu  $  & $  \sigma=\sigma_{0} $    & $ \bar{X}-u_{a / 2} \cdot \sigma_{0} / \sqrt{n} $    & $ \bar{X}+u_{a / 2} \cdot \sigma_{0} / \sqrt{n} $    & $ U= \dfrac{\bar{X}-\mu}{\sigma_{0}} \sqrt{n}    $   \\
+					$ \mu  $  & $  \sigma $  未知  & $ \bar{X}-t_{a / 2} \cdot \sigma_{0} / \sqrt{n-1} $    & $ \bar{X}+t_{a / 2} \cdot \sigma_{0} / \sqrt{n-1} $    & $ U= \dfrac{\bar{X}-\mu}{\sigma_{0}} \sqrt{n-1}    $   \\ \midrule 
+					$\mu_1-\mu_2$  &  $\sigma_1 = \sigma_2 = ? $ & $ -t_{a / 2} \frac{(\bar{X}-\bar{Y} \sqrt{m S_{1 m}^{2}+n S_{2 n}^{2}} \cdot \sqrt{m+n}}{\sqrt{(m+n-2) m n}}$
+					&$  +t_{a / 2} \frac{(\bar{X}-\bar{Y} \sqrt{m S_{1 m}^{2}+n S_{2 n}^{2}} \cdot \sqrt{m+n}}{\sqrt{(m+n-2) m n}}  $  & $ \begin{aligned}
+					T= \frac{(\bar{X}-\bar{Y})-\left(\mu_{1}-\mu_{2}\right)}{\sqrt{m S_{1 m}^{2}+n S_{2 n}^{2}}} \\
+					\times \sqrt{\frac{(m+n-2) m \cdot n}{m+n}}
+					\end{aligned}   $    \\ \midrule
+					$\sigma^2 $  &    单子样  & $ \dfrac{1}{C_{2 a}} \cdot n S_{n}^{2}$    &
+					$ \dfrac{1}{C_{1 a}} \cdot n S_{n}^{2}$ & $ x^{2}=\dfrac{n S_{n}^{2}}{\sigma_{0}^{2}} $  \\\midrule
+					$\dfrac{\sigma_1 ^2}{\sigma_2 ^2}$  & 双子样 & $ \dfrac{1}{f_{2 a}} \dfrac{m S_{1 m}^{2}}{n S_{2 n}^{2}} \cdot \dfrac{n-1}{m-1} $    &
+					$ \dfrac{1}{f_{1 a}} \dfrac{m S_{1 m}^{2}}{n S_{2 n}^{2}} \cdot \dfrac{n-1}{m-1}  $ & $ F=\dfrac{m S_{1 m}^{2} / \sigma_{1}^{2}}{n S_{2 n}^{2} / \sigma_{2}^{2}} \cdot \dfrac{n-1}{m-1}  $    \\  
+					\bottomrule   % 底部水平线
+				\end{tabular}
+			\label{tabel3}
+			\end{center}
+		\end{table}
+	
+		\item 联合置信域
+			
+			下面我们讨论正态分布均值和方差的{\bf 联合置信域}。
+			
+			$ \left(\mu, \sigma^{2}\right) $ 的联合置信域可以运用$ \bar{X} \text { 和 } S_{n}^{2} $的联合分布来构造。因为是独立的，因此，如果我们希望寻找置信水平为0.95的置信域，我们可以找到数$ \alpha $,和$ c_1 $,$ c_2 $，使得
+			$$ \left\{\begin{matrix}
+				P\left\{-\alpha <\dfrac{\bar{X}-\mu_{0}}{\sigma_{0} / \sqrt{n}}<\alpha \right\} =\sqrt{0.95} \approx 0.975 \vspace{0.5em} \\
+				P\left\{c_{1}<\dfrac{n S_{n}^{2}}{\sigma_{0}^{2}}<c_{2}\right\}=\sqrt{0.95} \approx 0.975
+			\end{matrix}\right.  \Longrightarrow 
+			P\left\{-\alpha <\dfrac{\bar{X}-\mu_{0}}{\sigma_{0} / \sqrt{n}}<\alpha , c_{1}<\frac{n S_{n}^{2}}{\sigma_{0}^{2}}<c_{2}\right\}=0.95 $$
+			\begin{eqnarray}
+				\therefore \quad P\left\{\left(\mu_{0}-\bar{X}\right)^{2}<a^{2} \sigma_{0}^{2} / n, \frac{n S_{n}^{2}}{c_{2}}<\sigma_{0}^{2}<\frac{n S_{n}^{2}}{c_{1}}\right\} & = & 0.95
+				\label{eq 2.4.7}
+			\end{eqnarray}
+			
+			由此可见，$ \left(\mu, \sigma^{2}\right) $的置信度为0.95的联合置信域是\eqref{eq 2.4.7}式大括号内不等式$ \mu, \sigma^{2} $ 对所给出的范围。
+		\item 广义似然比检验
+		
+        设$ \boldsymbol{X}=\left(X_{1}, \cdots, X_{n}\right) $是从母体中抽取的子样，其可能分布族$ \{f(x ; \boldsymbol{\theta}), \boldsymbol{\theta \in \Theta} \} $，
+        其中$ \boldsymbol{\theta} $ （可以是向量）是未知参数（当母体是连续型变量时$ f $表示分布密度，当母体是离散型变量时$ f $表示概率分布）。
+        要求检验假设$ H_0 : \boldsymbol{ \theta=\theta_0} $。这里应指出，$ \boldsymbol{\theta_0 }$有时是表示一个集合，
+		如在运用t检验法检验假设$ H_0:\mu=\mu_0 $时，那里
+		\begin{eqnarray}
+		& & \boldsymbol{\theta}    \triangleq\left(\mu, \sigma^{2}\right) \notag  \\
+		& & \boldsymbol{\Theta}  =  \left\{\left(\mu, \sigma^{2}\right):-\infty<\mu<\infty, \sigma^{2}>0\right\} \notag\\
+		& & \boldsymbol{\theta_{0} }   \triangleq \left\{\left(\mu_{0}, \sigma^{2}\right)>0\right\} \notag
+		\end{eqnarray}
+		
+		它是一个未知参数的集合而不是一个单点。现在我们引进一个统计量：
+        $$ \lambda(x) \triangleq \dfrac{\sup _{\boldsymbol{\theta \in \theta_{0}}} \prod_{i=1}^{n} f\left(x_{i} ; 
+        \boldsymbol{\theta} \right)}{\sup _{\boldsymbol{\theta \in \Theta}} \prod_{i=1}^{n} f\left(x_{i} ; \boldsymbol{\theta}\right)} $$
+		
+        习惯上称$ \lambda(x) $ 为广义似然比，显然它是子样的函数，不依赖于未知参数$ \boldsymbol{\theta }$。
+        由于$\boldsymbol{ \theta \in \Theta} $，所以$ 0 \leqslant \lambda(x) \leqslant 1 $
+		
+		类似于最大似然原理，如果$ \lambda(x) $取值较小，这说明当$ H_0 $为真时观察到样点$ x $的概率比$ H_0 $不真时观察到样点$ x $的概率要小得多，此时我们有理由怀疑假设$ H_0 $不真。所以从广义似然比出发，该检验问题是当下式（$ \lambda(x) \leqslant \lambda_0 $）成立时拒绝$ H_0 $，，其中$ \lambda_0 $的选取是使得下式成立。
+		$$ P_{\theta}\left\{\lambda(X) \leq \lambda_{0}\right\} \leq \alpha, \text { 对一切 } \boldsymbol{\theta \in \theta} $$
+		
+		给出的检验法称为水平为$ \alpha $的广义似然比检验。当$ \theta_0 $是一个单点时可写为$ P_{\theta_{0}}\left\{\lambda(X) \leq \lambda_{0}\right\} \leq \alpha $
+		
+        进一步分析这样一个参数假设的显著性检验过程，就会发现有一系列问题有待解决。如由于采取接受或拒绝假设$ H_0 $的判断是根据子样观察值作出的，
+        而子样是随机变量。子样观察值的出现带有随机性，因此判断有可能发生错误。则能发生那些类型的错误和发生各类错误的概率有多大？
+		
+        可能犯下面两种类型的错误：当原假设$ H_0 $为真的时候，即$ \boldsymbol{\theta} $的真实值落在$ \boldsymbol{\Theta_0} $中时，作出拒绝$ H_0 $的决策$a_
+        1$——它称为第一类错误；
+        另一种错误是当备选假设为真时，即$ \boldsymbol{\theta} $的真实值落在$ \boldsymbol{\Theta} $之中时，作出接受原假设$ H_0 $的决策$ a_0 $ ——它称为第二类错误（见表\ref{tabel4}）。
+        这两类错误所造成的影响常常很不一样。例如我们要求检验病人是否患有某种疾病。若我们取原假设是该人患此种疾病，
+        则第二类错误（无病当作有病）造成由于使用不必要的药品而引起病人的痛苦和经济上的浪费，但第一类错误（有病当作无病）就有可能导致死亡。
+		\begin{table}[H]
+		\caption{两类错误}
+		 $$ \begin{array}{c|c|c}
+			\hline &  H_{0} \text { 为真 } & H_{1} \text { 为真 } \\
+			\hline \text { 接受 } H_{0} & \text { 正 }  \text { 确 } & \text { 第 } \rm\uppercase\expandafter{\romannumeral 2} \text { 类错误 } \\
+			\hline \text { 拒绝 } H_{0} & \text { 第 } \rm\uppercase\expandafter{\romannumeral 1}\text { 类错误 } & \text { 正 }  \text { 确 } \\ 
+			\hline
+		\end{array}  $$
+		\label{tabel4}
+		\end{table}
+
+		当然，我们希望所作出的检验能使得犯这两种类型错误的概率同时尽可能地小，最好全为零，但实际上这是不可能的，当子样的容量（即观察个数）给定后，犯这两种类型错误的概率就不能同时被控制。
+	\end{enumerate}

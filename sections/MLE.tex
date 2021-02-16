@@ -1,0 +1,88 @@
+\chapter{正态线性统计模型的最大似然估计}
+
+\section{最大似然估计}
+	我们假定第五章的6个假设条件全部满足，我们就知道了$ \boldsymbol{Y} $的分布函数，
+	我们也就可以用其他方法如最大似然估计和矩估计等来求解出参数$ \boldsymbol{ \beta } $和$ \sigma^{2} $的估计量。
+	在本章中我们用最大似然估计求出参数$ \boldsymbol{ \beta } $和$ \sigma^{2} $的估计量。
+
+	利用模型的假设和样本信息，我们首先求出\textbf{似然函数}，它是关于未知数$ \boldsymbol{\beta} $和$ \sigma^{2} $的函数。
+	由于$ \varepsilon \sim N\left(0, \sigma^{2} \boldsymbol{I_{n}} \right) $，
+	因此有$ \boldsymbol{y} \sim N \left(\boldsymbol{X \beta}, \sigma^{2} \boldsymbol{I_{n}}\right) $或者
+	边际分布$ y_{t} \sim N\left( \boldsymbol{x_{t}^{\prime} \beta}, \sigma^{2}\right) $，
+	这里$ \boldsymbol{x_{t}^{\prime}} = \left(x_{t 1}, x_{t 2}, \Lambda, x_{t K}\right), t=1,2, \cdots, n $,
+    $ \bm{\{y_{t}\}}$\textbf{是相互独立的（Why?）}。$y_{t}$的密度函数为
+	\[f \left(y_{t} \mid \boldsymbol{\beta}, \sigma^{2}\right)
+			=\left(2 \pi \sigma^{2}\right)^{-\frac{1}{2}} \exp 
+			\left\{-\frac{\left(\boldsymbol{y_{t}-x_{t}^{\prime} \beta}\right)^{2}}{2 \sigma^{2}}\right\}\]
+	
+    所以$ y_{1}, y_{2}, \cdots, y_{n} $的联合概率密度函数为
+	\begin{equation}
+		\begin{aligned}
+			f\left(y_{t} \mid \boldsymbol{\beta}, \sigma^{2}\right)  
+			& =  \left(2 \pi \sigma^{2}\right)^{-\frac{n}{2}} \exp \left\{-\sum_{t=1}^{n} 
+				\frac{\left( \boldsymbol{y_{t}-x_{t}^{\prime} \beta}\right)^{2}}{2 \sigma^{2}}\right\} \\
+			& =  \left(2 \pi \sigma^{2}\right)^{-\frac{n}{2}} \exp 
+			\left \{-\frac{\boldsymbol{(y-X \beta)^{\prime}(y-X \beta)}}{2 \sigma^{2}}\right\} 
+		\end{aligned}
+	\end{equation}
+	
+   如果$ y_{1}, y_{2}, \cdots, y_{n} $的联合概率密度函数看做是未知参数
+   	$ \boldsymbol{\beta} $和$ \sigma^{2} $的函数，我们称它为\textbf{似然函数}，记为   
+	\[l\left(\boldsymbol{\beta}, \sigma^{2} \mid \boldsymbol{y} \right)=
+		\left(2 \pi \sigma^{2}\right)^{-\frac{n}{2}} \exp 
+		\left\{-\frac{\boldsymbol{(y-X \beta)^{\prime}(y-X \beta)}}{2 \sigma^{2}}\right\}\]
+	
+  \section{最优化问题}
+	据最大似然法则，估计未知参数$ \boldsymbol{\beta} $和$ \sigma^{2} $的问题
+	变成了选择$ \boldsymbol{\beta} $和$ \sigma^{2} $的值使得对数似然函数的值达到最大，也即是如下的最优化问题：
+	$$ \max_{ \boldsymbol{\beta} , \sigma^{2}}  \ \ L \left( \boldsymbol{\beta}, \sigma^{2} \mid \boldsymbol{y} \right) $$
+	
+  这个问题的一阶条件为
+	\begin{equation}
+		\begin{aligned}
+			\frac{\partial L}{\partial \boldsymbol{\beta} } 
+				& =  -\frac{1}{2 \sigma^{2}}\left[\frac{\partial \boldsymbol{(y-X \beta)^{\prime}(y-X \beta)}}{\partial \boldsymbol{\beta}}\right]
+				= - \frac{1}{2 \sigma^{2}} \left(-2 \boldsymbol{X^{\prime} y}+2 \boldsymbol{X^{\prime} X \beta}\right)=0 \\
+				\frac{\partial L}{\partial \sigma^{2}} 
+				& =  -\frac{n}{2} \frac{1}{\sigma^{2}}+\frac{\boldsymbol{(y-X \beta)^{\prime}(y-X \beta)}}{2 \sigma^{4}}=0 
+		\end{aligned}
+	\end{equation}
+
+    如果把这两个方程的解分别记为$ \hat{\beta} $和$ \hat{\sigma}^{2} $，那么它们满足
+	$$ \boldsymbol{ X^{\prime} X \hat{\beta}=X^{\prime} y } $$
+	$$  \tilde{\sigma}^{2} = \boldsymbol{\frac{(y-X \hat{\beta})^{\prime}(y-X \hat{\beta})}{n} } $$
+	
+	可以解得
+	\begin{eqnarray}
+		\boldsymbol{\hat{\beta}} & = & \boldsymbol{\left(X^{\prime} X\right)^{-1} X^{\prime} y=b} \text{ （与最小二乘估计量一样） } \\
+		\hat{\sigma}^{2} & = & \frac{ \boldsymbol{y^{\prime} M y} }{n}
+	\end{eqnarray}
+
+	这里$ \boldsymbol{M = I_{n} - X\left ( X^{\prime}  X \right )^{-1}X^{\prime }} $。所以$ \boldsymbol{\beta} $的最大似然估计和最小二乘估计是一样的。
+	这是由于选择$ \boldsymbol{\beta} $的值最大化对数似然函数和最小化误差平方和
+	$ \boldsymbol{\left ( y - X \beta \right)^{\prime} \left ( y - X \beta \right )} $是等价的。如果记
+	$$ \boldsymbol{\hat{e} = y - X \hat{\beta} = My} $$
+
+	并称它为\textbf{最大似然残差}，那么它和最小二乘残差是相等的，即$ \boldsymbol{\hat{e} = e = y - X b} $。
+	这样$ \sigma^{2} $可表示为$ \hat{\sigma}^{2} = \dfrac{ \boldsymbol{y^{\prime}My} }{n} 
+			 = \dfrac{ \boldsymbol{\hat{e}^{\prime}\hat{e}} }{n} 
+			 = \dfrac{e^{\prime}e}{n} $
+
+	对于$ \tilde{\boldsymbol{\beta}} $,我们已经知道$ \mathbb{E}\left [ \boldsymbol{\hat{\beta}} \right ] = \boldsymbol{\beta} $，
+	$ \operatorname{cor} \left ( \boldsymbol{\hat{\beta}} \right ) = \sigma^{2}\left ( \boldsymbol{X^{\prime}X} \right )^{-1} $。
+	由于$ \hat{\beta} = \left ( \boldsymbol{X^{\prime}X} \right )^{-1} \boldsymbol{X^{\prime}y=b} $是$ \boldsymbol{y} $的线性函数，而$ \boldsymbol{y} $服从正态分布，所以
+	$ \tilde{\boldsymbol{\beta}} $也服从正态分布，均值为$ \boldsymbol{\beta} $，协方差矩阵为$ \sigma^{2}\left ( \boldsymbol{X^{\prime}X} \right )^{-1} $，
+	也即$ \boldsymbol{\hat{\beta}} \sim N \left ( \boldsymbol{\beta}, \sigma^{2}
+	\left ( \boldsymbol{X^{\prime}X} \right )^{-1} \right ) $。这个结果在进行区间估计和假设检验时是非常有用的。
+	
+	关于$ \hat{\sigma}^{2} $，由于$ \mathbb{E} \left [ \boldsymbol{\hat{e}^{\prime}\hat{e}} \right ] 
+	= \mathbb{E}\left [ \left ( \boldsymbol{y - X \hat{\beta}} \right)^{\prime} 
+	\left ( \boldsymbol{y - X \hat{\beta}} \right ) \right ] 
+	= \mathbb{E}\left [ \boldsymbol{\varepsilon^{\prime} M \varepsilon} \right ] 
+	= \sigma^{2} \left ( n - K \right ) $，所以其期望值为
+	$$ \mathbb{E} \left [ \hat{\sigma}^{2} \right ] = \frac{n - K}{n} \sigma_{2} $$
+	
+	它是$ \sigma^{2} $的一个有偏估计量，\textbf{其偏度为}\bm{$ -K \sigma_{2} / n $}。为了得到一个无偏估计量，定义
+	$$ s^{2} = \frac{ \boldsymbol{\hat{e}^{\prime}\hat{e}}}{n - K} $$
+	
+	那么它是$ \sigma^{2} $的一个无偏估计量。它和我们在前一章里得到的关于$ \sigma^{2} $的无偏估计量是一样的。

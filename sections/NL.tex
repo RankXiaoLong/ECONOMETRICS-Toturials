@@ -1,0 +1,134 @@
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ % @File    : c:\Users\Administrator\Desktop\Econometrics\sections\NL.tex
+ % @Date    : 2021-01-22 13:51:14
+ % @Author  : RankFan
+ % @Email   : 1917703489@qq.com
+ % -----
+ % Last Modified: 2021-02-06 12:52:03
+ % Modified By: Rank_fan
+ % -----
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\chapter{非线性回归模型}
+
+\section{线性化回归}
+
+回归模型的一般形式是：
+\begin{equation}
+       y_{i}=h\left(x_{i}, \beta_{i} \right)+\varepsilon_{i}
+       \label{eq 8.1.1}
+\end{equation}
+
+很明显，线性模型只是一种特殊情况，我们应该讨论更一般的模型 \ref{eq 8.1.1}，例如：
+\begin{equation}
+     \boldsymbol{y} = \beta_{1}+\beta_{2} e^{\beta_{3} \boldsymbol{x} }+\boldsymbol{\varepsilon}
+    \label{eq 8.1.2}
+\end{equation}
+
+不能变换到线性形式。
+
+非线性回归模型是:
+$$ \boldsymbol{y} = h(\boldsymbol{x}, \boldsymbol{\beta}) + \boldsymbol{\varepsilon} $$
+
+（为简化记号，我们去掉了观测值的下标）非线性回归模型的许多结果是基于在参数向量的一个特定值$ \boldsymbol{\beta^{0}} $处（如由经验得到的数据时）对$h(\boldsymbol{x, \beta})$ 的一个线性泰勒级数来近似：
+\begin{equation}
+   h(\boldsymbol{x, \beta}) \cong h\left(\boldsymbol{x, \beta^{0}}\right)+\left.\sum_{k} 
+   \frac{\partial h(\boldsymbol{x, \beta})}{\partial \beta_{k}}\right|_{\boldsymbol{\beta=\beta^{0}}}
+     \left(\beta_{k}-\beta_{k}^{0}\right) 
+\end{equation}
+
+这被称为线性化回归模型。整理各项可得:
+$$ h(\boldsymbol{x, \beta}) \cong h\left(\boldsymbol{x}, \boldsymbol{\beta^{0}}\right)-\left.\sum_{k} \beta_{k}^{0} 
+    \frac{\partial h(\boldsymbol{x, \beta})}{\partial \beta_{k}}\right|_{\boldsymbol{\beta=\beta^{0}}}+\left.\sum_{k} \beta_{k} 
+    \frac{\partial h(\boldsymbol{x, \beta})}{\partial \beta_{k}}\right|_{\boldsymbol{\beta=\beta^{0}}} $$
+
+令$ \tilde{x}_{k}^{0} $ 等于第$ k $个偏微分，对于$ \boldsymbol{\beta^{0}} $的一个给定值，这 $ \tilde{x}_{k}^{0} $ 是数据而不是含未
+知参数的函数。 于是:
+$$ \begin{aligned}
+    h(\boldsymbol{x, \beta}) & \cong \left[h^{0}-\sum_{k} \tilde{x}_{k}^{0} \beta_{k}^{0}\right]+\sum \tilde{x}_{k}^{0} \beta_{k} \\
+    & = \boldsymbol{ h^{0}-\tilde{x}^{0^{\prime}} \beta^{0}+\tilde{x}^{0} \beta }
+    \end{aligned} $$
+
+或
+$$ \boldsymbol{ y \cong h^{0}-\widetilde{x}^{0^{\prime}} \beta^{0}+\tilde{x}^{0^{\prime}} \beta+\varepsilon } $$
+
+把已知项移到方程左边，可得回归模型：
+\begin{equation}
+    \boldsymbol{ \tilde{y}=y-h^{0}+\widetilde{x}^{0^{\prime}} \beta^{0}=\tilde{x}^{0^{\prime}} \beta+\varepsilon }
+    \label{eq 8.1.4}
+\end{equation}
+
+有了 $\beta^{0}$ 值，我们就可以计算 $ \tilde{y}^{0} $ 和$ \tilde{x}^{0} $并通过线性最小二乘法估计 \ref{eq 8.1.4} 中的参数。
+
+然后，进行再次的迭代和回归，直至收敛和满足我们的精度要求。
+
+\begin{myexample}
+    对于 \ref{eq 8.1.2} 所给的非线性回归模型，线性化方程中的回归量是:
+    $$ \begin{array}{c}
+            \tilde{x}_{1}^{0}=\frac{\partial h(\cdot)}{\partial \beta_{1}}=1, \quad 
+            \tilde{x}_{2}^{0}=\frac{\partial h(\cdot)}{\partial \beta_{2}}=e^{\beta_{3}^{0} \boldsymbol{x}}, \quad  
+            \tilde{x}_{3}^{0}=\frac{\partial h(\cdot)}{\partial \beta_{3}}=\beta_{2}^{0} x e^{\beta_{3}^{0} \boldsymbol{x}}
+        \end{array} $$
+    
+    有了一组参数$ \beta^{0} $
+    $$ \tilde{\boldsymbol{y}}^{0} = \boldsymbol{y}-h \left(\boldsymbol{x}, \beta_{1}^{0}, \beta_{2}^{0}, 
+        \beta_{3}^{0}\right)+\beta_{1}^{0} \widetilde{x}_{1}^{0}+\beta_{2}^{0} 
+        \widetilde{x}_{2}^{0}+\beta_{3}^{0} \widetilde{x}_{3}^{0} $$
+
+    可以对前面为估计 $ \beta^{1}, \beta^{2} $ 和 $ \beta^{3} $ 而定义的三个变量进行回归。
+\end{myexample}
+
+\section{非线性最小二乘估计}
+
+最小二乘法仍然是一种比较具有吸引力的估计参数的方法。对于这种估计量已经得到许多分析结果，例如，一致性和渐近正态性。然而，除了在扰动项是正态分布的情况下，我
+们不能肯定非线性最小二乘估计量是最有效的估计量。（这和我们对于线性模型所得的结论是一样的）下面的一些例子将说明这一点。
+
+在继续之前，有必要关于回归量做些假设。贾奇等人（1985）和雨宫（1985）曾详细地讨论过精确的要求。在古典回归模型中，为了得到渐近结果，
+我们假设样本矩矩阵$ (1/n) \boldsymbol{X^{\prime}X} $收敛于一个正定矩阵$  \boldsymbol{Q} $。
+类似地，当线性化模型中的“回归量”在真实参数值处被计算时，我们在其上附加相同的条件。
+因此，对于非线性回归模型，与以前类似的是:
+\begin{equation}
+     p \lim \left(\frac{1}{n}\right)  \boldsymbol{ {\tilde{X}^{\prime}} \tilde{X} }
+     =p \lim \left(\frac{1}{n}\right) \sum_{i}\left[\frac{\partial h\left(x_{i}, \beta^{0}\right)}{\partial \beta^{0}}\right]
+     \left[\frac{\partial h\left(x_{i}, \beta^{0}\right)}{\partial \beta^{0}}\right]=  \boldsymbol{\widetilde{Q}} 
+     \label{eq 8.2.1}
+\end{equation}
+
+其中$  \boldsymbol{\tilde{ Q }} $是正定矩阵。根据这个公式，非线性最小二乘估计量的渐近性质可以导出。
+实际上，除了在这种情况下我们把 $  \boldsymbol{\tilde{ X }} $中的导数也作为回归量之外，它们与我们已见到的线性模型的渐近性质十分相似。
+
+ \eqref{eq 8.2.1} 中的矩阵收敛于正定矩阵的要求还附带回归量矩阵 $  \boldsymbol{\tilde{ X }} $ 的各列是线性无关的条件。
+ 这是一个识别条件，类似于线性模型中的解释变量是线性无关的要求。
+
+ \subsection{非线性最小二乘准则函数}
+$$ S(b)=\sum_{i}\left[y_{i}-h\left(x_{i}, b\right)\right]^{2}=\sum_{i} e_{i}^{2} $$
+
+其中我们已经代入即将是解的$ b $。最小化的一阶必要条件是:
+$$ g( \boldsymbol{b})=-2 \sum_{i}\left[y_{i}-h\left(x_{i}, b\right)\right] 
+        \frac{\partial h\left(x_{i},  \boldsymbol{b}\right)}{\partial  \boldsymbol{b}}=0 $$
+
+注意：$$ g( \boldsymbol{b})=-2  \boldsymbol{\tilde{X}^{\prime} e} $$
+
+这与线性模型的情况相同。这是非线性最优化的一个标准问题，可以用许多方法来求解。高斯—牛顿方法在这种情况下经常使用。
+回想我们关于线性回归模型的讨论，如果 $  \boldsymbol{\beta^{0}} $ 的值是可以获得的，那里所显示的线性回归模型可以用普通最小二乘法来估计。
+一旦回到一个参数向量，它就可以作为一个新的  $  \boldsymbol{\beta^{0}} $ ，计算可以继续进行。
+迭代可以一直进行到相邻两个参数向量的差是足够小可以认为已经收敛为止。
+这个方法的主要优点之一是在最后一步迭代，$  \boldsymbol{{\tilde{ Q }}^{-1}} $ 的估计，除了$ \hat{\sigma}^{2} $，给出了参数估计渐近方差矩阵的正确估计。
+$ {\sigma}^{2} $ 的一致估计可以利用残差来计算：
+\begin{equation}
+    \hat{\sigma}^{2}=\left(\frac{1}{n}\right) \sum_{i}\left[y_{i}-h\left(x_{i}, b\right)\right]^{2}
+\end{equation}
+
+（自由度校正 1/（ n－ K）在这里没有价值，因为所有结果在任何情况下都是渐近的和$ \frac{n-K}{n} \rightarrow 1 $的事实。
+$$  \boldsymbol{b} \stackrel{a}{\longrightarrow} N\left[ \boldsymbol{\beta}, \frac{\sigma^{2}}{n}  \boldsymbol{Q^{-1}} \right] $$
+
+其中
+$$  \boldsymbol{Q} = p \lim \left(\frac{ \boldsymbol{\tilde{X}^{\prime} \tilde{X}}}{n}\right) $$
+
+渐近协方差矩阵的样本估计是:
+$$ \text { Est. Asy.}\operatorname{Var}[ \boldsymbol{b}]=\hat{\sigma}^{2}\left( \boldsymbol{\tilde{X}^{\prime} \tilde{X}}\right)^{-1} $$
+
+只要得到这些结果，推论和假设检验就可以按前几章中所描述的同样方式进行。在评价回归拟合值中产生一个小问题，因为
+$$ R^{2}=1-\frac{\sum e_{i}^{2}}{\sum\left(y_{i}-\bar{y}\right)^{2}} $$
+
+不再保证在零到 1 的范围内,(因为估计的误差$\sum e_{i}^{2}$ 有可能足够的大)。然而，它仍给出了一个有用的描述性度量。
