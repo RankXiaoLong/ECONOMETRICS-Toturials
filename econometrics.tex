@@ -1,0 +1,105 @@
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ % @File    : c:\Users\Administrator\Desktop\Econometrics\econometrics.tex
+ % @Date    : 2020-08-28 19:53:28
+ % @Author  : RankFan
+ % @Email   : 1917703489@qq.com
+ % -----
+ % Last Modified: 2021-02-15 18:01:33
+ % Modified By: Rank_fan
+ % -----
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\documentclass[UTF8]{book}
+\input{structure.tex}
+
+% \title{ \heiti 计量经济学知识总结 }
+% \author[a]{RankFan  \thanks{fanxiaolong98@gmail.com} }
+% \author[a]{MonicaRong \thanks{xmu2020wyr@gmail.com} }
+% \affil[a]{ 公众号：经济知识综合}
+% \date{\today}
+
+\begin{document}
+
+		\begin{titlepage}
+			\centering % Center everything on the title page
+			\scshape % Use small caps for all text on the title page
+			\vspace*{1.5\baselineskip} % White space at the top of the page
+		% ===================
+		%	Title Section 	
+		% ===================
+
+			\rule{15cm}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt} % Thick horizontal rule
+			\rule{15cm}{0.4pt} % Thin horizontal rule
+			
+				\vspace{0.75\baselineskip} % Whitespace above the title
+		% ========== Title ===============	
+			{	\Huge 计~量~经~济~学 ( Econometrics )\\ 
+					\vspace{4mm}
+				知~识~总~结 \\	}
+		% ======================================
+				\vspace{0.75\baselineskip} % Whitespace below the title
+			\rule{15cm}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt} % Thin horizontal rule
+			\rule{15cm}{1.6pt} % Thick horizontal rule
+			
+				\vspace{1.75\baselineskip} % Whitespace after the title block
+		% =================
+		%	Information	
+		% =================
+			{\large Produced by: \href{https://person.zju.edu.cn/0087038}{蒋岳祥} \\
+				\vspace*{1.2\baselineskip}
+				jiangyuexiang@zju.edu.cn} \\
+			    \vspace*{\baselineskip}
+			{\large Editor: \href{https://blog.csdn.net/Rank_fxl?spm=1001.2101.3001.5343}{RankFan}\quad  MonicaRong \\
+				\vspace*{\baselineskip}
+				fanxiaolong98@gmail.com \quad 
+				xmu2020wyr@gmail.com\\
+				\vspace*{\baselineskip} 
+				公众号：~ 经济知识综合\\
+				\vspace*{\baselineskip}
+			    { \it  \scshape Version~1.0} \\
+				\vspace*{\baselineskip}
+				\today} 
+			\vfill
+		If you come across any problems, Read other books for possible\\ \vspace{1mm}
+		solutions or contact me at \url{fanxiaolong98@gmail.com} ~ \& ~ \url{xmu2020wyr@gmail.com} \\ \vspace{1mm}
+		Happy Read-ing!
+		\end{titlepage}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		% \texorpdfstring{TEXstring}{PDFstring}
+	\begin{sloppypar}
+		% \maketitle
+		\frontmatter
+		\include{sections/preface}
+		% \setcounter{page}{1}
+		% \renewcommand{\thepage}{\Roman{page}}
+		\thispagestyle{plain}
+		\tableofcontents
+		\newpage 
+		\setlength{\baselineskip}{22pt}
+		% \setcounter{page}{1}
+		% \renewcommand{\thepage}{\arabic{page}}
+		\pagestyle{headings}
+		\mainmatter
+		\part{基础}
+			\include{sections/class_introduction}
+			\include{sections/introduction}
+			\include{sections/math_1}
+			\include{sections/math_2}
+			\include{sections/math_3}
+			\include{sections/time_series}
+		\part{线性}
+			\include{sections/CLM}
+			\include{sections/MLM}
+			\include{sections/MLE}
+			\include{sections/RMLM}
+		\part{应用}
+			\include{sections/BigDataSample}
+			\include{sections/NL}
+			\include{sections/NGLS}
+		\appendix
+		\part{Appendix}
+			\include{sections/Production}
+			\include{sections/classification}
+			\include{sections/e-mail}
+	\end{sloppypar}
+\end{document}
