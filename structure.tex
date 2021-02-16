@@ -1,0 +1,143 @@
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ % @File    : c:\Users\Administrator\Desktop\Econometrics\structure.tex
+ % @Date    : 2021-02-11 15:14:30
+ % @Author  : RankFan
+ % @Email   : 1917703489@qq.com
+ % -----
+ % Last Modified: 2021-02-15 11:25:53
+ % Modified By: Rank_fan
+ % -----
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\usepackage{ctex}
+\usepackage{type1cm}
+\usepackage{ragged2e}
+
+%====================================== 标题设置=============== ================================%
+\usepackage{caption}  % 标题
+\usepackage{subfig} % 子图
+\usepackage{authblk} % 作者
+\usepackage{tocbibind} % 目录
+\usepackage[Glenn]{fncychap} % 章节封面设置
+
+%====================================== 章节设置=============== ================================%
+\usepackage{titlesec} % 可对标题的式样进行全面精细地设置。
+\usepackage{indentfirst} % 设置缩进的距离
+\usepackage[left=2cm,right=2cm,top=2.5cm,bottom=3cm]{geometry} % 页面边距
+
+%====================================== 表格、图设置=============== ================================%
+
+%\usepackage{color}
+% \usepackage{tikz,pgfplots} % tikz绘制图
+%\usepackage{mathpazo}
+
+\usepackage{enumerate} % enumerate 环境
+\usepackage{fancyref} % 交叉引用
+\usepackage{graphicx} % 插入图片
+\usepackage{algorithm} % 算法
+\usepackage{bm} % 对公式字母进行加粗
+\usepackage{listings} % 在LaTex中添加代码
+\usepackage{mathrsfs} % 插入花体公式
+\usepackage{array} % 矩阵
+\usepackage{multirow,booktabs} % 表格多行
+\usepackage{arraycols} % 设置array的列间距
+\usepackage{threeparttable}
+\usepackage{longtable}
+
+%====================================== 数学公式设置=============== ================================%
+% \usepackage{tocvsec2} % 标题目录由固定层次深度改为可变层次深度
+% \usepackage[utf8]{inputenc} % 用来嵌入字体
+% \usepackage{calc}
+
+\usepackage{amsmath,amssymb} % 数学公式
+\usepackage{datetime} % 时间
+\usepackage{pdfpages} % 就是将PDF文件加入到封面位置
+% \usepackage[colorlinks,citecolor=blue,linkcolor=blue,urlcolor=red,bookmarks, bookmarksnumbered]{hyperref} % hyperref 参数 breaklinks,
+\usepackage{cases,empheq} % 大括号公式，有色公式 http://blog.sina.com.cn/s/blog_5e16f1770100h5gs.html
+\usepackage{hyperref}
+\hypersetup{ colorlinks,citecolor=blue,linkcolor=blue,urlcolor=red,
+			bookmarks, bookmarksnumbered,
+			unicode = true }
+
+
+%=====================================================================================%
+\setlength{\parindent}{2em} %===================首行缩进2字符
+
+%================================== tikz ================================%
+% \usetikzlibrary{arrows,shapes,intersections,angles,calc,quotes,through,decorations.text}
+% \usetikzlibrary{shapes.geometric, arrows}
+
+%================================== 标题设置 ================================%
+\titlelabel{{\bf \S} ~ \thetitle \quad}
+
+%================================== 自定义样式设置 ================================%
+\lstdefinestyle{mystyle}{
+	basicstyle=%
+	\ttfamily
+	\lst@ifdisplaystyle\small\fi
+}
+
+%================================== 设置中文字体 ================================%
+\xeCJKsetup{AutoFakeBold=true}
+\setCJKmainfont{FZShuSong-Z01}[BoldFont={FZHei-B01},ItalicFont={FZKai-Z03}]
+\setCJKsansfont{FZHei-B01}
+\setCJKmonofont{FZShuSong-Z01}
+% \setsansfont{Verdana}
+
+%================================== 设置英文字体 ================================%TeX Gyre Pagella
+\setmainfont[Mapping=tex-text]{Times New Roman}%--------------------------------英文衬线字体
+% \tikzset{elegant/.style={smooth,thick,samples=50,cyan}}
+% \tikzset{eaxis/.style={->,>=stealth}}
+% \definecolor[named]{color01}{rgb}{.2,.4,.6} % Color used in the title page
+
+%================================== 盒子 ================================%TeX Gyre Pagella
+% \newlength{\lablen}
+% \setlength{\lablen}{0pt}
+% \settowidth{\lablen}{2021 年 2 月 8 日}
+
+%================================== newcommand ================================%
+\newcommand{\topcaption}{%
+		\setlength{abovecaptionskip}{0pt} % 标题前
+		\setlength{belowcaptionskip}{2em} % 标题后
+		\caption}
+\newcommand*{\hei}{\CJKfamily{heiti}} 
+\newcommand*{\num}{pi}
+\newcommand{\thickhline}{%
+	\noalign {\ifnum 0=`}\fi \hrule height 1pt
+	\futurelet \reserved@a \@xhline}
+\newcolumntype{"}{@{\hskip\tabcolsep\vrule width 1pt\hskip\tabcolsep}}
+\newcommand*{\email}[1]{%
+\normalsize\href{mailto:#1}{#1}\par
+}
+
+%===================================renewcommand ==============================================%
+\renewcommand {\thetable} {\thechapter{}.\arabic{table}}
+\renewcommand {\thefigure} {\thesection{}.\arabic{figure}}
+\renewcommand\chaptermark[1]{\markboth{Chapter \thechapter\quad #1}{}}
+\renewcommand\sectionmark[1]{\markright{\thesection\quad #1}}
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+\renewcommand*{\Affilfont}{ \it }
+\renewcommand\Authands{ and  } 
+\setcounter{secnumdepth}{3}
+
+%===================================设置中文章节标题==========================================================%
+\renewcommand\sectionmark[1]{%
+ \markright{\CTEXifname{\CTEXthesection——}{}#1}}
+
+%===================================newtheorem ==========================================================%
+\newtheorem{theorem}{$ \bf{{Theorem}}  $}[section]
+\newtheorem{mydef}{Definition}[chapter]
+\newtheorem{myproof}{Proof}[chapter]
+\newtheorem{myexample}{Example}[chapter]
+\newtheorem{mypty}{Property}[chapter]
+\newtheorem{mycor}{Corollary}[chapter]
+
+% =================================设置节标题==========================================================%
+\numberwithin{equation}{section}
+
+% ================================表格caption设置==========================================================%
+\captionsetup[table]{%
+	labelsep = quad ,  % title与font之间的距离
+	name = 表 %表的名字
+}
+% ====================================================%
